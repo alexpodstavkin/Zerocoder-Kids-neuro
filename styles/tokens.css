@@ -1,0 +1,177 @@
+/**
+ * ============================================================
+ * DESIGN TOKENS — top107 Design System
+ * Based on UntitledUI PRO v8.0 + custom brand
+ * ============================================================
+ *
+ * Usage: import this file first, then components.css
+ * <link rel="stylesheet" href="tokens.css">
+ * <link rel="stylesheet" href="components.css">
+ */
+
+:root {
+
+  /* ── Brand (Purple) ──────────────────────────────────────── */
+  --brand-50:  #F9F5FF;
+  --brand-100: #F4EBFF;
+  --brand-200: #E9D7FE;
+  --brand-300: #D6BBFB;
+  --brand-400: #B692F6;
+  --brand-500: #9E77ED;
+  --brand-600: #7F56D9;   /* ← primary action */
+  --brand-700: #6941C6;   /* ← hover */
+  --brand-800: #53389E;
+  --brand-900: #42307D;
+
+  /* ── Neutral ─────────────────────────────────────────────── */
+  --neutral-0:   #FFFFFF;
+  --neutral-50:  #FAFAFA;
+  --neutral-100: #F5F5F5;
+  --neutral-200: #E5E5E5;
+  --neutral-300: #D4D4D4;
+  --neutral-400: #A3A3A3;
+  --neutral-500: #737373;
+  --neutral-600: #525252;
+  --neutral-700: #404040;
+  --neutral-900: #171717;
+  --neutral-950: #0A0A0A;
+
+  /* ── Semantic ────────────────────────────────────────────── */
+  --color-success:      #16A34A;
+  --color-success-bg:   #F0FDF4;
+  --color-success-border: #BBF7D0;
+
+  --color-warning:      #CA8A04;   /* Yellow-600 — NOT orange */
+  --color-warning-bg:   #FEFCE8;
+  --color-warning-border: #FEF08A;
+
+  --color-error:        #DC2626;
+  --color-error-bg:     #FEF2F2;
+  --color-error-border: #FECACA;
+
+  --color-info:         #0369A1;
+  --color-info-bg:      #F0F9FF;
+  --color-info-border:  #BAE6FD;
+
+  /* ── Typography ──────────────────────────────────────────── */
+  --font-family:    'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
+  --font-size-xs:   11px;
+  --font-size-sm:   13px;
+  --font-size-md:   15px;
+  --font-size-base: 16px;
+  --font-size-lg:   18px;
+  --font-size-xl:   20px;
+  --font-size-2xl:  24px;
+  --font-size-3xl:  30px;
+  --font-size-4xl:  36px;
+  --font-size-5xl:  48px;
+
+  --font-weight-regular:   400;
+  --font-weight-medium:    500;
+  --font-weight-semibold:  600;
+  --font-weight-bold:      700;
+  --font-weight-extrabold: 800;
+
+  --line-height-tight:   1.2;
+  --line-height-snug:    1.35;
+  --line-height-normal:  1.5;
+  --line-height-relaxed: 1.65;
+  --line-height-loose:   1.75;
+
+  /* letter-spacing: всегда -0.02em на заголовках ≥30px */
+  --tracking-tight:  -0.02em;
+  --tracking-normal:  0em;
+  --tracking-wide:    0.05em;   /* uppercase labels */
+
+  /* ── Spacing (8pt grid) ──────────────────────────────────── */
+  --space-1:  4px;
+  --space-2:  8px;
+  --space-3:  12px;
+  --space-4:  16px;
+  --space-5:  20px;
+  --space-6:  24px;
+  --space-8:  32px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --space-16: 64px;
+  --space-20: 80px;
+
+  /* ── Border radius ───────────────────────────────────────── */
+  --radius-sm:   6px;    /* inputs, small tags */
+  --radius-md:   8px;    /* buttons, badges */
+  --radius-lg:   12px;   /* cards */
+  --radius-xl:   16px;   /* large blocks */
+  --radius-2xl:  24px;   /* hero blocks */
+  --radius-pill: 9999px; /* pills, tags */
+
+  /* ── Shadows (multi-layer — NEVER single layer) ──────────── */
+  --shadow-xs:
+    0px 1px 2px rgba(0, 0, 0, 0.05);
+
+  --shadow-sm:
+    0px 1px 2px -1px rgba(0, 0, 0, 0.10),
+    0px 1px 3px rgba(0, 0, 0, 0.10);
+
+  --shadow-md:
+    0px 2px 4px -2px rgba(0, 0, 0, 0.06),
+    0px 4px 6px -1px rgba(0, 0, 0, 0.10);
+
+  --shadow-lg:
+    0px 2px 2px -1px rgba(0, 0, 0, 0.04),
+    0px 4px 6px -2px rgba(0, 0, 0, 0.03),
+    0px 12px 16px -4px rgba(0, 0, 0, 0.08);
+
+  --shadow-xl:
+    0px 4px 6px -2px rgba(0, 0, 0, 0.03),
+    0px 8px 8px -4px rgba(0, 0, 0, 0.03),
+    0px 20px 24px -4px rgba(0, 0, 0, 0.08);
+
+  --shadow-btn:
+    0px 1px 2px rgba(0, 0, 0, 0.05),
+    0px -2px 0px 0px rgba(0, 0, 0, 0.05) inset,
+    0px 0px 0px 1px rgba(0, 0, 0, 0.18) inset;
+
+  /* ── Focus ring ──────────────────────────────────────────── */
+  --focus-ring:
+    0px 0px 0px 4px var(--brand-500),
+    0px 0px 0px 2px white;
+
+  /* ── Z-index ─────────────────────────────────────────────── */
+  --z-sticky:  100;
+  --z-overlay: 200;
+  --z-modal:   300;
+  --z-toast:   400;
+
+  /* ── Layout ──────────────────────────────────────────────── */
+  --container-max:    1280px;
+  --container-pad:    80px;   /* desktop */
+  --container-pad-md: 32px;   /* tablet  */
+  --container-pad-sm: 16px;   /* mobile  */
+
+  --header-height: 64px;
+  --sidebar-width: 300px;
+}
+
+/* ── Reset ───────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; }
+
+body {
+  font-family:             var(--font-family);
+  font-size:               var(--font-size-base);
+  font-weight:             var(--font-weight-regular);
+  line-height:             var(--line-height-normal);
+  color:                   var(--neutral-900);
+  -webkit-font-smoothing:  antialiased;
+  margin: 0;
+}
+
+/* ── Focus ring ──────────────────────────────────────────────── */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: none;
+  box-shadow: var(--focus-ring);
+  border-radius: var(--radius-sm);
+}
