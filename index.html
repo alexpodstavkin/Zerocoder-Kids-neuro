@@ -2,541 +2,458 @@
 <html lang="ru">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>top107 Design System</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Зерокодер — бесплатный урок по нейросетям для детей 10–14 лет</title>
+<meta name="description" content="Подарите ребёнку бесплатный пробный урок по нейросетям от экспертов Зерокодер. 60 минут, индивидуально, для детей 10–14 лет.">
+<meta property="og:title" content="Зерокодер — бесплатный урок по нейросетям для детей 10–14 лет">
+<meta property="og:description" content="Подарок с витрины: персональный урок по нейросетям для ребёнка. Только сегодня.">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%238b5cf6'/%3E%3Cstop offset='1' stop-color='%233b82f6'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='14' fill='url(%23g)'/%3E%3Ctext x='50%25' y='58%25' text-anchor='middle' font-family='Arial,sans-serif' font-size='38' font-weight='800' fill='white'%3EZ%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles/tokens.css">
-<link rel="stylesheet" href="styles/components.css">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
 <style>
-/* ── Guide chrome ─────────────────────────────────────────── */
-.ds-body     { background: #F5F5F5; min-height: 100vh; }
-.ds-sidebar  {
-  position: fixed; top: 0; left: 0; bottom: 0; width: 220px;
-  background: #171717; overflow-y: auto; padding: 28px 0;
-  z-index: 100;
+/* ===== TOKENS ===== */
+:root{
+  --bg-0:#0a0a1a;
+  --bg-1:#12122b;
+  --bg-card:rgba(255,255,255,0.04);
+  --border:rgba(139,92,246,0.2);
+  --border-strong:rgba(139,92,246,0.5);
+  --text:#ECECF7;
+  --text-dim:#9aa0c0;
+  --brand-violet:#8b5cf6;
+  --brand-blue:#3b82f6;
+  --danger:#ff3e7f;
+  --grad: linear-gradient(135deg,#8b5cf6 0%,#3b82f6 100%);
+  --grad-soft: linear-gradient(135deg,rgba(139,92,246,0.15),rgba(59,130,246,0.15));
+  --glow: 0 0 40px rgba(139,92,246,0.4),0 0 80px rgba(59,130,246,0.2);
+  --radius:18px;
+  --radius-sm:12px;
+  --font-h:'Space Grotesk',system-ui,sans-serif;
+  --font-b:'Inter',system-ui,sans-serif;
 }
-.ds-sidebar-logo {
-  font-size: 18px; font-weight: 800; color: #9E77ED;
-  padding: 0 20px 20px; display: block;
-  border-bottom: 1px solid rgba(255,255,255,0.08);
-  text-decoration: none; letter-spacing: -0.02em;
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:var(--font-b);
+  color:var(--text);
+  background:var(--bg-0);
+  background-image:
+    radial-gradient(ellipse at 20% 0%,rgba(139,92,246,0.18),transparent 50%),
+    radial-gradient(ellipse at 80% 30%,rgba(59,130,246,0.15),transparent 50%),
+    linear-gradient(180deg,var(--bg-0),var(--bg-1));
+  background-attachment:fixed;
+  min-height:100vh;
+  line-height:1.55;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
 }
-.ds-sidebar-logo span { display: block; font-size: 11px; font-weight: 500; color: rgba(255,255,255,0.4); margin-top: 2px; letter-spacing: 0; }
-.ds-nav { list-style: none; margin: 12px 0 0; padding: 0; }
-.ds-nav li a {
-  display: block; padding: 7px 20px; font-size: 13px; font-weight: 500;
-  color: rgba(255,255,255,0.5); text-decoration: none;
-  transition: color 0.15s, background 0.15s; border-radius: 0;
+body::before{
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:0;
+  background-image:
+    linear-gradient(rgba(139,92,246,0.05) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(139,92,246,0.05) 1px,transparent 1px);
+  background-size:50px 50px;
+  mask-image:radial-gradient(ellipse at center,#000 30%,transparent 80%);
 }
-.ds-nav li a:hover { color: #fff; background: rgba(255,255,255,0.06); }
-.ds-nav-group { font-size: 10px; font-weight: 700; color: rgba(255,255,255,0.25);
-  letter-spacing: 0.1em; text-transform: uppercase; padding: 16px 20px 4px; }
-.ds-content { margin-left: 220px; padding: 48px; max-width: 960px; }
-.ds-section  { margin-bottom: 72px; scroll-margin-top: 24px; }
-.ds-section-title {
-  font-size: 22px; font-weight: 700; color: #171717; letter-spacing: -0.02em;
-  margin: 0 0 6px; padding-bottom: 16px; border-bottom: 2px solid #E5E5E5;
-}
-.ds-section-desc { font-size: 14px; color: #737373; margin: 0 0 28px; line-height: 1.6; }
-.ds-label {
-  font-size: 11px; font-weight: 700; color: #A3A3A3; text-transform: uppercase;
-  letter-spacing: 0.08em; margin: 24px 0 10px;
-}
-.ds-preview {
-  background: #FFFFFF; border: 1px solid #E5E5E5; border-radius: 12px;
-  padding: 32px; margin-bottom: 4px;
-}
-.ds-preview-dark { background: #171717; }
-.ds-preview-subtle { background: #FAFAFA; }
-.ds-code {
-  background: #1E1E2E; color: #CDD6F4; font-size: 12px; font-family: 'SF Mono', 'Fira Code', monospace;
-  border-radius: 0 0 8px 8px; padding: 12px 16px; overflow-x: auto;
-  white-space: pre; line-height: 1.6; border: 1px solid #E5E5E5; border-top: none;
-}
-.ds-row   { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; }
-.ds-col   { display: flex; flex-direction: column; gap: 12px; }
-.ds-grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-.ds-grid3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; }
+.container{max-width:1180px;margin:0 auto;padding:0 20px;position:relative;z-index:1}
+h1,h2,h3{font-family:var(--font-h);font-weight:700;letter-spacing:-0.02em;line-height:1.15}
+.grad-text{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+a{color:inherit;text-decoration:none}
+button{font-family:inherit;cursor:pointer;border:none;background:none;color:inherit}
 
-/* Color swatches */
-.swatch-group { display: flex; flex-direction: column; gap: 2px; }
-.swatch-row   { display: flex; gap: 2px; flex-wrap: wrap; }
-.swatch {
-  width: 72px; border-radius: 6px; overflow: hidden;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+/* ===== HEADER / HERO STYLES ===== */
+.site-header{padding:24px 0;display:flex;align-items:center;justify-content:space-between}
+.logo{font-family:var(--font-h);font-size:24px;font-weight:700;letter-spacing:-0.02em}
+.logo span{font-size:28px}
+.hero{padding:40px 0 80px;text-align:center;position:relative}
+.badge{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:8px 18px;border-radius:999px;
+  background:var(--grad-soft);
+  border:1px solid var(--border-strong);
+  font-size:14px;font-weight:500;
+  box-shadow:0 0 30px rgba(139,92,246,0.25);
+  margin-bottom:28px;
 }
-.swatch-color { height: 48px; }
-.swatch-info  { padding: 6px 8px; background: white; }
-.swatch-name  { font-size: 10px; font-weight: 600; color: #525252; line-height: 1.3; }
-.swatch-hex   { font-size: 10px; color: #A3A3A3; font-family: monospace; }
+.hero h1{font-size:clamp(32px,5.5vw,64px);max-width:920px;margin:0 auto 24px}
+.hero .sub{font-size:clamp(16px,2vw,20px);color:var(--text-dim);max-width:680px;margin:0 auto 40px}
 
-/* Type scale */
-.type-row { display: flex; align-items: baseline; gap: 16px; padding: 10px 0; border-bottom: 1px solid #F5F5F5; }
-.type-label-col { width: 80px; font-size: 11px; color: #A3A3A3; font-family: monospace; flex-shrink: 0; }
-.type-sample { color: #171717; }
+/* ===== TIMER STYLES ===== */
+.timer-wrap{margin:0 auto 36px;max-width:480px;position:relative}
+.last-chance{
+  display:none;font-family:var(--font-h);font-weight:700;font-size:20px;
+  color:#fff;background:linear-gradient(135deg,#ff3e7f,#ff6b9d);
+  padding:10px 22px;border-radius:999px;margin-bottom:16px;
+  box-shadow:0 0 40px rgba(255,62,127,0.6);
+  animation:pulse 1.2s ease-in-out infinite;
+}
+.last-chance.show{display:inline-block}
+@keyframes pulse{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(1.05);opacity:.85}}
+.timer{display:flex;justify-content:center;gap:14px;align-items:center}
+.timer-card{
+  background:var(--bg-card);
+  border:1px solid var(--border-strong);
+  border-radius:var(--radius);
+  padding:18px 22px;min-width:96px;
+  font-family:var(--font-h);font-size:54px;font-weight:700;
+  box-shadow:0 0 30px rgba(139,92,246,0.3),inset 0 1px 0 rgba(255,255,255,0.05);
+  backdrop-filter:blur(10px);
+}
+.timer-sep{font-size:48px;font-weight:700;color:var(--brand-violet);opacity:.7}
+.timer-label{margin-top:14px;color:var(--text-dim);font-size:14px;text-transform:uppercase;letter-spacing:.1em}
 
-/* Shadow demo */
-.shadow-box {
-  width: 100%; height: 80px; background: white; border-radius: 12px;
-  display: flex; align-items: center; justify-content: center;
-  font-size: 12px; font-weight: 600; color: #737373; letter-spacing: 0.02em;
+/* ===== BUTTONS ===== */
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:10px;
+  padding:18px 38px;font-size:17px;font-weight:600;
+  border-radius:14px;background:var(--grad);color:#fff;
+  box-shadow:0 10px 40px rgba(139,92,246,0.5),0 0 0 1px rgba(255,255,255,0.1) inset;
+  transition:transform .2s,box-shadow .2s;
+}
+.btn:hover{transform:translateY(-2px);box-shadow:0 15px 50px rgba(139,92,246,0.7),0 0 0 1px rgba(255,255,255,0.15) inset}
+.btn:active{transform:translateY(0)}
+.btn-lg{padding:22px 48px;font-size:19px}
+
+/* ===== SECTIONS COMMON ===== */
+section{padding:90px 0;position:relative}
+.section-title{font-size:clamp(28px,4vw,44px);text-align:center;margin-bottom:14px}
+.section-sub{text-align:center;color:var(--text-dim);max-width:640px;margin:0 auto 56px;font-size:17px}
+
+/* ===== GIFTS GRID STYLES ===== */
+.gifts{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.gift{
+  position:relative;border-radius:var(--radius);padding:36px 24px;text-align:center;
+  background:var(--bg-card);border:1px solid var(--border);
+  transition:transform .3s,box-shadow .3s;backdrop-filter:blur(10px);
+  display:block;
+}
+.gift-icon{font-size:56px;margin-bottom:16px;display:block;filter:grayscale(.6);opacity:.5}
+.gift h3{font-size:18px;margin-bottom:8px;color:var(--text-dim)}
+.gift p{font-size:14px;color:var(--text-dim);opacity:.7}
+.gift .lock{position:absolute;top:14px;right:14px;font-size:18px;opacity:.7}
+.gift.disabled{cursor:not-allowed}
+.gift.active{
+  cursor:pointer;
+  background:linear-gradient(135deg,rgba(139,92,246,0.18),rgba(59,130,246,0.12));
+  border:1px solid var(--brand-violet);
+  box-shadow:var(--glow);
+  animation:float 4s ease-in-out infinite;
+}
+.gift.active .gift-icon{filter:none;opacity:1}
+.gift.active h3{color:var(--text);font-size:20px}
+.gift.active p{color:var(--text);opacity:.9}
+.gift.active:hover{transform:translateY(-6px);box-shadow:0 0 60px rgba(139,92,246,0.6),0 0 100px rgba(59,130,246,0.3)}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+.gift-badge{
+  position:absolute;top:-12px;left:50%;transform:translateX(-50%);
+  background:var(--grad);padding:6px 16px;border-radius:999px;
+  font-size:11px;font-weight:700;letter-spacing:.1em;color:#fff;
+  box-shadow:0 4px 20px rgba(139,92,246,0.6);white-space:nowrap;
 }
 
-/* Spacing demo */
-.space-row { display: flex; align-items: center; gap: 12px; padding: 6px 0; }
-.space-bar { background: #7F56D9; height: 20px; border-radius: 3px; }
-.space-label { font-size: 12px; color: #737373; font-family: monospace; white-space: nowrap; }
+/* ===== BENEFITS STYLES ===== */
+.benefits{display:grid;grid-template-columns:repeat(2,1fr);gap:24px;max-width:920px;margin:0 auto}
+.benefit{
+  display:flex;gap:20px;padding:28px;border-radius:var(--radius);
+  background:var(--bg-card);border:1px solid var(--border);backdrop-filter:blur(10px);
+}
+.benefit-icon{
+  flex-shrink:0;width:56px;height:56px;border-radius:14px;
+  background:var(--grad-soft);border:1px solid var(--border-strong);
+  display:flex;align-items:center;justify-content:center;color:var(--brand-violet);
+}
+.benefit h3{font-size:18px;margin-bottom:6px}
+.benefit p{color:var(--text-dim);font-size:15px}
+
+/* ===== SOCIAL PROOF STYLES ===== */
+.proof-bar{
+  text-align:center;font-size:18px;color:var(--text-dim);
+  padding:20px;border-radius:var(--radius);
+  background:var(--grad-soft);border:1px solid var(--border);
+  margin-bottom:48px;
+}
+.proof-bar strong{color:var(--text);font-weight:600}
+.reviews{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.review{padding:26px;border-radius:var(--radius);background:var(--bg-card);border:1px solid var(--border);backdrop-filter:blur(10px)}
+.review-head{display:flex;align-items:center;gap:14px;margin-bottom:14px}
+.avatar{
+  width:46px;height:46px;border-radius:50%;background:var(--grad);
+  display:flex;align-items:center;justify-content:center;
+  font-weight:700;color:#fff;font-family:var(--font-h);
+}
+.review-name{font-weight:600;font-size:15px}
+.review-role{font-size:13px;color:var(--text-dim)}
+.review p{color:var(--text-dim);font-size:14px;line-height:1.6}
+
+/* ===== FORM STYLES ===== */
+.form-wrap{
+  max-width:560px;margin:0 auto;padding:48px;border-radius:24px;
+  background:linear-gradient(135deg,rgba(139,92,246,0.1),rgba(59,130,246,0.05));
+  border:1px solid var(--border-strong);
+  box-shadow:var(--glow);backdrop-filter:blur(20px);
+}
+.form-wrap .section-title{font-size:clamp(24px,3vw,32px);margin-bottom:8px}
+.form-wrap .section-sub{margin-bottom:32px;font-size:15px}
+.field{margin-bottom:18px}
+.field label{display:block;font-size:13px;color:var(--text-dim);margin-bottom:8px;font-weight:500}
+.field input[type=text],.field input[type=tel],.field input[type=email]{
+  width:100%;padding:16px 18px;border-radius:12px;
+  background:rgba(0,0,0,0.3);border:1px solid var(--border);
+  color:var(--text);font-family:inherit;font-size:16px;transition:border-color .2s,box-shadow .2s;
+}
+.field input:focus{outline:none;border-color:var(--brand-violet);box-shadow:0 0 0 3px rgba(139,92,246,0.2)}
+.checkbox{display:flex;gap:12px;align-items:flex-start;margin-bottom:24px;font-size:13px;color:var(--text-dim)}
+.checkbox input{width:18px;height:18px;flex-shrink:0;margin-top:2px;accent-color:var(--brand-violet)}
+.form-wrap .btn{width:100%}
+
+/* ===== TOAST ===== */
+.toast{
+  position:fixed;bottom:30px;left:50%;transform:translateX(-50%) translateY(120%);
+  background:linear-gradient(135deg,#1a1a3a,#252550);
+  border:1px solid var(--border-strong);
+  padding:18px 28px;border-radius:14px;
+  box-shadow:var(--glow);font-weight:500;z-index:100;
+  transition:transform .4s cubic-bezier(.2,.9,.3,1.2);
+  max-width:90vw;text-align:center;
+}
+.toast.show{transform:translateX(-50%) translateY(0)}
+
+/* ===== FOOTER ===== */
+footer{padding:60px 0 40px;border-top:1px solid var(--border);margin-top:40px}
+.foot{display:flex;flex-wrap:wrap;gap:24px;align-items:center;justify-content:space-between}
+.foot-links{display:flex;gap:24px;flex-wrap:wrap}
+.foot-links a{color:var(--text-dim);font-size:14px;transition:color .2s}
+.foot-links a:hover{color:var(--text)}
+.foot-social{display:flex;gap:14px}
+.foot-social a{
+  width:40px;height:40px;border-radius:10px;display:flex;align-items:center;justify-content:center;
+  background:var(--bg-card);border:1px solid var(--border);color:var(--text-dim);transition:.2s;
+}
+.foot-social a:hover{color:var(--text);border-color:var(--brand-violet);box-shadow:0 0 20px rgba(139,92,246,0.4)}
+.copyright{color:var(--text-dim);font-size:13px;text-align:center;margin-top:24px}
+
+/* ===== REVEAL ANIMATION ===== */
+.reveal{opacity:0;transform:translateY(30px);transition:opacity .8s,transform .8s}
+.reveal.in{opacity:1;transform:translateY(0)}
+
+/* ===== RESPONSIVE ===== */
+@media(max-width:900px){
+  .gifts{grid-template-columns:repeat(2,1fr)}
+  .reviews{grid-template-columns:1fr 1fr}
+  .timer-card{font-size:42px;min-width:80px;padding:14px 16px}
+}
+@media(max-width:600px){
+  section{padding:60px 0}
+  .gifts{grid-template-columns:1fr}
+  .benefits{grid-template-columns:1fr}
+  .reviews{grid-template-columns:1fr}
+  .form-wrap{padding:30px 22px}
+  .timer{gap:10px}
+  .timer-card{font-size:36px;min-width:70px;padding:12px 14px}
+  .timer-sep{font-size:32px}
+  .hero{padding-top:20px}
+  .btn-lg{padding:18px 32px;font-size:17px}
+}
 </style>
 </head>
-<body class="ds-body">
+<body>
 
-<!-- Sidebar -->
-<nav class="ds-sidebar">
-  <a href="#" class="ds-sidebar-logo">top107 <span>Design System v1.0</span></a>
-  <ul class="ds-nav">
-    <li class="ds-nav-group">Foundations</li>
-    <li><a href="#colors">Colors</a></li>
-    <li><a href="#typography">Typography</a></li>
-    <li><a href="#spacing">Spacing</a></li>
-    <li><a href="#shadows">Shadows</a></li>
-    <li><a href="#radius">Border Radius</a></li>
-    <li class="ds-nav-group">Components</li>
-    <li><a href="#buttons">Buttons</a></li>
-    <li><a href="#badges">Badges</a></li>
-    <li><a href="#cards">Cards</a></li>
-    <li><a href="#forms">Forms</a></li>
-    <li><a href="#tables">Tables</a></li>
-    <li><a href="#faq">FAQ</a></li>
-    <li><a href="#pagination">Pagination</a></li>
-    <li class="ds-nav-group">Patterns</li>
-    <li><a href="#header">Header</a></li>
-    <li><a href="#page-header">Page Header</a></li>
-    <li><a href="#service-card">Service Card</a></li>
-    <li><a href="#article">Article Content</a></li>
-    <li><a href="#rules">Rules</a></li>
-  </ul>
-</nav>
+<!-- ==================== HEADER ==================== -->
+<header class="site-header container">
+  <div class="logo"><span class="grad-text">З</span>ерокодер</div>
+</header>
 
-<main class="ds-content">
+<!-- ==================== HERO ==================== -->
+<section class="hero container" aria-label="Главная">
+  <div class="badge">🎁 Только сегодня</div>
+  <h1>Заберите <span class="grad-text">бесплатный урок</span> по нейросетям для детей <span class="grad-text">10–14 лет</span></h1>
+  <p class="sub">Персональный пробный урок от экспертов Зерокодер. За 60 минут ребёнок узнает, как использовать нейросети для учёбы, творчества и будущей профессии.</p>
 
-  <!-- ══════════════════════════ COLORS ══════════════════════════ -->
-  <section class="ds-section" id="colors">
-    <div class="ds-section-title">Colors</div>
-    <div class="ds-section-desc">Два цветовых семейства: Brand (purple) и Neutral. Все остальные цвета — семантические (success, warning, error, info). Цвета применяются только через <code>style=""</code> — Tailwind CDN не компилирует кастомные токены в классах.</div>
+  <!-- ==================== TIMER ==================== -->
+  <div class="timer-wrap">
+    <div class="last-chance" id="lastChance" aria-live="polite">⚠️ Последний шанс!</div>
+    <div class="timer" role="timer" aria-label="Обратный отсчёт до окончания акции">
+      <div class="timer-card" id="tMin">05</div>
+      <div class="timer-sep">:</div>
+      <div class="timer-card" id="tSec">00</div>
+    </div>
+    <div class="timer-label">До окончания акции</div>
+  </div>
 
-    <div class="ds-label">Brand — Primary action: #7F56D9</div>
-    <div class="ds-preview">
-      <div class="swatch-row">
-        <div class="swatch"><div class="swatch-color" style="background:#F9F5FF"></div><div class="swatch-info"><div class="swatch-name">50</div><div class="swatch-hex">#F9F5FF</div></div></div>
-        <div class="swatch"><div class="swatch-color" style="background:#F4EBFF"></div><div class="swatch-info"><div class="swatch-name">100</div><div class="swatch-hex">#F4EBFF</div></div></div>
-        <div class="swatch"><div class="swatch-color" style="background:#E9D7FE"></div><div class="swatch-info"><div class="swatch-name">200</div><div class="swatch-hex">#E9D7FE</div></div></div>
-        <div class="swatch"><div class="swatch-color" style="background:#D6BBFB"></div><div class="swatch-info"><div class="swatch-name">300</div><div class="swatch-hex">#D6BBFB</div></div></div>
-        <div class="swatch"><div class="swatch-color" style="background:#B692F6"></div><div class="swatch-info"><div class="swatch-name">400</div><div class="swatch-hex">#B692F6</div></div></div>
-        <div class="swatch"><div class="swatch-color" style="background:#9E77ED"></div><div class="swatch-info"><div class="swatch-name">500</div><div class="swatch-hex">#9E77ED</div></div></div>
-        <div class="swatch" style="outline:3px solid #7F56D9; outline-offset:2px;"><div class="swatch-color" style="background:#7F56D9"></div><div class="swatch-info"><div class="swatch-name">600 ★</div><div class="swatch-hex">#7F56D9</div></div></div>
-        <div class="swatch"><div class="swatch-color" style="background:#6941C6"></div><div class="swatch-info"><div class="swatch-name">700</div><div class="swatch-hex">#6941C6</div></div></div>
-        <div class="swatch"><div class="swatch-color" style="background:#53389E"></div><div class="swatch-info"><div class="swatch-name">800</div><div class="swatch-hex">#53389E</div></div></div>
-        <div class="swatch"><div class="swatch-color" style="background:#42307D"></div><div class="swatch-info"><div class="swatch-name">900</div><div class="swatch-hex">#42307D</div></div></div>
+  <a href="#form" class="btn btn-lg">Забрать подарок →</a>
+</section>
+
+<!-- ==================== GIFTS GRID ==================== -->
+<section class="reveal" aria-label="Витрина подарков">
+  <div class="container">
+    <h2 class="section-title">Витрина <span class="grad-text">подарков</span></h2>
+    <p class="section-sub">Один из шести подарков уже ваш. Откройте его прямо сейчас.</p>
+    <div class="gifts">
+      <div class="gift disabled"><span class="lock">🔒</span><span class="gift-icon">🎁</span><h3>Курс по Midjourney</h3><p>Скоро</p></div>
+      <div class="gift disabled"><span class="lock">🔒</span><span class="gift-icon">🎁</span><h3>Гайд по ChatGPT</h3><p>Недоступно</p></div>
+      <a href="#form" class="gift active" aria-label="Ваш подарок: бесплатный урок по нейросетям">
+        <div class="gift-badge">ВАШ ПОДАРОК</div>
+        <span class="gift-icon">🎁</span>
+        <h3>Бесплатный урок по нейросетям</h3>
+        <p>60 минут с экспертом Зерокодер</p>
+      </a>
+      <div class="gift disabled"><span class="lock">🔒</span><span class="gift-icon">🎁</span><h3>Шаблоны промтов</h3><p>Скоро</p></div>
+      <div class="gift disabled"><span class="lock">🔒</span><span class="gift-icon">🎁</span><h3>Консультация по ИИ</h3><p>Недоступно</p></div>
+      <div class="gift disabled"><span class="lock">🔒</span><span class="gift-icon">🎁</span><h3>Доступ в комьюнити</h3><p>Скоро</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== BENEFITS ==================== -->
+<section class="reveal" aria-label="Что внутри урока">
+  <div class="container">
+    <h2 class="section-title">Что будет <span class="grad-text">на уроке</span></h2>
+    <p class="section-sub">Живое занятие один на один с экспертом — без скучной теории.</p>
+    <div class="benefits">
+      <div class="benefit">
+        <div class="benefit-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 16.8 5.8 21.3l2.4-7.4L2 9.4h7.6z"/></svg></div>
+        <div><h3>Знакомство с нейросетями</h3><p>Покажем самые популярные ИИ на простых и понятных ребёнку примерах.</p></div>
+      </div>
+      <div class="benefit">
+        <div class="benefit-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="9" cy="9" r="2"/><path d="M21 15l-5-5L5 21"/></svg></div>
+        <div><h3>Первая картинка и текст с ИИ</h3><p>Ребёнок создаст свою первую работу — изображение и историю с помощью нейросети.</p></div>
+      </div>
+      <div class="benefit">
+        <div class="benefit-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="M22 4L12 14.01l-3-3"/></svg></div>
+        <div><h3>Практика в игровой форме</h3><p>Интересные задания и мини-челленджи, которые удерживают внимание.</p></div>
+      </div>
+      <div class="benefit">
+        <div class="benefit-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
+        <div><h3>Персональные рекомендации</h3><p>Эксперт подскажет, в каком направлении ребёнку развиваться дальше.</p></div>
       </div>
     </div>
+  </div>
+</section>
 
-    <div class="ds-label">Neutral</div>
-    <div class="ds-preview">
-      <div class="swatch-row">
-        <div class="swatch"><div class="swatch-color" style="background:#FAFAFA; border:1px solid #eee"></div><div class="swatch-info"><div class="swatch-name">50</div><div class="swatch-hex">#FAFAFA</div></div></div>
-        <div class="swatch"><div class="swatch-color" style="background:#F5F5F5; border:1px solid #eee"></div><div class="swatch-info"><div class="swatch-name">100</div><div class="swatch-hex">#F5F5F5</div></div></div>
-        <div class="swatch"><div class="swatch-color" style="background:#E5E5E5"></div><div class="swatch-info"><div class="swatch-name">200</div><div class="swatch-hex">#E5E5E5</div></div></div>
-        <div class="swatch"><div class="swatch-color" style="background:#D4D4D4"></div><div class="swatch-info"><div class="swatch-name">300</div><div class="swatch-hex">#D4D4D4</div></div></div>
-        <div class="swatch"><div class="swatch-color" style="background:#A3A3A3"></div><div class="swatch-info"><div class="swatch-name">400</div><div class="swatch-hex">#A3A3A3</div></div></div>
-        <div class="swatch"><div class="swatch-color" style="background:#737373"></div><div class="swatch-info"><div class="swatch-name">500</div><div class="swatch-hex">#737373</div></div></div>
-        <div class="swatch"><div class="swatch-color" style="background:#525252"></div><div class="swatch-info"><div class="swatch-name">600</div><div class="swatch-hex">#525252</div></div></div>
-        <div class="swatch"><div class="swatch-color" style="background:#404040"></div><div class="swatch-info"><div class="swatch-name">700</div><div class="swatch-hex">#404040</div></div></div>
-        <div class="swatch"><div class="swatch-color" style="background:#171717"></div><div class="swatch-info"><div class="swatch-name">900</div><div class="swatch-hex">#171717</div></div></div>
-        <div class="swatch"><div class="swatch-color" style="background:#0A0A0A"></div><div class="swatch-info"><div class="swatch-name">950</div><div class="swatch-hex">#0A0A0A</div></div></div>
+<!-- ==================== SOCIAL PROOF ==================== -->
+<section class="reveal" aria-label="Отзывы">
+  <div class="container">
+    <div class="proof-bar">Более <strong>50 000 учеников</strong> уже прошли обучение в Зерокодер</div>
+    <div class="reviews">
+      <div class="review">
+        <div class="review-head"><div class="avatar">М</div><div><div class="review-name">Мария</div><div class="review-role">мама Артёма, 12 лет</div></div></div>
+        <p>«Сын в восторге — после урока сам сделал презентацию для школы с помощью ИИ. Спасибо!»</p>
+      </div>
+      <div class="review">
+        <div class="review-head"><div class="avatar">Е</div><div><div class="review-name">Елена</div><div class="review-role">мама Софии, 11 лет</div></div></div>
+        <p>«Дочка раньше боялась технологий, а теперь рисует с Midjourney каждый день. Очень довольны.»</p>
+      </div>
+      <div class="review">
+        <div class="review-head"><div class="avatar">Д</div><div><div class="review-name">Дмитрий</div><div class="review-role">папа Кирилла, 13 лет</div></div></div>
+        <p>«Понравился формат — живой эксперт, никакого занудства. Записались на основной курс.»</p>
       </div>
     </div>
+  </div>
+</section>
 
-    <div class="ds-label">Semantic</div>
-    <div class="ds-preview">
-      <div class="swatch-row">
-        <div class="swatch"><div class="swatch-color" style="background:#F0FDF4"></div><div class="swatch-info"><div class="swatch-name">Success bg</div><div class="swatch-hex">#F0FDF4</div></div></div>
-        <div class="swatch"><div class="swatch-color" style="background:#16A34A"></div><div class="swatch-info"><div class="swatch-name">Success</div><div class="swatch-hex">#16A34A</div></div></div>
-        <div class="swatch"><div class="swatch-color" style="background:#FEFCE8"></div><div class="swatch-info"><div class="swatch-name">Warning bg</div><div class="swatch-hex">#FEFCE8</div></div></div>
-        <div class="swatch"><div class="swatch-color" style="background:#CA8A04"></div><div class="swatch-info"><div class="swatch-name">Warning ★</div><div class="swatch-hex">#CA8A04</div></div></div>
-        <div class="swatch"><div class="swatch-color" style="background:#FEF2F2"></div><div class="swatch-info"><div class="swatch-name">Error bg</div><div class="swatch-hex">#FEF2F2</div></div></div>
-        <div class="swatch"><div class="swatch-color" style="background:#DC2626"></div><div class="swatch-info"><div class="swatch-name">Error</div><div class="swatch-hex">#DC2626</div></div></div>
+<!-- ==================== FORM ==================== -->
+<section id="form" class="reveal" aria-label="Форма записи">
+  <div class="container">
+    <div class="form-wrap">
+      <h2 class="section-title">Оставьте контакты</h2>
+      <p class="section-sub">Свяжемся с вами в течение 10 минут и согласуем удобное время урока.</p>
+      <form id="leadForm" novalidate>
+        <div class="field"><label for="name">Имя родителя</label><input id="name" name="name" type="text" required placeholder="Как к вам обращаться"></div>
+        <div class="field"><label for="phone">Телефон</label><input id="phone" name="phone" type="tel" required placeholder="+7 (___) ___-__-__"></div>
+        <div class="field"><label for="email">Email</label><input id="email" name="email" type="email" required placeholder="you@mail.ru"></div>
+        <label class="checkbox"><input type="checkbox" required> Я согласен(а) на обработку персональных данных и принимаю условия политики конфиденциальности.</label>
+        <button type="submit" class="btn btn-lg">Получить подарок 🎁</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== FOOTER ==================== -->
+<footer>
+  <div class="container">
+    <div class="foot">
+      <div class="logo"><span class="grad-text">З</span>ерокодер</div>
+      <div class="foot-links">
+        <a href="#">Политика конфиденциальности</a>
+        <a href="#">Контакты</a>
+      </div>
+      <div class="foot-social">
+        <a href="#" aria-label="Telegram"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M22 3L2 10.5l6 2.5 2.5 7L14 16l5 4 3-17z"/></svg></a>
+        <a href="#" aria-label="VK"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M3 6h4c.5 4 2 6 3 6V6h4v5c1.5 0 3-1.5 4-5h4c-1 4-3 6-4 7 1 1 3.5 3 4 7h-4c-.5-2-2-4-4-4v4h-4c-4 0-7-4-7-14z"/></svg></a>
+        <a href="#" aria-label="YouTube"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M22 6.2a3 3 0 0 0-2.1-2.1C18 3.5 12 3.5 12 3.5s-6 0-7.9.6A3 3 0 0 0 2 6.2 31 31 0 0 0 1.5 12 31 31 0 0 0 2 17.8a3 3 0 0 0 2.1 2.1c1.9.6 7.9.6 7.9.6s6 0 7.9-.6a3 3 0 0 0 2.1-2.1 31 31 0 0 0 .5-5.8 31 31 0 0 0-.5-5.8zM10 15.5v-7l6 3.5-6 3.5z"/></svg></a>
       </div>
     </div>
-    <p style="font-size:13px;color:#737373;margin:8px 0 0;">⚠️ Warning = Yellow-600 <strong>#CA8A04</strong>, не оранжевый #F79009. Звёздочки рейтинга — тоже этот цвет.</p>
-  </section>
+    <div class="copyright">© 2026 Зерокодер. Все права защищены.</div>
+  </div>
+</footer>
 
-  <!-- ══════════════════════════ TYPOGRAPHY ══════════════════════════ -->
-  <section class="ds-section" id="typography">
-    <div class="ds-section-title">Typography</div>
-    <div class="ds-section-desc">Шрифт: <strong>Inter</strong>. Заголовки ≥30px — всегда <code>letter-spacing: -0.02em</code>. Uppercase labels — <code>letter-spacing: 0.05em</code>.</div>
+<div class="toast" id="toast" role="status" aria-live="polite">Спасибо! Мы свяжемся с вами в ближайшее время 🎉</div>
 
-    <div class="ds-label">Type Scale</div>
-    <div class="ds-preview">
-      <div class="type-row"><div class="type-label-col">5xl / 48px</div><div class="type-sample" style="font-size:48px;font-weight:700;line-height:1.1;letter-spacing:-0.02em">Заголовок</div></div>
-      <div class="type-row"><div class="type-label-col">4xl / 36px</div><div class="type-sample" style="font-size:36px;font-weight:700;line-height:1.15;letter-spacing:-0.02em">Заголовок страницы</div></div>
-      <div class="type-row"><div class="type-label-col">3xl / 30px</div><div class="type-sample" style="font-size:30px;font-weight:700;line-height:1.2;letter-spacing:-0.02em">Раздел сайта</div></div>
-      <div class="type-row"><div class="type-label-col">2xl / 24px</div><div class="type-sample" style="font-size:24px;font-weight:700;line-height:1.25;letter-spacing:-0.02em">Подзаголовок</div></div>
-      <div class="type-row"><div class="type-label-col">xl / 20px</div><div class="type-sample" style="font-size:20px;font-weight:600;line-height:1.3;">Заголовок карточки</div></div>
-      <div class="type-row"><div class="type-label-col">lg / 18px</div><div class="type-sample" style="font-size:18px;font-weight:600;">H2 в статье</div></div>
-      <div class="type-row"><div class="type-label-col">base / 16px</div><div class="type-sample" style="font-size:16px;font-weight:400;">Основной текст. Длинные абзацы, описания, контент страниц.</div></div>
-      <div class="type-row"><div class="type-label-col">md / 15px</div><div class="type-sample" style="font-size:15px;font-weight:400;color:#525252;">Вторичный текст, подзаголовки блоков.</div></div>
-      <div class="type-row"><div class="type-label-col">sm / 13px</div><div class="type-sample" style="font-size:13px;font-weight:400;color:#737373;">Мета-информация, даты, теги.</div></div>
-      <div class="type-row"><div class="type-label-col">xs / 11px</div><div class="type-sample" style="font-size:11px;font-weight:600;color:#A3A3A3;text-transform:uppercase;letter-spacing:0.08em;">UPPERCASE LABEL</div></div>
-    </div>
-  </section>
+<script>
+// ===== TIMER LOGIC =====
+(function(){
+  const DURATION = 5*60*1000;
+  const KEY = 'zk_timer_end';
+  let endTs = parseInt(sessionStorage.getItem(KEY),10);
+  if(!endTs || isNaN(endTs)){
+    endTs = Date.now()+DURATION;
+    sessionStorage.setItem(KEY,endTs);
+  }
+  const elMin = document.getElementById('tMin');
+  const elSec = document.getElementById('tSec');
+  const elLast = document.getElementById('lastChance');
+  function pad(n){return n<10?'0'+n:''+n}
+  let iv;
+  function tick(){
+    const left = Math.max(0,endTs-Date.now());
+    const m = Math.floor(left/60000);
+    const s = Math.floor((left%60000)/1000);
+    elMin.textContent = pad(m);
+    elSec.textContent = pad(s);
+    if(left<=0){
+      elLast.classList.add('show');
+      clearInterval(iv);
+    }
+  }
+  tick();
+  iv = setInterval(tick,1000);
+})();
 
-  <!-- ══════════════════════════ SPACING ══════════════════════════ -->
-  <section class="ds-section" id="spacing">
-    <div class="ds-section-title">Spacing — 8pt Grid</div>
-    <div class="ds-section-desc">Все отступы кратны 4px. Основная единица — 8px. <code>--space-N</code> = N×4px.</div>
-    <div class="ds-preview">
-      <div class="space-row"><div class="space-bar" style="width:4px"></div><div class="space-label">--space-1 = 4px</div></div>
-      <div class="space-row"><div class="space-bar" style="width:8px"></div><div class="space-label">--space-2 = 8px</div></div>
-      <div class="space-row"><div class="space-bar" style="width:12px"></div><div class="space-label">--space-3 = 12px</div></div>
-      <div class="space-row"><div class="space-bar" style="width:16px"></div><div class="space-label">--space-4 = 16px</div></div>
-      <div class="space-row"><div class="space-bar" style="width:20px"></div><div class="space-label">--space-5 = 20px</div></div>
-      <div class="space-row"><div class="space-bar" style="width:24px"></div><div class="space-label">--space-6 = 24px</div></div>
-      <div class="space-row"><div class="space-bar" style="width:32px"></div><div class="space-label">--space-8 = 32px</div></div>
-      <div class="space-row"><div class="space-bar" style="width:40px"></div><div class="space-label">--space-10 = 40px</div></div>
-      <div class="space-row"><div class="space-bar" style="width:48px"></div><div class="space-label">--space-12 = 48px</div></div>
-      <div class="space-row"><div class="space-bar" style="width:64px"></div><div class="space-label">--space-16 = 64px</div></div>
-      <div class="space-row"><div class="space-bar" style="width:80px"></div><div class="space-label">--space-20 = 80px (container padding desktop)</div></div>
-    </div>
-  </section>
+// ===== FORM HANDLER =====
+document.getElementById('leadForm').addEventListener('submit',function(e){
+  e.preventDefault();
+  const data = Object.fromEntries(new FormData(this).entries());
+  // TODO: подключить отправку на бэкенд / CRM
+  console.log('Lead form submitted:',data);
+  const toast = document.getElementById('toast');
+  toast.classList.add('show');
+  this.reset();
+  setTimeout(()=>toast.classList.remove('show'),4000);
+});
 
-  <!-- ══════════════════════════ SHADOWS ══════════════════════════ -->
-  <section class="ds-section" id="shadows">
-    <div class="ds-section-title">Shadows</div>
-    <div class="ds-section-desc">Тени всегда многослойные — никогда одна. Меньший spread всегда идёт первым.</div>
-    <div class="ds-preview">
-      <div class="ds-grid3">
-        <div class="shadow-box" style="box-shadow:0px 1px 2px rgba(0,0,0,0.05);">xs</div>
-        <div class="shadow-box" style="box-shadow:0px 1px 2px -1px rgba(0,0,0,0.10),0px 1px 3px rgba(0,0,0,0.10);">sm</div>
-        <div class="shadow-box" style="box-shadow:0px 2px 4px -2px rgba(0,0,0,0.06),0px 4px 6px -1px rgba(0,0,0,0.10);">md</div>
-        <div class="shadow-box" style="box-shadow:0px 2px 2px -1px rgba(0,0,0,0.04),0px 4px 6px -2px rgba(0,0,0,0.03),0px 12px 16px -4px rgba(0,0,0,0.08);">lg</div>
-        <div class="shadow-box" style="box-shadow:0px 4px 6px -2px rgba(0,0,0,0.03),0px 8px 8px -4px rgba(0,0,0,0.03),0px 20px 24px -4px rgba(0,0,0,0.08);">xl</div>
-        <div class="shadow-box" style="box-shadow:0px 1px 2px rgba(0,0,0,0.05),0px -2px 0px 0px rgba(0,0,0,0.05) inset,0px 0px 0px 1px rgba(0,0,0,0.18) inset;">btn</div>
-      </div>
-    </div>
-  </section>
+// ===== PHONE MASK =====
+document.getElementById('phone').addEventListener('input',function(e){
+  let v = e.target.value.replace(/\D/g,'');
+  if(v.startsWith('8')) v='7'+v.slice(1);
+  if(!v.startsWith('7')) v='7'+v;
+  v = v.slice(0,11);
+  let out = '+7';
+  if(v.length>1) out += ' ('+v.slice(1,4);
+  if(v.length>=5) out += ') '+v.slice(4,7);
+  if(v.length>=8) out += '-'+v.slice(7,9);
+  if(v.length>=10) out += '-'+v.slice(9,11);
+  e.target.value = out;
+});
 
-  <!-- ══════════════════════════ BORDER RADIUS ══════════════════════════ -->
-  <section class="ds-section" id="radius">
-    <div class="ds-section-title">Border Radius</div>
-    <div class="ds-section-desc">Строгая система — нельзя использовать произвольные значения.</div>
-    <div class="ds-preview">
-      <div class="ds-row" style="align-items:flex-end;">
-        <div style="text-align:center"><div style="width:60px;height:40px;background:#E9D7FE;border-radius:6px;"></div><div style="font-size:11px;color:#737373;margin-top:6px;">sm 6px<br>inputs</div></div>
-        <div style="text-align:center"><div style="width:60px;height:40px;background:#D6BBFB;border-radius:8px;"></div><div style="font-size:11px;color:#737373;margin-top:6px;">md 8px<br>buttons</div></div>
-        <div style="text-align:center"><div style="width:60px;height:60px;background:#B692F6;border-radius:12px;"></div><div style="font-size:11px;color:#737373;margin-top:6px;">lg 12px<br>cards</div></div>
-        <div style="text-align:center"><div style="width:60px;height:60px;background:#9E77ED;border-radius:16px;"></div><div style="font-size:11px;color:#737373;margin-top:6px;">xl 16px<br>blocks</div></div>
-        <div style="text-align:center"><div style="width:60px;height:60px;background:#7F56D9;border-radius:24px;"></div><div style="font-size:11px;color:#737373;margin-top:6px;">2xl 24px<br>hero</div></div>
-        <div style="text-align:center"><div style="width:80px;height:36px;background:#6941C6;border-radius:9999px;"></div><div style="font-size:11px;color:#737373;margin-top:6px;">pill 9999px<br>tags, badges</div></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ══════════════════════════ BUTTONS ══════════════════════════ -->
-  <section class="ds-section" id="buttons">
-    <div class="ds-section-title">Buttons</div>
-    <div class="ds-section-desc">Четыре варианта × четыре размера. Primary — всегда с <code>--shadow-btn</code> (skeuomorphic). Hover state обязателен.</div>
-
-    <div class="ds-label">Variants</div>
-    <div class="ds-preview">
-      <div class="ds-row">
-        <button class="btn btn-primary btn-md">Primary</button>
-        <button class="btn btn-secondary btn-md">Secondary</button>
-        <button class="btn btn-ghost btn-md">Ghost</button>
-        <button class="btn btn-danger btn-md">Danger</button>
-      </div>
-    </div>
-
-    <div class="ds-label">Sizes (Primary)</div>
-    <div class="ds-preview">
-      <div class="ds-row" style="align-items:flex-end;">
-        <button class="btn btn-primary btn-sm">Small 36px</button>
-        <button class="btn btn-primary btn-md">Medium 40px</button>
-        <button class="btn btn-primary btn-lg">Large 44px</button>
-        <button class="btn btn-primary btn-xl">XL 48px</button>
-        <button class="btn btn-primary btn-2xl">2XL 56px</button>
-      </div>
-    </div>
-
-    <div class="ds-label">With icon</div>
-    <div class="ds-preview">
-      <div class="ds-row">
-        <button class="btn btn-primary btn-md">
-          <svg width="16" height="16" fill="none" viewBox="0 0 16 16" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8h10m0 0L9 4m4 4-4 4"/></svg>
-          Найти сервис
-        </button>
-        <button class="btn btn-ghost btn-md">
-          <svg width="16" height="16" fill="none" viewBox="0 0 16 16" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8 4v8m-4-4h8"/></svg>
-          Добавить
-        </button>
-      </div>
-    </div>
-  </section>
-
-  <!-- ══════════════════════════ BADGES ══════════════════════════ -->
-  <section class="ds-section" id="badges">
-    <div class="ds-section-title">Badges</div>
-    <div class="ds-section-desc">Теги, статусы, типы контента. Всегда pill-радиус. Размер шрифта 11px, font-weight 500+.</div>
-
-    <div class="ds-label">Status badges</div>
-    <div class="ds-preview">
-      <div class="ds-row">
-        <span class="badge badge-brand">Brand</span>
-        <span class="badge badge-success">Активен</span>
-        <span class="badge badge-warning">Обновлено</span>
-        <span class="badge badge-error">Закрыт</span>
-        <span class="badge badge-info">Новинка</span>
-        <span class="badge badge-neutral">Архив</span>
-      </div>
-    </div>
-
-    <div class="ds-label">Pricing badges (service cards)</div>
-    <div class="ds-preview">
-      <div class="ds-row">
-        <span class="badge badge-price">от 499 ₽/мес</span>
-        <span class="badge badge-free">Бесплатно до 5 чел.</span>
-        <span class="badge badge-trial">14 дней бесплатно</span>
-        <span class="badge badge-feature">Русский язык</span>
-      </div>
-    </div>
-  </section>
-
-  <!-- ══════════════════════════ CARDS ══════════════════════════ -->
-  <section class="ds-section" id="cards">
-    <div class="ds-section-title">Cards</div>
-
-    <div class="ds-label">Base card</div>
-    <div class="ds-preview">
-      <div class="ds-grid2">
-        <div class="card card-body">
-          <div style="font-size:13px;font-weight:600;color:#A3A3A3;text-transform:uppercase;letter-spacing:0.05em;margin-bottom:8px;">Категория</div>
-          <div style="font-size:16px;font-weight:600;color:#171717;margin-bottom:8px;">Заголовок карточки</div>
-          <div style="font-size:13px;color:#737373;line-height:1.6;">Краткое описание содержимого карточки. Ограничено двумя строками.</div>
-          <div style="display:flex;justify-content:space-between;margin-top:16px;padding-top:12px;border-top:1px solid #F5F5F5;">
-            <span style="font-size:12px;color:#A3A3A3;">7 Apr 2026</span>
-            <a href="#" class="btn btn-ghost btn-sm" style="height:28px;padding:4px 10px;font-size:12px;">Читать →</a>
-          </div>
-        </div>
-        <div class="card card-body">
-          <div style="font-size:13px;font-weight:600;color:#A3A3A3;text-transform:uppercase;letter-spacing:0.05em;margin-bottom:8px;">Другая карточка</div>
-          <div style="font-size:16px;font-weight:600;color:#171717;margin-bottom:8px;">Ещё один заголовок</div>
-          <div style="font-size:13px;color:#737373;line-height:1.6;">Описание второй карточки для демонстрации сетки.</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="ds-label">Service card (toplist item)</div>
-    <div class="ds-preview">
-      <div class="service-card">
-        <h2>1. AmoCRM</h2>
-        <div class="service-card__meta">
-          <span class="badge badge-price">от 499 ₽/мес</span>
-          <span class="badge badge-trial">14 дней бесплатно</span>
-          <span class="badge badge-feature">Русский язык</span>
-        </div>
-        <p style="font-size:15px;color:#525252;line-height:1.7;margin:0 0 0;">AmoCRM — одна из самых популярных CRM в России с более чем 50 000 активными клиентами. Главная сила — визуальная воронка продаж и простота освоения: менеджер начинает работать без обучения за 1–2 дня.</p>
-        <div class="service-card__pros-cons">
-          <div class="service-card__pros"><h4>Плюсы</h4><ul><li>Интуитивный интерфейс</li><li>Интеграция с мессенджерами</li><li>Мобильное приложение</li></ul></div>
-          <div class="service-card__cons"><h4>Минусы</h4><ul><li>Нет бесплатного тарифа</li><li>Слабый документооборот</li></ul></div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ══════════════════════════ FORMS ══════════════════════════ -->
-  <section class="ds-section" id="forms">
-    <div class="ds-section-title">Forms</div>
-
-    <div class="ds-label">Inputs</div>
-    <div class="ds-preview">
-      <div class="ds-col" style="max-width:480px;">
-        <div class="form-group">
-          <label class="form-label">Email</label>
-          <input type="email" class="form-input" placeholder="hello@company.ru">
-          <span class="form-hint">Мы не передаём данные третьим лицам</span>
-        </div>
-        <div class="form-group">
-          <label class="form-label">Категория</label>
-          <select class="form-select">
-            <option>CRM и продажи</option>
-            <option>HR и кадры</option>
-            <option>Финансы</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label class="form-label">Описание</label>
-          <textarea class="form-textarea" rows="3" placeholder="Расскажите о сервисе..."></textarea>
-        </div>
-        <div class="form-group">
-          <label class="form-label">Ошибка</label>
-          <input type="text" class="form-input" style="border-color:#DC2626;" value="Неверное значение">
-          <span class="form-error">Это поле обязательно для заполнения</span>
-        </div>
-        <button class="btn btn-primary btn-lg" style="width:100%;">Отправить заявку</button>
-      </div>
-    </div>
-  </section>
-
-  <!-- ══════════════════════════ TABLES ══════════════════════════ -->
-  <section class="ds-section" id="tables">
-    <div class="ds-section-title">Tables</div>
-    <div class="ds-preview">
-      <table class="t107-table">
-        <thead>
-          <tr>
-            <th>Сервис</th>
-            <th>Цена от</th>
-            <th>Бесплатный план</th>
-            <th>Русский язык</th>
-            <th>Мобильное приложение</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr><td><strong>AmoCRM</strong></td><td>499 ₽/мес</td><td>Нет</td><td>✓</td><td>iOS + Android</td></tr>
-          <tr><td><strong>Битрикс24</strong></td><td>Бесплатно</td><td>Да (до 5 чел.)</td><td>✓</td><td>iOS + Android</td></tr>
-          <tr><td><strong>МегаПлан</strong></td><td>386 ₽/мес</td><td>Нет</td><td>✓</td><td>iOS + Android</td></tr>
-        </tbody>
-      </table>
-    </div>
-  </section>
-
-  <!-- ══════════════════════════ FAQ ══════════════════════════ -->
-  <section class="ds-section" id="faq">
-    <div class="ds-section-title">FAQ (Accordion)</div>
-    <div class="ds-section-desc">Нативный <code>&lt;details&gt;/&lt;summary&gt;</code>, без JS-зависимостей. Шеврон вращается через CSS.</div>
-    <div class="ds-preview">
-      <details class="faq-item" open>
-        <summary>Какая CRM лучше для малого бизнеса?
-          <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
-        </summary>
-        <div class="faq-answer">Для команд до 10 человек хорошо подходят AmoCRM и Битрикс24 — оба имеют простой старт. AmoCRM удобнее для продаж, Битрикс24 — если нужен полный инструментарий.</div>
-      </details>
-      <details class="faq-item">
-        <summary>Есть ли бесплатные CRM?
-          <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
-        </summary>
-        <div class="faq-answer">Да. Битрикс24 предлагает бесплатный тариф навсегда до 5 пользователей. Большинство других CRM — пробный период 14–30 дней.</div>
-      </details>
-    </div>
-  </section>
-
-  <!-- ══════════════════════════ PAGINATION ══════════════════════════ -->
-  <section class="ds-section" id="pagination">
-    <div class="ds-section-title">Pagination</div>
-    <div class="ds-preview">
-      <div class="nav-links">
-        <a href="#">← Назад</a>
-        <a href="#">1</a>
-        <span class="current">2</span>
-        <a href="#">3</a>
-        <a href="#">4</a>
-        <a href="#">5</a>
-        <a href="#">Далее →</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- ══════════════════════════ HEADER ══════════════════════════ -->
-  <section class="ds-section" id="header">
-    <div class="ds-section-title">Header</div>
-    <div class="ds-section-desc">Sticky, размывается при скролле. Высота 64px. На мобиле — гамбургер.</div>
-    <div class="ds-preview" style="padding:0;overflow:hidden;border-radius:12px;">
-      <div style="background:white;border-bottom:1px solid #E5E5E5;">
-        <div style="max-width:100%;padding:0 24px;height:64px;display:flex;align-items:center;gap:24px;">
-          <a href="#" style="font-size:20px;font-weight:800;color:#7F56D9;text-decoration:none;letter-spacing:-0.02em;flex-shrink:0;">top107</a>
-          <nav style="display:flex;gap:4px;list-style:none;margin:0;padding:0;flex:1;">
-            <a href="#" style="padding:6px 12px;font-size:14px;font-weight:500;color:#525252;text-decoration:none;border-radius:6px;">Категории</a>
-            <a href="#" style="padding:6px 12px;font-size:14px;font-weight:500;color:#525252;text-decoration:none;border-radius:6px;">Топ-листы</a>
-            <a href="#" style="padding:6px 12px;font-size:14px;font-weight:500;color:#525252;text-decoration:none;border-radius:6px;">Сравнения</a>
-          </nav>
-          <button class="btn btn-primary btn-sm">Найти сервис</button>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ══════════════════════════ PAGE HEADER ══════════════════════════ -->
-  <section class="ds-section" id="page-header">
-    <div class="ds-section-title">Page Header (inner pages)</div>
-    <div class="ds-section-desc">Зона заголовка на внутренних страницах. Фон #FAFAFA, нижняя граница #E5E5E5. Иконка категории 56×56px, bg #F4EBFF, br 14px.</div>
-    <div class="ds-preview" style="padding:0;overflow:hidden;">
-      <div class="page-header" style="padding:40px 32px;">
-        <nav class="breadcrumbs"><a href="#">Главная</a><span class="sep">/</span><a href="#">Продажи и CRM</a><span class="sep">/</span><span>Лучшие CRM 2026</span></nav>
-        <div style="display:flex;align-items:flex-start;gap:20px;">
-          <div style="width:56px;height:56px;background:#F4EBFF;border-radius:14px;display:flex;align-items:center;justify-content:center;flex-shrink:0;color:#7F56D9;box-shadow:0px 1px 2px -1px rgba(0,0,0,0.10),0px 1px 3px rgba(0,0,0,0.10);">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="28" height="28"><path stroke-linecap="round" stroke-linejoin="round" d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 013 19.875v-6.75zM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V8.625zM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V4.125z"/></svg>
-          </div>
-          <div>
-            <h1 style="font-size:30px;font-weight:700;color:#171717;letter-spacing:-0.02em;margin:0 0 6px;">Лучшие CRM для малого бизнеса в 2026 году</h1>
-            <p style="color:#525252;margin:0 0 12px;font-size:15px;line-height:1.6;">Сравниваем 7 CRM-систем по цене, функционалу и простоте внедрения</p>
-            <div style="display:flex;align-items:center;gap:16px;font-size:13px;color:#A3A3A3;">
-              <span>7 апр 2026</span><span>·</span><span>8 мин чтения</span>
-              <span style="display:inline-flex;align-items:center;gap:4px;font-size:11px;background:#FEFCE8;color:#CA8A04;border:1px solid #FEF08A;border-radius:9999px;padding:2px 8px;font-weight:600;">
-                <svg width="10" height="10" viewBox="0 0 12 12" fill="currentColor"><path d="M6 1l1.236 3.8H11l-3.118 2.265 1.18 3.636L6 8.4l-3.062 2.3 1.18-3.636L1 4.8h3.764z"/></svg>
-                Обновлено апр 2026
-              </span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ══════════════════════════ ARTICLE CONTENT ══════════════════════════ -->
-  <section class="ds-section" id="article">
-    <div class="ds-section-title">Article Content</div>
-    <div class="ds-preview">
-      <div class="article-content" style="max-width:640px;">
-        <h2>Как выбрать CRM для малого бизнеса</h2>
-        <p>При выборе CRM для команды до 20 человек важны три параметра: скорость старта, интеграция с каналами общения и цена при масштабировании.</p>
-        <ul>
-          <li><strong>Активные продажи через мессенджеры:</strong> AmoCRM — лучший выбор</li>
-          <li><strong>Нужен портал + CRM + задачи:</strong> Битрикс24</li>
-          <li><strong>Контроль задач важнее воронки:</strong> МегаПлан</li>
-        </ul>
-        <blockquote>AmoCRM удобнее для продаж, Битрикс24 — если нужен полный инструментарий для работы команды.</blockquote>
-        <h3>На что смотреть в первую очередь</h3>
-        <p>Обратите внимание на <a href="#">интеграцию с мессенджерами</a> и наличие мобильного приложения — для большинства отделов продаж это критично.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- ══════════════════════════ RULES ══════════════════════════ -->
-  <section class="ds-section" id="rules">
-    <div class="ds-section-title">Critical Rules</div>
-    <div class="ds-preview" style="padding:0;">
-      <table style="width:100%;border-collapse:collapse;font-size:14px;">
-        <thead><tr style="background:#FAFAFA;">
-          <th style="text-align:left;padding:12px 16px;border-bottom:1px solid #E5E5E5;font-size:12px;color:#737373;text-transform:uppercase;letter-spacing:0.05em;">Правило</th>
-          <th style="text-align:left;padding:12px 16px;border-bottom:1px solid #E5E5E5;font-size:12px;color:#737373;text-transform:uppercase;letter-spacing:0.05em;">✅ Правильно</th>
-          <th style="text-align:left;padding:12px 16px;border-bottom:1px solid #E5E5E5;font-size:12px;color:#737373;text-transform:uppercase;letter-spacing:0.05em;">❌ Неправильно</th>
-        </tr></thead>
-        <tbody>
-          <tr><td style="padding:12px 16px;border-bottom:1px solid #F5F5F5;font-weight:600;color:#171717;">Цвета</td><td style="padding:12px 16px;border-bottom:1px solid #F5F5F5;color:#525252;font-family:monospace;font-size:13px;">style="color:#7F56D9"</td><td style="padding:12px 16px;border-bottom:1px solid #F5F5F5;color:#DC2626;font-family:monospace;font-size:13px;">class="text-primary-600"</td></tr>
-          <tr><td style="padding:12px 16px;border-bottom:1px solid #F5F5F5;font-weight:600;color:#171717;">Primary brand</td><td style="padding:12px 16px;border-bottom:1px solid #F5F5F5;color:#525252;font-family:monospace;font-size:13px;">#7F56D9</td><td style="padding:12px 16px;border-bottom:1px solid #F5F5F5;color:#DC2626;font-family:monospace;font-size:13px;">#7c3aed / #8b5cf6</td></tr>
-          <tr><td style="padding:12px 16px;border-bottom:1px solid #F5F5F5;font-weight:600;color:#171717;">Warning / stars</td><td style="padding:12px 16px;border-bottom:1px solid #F5F5F5;color:#525252;font-family:monospace;font-size:13px;">#CA8A04 (Yellow-600)</td><td style="padding:12px 16px;border-bottom:1px solid #F5F5F5;color:#DC2626;font-family:monospace;font-size:13px;">#F79009 (Orange)</td></tr>
-          <tr><td style="padding:12px 16px;border-bottom:1px solid #F5F5F5;font-weight:600;color:#171717;">Borders</td><td style="padding:12px 16px;border-bottom:1px solid #F5F5F5;color:#525252;font-family:monospace;font-size:13px;">#E5E5E5</td><td style="padding:12px 16px;border-bottom:1px solid #F5F5F5;color:#DC2626;font-family:monospace;font-size:13px;">#EAECF0</td></tr>
-          <tr><td style="padding:12px 16px;border-bottom:1px solid #F5F5F5;font-weight:600;color:#171717;">Hover bg</td><td style="padding:12px 16px;border-bottom:1px solid #F5F5F5;color:#525252;font-family:monospace;font-size:13px;">#FAFAFA</td><td style="padding:12px 16px;border-bottom:1px solid #F5F5F5;color:#DC2626;font-family:monospace;font-size:13px;">#F9FAFB</td></tr>
-          <tr><td style="padding:12px 16px;border-bottom:1px solid #F5F5F5;font-weight:600;color:#171717;">Shadows</td><td style="padding:12px 16px;border-bottom:1px solid #F5F5F5;color:#525252;font-size:13px;">Всегда 2+ слоя, меньший spread первым</td><td style="padding:12px 16px;border-bottom:1px solid #F5F5F5;color:#DC2626;font-size:13px;">Одна тень</td></tr>
-          <tr><td style="padding:12px 16px;border-bottom:1px solid #F5F5F5;font-weight:600;color:#171717;">H1 ≥30px</td><td style="padding:12px 16px;border-bottom:1px solid #F5F5F5;color:#525252;font-family:monospace;font-size:13px;">letter-spacing: -0.02em</td><td style="padding:12px 16px;border-bottom:1px solid #F5F5F5;color:#DC2626;font-size:13px;">По умолчанию (0)</td></tr>
-          <tr><td style="padding:12px 16px;border-bottom:1px solid #F5F5F5;font-weight:600;color:#171717;">Icon size in card</td><td style="padding:12px 16px;border-bottom:1px solid #F5F5F5;color:#525252;font-size:13px;">Минимум 24px, контейнер 48–56px</td><td style="padding:12px 16px;border-bottom:1px solid #F5F5F5;color:#DC2626;font-size:13px;">16px и меньше</td></tr>
-          <tr><td style="padding:12px 16px;font-weight:600;color:#171717;">Card radius</td><td style="padding:12px 16px;color:#525252;font-family:monospace;font-size:13px;">12px</td><td style="padding:12px 16px;color:#DC2626;font-family:monospace;font-size:13px;">10px / 8px</td></tr>
-        </tbody>
-      </table>
-    </div>
-  </section>
-
-</main>
+// ===== SCROLL ANIMATIONS =====
+const io = new IntersectionObserver((entries)=>{
+  entries.forEach(en=>{
+    if(en.isIntersecting){en.target.classList.add('in');io.unobserve(en.target)}
+  });
+},{threshold:0.12});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
 </body>
 </html>
