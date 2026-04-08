@@ -310,6 +310,52 @@ footer h4{color:#fff;font-size:14px;text-transform:uppercase;letter-spacing:.06e
 footer a:hover{color:var(--brand-500)}
 .copy{border-top:1px solid var(--line-dark);margin-top:var(--space-10);padding-top:var(--space-6);font-size:13px;color:rgba(255,255,255,.4)}
 
+/* ===== MOBILE FIXES ===== */
+html,body{overflow-x:hidden;max-width:100%}
+img,svg,canvas{max-width:100%}
+h1,h2,h3,h4,p{overflow-wrap:break-word;word-wrap:break-word;hyphens:manual}
+.hero h1{max-width:100%}
+@media(max-width:720px){
+  :root{--space-20:56px;--space-16:48px}
+  .container{padding:0 18px}
+  .hdr-inner{padding:12px 0}
+  .logo{font-size:17px}
+  .hdr .btn{padding:10px 14px;font-size:13px}
+  section{padding:56px 0}
+  .hero{padding:64px 0 56px}
+  .hero h1{font-size:clamp(30px,8vw,44px);letter-spacing:-.02em}
+  .hero-sub{font-size:16px;margin-bottom:var(--space-8)}
+  .hero-cta{gap:10px;margin-bottom:var(--space-8);width:100%}
+  .hero-cta .btn{flex:1 1 auto;padding:14px 18px;font-size:15px}
+  .hero-metrics{gap:8px;justify-content:center}
+  .metric{padding:9px 13px;font-size:13px}
+  .eyebrow{font-size:11px;padding:7px 13px;text-align:center}
+  .sec-head{margin-bottom:var(--space-10)}
+  .sec-head p{font-size:16px}
+  .card{padding:var(--space-6)}
+  .persona{padding:var(--space-6)}
+  .benefit{padding:var(--space-4) var(--space-5)}
+  .timeline::before{left:20px}
+  .t-item{padding-left:58px;padding-bottom:var(--space-8)}
+  .t-num{width:42px;height:42px;border-radius:12px;font-size:15px}
+  .form-wrap{padding:var(--space-6) var(--space-5)}
+  .stats{grid-template-columns:repeat(2,1fr);gap:var(--space-5)}
+  .stat b{font-size:30px}
+  .tiles{grid-template-columns:repeat(2,1fr);gap:var(--space-3)}
+  .tile{padding:var(--space-5)}
+  .tile .val{font-size:18px}
+  footer{padding:var(--space-10) 0}
+  .copy{margin-top:var(--space-8);padding-top:var(--space-5)}
+}
+@media(max-width:420px){
+  .container{padding:0 16px}
+  .hero h1{font-size:28px}
+  .hero-cta{flex-direction:column}
+  .hero-cta .btn{width:100%}
+  .stat b{font-size:26px}
+  .tiles{grid-template-columns:1fr}
+}
+
 /* ===== REVEAL ANIMATION ===== */
 .reveal{opacity:0;transform:translateY(24px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
 .reveal.in{opacity:1;transform:none}
