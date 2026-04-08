@@ -113,7 +113,9 @@ section{padding:var(--space-20) 0;position:relative}
   isolation:isolate;
 }
 #heroCanvas{position:absolute;inset:0;width:100%;height:100%;z-index:0;opacity:.55}
-.hero .container{position:relative;z-index:1}
+.hero .container{position:relative;z-index:1;text-align:center;display:flex;flex-direction:column;align-items:center}
+.hero h1,.hero-sub{margin-left:auto;margin-right:auto}
+.hero-cta,.hero-metrics{justify-content:center}
 .eyebrow{
   display:inline-flex;align-items:center;gap:10px;
   padding:8px 16px;border-radius:999px;
@@ -320,9 +322,6 @@ footer a:hover{color:var(--brand-500)}
 <header class="hdr">
   <div class="container hdr-inner">
     <a href="#" class="logo" aria-label="Зерокодер">
-      <span class="logo-mark" aria-hidden="true">
-        <svg width="20" height="20" viewBox="0 0 32 32"><circle cx="10" cy="10" r="2.6" fill="#22D3EE"/><circle cx="22" cy="10" r="2.6" fill="#22D3EE"/><circle cx="16" cy="22" r="2.6" fill="#22D3EE"/><path d="M10 10 L22 10 L16 22 Z" stroke="#22D3EE" stroke-width="1.2" fill="none" opacity=".6"/></svg>
-      </span>
       Зерокодер
     </a>
     <nav class="nav" aria-label="Основная навигация">
@@ -341,7 +340,7 @@ footer a:hover{color:var(--brand-500)}
   <div class="container">
     <span class="eyebrow">Образовательная инициатива для школьников России</span>
     <h1>Пробный цифровой урок по&nbsp;<span class="grad">нейросетям</span> для детей 10–14&nbsp;лет</h1>
-    <p class="hero-sub">Мы готовим поколение, которое будет работать с искусственным интеллектом. Открытый урок — первый шаг: за&nbsp;60 минут ребёнок поймёт, как устроены нейросети, и создаст собственный ИИ-проект под руководством преподавателя.</p>
+    <p class="hero-sub">Мы готовим поколение, которое будет работать с искусственным интеллектом.</p>
     <div class="hero-cta">
       <a href="#signup" class="btn btn-primary">Записаться на урок
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
@@ -450,7 +449,7 @@ footer a:hover{color:var(--brand-500)}
       <div class="persona reveal">
         <div class="avatar"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19h16M6 19V9l6-5 6 5v10M9 19v-6h6v6"/></svg></div>
         <h3>Хочется структурного подхода</h3>
-        <p>Вместо случайных видео на YouTube — системное введение в тему от преподавателя, с обратной связью и понятной траекторией развития.</p>
+        <p>Вместо случайных роликов в интернете — системное введение в тему от преподавателя, с обратной связью и понятной траекторией развития.</p>
       </div>
     </div>
   </div>
@@ -486,8 +485,8 @@ footer a:hover{color:var(--brand-500)}
     <div class="tiles">
       <div class="tile reveal"><div class="lbl">Длительность</div><div class="val">60 минут</div></div>
       <div class="tile reveal"><div class="lbl">Формат</div><div class="val">Онлайн</div></div>
-      <div class="tile reveal"><div class="lbl">Платформа</div><div class="val">Видеосвязь + браузер</div></div>
-      <div class="tile reveal"><div class="lbl">Преподаватель</div><div class="val">Практик школы</div></div>
+      <div class="tile reveal"><div class="lbl">Платформа</div><div class="val">В браузере</div></div>
+      <div class="tile reveal"><div class="lbl">Преподаватель</div><div class="val">Практик-эксперт</div></div>
     </div>
   </div>
 </section>
@@ -524,7 +523,7 @@ footer a:hover{color:var(--brand-500)}
       <details class="q reveal"><summary>Какой возраст подходит?</summary><div class="a">Урок рассчитан на школьников 10–14 лет (5–8 классы). Предварительная подготовка не требуется — мы начинаем с нуля.</div></details>
       <details class="q reveal"><summary>Сколько длится занятие?</summary><div class="a">Один академический урок — 60 минут. Этого достаточно, чтобы познакомиться с темой, попробовать инструменты и создать свой первый ИИ-проект.</div></details>
       <details class="q reveal"><summary>Что будет после пробного урока?</summary><div class="a">Никаких обязательств. Если ребёнку понравится и тема увлечёт, мы расскажем о возможных следующих шагах. Но решение всегда остаётся за вами.</div></details>
-      <details class="q reveal"><summary>Нужно ли родителю присутствовать?</summary><div class="a">Не обязательно, но для первой встречи мы рекомендуем родителю быть рядом — помочь ребёнку с подключением и техническими моментами.</div></details>
+      <details class="q reveal"><summary>Нужно ли родителю присутствовать?</summary><div class="a">Да, присутствие родителя необходимо. Вы поможете ребёнку подключиться и быстро решить возможные технические вопросы с оборудованием, чтобы занятие прошло без сбоев.</div></details>
     </div>
   </div>
 </section>
@@ -571,9 +570,6 @@ footer a:hover{color:var(--brand-500)}
     <div class="foot">
       <div>
         <div class="logo">
-          <span class="logo-mark" aria-hidden="true">
-            <svg width="20" height="20" viewBox="0 0 32 32"><circle cx="10" cy="10" r="2.6" fill="#22D3EE"/><circle cx="22" cy="10" r="2.6" fill="#22D3EE"/><circle cx="16" cy="22" r="2.6" fill="#22D3EE"/><path d="M10 10 L22 10 L16 22 Z" stroke="#22D3EE" stroke-width="1.2" fill="none" opacity=".6"/></svg>
-          </span>
           Зерокодер
         </div>
         <p style="max-width:420px;margin:0">Образовательная инициатива для школьников. Мы знакомим новое поколение с технологиями искусственного интеллекта и помогаем сделать первый шаг в цифровые профессии.</p>
