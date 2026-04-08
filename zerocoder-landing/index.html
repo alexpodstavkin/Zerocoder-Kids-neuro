@@ -1,0 +1,672 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Зерокодер — Пробный цифровой урок по нейросетям для школьников 10–14 лет</title>
+<meta name="description" content="Открытый урок по нейросетям для школьников 10–14 лет. Образовательная инициатива школы Зерокодер: 60 минут онлайн, первый ИИ-проект, знакомство с технологиями будущего.">
+<meta property="og:title" content="Пробный цифровой урок по нейросетям — Зерокодер">
+<meta property="og:description" content="Открытый урок для школьников 10–14 лет. 60 минут, онлайн, первый ИИ-проект под руководством преподавателя.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="ru_RU">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230B1B3B'/%3E%3Ccircle cx='10' cy='10' r='2.6' fill='%2322D3EE'/%3E%3Ccircle cx='22' cy='10' r='2.6' fill='%2322D3EE'/%3E%3Ccircle cx='16' cy='22' r='2.6' fill='%2322D3EE'/%3E%3Cpath d='M10 10 L22 10 L16 22 Z' stroke='%2322D3EE' stroke-width='1.2' fill='none' opacity='.6'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+/* ===== TOKENS ===== */
+:root{
+  --bg-deep:#0B1B3B;
+  --bg-deep-2:#0E2148;
+  --bg-soft:#F6F8FC;
+  --bg-white:#FFFFFF;
+  --ink:#0B1B3B;
+  --ink-2:#3A4A6B;
+  --ink-mute:#6B7A99;
+  --line:#E3E8F2;
+  --line-dark:rgba(255,255,255,.12);
+  --brand-500:#22D3EE;
+  --brand-600:#0FB8D4;
+  --brand-700:#0A93AB;
+  --brand-glow:rgba(34,211,238,.35);
+  --accent:#8B9CFF;
+  --ok:#22C55E;
+  --radius:18px;
+  --radius-sm:12px;
+  --shadow-sm:0 2px 8px rgba(11,27,59,.06);
+  --shadow-md:0 12px 32px rgba(11,27,59,.10);
+  --shadow-lg:0 24px 64px rgba(11,27,59,.18);
+  --space-1:4px; --space-2:8px; --space-3:12px; --space-4:16px;
+  --space-5:20px; --space-6:24px; --space-8:32px; --space-10:40px;
+  --space-12:48px; --space-16:64px; --space-20:80px;
+  --font:'Inter','Helvetica Neue',Arial,sans-serif;
+  --container:1200px;
+  --ease:cubic-bezier(.22,.61,.36,1);
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:var(--font);
+  color:var(--ink);
+  background:var(--bg-white);
+  font-size:17px;
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+}
+img,svg{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+button{font-family:inherit;cursor:pointer;border:0;background:none}
+.container{max-width:var(--container);margin:0 auto;padding:0 var(--space-6)}
+h1,h2,h3,h4{font-weight:700;letter-spacing:-.02em;line-height:1.1;margin:0}
+h2{font-size:clamp(28px,4vw,44px);margin-bottom:var(--space-4)}
+h3{font-size:22px;margin-bottom:var(--space-3)}
+p{margin:0 0 var(--space-4)}
+section{padding:var(--space-20) 0;position:relative}
+@media(max-width:720px){section{padding:var(--space-16) 0}}
+
+/* ===== BUTTONS ===== */
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:10px;
+  padding:16px 28px;border-radius:14px;font-weight:600;font-size:16px;
+  transition:transform .2s var(--ease),box-shadow .2s var(--ease),background .2s var(--ease);
+  white-space:nowrap;
+}
+.btn-primary{
+  background:var(--brand-500);color:#031224;
+  box-shadow:0 10px 32px var(--brand-glow);
+}
+.btn-primary:hover{background:var(--brand-600);transform:translateY(-2px);box-shadow:0 14px 40px var(--brand-glow)}
+.btn-ghost{
+  background:transparent;color:#fff;border:1px solid rgba(255,255,255,.25);
+}
+.btn-ghost:hover{border-color:var(--brand-500);color:var(--brand-500)}
+.btn-dark{background:var(--bg-deep);color:#fff}
+.btn-dark:hover{background:var(--bg-deep-2);transform:translateY(-2px)}
+
+/* ===== HEADER ===== */
+.hdr{
+  position:sticky;top:0;z-index:50;
+  backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+  background:rgba(11,27,59,.78);
+  border-bottom:1px solid var(--line-dark);
+}
+.hdr-inner{display:flex;align-items:center;justify-content:space-between;padding:16px 0;color:#fff}
+.logo{display:flex;align-items:center;gap:10px;font-weight:800;font-size:19px;letter-spacing:-.01em;color:#fff}
+.logo-mark{width:32px;height:32px;border-radius:8px;background:var(--bg-deep-2);display:grid;place-items:center;box-shadow:inset 0 0 0 1px var(--line-dark)}
+.nav{display:flex;gap:var(--space-8);font-size:15px;color:rgba(255,255,255,.78)}
+.nav a:hover{color:var(--brand-500)}
+.hdr .btn{padding:12px 20px;font-size:14px}
+@media(max-width:860px){.nav{display:none}}
+
+/* ===== HERO ===== */
+.hero{
+  background:
+    radial-gradient(1200px 600px at 80% -10%,rgba(34,211,238,.18),transparent 60%),
+    radial-gradient(900px 500px at 10% 20%,rgba(139,156,255,.14),transparent 60%),
+    linear-gradient(180deg,#0B1B3B 0%,#0A1833 100%);
+  color:#fff;
+  padding:var(--space-20) 0 var(--space-20);
+  overflow:hidden;
+  position:relative;
+  isolation:isolate;
+}
+#heroCanvas{position:absolute;inset:0;width:100%;height:100%;z-index:0;opacity:.55}
+.hero .container{position:relative;z-index:1}
+.eyebrow{
+  display:inline-flex;align-items:center;gap:10px;
+  padding:8px 16px;border-radius:999px;
+  background:rgba(34,211,238,.10);
+  border:1px solid rgba(34,211,238,.30);
+  color:var(--brand-500);
+  font-size:13px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;
+  margin-bottom:var(--space-6);
+}
+.eyebrow::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--brand-500);box-shadow:0 0 12px var(--brand-500)}
+.hero h1{
+  font-size:clamp(36px,5.6vw,68px);
+  font-weight:800;letter-spacing:-.03em;line-height:1.05;
+  max-width:900px;margin-bottom:var(--space-6);
+}
+.hero h1 .grad{
+  background:linear-gradient(100deg,#22D3EE 0%,#8B9CFF 70%);
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+}
+.hero-sub{
+  font-size:clamp(17px,1.6vw,20px);
+  color:rgba(255,255,255,.78);
+  max-width:680px;margin-bottom:var(--space-10);
+}
+.hero-cta{display:flex;gap:var(--space-4);flex-wrap:wrap;margin-bottom:var(--space-12)}
+.hero-metrics{display:flex;gap:var(--space-3);flex-wrap:wrap}
+.metric{
+  display:inline-flex;align-items:center;gap:10px;
+  padding:12px 18px;border-radius:12px;
+  background:rgba(255,255,255,.04);
+  border:1px solid var(--line-dark);
+  font-size:14px;color:rgba(255,255,255,.88);
+}
+.metric svg{width:18px;height:18px;color:var(--brand-500)}
+
+/* ===== SECTION HEADINGS ===== */
+.sec-head{max-width:780px;margin-bottom:var(--space-12)}
+.sec-head .kicker{color:var(--brand-700);font-weight:600;font-size:14px;letter-spacing:.08em;text-transform:uppercase;margin-bottom:var(--space-3)}
+.sec-head p{color:var(--ink-mute);font-size:18px;margin:0}
+.sec-dark{background:var(--bg-deep);color:#fff}
+.sec-dark .sec-head p{color:rgba(255,255,255,.72)}
+.sec-dark .sec-head .kicker{color:var(--brand-500)}
+.sec-soft{background:var(--bg-soft)}
+
+/* ===== WHY GRID ===== */
+.grid{display:grid;gap:var(--space-6)}
+.grid-4{grid-template-columns:repeat(4,1fr)}
+.grid-3{grid-template-columns:repeat(3,1fr)}
+.grid-2{grid-template-columns:repeat(2,1fr)}
+@media(max-width:1000px){.grid-4{grid-template-columns:repeat(2,1fr)}.grid-3{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:640px){.grid-4,.grid-3,.grid-2{grid-template-columns:1fr}}
+.card{
+  background:var(--bg-white);
+  border:1px solid var(--line);
+  border-radius:var(--radius);
+  padding:var(--space-8);
+  box-shadow:var(--shadow-sm);
+  transition:transform .25s var(--ease),box-shadow .25s var(--ease),border-color .25s var(--ease);
+}
+.card:hover{transform:translateY(-4px);box-shadow:var(--shadow-md);border-color:rgba(34,211,238,.4)}
+.card .ic{
+  width:48px;height:48px;border-radius:12px;
+  background:linear-gradient(135deg,rgba(34,211,238,.15),rgba(139,156,255,.10));
+  color:var(--brand-700);
+  display:grid;place-items:center;margin-bottom:var(--space-5);
+}
+.card .ic svg{width:26px;height:26px}
+.card p{color:var(--ink-mute);margin:0;font-size:15.5px}
+
+/* ===== PROGRAM TIMELINE ===== */
+.timeline{position:relative;max-width:820px;margin:0 auto}
+.timeline::before{
+  content:"";position:absolute;left:28px;top:8px;bottom:8px;width:2px;
+  background:linear-gradient(180deg,var(--brand-500),rgba(34,211,238,0));
+}
+.t-item{position:relative;padding:0 0 var(--space-10) 80px;display:block}
+.t-item:last-child{padding-bottom:0}
+.t-num{
+  position:absolute;left:0;top:0;
+  width:58px;height:58px;border-radius:16px;
+  background:var(--bg-white);border:1px solid var(--line);
+  display:grid;place-items:center;
+  font-weight:800;font-size:20px;color:var(--brand-700);
+  box-shadow:var(--shadow-sm);
+}
+.t-item h3{margin-bottom:6px}
+.t-item p{color:var(--ink-mute);margin:0;font-size:15.5px}
+
+/* ===== AUDIENCE ===== */
+.persona{
+  padding:var(--space-8);
+  border-radius:var(--radius);
+  background:linear-gradient(180deg,#fff 0%,#F6F8FC 100%);
+  border:1px solid var(--line);
+}
+.persona h3{margin-bottom:var(--space-3)}
+.persona p{color:var(--ink-mute);margin:0}
+.persona .avatar{
+  width:64px;height:64px;border-radius:50%;
+  background:linear-gradient(135deg,#0B1B3B,#22D3EE);
+  display:grid;place-items:center;color:#fff;margin-bottom:var(--space-5);
+}
+
+/* ===== BENEFITS LIST ===== */
+.benefits{display:grid;grid-template-columns:1fr 1fr;gap:var(--space-5)}
+@media(max-width:720px){.benefits{grid-template-columns:1fr}}
+.benefit{
+  display:flex;gap:var(--space-4);align-items:flex-start;
+  padding:var(--space-5) var(--space-6);
+  background:#fff;border:1px solid var(--line);border-radius:var(--radius-sm);
+}
+.check{
+  flex:0 0 28px;width:28px;height:28px;border-radius:8px;
+  background:rgba(34,211,238,.14);color:var(--brand-700);
+  display:grid;place-items:center;
+}
+.benefit b{display:block;margin-bottom:2px}
+.benefit span{color:var(--ink-mute);font-size:15px}
+
+/* ===== FORMAT TILES ===== */
+.tiles{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--space-5)}
+@media(max-width:900px){.tiles{grid-template-columns:repeat(2,1fr)}}
+.tile{
+  padding:var(--space-6);border-radius:var(--radius);
+  background:rgba(255,255,255,.04);
+  border:1px solid var(--line-dark);
+}
+.tile .lbl{font-size:13px;text-transform:uppercase;letter-spacing:.08em;color:var(--brand-500);font-weight:600;margin-bottom:8px}
+.tile .val{font-size:22px;font-weight:700;color:#fff}
+
+/* ===== STATS ===== */
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--space-6);margin-top:var(--space-10)}
+@media(max-width:900px){.stats{grid-template-columns:repeat(2,1fr)}}
+.stat b{display:block;font-size:clamp(32px,4vw,48px);font-weight:800;color:var(--brand-700);letter-spacing:-.02em;line-height:1}
+.stat span{display:block;color:var(--ink-mute);margin-top:8px;font-size:15px}
+
+/* ===== FAQ ===== */
+.faq{max-width:820px;margin:0 auto}
+.q{
+  background:#fff;border:1px solid var(--line);border-radius:var(--radius-sm);
+  margin-bottom:var(--space-3);overflow:hidden;
+}
+.q summary{
+  list-style:none;cursor:pointer;
+  padding:var(--space-5) var(--space-6);
+  font-weight:600;font-size:17px;
+  display:flex;justify-content:space-between;align-items:center;gap:var(--space-4);
+}
+.q summary::-webkit-details-marker{display:none}
+.q summary::after{
+  content:"+";font-size:24px;color:var(--brand-700);font-weight:400;
+  transition:transform .25s var(--ease);
+}
+.q[open] summary::after{transform:rotate(45deg)}
+.q .a{padding:0 var(--space-6) var(--space-6);color:var(--ink-mute);font-size:15.5px}
+
+/* ===== FORM ===== */
+.form-wrap{
+  max-width:640px;margin:0 auto;
+  background:rgba(255,255,255,.04);
+  border:1px solid var(--line-dark);
+  border-radius:var(--radius);
+  padding:var(--space-10);
+  backdrop-filter:blur(8px);
+}
+@media(max-width:640px){.form-wrap{padding:var(--space-6)}}
+.field{margin-bottom:var(--space-5)}
+.field label{display:block;font-size:14px;color:rgba(255,255,255,.72);margin-bottom:8px}
+.field input[type=text],.field input[type=tel]{
+  width:100%;padding:14px 18px;
+  border-radius:12px;border:1px solid var(--line-dark);
+  background:rgba(255,255,255,.06);color:#fff;font-family:inherit;font-size:16px;
+  transition:border-color .2s var(--ease),background .2s var(--ease);
+}
+.field input::placeholder{color:rgba(255,255,255,.38)}
+.field input:focus{outline:none;border-color:var(--brand-500);background:rgba(34,211,238,.06)}
+.consent{display:flex;gap:12px;align-items:flex-start;font-size:13px;color:rgba(255,255,255,.65);margin-bottom:var(--space-6)}
+.consent input{margin-top:3px;accent-color:var(--brand-500)}
+.consent a{color:var(--brand-500);text-decoration:underline}
+.form-wrap .btn{width:100%}
+.form-note{font-size:13px;color:rgba(255,255,255,.5);text-align:center;margin-top:var(--space-4)}
+.form-ok{display:none;text-align:center;color:#fff;padding:var(--space-8) 0}
+.form-ok.show{display:block}
+.form-ok svg{width:56px;height:56px;color:var(--brand-500);margin-bottom:var(--space-4)}
+
+/* ===== FOOTER ===== */
+footer{background:#081531;color:rgba(255,255,255,.55);padding:var(--space-12) 0;font-size:14px}
+.foot{display:grid;grid-template-columns:2fr 1fr 1fr;gap:var(--space-8)}
+@media(max-width:720px){.foot{grid-template-columns:1fr}}
+footer .logo{margin-bottom:var(--space-4)}
+footer h4{color:#fff;font-size:14px;text-transform:uppercase;letter-spacing:.06em;margin-bottom:var(--space-4)}
+footer a:hover{color:var(--brand-500)}
+.copy{border-top:1px solid var(--line-dark);margin-top:var(--space-10);padding-top:var(--space-6);font-size:13px;color:rgba(255,255,255,.4)}
+
+/* ===== REVEAL ANIMATION ===== */
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
+.reveal.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}}
+</style>
+</head>
+<body>
+
+<!-- ==================== HEADER ==================== -->
+<header class="hdr">
+  <div class="container hdr-inner">
+    <a href="#" class="logo" aria-label="Зерокодер">
+      <span class="logo-mark" aria-hidden="true">
+        <svg width="20" height="20" viewBox="0 0 32 32"><circle cx="10" cy="10" r="2.6" fill="#22D3EE"/><circle cx="22" cy="10" r="2.6" fill="#22D3EE"/><circle cx="16" cy="22" r="2.6" fill="#22D3EE"/><path d="M10 10 L22 10 L16 22 Z" stroke="#22D3EE" stroke-width="1.2" fill="none" opacity=".6"/></svg>
+      </span>
+      Зерокодер
+    </a>
+    <nav class="nav" aria-label="Основная навигация">
+      <a href="#program">Программа</a>
+      <a href="#audience">Для кого</a>
+      <a href="#format">Формат</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+    <a href="#signup" class="btn btn-primary">Записаться</a>
+  </div>
+</header>
+
+<!-- ==================== HERO ==================== -->
+<section class="hero">
+  <canvas id="heroCanvas" aria-hidden="true"></canvas>
+  <div class="container">
+    <span class="eyebrow">Образовательная инициатива для школьников России</span>
+    <h1>Пробный цифровой урок по&nbsp;<span class="grad">нейросетям</span> для детей 10–14&nbsp;лет</h1>
+    <p class="hero-sub">Мы готовим поколение, которое будет работать с искусственным интеллектом. Открытый урок — первый шаг: за&nbsp;60 минут ребёнок поймёт, как устроены нейросети, и создаст собственный ИИ-проект под руководством преподавателя.</p>
+    <div class="hero-cta">
+      <a href="#signup" class="btn btn-primary">Записаться на урок
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+      <a href="#program" class="btn btn-ghost">Узнать программу</a>
+    </div>
+    <div class="hero-metrics">
+      <span class="metric"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>60 минут</span>
+      <span class="metric"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="12" rx="2"/><path d="M8 21h8M12 17v4"/></svg>Онлайн</span>
+      <span class="metric"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 10l9-5 9 5-9 5-9-5z"/><path d="M7 12v5c3 2 7 2 10 0v-5"/></svg>Для 5–8 классов</span>
+      <span class="metric"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l2.5 6.5L21 10l-5 4.5L17.5 22 12 18l-5.5 4L8 14.5 3 10l6.5-1.5z"/></svg>С нуля</span>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== WHY ==================== -->
+<section id="why" class="sec-soft">
+  <div class="container">
+    <div class="sec-head reveal">
+      <div class="kicker">Зачем это нужно</div>
+      <h2>Цифровые навыки — основа будущего страны</h2>
+      <p>Через 5–7 лет умение взаимодействовать с искусственным интеллектом станет базовым, как чтение или математика. Мы помогаем школьникам сделать первый шаг уже сегодня.</p>
+    </div>
+    <div class="grid grid-4">
+      <div class="card reveal">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v4M12 18v4M4.9 4.9l2.8 2.8M16.3 16.3l2.8 2.8M2 12h4M18 12h4M4.9 19.1l2.8-2.8M16.3 7.7l2.8-2.8"/></svg></div>
+        <h3>ИИ меняет профессии</h3>
+        <p>К 2030 году более 60% специальностей будут связаны с ИИ. Ранний старт даёт ребёнку стратегическое преимущество.</p>
+      </div>
+      <div class="card reveal">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12l9-9 9 9M5 10v10h14V10"/></svg></div>
+        <h3>Технологический суверенитет</h3>
+        <p>Мы растим поколение, которое будет создавать отечественные технологии, а не только пользоваться чужими.</p>
+      </div>
+      <div class="card reveal">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3l9 4v6c0 5-4 8-9 8s-9-3-9-8V7l9-4z"/><path d="M9 12l2 2 4-4"/></svg></div>
+        <h3>Безопасная среда</h3>
+        <p>Урок ведёт опытный преподаватель. Ребёнок учится работать с ИИ осознанно и безопасно, без рисков.</p>
+      </div>
+      <div class="card reveal">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3"/></svg></div>
+        <h3>Реальный проект</h3>
+        <p>Это не лекция — за урок ребёнок своими руками создаёт работающий ИИ-проект и забирает его с собой.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== PROGRAM ==================== -->
+<section id="program">
+  <div class="container">
+    <div class="sec-head reveal">
+      <div class="kicker">Программа урока</div>
+      <h2>Что будет за 60 минут</h2>
+      <p>Последовательный путь от знакомства с технологией до готового результата. Никакой теории ради теории — только то, что пригодится прямо сегодня.</p>
+    </div>
+    <div class="timeline">
+      <div class="t-item reveal">
+        <div class="t-num">01</div>
+        <h3>Знакомство и разминка</h3>
+        <p>Преподаватель знакомится с ребятами и показывает, где нейросети уже работают вокруг нас — в поиске, играх, переводчиках и даже в школьных задачах.</p>
+      </div>
+      <div class="t-item reveal">
+        <div class="t-num">02</div>
+        <h3>Как устроены нейросети</h3>
+        <p>На понятных примерах разбираем, как машина «учится»: почему это не магия, а инструмент, и чем ИИ отличается от обычных программ.</p>
+      </div>
+      <div class="t-item reveal">
+        <div class="t-num">03</div>
+        <h3>Работа с ИИ-инструментами</h3>
+        <p>Пробуем современные нейросети вживую: учимся формулировать запросы, получать нужный результат и критически оценивать ответы.</p>
+      </div>
+      <div class="t-item reveal">
+        <div class="t-num">04</div>
+        <h3>Свой первый ИИ-проект</h3>
+        <p>Ребёнок создаёт собственный мини-проект с помощью нейросети — текст, изображение или простой помощник. И забирает его с собой.</p>
+      </div>
+      <div class="t-item reveal">
+        <div class="t-num">05</div>
+        <h3>Безопасность и следующие шаги</h3>
+        <p>Разговор о цифровой гигиене при работе с ИИ и о том, как двигаться дальше, если тема увлекла.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== AUDIENCE ==================== -->
+<section id="audience" class="sec-soft">
+  <div class="container">
+    <div class="sec-head reveal">
+      <div class="kicker">Для кого</div>
+      <h2>Кому подойдёт открытый урок</h2>
+      <p>Урок рассчитан на школьников 5–8 классов. Подготовка не требуется — мы начинаем с нуля.</p>
+    </div>
+    <div class="grid grid-3">
+      <div class="persona reveal">
+        <div class="avatar"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-7 8-7s8 3 8 7"/></svg></div>
+        <h3>Ребёнку интересны технологии</h3>
+        <p>Любит компьютер, игры, задаёт вопросы про ИИ. Урок поможет направить интерес в конструктивное русло и показать, что за экраном — настоящая наука.</p>
+      </div>
+      <div class="persona reveal">
+        <div class="avatar"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 14l9-5-9-5-9 5 9 5z"/><path d="M12 14v7M5 10v5l7 4 7-4v-5"/></svg></div>
+        <h3>Родитель думает о будущем</h3>
+        <p>Вы понимаете, что мир меняется, и хотите дать ребёнку навыки, которые останутся актуальными через 10 лет. Это разумная инвестиция времени.</p>
+      </div>
+      <div class="persona reveal">
+        <div class="avatar"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19h16M6 19V9l6-5 6 5v10M9 19v-6h6v6"/></svg></div>
+        <h3>Хочется структурного подхода</h3>
+        <p>Вместо случайных видео на YouTube — системное введение в тему от преподавателя, с обратной связью и понятной траекторией развития.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== BENEFITS ==================== -->
+<section id="benefits">
+  <div class="container">
+    <div class="sec-head reveal">
+      <div class="kicker">Результат</div>
+      <h2>Что ребёнок получит после урока</h2>
+      <p>Не просто впечатления, а конкретные знания, навыки и понимание, куда двигаться дальше.</p>
+    </div>
+    <div class="benefits">
+      <div class="benefit reveal"><div class="check"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M5 12l5 5L20 7"/></svg></div><div><b>Понимание, как работает ИИ</b><span>Без магии и мифов — реальная модель того, что происходит «под капотом» нейросети.</span></div></div>
+      <div class="benefit reveal"><div class="check"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M5 12l5 5L20 7"/></svg></div><div><b>Готовый первый ИИ-проект</b><span>Ребёнок уходит с урока с работающим результатом, который можно показать друзьям и родителям.</span></div></div>
+      <div class="benefit reveal"><div class="check"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M5 12l5 5L20 7"/></svg></div><div><b>Навык работы с ИИ-инструментами</b><span>Умение формулировать запросы, оценивать ответы и применять нейросети в учёбе.</span></div></div>
+      <div class="benefit reveal"><div class="check"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M5 12l5 5L20 7"/></svg></div><div><b>Критическое мышление</b><span>Понимание, когда ИИ ошибается и почему важно перепроверять его результаты.</span></div></div>
+      <div class="benefit reveal"><div class="check"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M5 12l5 5L20 7"/></svg></div><div><b>Правила цифровой безопасности</b><span>Как работать с нейросетями осознанно, не передавая лишних данных и не доверяя слепо.</span></div></div>
+      <div class="benefit reveal"><div class="check"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M5 12l5 5L20 7"/></svg></div><div><b>Траектория развития</b><span>Понимание, что изучать дальше, если тема по-настоящему заинтересовала.</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== FORMAT ==================== -->
+<section id="format" class="sec-dark">
+  <div class="container">
+    <div class="sec-head reveal">
+      <div class="kicker">Формат</div>
+      <h2>Как проходит открытый урок</h2>
+      <p>Удобно для ребёнка и родителя: из дома, без установки сложного софта, в привычное вечернее время.</p>
+    </div>
+    <div class="tiles">
+      <div class="tile reveal"><div class="lbl">Длительность</div><div class="val">60 минут</div></div>
+      <div class="tile reveal"><div class="lbl">Формат</div><div class="val">Онлайн</div></div>
+      <div class="tile reveal"><div class="lbl">Платформа</div><div class="val">Видеосвязь + браузер</div></div>
+      <div class="tile reveal"><div class="lbl">Преподаватель</div><div class="val">Практик школы</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== ABOUT / STATS ==================== -->
+<section id="about">
+  <div class="container">
+    <div class="sec-head reveal">
+      <div class="kicker">О проекте</div>
+      <h2>Зерокодер — школа цифровых профессий</h2>
+      <p>Мы обучаем людей разных возрастов работе с современными технологиями: от нейросетей до no-code разработки. Открытый урок для школьников — часть нашей миссии по подготовке нового поколения к цифровой экономике.</p>
+    </div>
+    <div class="stats">
+      <div class="stat reveal"><b>150&nbsp;000+</b><span>выпускников за всё время работы школы</span></div>
+      <div class="stat reveal"><b>7&nbsp;лет</b><span>опыта в цифровом образовании</span></div>
+      <div class="stat reveal"><b>100+</b><span>курсов по актуальным направлениям</span></div>
+      <div class="stat reveal"><b>4.8/5</b><span>средняя оценка учеников и родителей</span></div>
+    </div>
+    <!-- TODO: уточнить реальные цифры школы на источнике -->
+  </div>
+</section>
+
+<!-- ==================== FAQ ==================== -->
+<section id="faq" class="sec-soft">
+  <div class="container">
+    <div class="sec-head reveal" style="margin-left:auto;margin-right:auto;text-align:center">
+      <div class="kicker">Вопросы</div>
+      <h2>Частые вопросы родителей</h2>
+      <p>Если вашего вопроса нет в списке — оставьте заявку, мы перезвоним и всё расскажем.</p>
+    </div>
+    <div class="faq">
+      <details class="q reveal"><summary>Сколько стоит участие?</summary><div class="a">Участие в пробном открытом уроке бесплатное. Это часть образовательной инициативы школы Зерокодер для популяризации цифровых навыков среди школьников.</div></details>
+      <details class="q reveal"><summary>Нужен ли компьютер и специальные программы?</summary><div class="a">Да, для занятия нужен компьютер или ноутбук с доступом в интернет и камерой. Всё остальное работает прямо в браузере — устанавливать ничего не нужно.</div></details>
+      <details class="q reveal"><summary>Какой возраст подходит?</summary><div class="a">Урок рассчитан на школьников 10–14 лет (5–8 классы). Предварительная подготовка не требуется — мы начинаем с нуля.</div></details>
+      <details class="q reveal"><summary>Сколько длится занятие?</summary><div class="a">Один академический урок — 60 минут. Этого достаточно, чтобы познакомиться с темой, попробовать инструменты и создать свой первый ИИ-проект.</div></details>
+      <details class="q reveal"><summary>Что будет после пробного урока?</summary><div class="a">Никаких обязательств. Если ребёнку понравится и тема увлечёт, мы расскажем о возможных следующих шагах. Но решение всегда остаётся за вами.</div></details>
+      <details class="q reveal"><summary>Нужно ли родителю присутствовать?</summary><div class="a">Не обязательно, но для первой встречи мы рекомендуем родителю быть рядом — помочь ребёнку с подключением и техническими моментами.</div></details>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== SIGNUP FORM ==================== -->
+<section id="signup" class="sec-dark">
+  <div class="container">
+    <div class="sec-head reveal" style="margin-left:auto;margin-right:auto;text-align:center">
+      <div class="kicker">Запись</div>
+      <h2>Записаться на пробный урок</h2>
+      <p>Оставьте заявку — мы перезвоним в ближайшее время, ответим на вопросы и подберём удобное время занятия. Количество мест ограничено.</p>
+    </div>
+    <form class="form-wrap reveal" id="signupForm" novalidate>
+      <div class="field">
+        <label for="parentName">Имя родителя</label>
+        <input type="text" id="parentName" name="parentName" placeholder="Как к вам обращаться" required>
+      </div>
+      <div class="field">
+        <label for="phone">Телефон</label>
+        <input type="tel" id="phone" name="phone" placeholder="+7 (___) ___-__-__" required>
+      </div>
+      <div class="field">
+        <label for="childName">Имя ребёнка</label>
+        <input type="text" id="childName" name="childName" placeholder="Имя и возраст" required>
+      </div>
+      <label class="consent">
+        <input type="checkbox" id="consent" required>
+        <span>Я согласен(на) на обработку <a href="#" onclick="return false">персональных данных</a> в соответствии с политикой конфиденциальности</span>
+      </label>
+      <button type="submit" class="btn btn-primary">Отправить заявку</button>
+      <p class="form-note">Нажимая кнопку, вы подтверждаете согласие на обработку данных</p>
+    </form>
+    <div class="form-ok" id="formOk" role="status" aria-live="polite">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 12l3 3 5-6"/></svg>
+      <h3 style="color:#fff">Заявка принята</h3>
+      <p style="color:rgba(255,255,255,.72);margin:0">Мы свяжемся с вами в ближайшее рабочее время.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== FOOTER ==================== -->
+<footer>
+  <div class="container">
+    <div class="foot">
+      <div>
+        <div class="logo">
+          <span class="logo-mark" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 32 32"><circle cx="10" cy="10" r="2.6" fill="#22D3EE"/><circle cx="22" cy="10" r="2.6" fill="#22D3EE"/><circle cx="16" cy="22" r="2.6" fill="#22D3EE"/><path d="M10 10 L22 10 L16 22 Z" stroke="#22D3EE" stroke-width="1.2" fill="none" opacity=".6"/></svg>
+          </span>
+          Зерокодер
+        </div>
+        <p style="max-width:420px;margin:0">Образовательная инициатива для школьников. Мы знакомим новое поколение с технологиями искусственного интеллекта и помогаем сделать первый шаг в цифровые профессии.</p>
+      </div>
+      <div>
+        <h4>Навигация</h4>
+        <p style="margin:0;line-height:2"><a href="#program">Программа</a><br><a href="#audience">Для кого</a><br><a href="#format">Формат</a><br><a href="#faq">FAQ</a></p>
+      </div>
+      <div>
+        <h4>Контакты</h4>
+        <p style="margin:0;line-height:2">
+          <!-- TODO: уточнить -->
+          <a href="tel:+78000000000">8 800 000-00-00</a><br>
+          <a href="mailto:hello@example.ru">hello@example.ru</a><br>
+          Пн–Вс, 10:00–20:00
+        </p>
+      </div>
+    </div>
+    <div class="copy">© 2026 Зерокодер. Все права защищены. Материалы сайта носят информационный характер.</div>
+  </div>
+</footer>
+
+<script>
+/* ===== HERO CANVAS — neural graph ===== */
+(function(){
+  var c=document.getElementById('heroCanvas');if(!c)return;
+  var ctx=c.getContext('2d'),W,H,nodes=[],DPR=Math.min(window.devicePixelRatio||1,2);
+  function resize(){
+    W=c.clientWidth;H=c.clientHeight;
+    c.width=W*DPR;c.height=H*DPR;ctx.setTransform(DPR,0,0,DPR,0,0);
+    var N=Math.max(28,Math.floor(W*H/28000));
+    nodes=[];for(var i=0;i<N;i++)nodes.push({
+      x:Math.random()*W,y:Math.random()*H,
+      vx:(Math.random()-.5)*.25,vy:(Math.random()-.5)*.25,
+      r:1.2+Math.random()*1.6
+    });
+  }
+  function tick(){
+    ctx.clearRect(0,0,W,H);
+    for(var i=0;i<nodes.length;i++){
+      var a=nodes[i];a.x+=a.vx;a.y+=a.vy;
+      if(a.x<0||a.x>W)a.vx*=-1;if(a.y<0||a.y>H)a.vy*=-1;
+      for(var j=i+1;j<nodes.length;j++){
+        var b=nodes[j],dx=a.x-b.x,dy=a.y-b.y,d=Math.sqrt(dx*dx+dy*dy);
+        if(d<140){
+          ctx.strokeStyle='rgba(34,211,238,'+(.22*(1-d/140))+')';
+          ctx.lineWidth=1;ctx.beginPath();ctx.moveTo(a.x,a.y);ctx.lineTo(b.x,b.y);ctx.stroke();
+        }
+      }
+      ctx.fillStyle='rgba(139,200,255,.85)';
+      ctx.beginPath();ctx.arc(a.x,a.y,a.r,0,Math.PI*2);ctx.fill();
+    }
+    requestAnimationFrame(tick);
+  }
+  window.addEventListener('resize',resize);resize();
+  if(!window.matchMedia('(prefers-reduced-motion:reduce)').matches)tick();
+})();
+
+/* ===== SCROLL REVEAL ===== */
+(function(){
+  var els=document.querySelectorAll('.reveal');
+  if(!('IntersectionObserver' in window)){els.forEach(function(e){e.classList.add('in')});return}
+  var io=new IntersectionObserver(function(es){
+    es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})
+  },{threshold:.12,rootMargin:'0px 0px -40px 0px'});
+  els.forEach(function(e){io.observe(e)});
+})();
+
+/* ===== FORM HANDLER ===== */
+(function(){
+  var f=document.getElementById('signupForm'),ok=document.getElementById('formOk');
+  if(!f)return;
+  f.addEventListener('submit',function(e){
+    e.preventDefault();
+    var p=f.parentName.value.trim(),t=f.phone.value.trim(),c=f.childName.value.trim(),a=f.consent.checked;
+    if(!p||!t||!c||!a){f.reportValidity();return}
+    // TODO: подключить реальный endpoint отправки заявки
+    f.style.display='none';ok.classList.add('show');
+  });
+  // Phone mask (простой)
+  var ph=document.getElementById('phone');
+  ph.addEventListener('input',function(){
+    var v=ph.value.replace(/\D/g,'').slice(0,11);
+    if(v.length===0){ph.value='';return}
+    if(v[0]==='8')v='7'+v.slice(1);
+    var o='+7';
+    if(v.length>1)o+=' ('+v.slice(1,4);
+    if(v.length>=5)o+=') '+v.slice(4,7);
+    if(v.length>=8)o+='-'+v.slice(7,9);
+    if(v.length>=10)o+='-'+v.slice(9,11);
+    ph.value=o;
+  });
+})();
+</script>
+</body>
+</html>
