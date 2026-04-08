@@ -314,7 +314,6 @@ footer a:hover{color:var(--brand-500)}
 html,body{overflow-x:hidden;max-width:100%}
 img,svg,canvas{max-width:100%}
 h1,h2,h3,h4,p{overflow-wrap:break-word;word-wrap:break-word;hyphens:manual}
-.hero h1{max-width:100%}
 @media(max-width:720px){
   :root{--space-20:56px;--space-16:48px}
   .container{padding:0 18px}
@@ -341,9 +340,10 @@ h1,h2,h3,h4,p{overflow-wrap:break-word;word-wrap:break-word;hyphens:manual}
   .form-wrap{padding:var(--space-6) var(--space-5)}
   .stats{grid-template-columns:repeat(2,1fr);gap:var(--space-5)}
   .stat b{font-size:30px}
-  .tiles{grid-template-columns:repeat(2,1fr);gap:var(--space-3)}
-  .tile{padding:var(--space-5)}
-  .tile .val{font-size:18px}
+  .tiles{grid-template-columns:1fr;gap:var(--space-4)}
+  .tile{padding:var(--space-6) var(--space-6)}
+  .tile .lbl{font-size:12px;margin-bottom:6px}
+  .tile .val{font-size:22px}
   footer{padding:var(--space-10) 0}
   .copy{margin-top:var(--space-8);padding-top:var(--space-5)}
 }
@@ -353,7 +353,6 @@ h1,h2,h3,h4,p{overflow-wrap:break-word;word-wrap:break-word;hyphens:manual}
   .hero-cta{flex-direction:column}
   .hero-cta .btn{width:100%}
   .stat b{font-size:26px}
-  .tiles{grid-template-columns:1fr}
 }
 
 /* ===== REVEAL ANIMATION ===== */
