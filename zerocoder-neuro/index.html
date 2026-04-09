@@ -391,6 +391,35 @@
             line-height: 1.4;
         }
 
+        /* ===== WHY NOW ===== */
+        .why-now-box {
+            flex-direction: row;
+            align-items: stretch;
+            gap: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+
+        .why-now-img {
+            width: 320px;
+            flex-shrink: 0;
+            object-fit: cover;
+            border-radius: var(--radius) 0 0 var(--radius);
+        }
+
+        .why-now-text {
+            padding: 40px 48px;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            justify-content: center;
+        }
+
+        .why-now-text p {
+            font-size: 17px;
+            line-height: 1.7;
+        }
+
         /* ===== SIGNUP FORM ===== */
         .signup-form {
             display: flex;
@@ -480,6 +509,18 @@
                 text-align: center;
                 padding: 32px 24px;
             }
+            .why-now-box {
+                flex-direction: column;
+                padding: 0;
+            }
+            .why-now-img {
+                width: 100%;
+                height: 220px;
+                border-radius: var(--radius) var(--radius) 0 0;
+            }
+            .why-now-text {
+                padding: 28px 24px;
+            }
             .info-box p {
                 font-size: 17px;
             }
@@ -531,10 +572,13 @@
     <!-- WHY NOW -->
     <section class="info-strip">
         <h2 class="section-title" style="margin-bottom: 32px;">Что значит погружение в навыки будущего сегодня?</h2>
-        <div class="info-box" style="flex-direction: column; text-align: left; gap: 16px;">
-            <p style="font-size: 17px; line-height: 1.7;">По данным Всемирного экономического форума, к&nbsp;2030 году более 85% востребованных профессий будут напрямую связаны с технологиями, которые сегодня ещё не преподают в&nbsp;школах.</p>
-            <p style="font-size: 17px; line-height: 1.7;">Российский рынок искусственного интеллекта за это время вырастет в&nbsp;4&nbsp;раза, а специалисты, владеющие ИИ-инструментами, уже сейчас зарабатывают на&nbsp;40% больше.</p>
-            <p style="font-size: 17px; line-height: 1.7;">Дети 11&ndash;14&nbsp;лет осваивают логику нейросетей значительно быстрее взрослых. Те, кто начинает сегодня, к&nbsp;окончанию школы будут свободно владеть инструментами, которые определят рынок труда.</p>
+        <div class="info-box why-now-box">
+            <img src="why-now.png" alt="Ученица за компьютером" class="why-now-img">
+            <div class="why-now-text">
+                <p>По данным Всемирного экономического форума, к&nbsp;2030 году более 85% востребованных профессий будут напрямую связаны с технологиями, которые сегодня ещё не преподают в&nbsp;школах.</p>
+                <p>Российский рынок искусственного интеллекта за это время вырастет в&nbsp;4&nbsp;раза, а специалисты, владеющие ИИ-инструментами, уже сейчас зарабатывают на&nbsp;40% больше.</p>
+                <p>Дети 11&ndash;14&nbsp;лет осваивают логику нейросетей значительно быстрее взрослых. Те, кто начинает сегодня, к&nbsp;окончанию школы будут свободно владеть инструментами, которые определят рынок труда.</p>
+            </div>
         </div>
     </section>
 
