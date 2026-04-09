@@ -52,33 +52,25 @@
             align-items: center;
             justify-content: center;
             text-align: center;
-            background:
-                radial-gradient(ellipse 800px 500px at 15% 80%, rgba(1,39,125,0.7), transparent),
-                radial-gradient(ellipse 700px 500px at 85% 20%, rgba(60,20,160,0.6), transparent),
-                radial-gradient(ellipse 500px 400px at 50% 50%, rgba(0,100,200,0.3), transparent),
-                linear-gradient(160deg, #0a0e27 0%, #141a3a 35%, #1a1045 65%, #0d1230 100%);
             position: relative;
             overflow: hidden;
             padding: 80px 20px;
+        }
+
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            background: url('hero-bg.png') center/cover no-repeat;
+            filter: blur(6px);
+            transform: scale(1.05);
         }
 
         .hero::before {
             content: '';
             position: absolute;
             inset: 0;
-            background:
-                radial-gradient(ellipse 400px 300px at 10% 30%, rgba(233,69,70,0.12), transparent),
-                radial-gradient(ellipse 600px 400px at 75% 70%, rgba(0,180,255,0.1), transparent),
-                radial-gradient(ellipse 300px 300px at 50% 10%, rgba(255,255,255,0.03), transparent);
-            pointer-events: none;
-        }
-
-        .hero::after {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background:
-                repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(255,255,255,0.01) 2px, rgba(255,255,255,0.01) 4px);
+            background: rgba(10,14,39,0.7);
+            z-index: 1;
             pointer-events: none;
         }
 
@@ -519,6 +511,7 @@
 
     <!-- HERO -->
     <section class="hero">
+        <div class="hero-bg"></div>
         <div class="hero-content">
             <h1>Национальный проект РФ<br><span>&laquo;Профессии будущего:</span><br>погружение в <span>искусственный интеллект&raquo;</span></h1>
             <a href="#signup" class="btn">Записать ребёнка</a>
