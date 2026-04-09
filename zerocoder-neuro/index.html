@@ -392,22 +392,31 @@
         }
 
         /* ===== WHY NOW ===== */
-        .why-now-box {
-            flex-direction: row;
-            align-items: stretch;
-            gap: 0;
-            padding: 0;
+        .why-now-row {
+            display: flex;
+            gap: 28px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .why-now-card-img {
+            flex: 0 0 380px;
+            background: var(--light-bg);
+            border-radius: var(--radius);
             overflow: hidden;
         }
 
-        .why-now-img {
-            width: 320px;
-            flex-shrink: 0;
+        .why-now-card-img img {
+            width: 100%;
+            height: 100%;
             object-fit: cover;
-            border-radius: var(--radius) 0 0 var(--radius);
+            display: block;
         }
 
-        .why-now-text {
+        .why-now-card-text {
+            flex: 1;
+            background: var(--light-bg);
+            border-radius: var(--radius);
             padding: 40px 48px;
             display: flex;
             flex-direction: column;
@@ -415,7 +424,7 @@
             justify-content: center;
         }
 
-        .why-now-text p {
+        .why-now-card-text p {
             font-size: 17px;
             line-height: 1.7;
         }
@@ -509,16 +518,14 @@
                 text-align: center;
                 padding: 32px 24px;
             }
-            .why-now-box {
+            .why-now-row {
                 flex-direction: column;
-                padding: 0;
             }
-            .why-now-img {
-                width: 100%;
+            .why-now-card-img {
+                flex: none;
                 height: 220px;
-                border-radius: var(--radius) var(--radius) 0 0;
             }
-            .why-now-text {
+            .why-now-card-text {
                 padding: 28px 24px;
             }
             .info-box p {
@@ -572,9 +579,11 @@
     <!-- WHY NOW -->
     <section class="info-strip">
         <h2 class="section-title" style="margin-bottom: 32px;">Что значит погружение в навыки будущего сегодня?</h2>
-        <div class="info-box why-now-box">
-            <img src="why-now.png" alt="Ученица за компьютером" class="why-now-img">
-            <div class="why-now-text">
+        <div class="why-now-row">
+            <div class="why-now-card-img">
+                <img src="why-now.png" alt="Ученица за компьютером">
+            </div>
+            <div class="why-now-card-text">
                 <p>По данным Всемирного экономического форума, к&nbsp;2030 году более 85% востребованных профессий будут напрямую связаны с технологиями, которые сегодня ещё не преподают в&nbsp;школах.</p>
                 <p>Российский рынок искусственного интеллекта за это время вырастет в&nbsp;4&nbsp;раза, а специалисты, владеющие ИИ-инструментами, уже сейчас зарабатывают на&nbsp;40% больше.</p>
                 <p>Дети 11&ndash;14&nbsp;лет осваивают логику нейросетей значительно быстрее взрослых. Те, кто начинает сегодня, к&nbsp;окончанию школы будут свободно владеть инструментами, которые определят рынок труда.</p>
