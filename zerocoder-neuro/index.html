@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Бесплатный урок по нейросетям для детей — Зерокодер</title>
+    <meta name="description" content="Бесплатный вводный онлайн-урок по нейросетям для детей 11-14 лет от школы Зерокодер. Создай свой первый AI-проект за 60 минут!">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #e94546;
+            --primary-hover: #d13a3b;
+            --dark-bg: #1a1f35;
+            --light-bg: #f4f7fb;
+            --white: #ffffff;
+            --black: #1a1a1a;
+            --text-secondary: #555;
+            --gradient-dark: linear-gradient(135deg, rgba(42,49,65,0.95), rgba(1,39,125,0.92));
+            --gradient-cta: linear-gradient(135deg, rgba(75,67,67,0.93), rgba(1,39,125,0.95));
+            --shadow-card: 0 4px 24px rgba(0,0,0,0.07);
+            --shadow-btn: 0 3px 12px rgba(233,69,70,0.35);
+            --radius: 20px;
+            --radius-btn: 8px;
+        }
+
+        body {
+            font-family: 'Roboto', Arial, sans-serif;
+            color: var(--black);
+            line-height: 1.6;
+            overflow-x: hidden;
+            background: var(--white);
+        }
+
+        .container {
+            max-width: 1140px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* ===== HERO ===== */
+        .hero {
+            min-height: 600px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background: var(--gradient-dark);
+            position: relative;
+            overflow: hidden;
+            padding: 80px 20px;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(ellipse 600px 400px at 20% 50%, rgba(105,60,255,0.15), transparent),
+                radial-gradient(ellipse 500px 350px at 80% 30%, rgba(0,180,255,0.1), transparent);
+            pointer-events: none;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 860px;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: rgba(255,255,255,0.12);
+            border: 1px solid rgba(255,255,255,0.2);
+            color: var(--white);
+            font-size: 14px;
+            font-weight: 500;
+            padding: 8px 24px;
+            border-radius: 50px;
+            margin-bottom: 32px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            font-weight: 900;
+            color: var(--white);
+            text-transform: uppercase;
+            line-height: 1.15;
+            margin-bottom: 20px;
+            letter-spacing: -0.5px;
+        }
+
+        .hero h1 span {
+            color: var(--primary);
+        }
+
+        .hero-sub {
+            font-size: 22px;
+            color: rgba(255,255,255,0.85);
+            margin-bottom: 40px;
+            font-weight: 400;
+        }
+
+        /* ===== BUTTONS ===== */
+        .btn {
+            display: inline-block;
+            background: var(--primary);
+            color: var(--white);
+            font-family: 'Roboto', Arial, sans-serif;
+            font-size: 20px;
+            font-weight: 700;
+            padding: 18px 48px;
+            border-radius: var(--radius-btn);
+            border: none;
+            cursor: pointer;
+            text-decoration: none;
+            box-shadow: var(--shadow-btn);
+            transition: background 0.25s, transform 0.2s, box-shadow 0.25s;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .btn:hover {
+            background: var(--primary-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(233,69,70,0.45);
+        }
+
+        .btn:active {
+            transform: translateY(0);
+        }
+
+        /* ===== INFO STRIP ===== */
+        .info-strip {
+            padding: 60px 20px;
+            background: var(--white);
+        }
+
+        .info-box {
+            background: var(--light-bg);
+            border-radius: var(--radius);
+            padding: 48px 56px;
+            display: flex;
+            align-items: center;
+            gap: 36px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .info-icon {
+            flex-shrink: 0;
+            width: 80px;
+            height: 80px;
+            background: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+        }
+
+        .info-icon svg {
+            width: 40px;
+            height: 40px;
+            color: var(--primary);
+        }
+
+        .info-box p {
+            font-size: 20px;
+            line-height: 1.6;
+            color: var(--black);
+        }
+
+        .info-box strong {
+            color: var(--primary);
+        }
+
+        /* ===== SECTION COMMON ===== */
+        .section {
+            padding: 80px 20px;
+        }
+
+        .section-title {
+            font-size: 36px;
+            font-weight: 900;
+            text-align: center;
+            margin-bottom: 16px;
+            text-transform: uppercase;
+            line-height: 1.2;
+        }
+
+        .section-subtitle {
+            font-size: 18px;
+            color: var(--text-secondary);
+            text-align: center;
+            margin-bottom: 56px;
+            max-width: 650px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* ===== CARDS GRID ===== */
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 28px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .card {
+            background: var(--light-bg);
+            border-radius: var(--radius);
+            padding: 40px 32px;
+            text-align: center;
+            transition: transform 0.25s, box-shadow 0.25s;
+        }
+
+        .card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-card);
+        }
+
+        .card-icon {
+            width: 72px;
+            height: 72px;
+            margin: 0 auto 24px;
+            background: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+        }
+
+        .card-icon svg {
+            width: 34px;
+            height: 34px;
+            color: var(--primary);
+        }
+
+        .card h3 {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+
+        .card p {
+            font-size: 16px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        /* ===== STEPS ===== */
+        .steps {
+            max-width: 900px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 28px;
+        }
+
+        .step {
+            display: flex;
+            align-items: flex-start;
+            gap: 28px;
+            background: var(--light-bg);
+            border-radius: var(--radius);
+            padding: 36px 40px;
+            transition: transform 0.25s, box-shadow 0.25s;
+        }
+
+        .step:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-card);
+        }
+
+        .step-number {
+            flex-shrink: 0;
+            width: 56px;
+            height: 56px;
+            background: var(--primary);
+            color: var(--white);
+            font-size: 24px;
+            font-weight: 900;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .step-content h3 {
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .step-content p {
+            font-size: 17px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        /* ===== CTA BANNER ===== */
+        .cta-banner {
+            background: var(--gradient-cta);
+            padding: 80px 20px;
+            text-align: center;
+        }
+
+        .cta-banner h2 {
+            font-size: 36px;
+            font-weight: 900;
+            color: var(--white);
+            text-transform: uppercase;
+            margin-bottom: 12px;
+        }
+
+        .cta-banner p {
+            font-size: 20px;
+            color: rgba(255,255,255,0.8);
+            margin-bottom: 36px;
+        }
+
+        /* ===== ADVANTAGES ===== */
+        .advantages .cards {
+            grid-template-columns: repeat(3, 1fr);
+        }
+
+        .advantage-card {
+            background: var(--light-bg);
+            border-radius: var(--radius);
+            padding: 40px 32px;
+            text-align: left;
+            transition: transform 0.25s, box-shadow 0.25s;
+        }
+
+        .advantage-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-card);
+        }
+
+        .advantage-check {
+            width: 48px;
+            height: 48px;
+            background: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .advantage-check svg {
+            width: 24px;
+            height: 24px;
+            color: var(--white);
+        }
+
+        .advantage-card h3 {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .advantage-card p {
+            font-size: 16px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        /* ===== FINAL CTA ===== */
+        .final-cta {
+            padding: 60px 20px;
+            background: var(--white);
+        }
+
+        .final-box {
+            background: var(--light-bg);
+            border-radius: var(--radius);
+            padding: 48px;
+            text-align: center;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .final-box p {
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--primary);
+            text-transform: uppercase;
+            margin-bottom: 28px;
+            line-height: 1.4;
+        }
+
+        /* ===== FOOTER ===== */
+        .footer {
+            background: var(--dark-bg);
+            color: rgba(255,255,255,0.6);
+            text-align: center;
+            padding: 32px 20px;
+            font-size: 14px;
+        }
+
+        .footer a {
+            color: rgba(255,255,255,0.8);
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            color: var(--white);
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 960px) {
+            .hero h1 {
+                font-size: 36px;
+            }
+            .hero-sub {
+                font-size: 18px;
+            }
+            .cards {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .advantages .cards {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .info-box {
+                padding: 36px 32px;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .hero {
+                min-height: 480px;
+                padding: 60px 16px;
+            }
+            .hero h1 {
+                font-size: 28px;
+            }
+            .hero-sub {
+                font-size: 16px;
+            }
+            .btn {
+                font-size: 17px;
+                padding: 16px 36px;
+            }
+            .section-title {
+                font-size: 26px;
+            }
+            .cards {
+                grid-template-columns: 1fr;
+            }
+            .advantages .cards {
+                grid-template-columns: 1fr;
+            }
+            .info-box {
+                flex-direction: column;
+                text-align: center;
+                padding: 32px 24px;
+            }
+            .info-box p {
+                font-size: 17px;
+            }
+            .step {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+                padding: 28px 24px;
+            }
+            .cta-banner h2 {
+                font-size: 26px;
+            }
+            .final-box p {
+                font-size: 18px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 24px;
+            }
+            .section {
+                padding: 56px 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- HERO -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-badge">Бесплатный онлайн-урок</div>
+            <h1>Погружение в мир <span>нейросетей</span> для детей</h1>
+            <p class="hero-sub">Ваш ребёнок создаст свой первый AI-проект за 60 минут под руководством опытного преподавателя школы Зерокодер</p>
+            <a href="#signup" class="btn">Записаться бесплатно</a>
+        </div>
+    </section>
+
+    <!-- INFO STRIP -->
+    <section class="info-strip">
+        <div class="info-box">
+            <div class="info-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+            </div>
+            <p>В связи с активным развитием технологий искусственного интеллекта школа <strong>Зерокодер</strong> проводит бесплатный вводный онлайн-урок по нейросетям для детей <strong>11&ndash;14 лет</strong>. Уровень подготовки &mdash; с нуля.</p>
+        </div>
+    </section>
+
+    <!-- WHAT WILL LEARN -->
+    <section class="section">
+        <h2 class="section-title">Что даст урок вашему ребёнку</h2>
+        <p class="section-subtitle">Современные технологии &mdash; не магия, а инструмент. Мы покажем, как им пользоваться</p>
+        <div class="cards">
+            <div class="card">
+                <div class="card-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5.002 5.002 0 017.072 0"/></svg>
+                </div>
+                <h3>Понимание нейросетей</h3>
+                <p>Ребёнок разберётся, как устроены нейросети, и научится безопасно с ними работать</p>
+            </div>
+            <div class="card">
+                <div class="card-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/></svg>
+                </div>
+                <h3>Первый AI-проект</h3>
+                <p>Создаст свой настоящий проект с использованием искусственного интеллекта прямо на уроке</p>
+            </div>
+            <div class="card">
+                <div class="card-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+                </div>
+                <h3>Навыки будущего</h3>
+                <p>Получит навыки, которые будут востребованы в любой профессии через 5&ndash;10 лет</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- STEPS -->
+    <section class="section" style="background: var(--white);">
+        <h2 class="section-title">Как проходит урок</h2>
+        <p class="section-subtitle">Три простых этапа от знакомства до собственного проекта</p>
+        <div class="steps">
+            <div class="step">
+                <div class="step-number">1</div>
+                <div class="step-content">
+                    <h3>Знакомство с нейросетями</h3>
+                    <p>Преподаватель простым языком объяснит, что такое нейросети, как они учатся и где применяются &mdash; от голосовых помощников до генерации изображений</p>
+                </div>
+            </div>
+            <div class="step">
+                <div class="step-number">2</div>
+                <div class="step-content">
+                    <h3>Практика и эксперименты</h3>
+                    <p>Ребёнок попробует работать с настоящими нейросетями, научится задавать правильные промпты и получать нужный результат</p>
+                </div>
+            </div>
+            <div class="step">
+                <div class="step-number">3</div>
+                <div class="step-content">
+                    <h3>Создание своего AI-проекта</h3>
+                    <p>Под руководством преподавателя каждый участник создаст свой первый проект с использованием искусственного интеллекта</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA BANNER -->
+    <section class="cta-banner">
+        <h2>Запись открыта &mdash; мест ограничено!</h2>
+        <p>Онлайн-формат, 60 минут, полностью бесплатно</p>
+        <a href="#signup" class="btn">Записать ребёнка</a>
+    </section>
+
+    <!-- ADVANTAGES -->
+    <section class="section advantages">
+        <h2 class="section-title">Преимущества программы</h2>
+        <p class="section-subtitle">Почему тысячи родителей выбирают Зерокодер</p>
+        <div class="cards">
+            <div class="advantage-card">
+                <div class="advantage-check">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                </div>
+                <h3>Опытные преподаватели</h3>
+                <p>Занятия ведут практикующие специалисты, которые умеют объяснять сложное простым языком</p>
+            </div>
+            <div class="advantage-card">
+                <div class="advantage-check">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                </div>
+                <h3>Практика с первого дня</h3>
+                <p>Никакой скучной теории &mdash; ребёнок сразу работает с реальными инструментами и создаёт проект</p>
+            </div>
+            <div class="advantage-card">
+                <div class="advantage-check">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                </div>
+                <h3>Развитие мышления</h3>
+                <p>Урок развивает критическое мышление, креативность и навыки коммуникации</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- FINAL CTA -->
+    <section class="final-cta" id="signup">
+        <div class="final-box">
+            <p>Для участия родителю необходимо заполнить форму записи. Урок полностью бесплатный &mdash; это возможность для вашего ребёнка окунуться в мир технологий завтрашнего дня!</p>
+            <a href="https://zerocoder.ru/introductory-lesson-on-neural-networks-for-children" class="btn" target="_blank" rel="noopener">Записаться на урок</a>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <p>&copy; 2026 Зерокодер &mdash; школа программирования для детей и подростков. <a href="https://zerocoder.ru" target="_blank" rel="noopener">zerocoder.ru</a></p>
+    </footer>
+
+</body>
+</html>
