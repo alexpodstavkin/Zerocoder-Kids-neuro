@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Бесплатный урок по нейросетям для детей — Зерокодер</title>
-    <meta name="description" content="Бесплатный вводный онлайн-урок по нейросетям для детей 11-14 лет от школы Зерокодер. Создай свой первый AI-проект за 60 минут!">
+    <meta name="description" content="Бесплатный вводный онлайн-урок по нейросетям для детей 11-14 лет от школы Зерокодер. Создай свой первый ИИ-проект за 60 минут!">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet">
@@ -74,20 +74,6 @@
             max-width: 860px;
         }
 
-        .hero-badge {
-            display: inline-block;
-            background: rgba(255,255,255,0.12);
-            border: 1px solid rgba(255,255,255,0.2);
-            color: var(--white);
-            font-size: 14px;
-            font-weight: 500;
-            padding: 8px 24px;
-            border-radius: 50px;
-            margin-bottom: 32px;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-        }
-
         .hero h1 {
             font-size: 48px;
             font-weight: 900;
@@ -100,13 +86,6 @@
 
         .hero h1 span {
             color: var(--primary);
-        }
-
-        .hero-sub {
-            font-size: 22px;
-            color: rgba(255,255,255,0.85);
-            margin-bottom: 40px;
-            font-weight: 400;
         }
 
         /* ===== BUTTONS ===== */
@@ -401,6 +380,35 @@
             line-height: 1.4;
         }
 
+        /* ===== SIGNUP FORM ===== */
+        .signup-form {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            max-width: 420px;
+            margin: 0 auto;
+        }
+
+        .signup-form input {
+            font-family: 'Roboto', Arial, sans-serif;
+            font-size: 17px;
+            padding: 16px 20px;
+            border: 2px solid #dde2ea;
+            border-radius: var(--radius-btn);
+            outline: none;
+            transition: border-color 0.2s;
+            background: var(--white);
+        }
+
+        .signup-form input:focus {
+            border-color: var(--primary);
+        }
+
+        .signup-form .btn {
+            width: 100%;
+            text-align: center;
+        }
+
         /* ===== FOOTER ===== */
         .footer {
             background: var(--dark-bg);
@@ -424,9 +432,6 @@
             .hero h1 {
                 font-size: 36px;
             }
-            .hero-sub {
-                font-size: 18px;
-            }
             .cards {
                 grid-template-columns: repeat(2, 1fr);
             }
@@ -445,9 +450,6 @@
             }
             .hero h1 {
                 font-size: 28px;
-            }
-            .hero-sub {
-                font-size: 16px;
             }
             .btn {
                 font-size: 17px;
@@ -499,10 +501,8 @@
     <!-- HERO -->
     <section class="hero">
         <div class="hero-content">
-            <div class="hero-badge">Бесплатный онлайн-урок</div>
-            <h1>Погружение в мир <span>нейросетей</span> для детей</h1>
-            <p class="hero-sub">Ваш ребёнок создаст свой первый AI-проект за 60 минут под руководством опытного преподавателя школы Зерокодер</p>
-            <a href="#signup" class="btn">Записаться бесплатно</a>
+            <h1>Национальный проект РФ<br><span>&laquo;Профессии будущего:</span><br>погружение в <span>искусственный интеллект&raquo;</span></h1>
+            <a href="#signup" class="btn">Записать ребёнка</a>
         </div>
     </section>
 
@@ -512,14 +512,13 @@
             <div class="info-icon">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
             </div>
-            <p>В связи с активным развитием технологий искусственного интеллекта школа <strong>Зерокодер</strong> проводит бесплатный вводный онлайн-урок по нейросетям для детей <strong>11&ndash;14 лет</strong>. Уровень подготовки &mdash; с нуля.</p>
+            <p>В связи с активным развитием технологий искусственного интеллекта <strong>Зерокодер</strong> проводит бесплатный цифровой онлайн-урок по нейросетям для детей <strong>11&ndash;14 лет</strong>. Уровень подготовки &mdash; с нуля.</p>
         </div>
     </section>
 
     <!-- WHAT WILL LEARN -->
     <section class="section">
         <h2 class="section-title">Что даст урок вашему ребёнку</h2>
-        <p class="section-subtitle">Современные технологии &mdash; не магия, а инструмент. Мы покажем, как им пользоваться</p>
         <div class="cards">
             <div class="card">
                 <div class="card-icon">
@@ -532,7 +531,7 @@
                 <div class="card-icon">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/></svg>
                 </div>
-                <h3>Первый AI-проект</h3>
+                <h3>Первый ИИ-проект</h3>
                 <p>Создаст свой настоящий проект с использованием искусственного интеллекта прямо на уроке</p>
             </div>
             <div class="card">
@@ -567,7 +566,7 @@
             <div class="step">
                 <div class="step-number">3</div>
                 <div class="step-content">
-                    <h3>Создание своего AI-проекта</h3>
+                    <h3>Создание своего ИИ-проекта</h3>
                     <p>Под руководством преподавателя каждый участник создаст свой первый проект с использованием искусственного интеллекта</p>
                 </div>
             </div>
@@ -576,7 +575,7 @@
 
     <!-- CTA BANNER -->
     <section class="cta-banner">
-        <h2>Запись открыта &mdash; мест ограничено!</h2>
+        <h2>Запись открыта &mdash; количество мест ограничено!</h2>
         <p>Онлайн-формат, 60 минут, полностью бесплатно</p>
         <a href="#signup" class="btn">Записать ребёнка</a>
     </section>
@@ -584,7 +583,6 @@
     <!-- ADVANTAGES -->
     <section class="section advantages">
         <h2 class="section-title">Преимущества программы</h2>
-        <p class="section-subtitle">Почему тысячи родителей выбирают Зерокодер</p>
         <div class="cards">
             <div class="advantage-card">
                 <div class="advantage-check">
@@ -613,8 +611,13 @@
     <!-- FINAL CTA -->
     <section class="final-cta" id="signup">
         <div class="final-box">
-            <p>Для участия родителю необходимо заполнить форму записи. Урок полностью бесплатный &mdash; это возможность для вашего ребёнка окунуться в мир технологий завтрашнего дня!</p>
-            <a href="https://zerocoder.ru/introductory-lesson-on-neural-networks-for-children" class="btn" target="_blank" rel="noopener">Записаться на урок</a>
+            <p>Для участия родителю необходимо заполнить форму записи</p>
+            <form class="signup-form" onsubmit="return false;">
+                <input type="text" name="name" placeholder="Имя" required>
+                <input type="tel" name="phone" placeholder="Телефон" required>
+                <input type="email" name="email" placeholder="Email" required>
+                <button type="submit" class="btn">Записать ребёнка</button>
+            </form>
         </div>
     </section>
 
