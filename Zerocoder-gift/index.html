@@ -208,6 +208,35 @@ section{padding:90px 0;position:relative}
 .checkbox input{width:18px;height:18px;flex-shrink:0;margin-top:2px;accent-color:var(--brand-violet)}
 .form-wrap .btn{width:100%}
 
+/* ===== WIDGET CONTAINER ===== */
+.widget-container{
+  background:#fff;
+  border-radius:var(--radius-sm);
+  padding:24px;
+  color:#333;
+  overflow:visible!important;
+  min-height:auto!important;
+  height:auto!important;
+}
+.widget-container *{color:#333!important;overflow:visible!important}
+.widget-container iframe{
+  min-height:520px!important;
+  height:auto!important;
+  overflow:visible!important;
+}
+.widget-container a{color:var(--brand-violet)!important;text-decoration:underline}
+.widget-container input[type="checkbox"]{accent-color:var(--brand-violet)}
+.widget-container label{color:#555!important;font-size:13px}
+.widget-container input[type="text"],
+.widget-container input[type="tel"],
+.widget-container input[type="email"]{
+  background:#f5f5f7!important;
+  border:1px solid #d0d0d0!important;
+  color:#333!important;
+  border-radius:8px;
+}
+.form-wrap{overflow:visible!important}
+
 /* ===== TOAST ===== */
 .toast{
   position:fixed;bottom:30px;left:50%;transform:translateX(-50%) translateY(120%);
@@ -257,6 +286,35 @@ footer{padding:60px 0 40px;border-top:1px solid var(--border);margin-top:40px}
   .btn-lg{padding:18px 32px;font-size:17px}
 }
 </style>
+<!-- Yandex.Metrika counter -->
+<script type="text/javascript">
+    (function(m,e,t,r,i,k,a){
+        m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+        m[i].l=1*new Date();
+        for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+        k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
+    })(window, document,'script','https://mc.yandex.ru/metrika/tag.js', 'ym');
+
+    ym(72085663, 'init', {clickmap:true, referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true});
+</script>
+<noscript><div><img src="https://mc.yandex.ru/watch/72085663" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+<!-- /Yandex.Metrika counter -->
+
+<!-- Top.Mail.Ru counter -->
+<script type="text/javascript">
+var _tmr = window._tmr || (window._tmr = []);
+_tmr.push({id: "3739769", type: "pageView", start: (new Date()).getTime()});
+(function (d, w, id) {
+  if (d.getElementById(id)) return;
+  var ts = d.createElement("script"); ts.type = "text/javascript"; ts.async = true; ts.id = id;
+  ts.src = "https://top-fwz1.mail.ru/js/code.js";
+  var f = function () {var s = d.getElementsByTagName("script")[0]; s.parentNode.insertBefore(ts, s);};
+  if (w.opera == "[object Opera]") { d.addEventListener("DOMContentLoaded", f, false); } else { f(); }
+})(document, window, "tmr-code");
+</script>
+<noscript><div><img src="https://top-fwz1.mail.ru/counter?id=3739769;js=na" style="position:absolute;left:-9999px;" alt="Top.Mail.Ru" /></div></noscript>
+<!-- /Top.Mail.Ru counter -->
+
 </head>
 <body>
 
@@ -337,14 +395,10 @@ footer{padding:60px 0 40px;border-top:1px solid var(--border);margin-top:40px}
   <div class="container">
     <div class="form-wrap">
       <h2 class="section-title">Оставьте контакты</h2>
-      <p class="section-sub">Свяжемся с вами в течение 10 минут и согласуем удобное время урока.</p>
-      <form id="leadForm" novalidate>
-        <div class="field"><label for="name">Имя родителя</label><input id="name" name="name" type="text" required placeholder="Как к вам обращаться"></div>
-        <div class="field"><label for="phone">Телефон</label><input id="phone" name="phone" type="tel" required placeholder="+7 (___) ___-__-__"></div>
-        <div class="field"><label for="email">Email</label><input id="email" name="email" type="email" required placeholder="you@mail.ru"></div>
-        <label class="checkbox"><input type="checkbox" required> Я согласен(а) на обработку персональных данных и принимаю условия политики конфиденциальности.</label>
-        <button type="submit" class="btn btn-lg">Получить подарок 🎁</button>
-      </form>
+      <p class="section-sub">Свяжемся с вами и согласуем удобное время урока.</p>
+      <div class="widget-container">
+        <script id="786f859358b0572306ece97375f55cde5b708648" src="https://university.zerocoder.ru/pl/lite/widget/script?id=1589680"></script>
+      </div>
     </div>
   </div>
 </section>
@@ -399,32 +453,6 @@ footer{padding:60px 0 40px;border-top:1px solid var(--border);margin-top:40px}
   tick();
   iv = setInterval(tick,1000);
 })();
-
-// ===== FORM HANDLER =====
-document.getElementById('leadForm').addEventListener('submit',function(e){
-  e.preventDefault();
-  const data = Object.fromEntries(new FormData(this).entries());
-  // TODO: подключить отправку на бэкенд / CRM
-  console.log('Lead form submitted:',data);
-  const toast = document.getElementById('toast');
-  toast.classList.add('show');
-  this.reset();
-  setTimeout(()=>toast.classList.remove('show'),4000);
-});
-
-// ===== PHONE MASK =====
-document.getElementById('phone').addEventListener('input',function(e){
-  let v = e.target.value.replace(/\D/g,'');
-  if(v.startsWith('8')) v='7'+v.slice(1);
-  if(!v.startsWith('7')) v='7'+v;
-  v = v.slice(0,11);
-  let out = '+7';
-  if(v.length>1) out += ' ('+v.slice(1,4);
-  if(v.length>=5) out += ') '+v.slice(4,7);
-  if(v.length>=8) out += '-'+v.slice(7,9);
-  if(v.length>=10) out += '-'+v.slice(9,11);
-  e.target.value = out;
-});
 
 // ===== SCROLL ANIMATIONS =====
 const io = new IntersectionObserver((entries)=>{
