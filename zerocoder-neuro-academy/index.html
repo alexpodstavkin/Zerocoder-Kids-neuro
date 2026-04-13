@@ -1,0 +1,880 @@
+<!DOCTYPE html>
+<html lang="ru" style="scroll-behavior: smooth;">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Бесплатный урок по программированию для подростков — Зерокодер</title>
+    <meta name="description" content="Бесплатный вводный онлайн-урок по программированию для подростков 12-16 лет от школы Зерокодер. Напиши свой первый рабочий проект за 60 минут!">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <!-- Yandex.Metrika counter -->
+    <script type="text/javascript">
+        (function(m,e,t,r,i,k,a){
+            m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+            m[i].l=1*new Date();
+            for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+            k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
+        })(window, document,'script','https://mc.yandex.ru/metrika/tag.js', 'ym');
+        ym(72085663, 'init', {clickmap:true, referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true});
+    </script>
+    <noscript><div><img src="https://mc.yandex.ru/watch/72085663" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+    <!-- /Yandex.Metrika counter -->
+
+    <!-- Top.Mail.Ru counter (VK Pixel) -->
+    <script type="text/javascript">
+    var _tmr = window._tmr || (window._tmr = []);
+    _tmr.push({id: "3739769", type: "pageView", start: (new Date()).getTime()});
+    (function (d, w, id) {
+      if (d.getElementById(id)) return;
+      var ts = d.createElement("script"); ts.type = "text/javascript"; ts.async = true; ts.id = id;
+      ts.src = "https://top-fwz1.mail.ru/js/code.js";
+      var f = function () {var s = d.getElementsByTagName("script")[0]; s.parentNode.insertBefore(ts, s);};
+      if (w.opera == "[object Opera]") { d.addEventListener("DOMContentLoaded", f, false); } else { f(); }
+    })(document, window, "tmr-code");
+    </script>
+    <noscript><div><img src="https://top-fwz1.mail.ru/counter?id=3739769;js=na" style="position:absolute;left:-9999px;" alt="Top.Mail.Ru" /></div></noscript>
+    <!-- /Top.Mail.Ru counter -->
+
+    <style>
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #1a5fb4;
+            --primary-hover: #164d96;
+            --primary-light: #3584e4;
+            --accent: #c01c28;
+            --dark-bg: #1c2133;
+            --light-bg: #f0f4f8;
+            --white: #ffffff;
+            --black: #1a1a2e;
+            --text-secondary: #4a5568;
+            --gradient-dark: linear-gradient(135deg, rgba(26,42,66,0.95), rgba(12,30,72,0.92));
+            --gradient-cta: linear-gradient(135deg, rgba(26,42,66,0.93), rgba(12,30,72,0.95));
+            --shadow-card: 0 4px 24px rgba(0,0,0,0.07);
+            --shadow-btn: 0 3px 12px rgba(26,95,180,0.35);
+            --radius: 16px;
+            --radius-btn: 8px;
+            --gold: #c8a84e;
+        }
+
+        body {
+            font-family: 'Roboto', Arial, sans-serif;
+            color: var(--black);
+            line-height: 1.6;
+            overflow-x: hidden;
+            background: var(--white);
+        }
+
+        .container {
+            max-width: 1140px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* ===== GOV EMBLEM HEADER ===== */
+        .gov-header {
+            background: var(--white);
+            border-bottom: 3px solid var(--primary);
+            padding: 12px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+        }
+
+        .gov-header-emblem {
+            width: 36px;
+            height: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .gov-header-text {
+            font-size: 13px;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            font-weight: 500;
+        }
+
+        /* ===== HERO ===== */
+        .hero {
+            min-height: 600px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            padding: 80px 20px;
+        }
+
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            background: url('hero-bg.png') center/cover no-repeat;
+            filter: blur(6px);
+            transform: scale(1.05);
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: rgba(10,14,39,0.5);
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 860px;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 100px;
+            padding: 8px 20px;
+            margin-bottom: 28px;
+            backdrop-filter: blur(8px);
+        }
+
+        .hero-badge-dot {
+            width: 8px;
+            height: 8px;
+            background: var(--gold);
+            border-radius: 50%;
+        }
+
+        .hero-badge span {
+            font-size: 13px;
+            color: rgba(255,255,255,0.9);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            font-weight: 500;
+        }
+
+        .hero h1 {
+            font-size: 46px;
+            font-weight: 900;
+            color: var(--white);
+            text-transform: uppercase;
+            line-height: 1.15;
+            margin-bottom: 48px;
+            letter-spacing: -0.5px;
+        }
+
+        .hero h1 span {
+            color: var(--gold);
+        }
+
+        .hero-sub {
+            font-size: 18px;
+            color: rgba(255,255,255,0.75);
+            margin-bottom: 40px;
+            line-height: 1.6;
+        }
+
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 32px;
+            margin-top: 40px;
+            flex-wrap: wrap;
+        }
+
+        .hero-stat {
+            text-align: center;
+        }
+
+        .hero-stat-value {
+            font-size: 28px;
+            font-weight: 900;
+            color: var(--gold);
+            display: block;
+        }
+
+        .hero-stat-label {
+            font-size: 13px;
+            color: rgba(255,255,255,0.6);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* ===== BUTTONS ===== */
+        .btn {
+            display: inline-block;
+            background: var(--accent);
+            color: var(--white);
+            font-family: 'Roboto', Arial, sans-serif;
+            font-size: 20px;
+            font-weight: 700;
+            padding: 18px 48px;
+            border-radius: var(--radius-btn);
+            border: none;
+            cursor: pointer;
+            text-decoration: none;
+            box-shadow: 0 3px 12px rgba(192,28,40,0.35);
+            transition: background 0.25s, transform 0.2s, box-shadow 0.25s;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .btn:hover {
+            background: #a31723;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(192,28,40,0.45);
+        }
+
+        .btn:active {
+            transform: translateY(0);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--white);
+            box-shadow: none;
+        }
+
+        .btn-outline:hover {
+            background: rgba(255,255,255,0.1);
+            box-shadow: none;
+        }
+
+        /* ===== INFO STRIP ===== */
+        .info-strip {
+            padding: 40px 20px;
+            background: var(--white);
+        }
+
+        .info-box {
+            background: var(--light-bg);
+            border-radius: var(--radius);
+            padding: 48px 56px;
+            display: flex;
+            align-items: center;
+            gap: 36px;
+            max-width: 1100px;
+            margin: 0 auto;
+            border-left: 4px solid var(--primary);
+        }
+
+        .info-icon {
+            flex-shrink: 0;
+            width: 80px;
+            height: 80px;
+            background: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+        }
+
+        .info-icon svg {
+            width: 40px;
+            height: 40px;
+            color: var(--primary);
+        }
+
+        .info-box p {
+            font-size: 20px;
+            line-height: 1.6;
+            color: var(--black);
+        }
+
+        .info-box strong {
+            color: var(--primary);
+        }
+
+        .desktop-br {
+            display: block;
+        }
+
+        /* ===== SECTION COMMON ===== */
+        .section {
+            padding: 80px 20px;
+        }
+
+        .section-title {
+            font-size: 36px;
+            font-weight: 900;
+            text-align: center;
+            margin-bottom: 16px;
+            text-transform: uppercase;
+            line-height: 1.2;
+            color: var(--black);
+        }
+
+        .section-subtitle {
+            font-size: 18px;
+            color: var(--text-secondary);
+            text-align: center;
+            margin-bottom: 56px;
+            max-width: 650px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* ===== CARDS GRID ===== */
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 28px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .card {
+            background: var(--light-bg);
+            border-radius: var(--radius);
+            padding: 40px 32px;
+            text-align: center;
+            transition: transform 0.25s, box-shadow 0.25s;
+            border-top: 3px solid var(--primary);
+        }
+
+        .card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-card);
+        }
+
+        .card-icon {
+            width: 72px;
+            height: 72px;
+            margin: 0 auto 24px;
+            background: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+        }
+
+        .card-icon svg {
+            width: 34px;
+            height: 34px;
+            color: var(--primary);
+        }
+
+        .card h3 {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+
+        .card p {
+            font-size: 16px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        /* ===== STEPS ===== */
+        .steps {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 28px;
+        }
+
+        .step {
+            display: flex;
+            align-items: flex-start;
+            gap: 28px;
+            background: var(--light-bg);
+            border-radius: var(--radius);
+            padding: 36px 40px;
+            transition: transform 0.25s, box-shadow 0.25s;
+        }
+
+        .step:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-card);
+        }
+
+        .step-number {
+            flex-shrink: 0;
+            width: 56px;
+            height: 56px;
+            background: var(--primary);
+            color: var(--white);
+            font-size: 24px;
+            font-weight: 900;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .step-content h3 {
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .step-content p {
+            font-size: 17px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        /* ===== CTA BANNER ===== */
+        .cta-banner {
+            background:
+                radial-gradient(ellipse 800px 500px at 15% 80%, rgba(26,95,180,0.5), transparent),
+                radial-gradient(ellipse 700px 500px at 85% 20%, rgba(12,30,72,0.6), transparent),
+                radial-gradient(ellipse 500px 400px at 50% 50%, rgba(26,60,140,0.3), transparent),
+                linear-gradient(160deg, #0c1e48 0%, #1a2a42 35%, #162040 65%, #0d1630 100%);
+            padding: 80px 20px;
+            text-align: center;
+            position: relative;
+        }
+
+        .cta-banner h2 {
+            font-size: 36px;
+            font-weight: 900;
+            color: var(--white);
+            text-transform: uppercase;
+            margin-bottom: 12px;
+        }
+
+        .cta-banner p {
+            font-size: 20px;
+            color: rgba(255,255,255,0.8);
+            margin-bottom: 36px;
+        }
+
+        /* ===== ADVANTAGES ===== */
+        .advantages .cards {
+            grid-template-columns: repeat(3, 1fr);
+        }
+
+        .advantage-card {
+            background: var(--light-bg);
+            border-radius: var(--radius);
+            padding: 40px 32px;
+            text-align: left;
+            transition: transform 0.25s, box-shadow 0.25s;
+        }
+
+        .advantage-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-card);
+        }
+
+        .advantage-check {
+            width: 48px;
+            height: 48px;
+            background: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .advantage-check svg {
+            width: 24px;
+            height: 24px;
+            color: var(--white);
+        }
+
+        .advantage-card h3 {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .advantage-card p {
+            font-size: 16px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        /* ===== WHY NOW ===== */
+        .why-now-row {
+            display: flex;
+            gap: 28px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .why-now-card-img {
+            flex: 0 0 380px;
+            background: var(--light-bg);
+            border-radius: var(--radius);
+            overflow: hidden;
+        }
+
+        .why-now-card-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .why-now-card-text {
+            flex: 1;
+            background: var(--light-bg);
+            border-radius: var(--radius);
+            padding: 40px 48px;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            justify-content: center;
+            border-left: 4px solid var(--primary);
+        }
+
+        .why-now-card-text p {
+            font-size: 17px;
+            line-height: 1.7;
+        }
+
+        /* ===== FINAL CTA LABEL ===== */
+        .final-label .info-box {
+            border-left: 4px solid var(--accent);
+        }
+
+        /* ===== SIGNUP FORM ===== */
+        .signup-form {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            max-width: 420px;
+            margin: 0 auto;
+        }
+
+        .signup-form input {
+            font-family: 'Roboto', Arial, sans-serif;
+            font-size: 17px;
+            padding: 16px 20px;
+            border: 2px solid #dde2ea;
+            border-radius: var(--radius-btn);
+            outline: none;
+            transition: border-color 0.2s;
+            background: var(--white);
+        }
+
+        .signup-form input:focus {
+            border-color: var(--primary);
+        }
+
+        .signup-form .btn {
+            width: 100%;
+            text-align: center;
+        }
+
+        /* ===== FINAL CTA ===== */
+        .final-cta {
+            padding: 60px 20px;
+            background: var(--white);
+        }
+
+        .final-box {
+            background: var(--light-bg);
+            border-radius: var(--radius);
+            padding: 48px;
+            text-align: center;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .final-box p {
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--primary);
+            text-transform: uppercase;
+            margin-bottom: 28px;
+            line-height: 1.4;
+        }
+
+        /* ===== FOOTER ===== */
+        .footer {
+            background: var(--dark-bg);
+            color: rgba(255,255,255,0.6);
+            text-align: center;
+            padding: 32px 20px;
+            font-size: 14px;
+        }
+
+        .footer a {
+            color: rgba(255,255,255,0.8);
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            color: var(--white);
+        }
+
+        /* ===== GOV STRIPE ===== */
+        .gov-stripe {
+            height: 6px;
+            background: linear-gradient(90deg, var(--white) 0%, var(--white) 33.33%, var(--primary) 33.33%, var(--primary) 66.66%, var(--accent) 66.66%, var(--accent) 100%);
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 960px) {
+            .hero h1 {
+                font-size: 36px;
+            }
+            .cards {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .advantages .cards {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .info-box {
+                padding: 36px 32px;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .hero {
+                min-height: 480px;
+                padding: 60px 16px;
+            }
+            .hero h1 {
+                font-size: 26px;
+            }
+            .hero-sub {
+                font-size: 16px;
+            }
+            .btn {
+                font-size: 17px;
+                padding: 16px 36px;
+            }
+            .section-title {
+                font-size: 26px;
+            }
+            .cards {
+                grid-template-columns: 1fr;
+            }
+            .advantages .cards {
+                grid-template-columns: 1fr;
+            }
+            .desktop-br {
+                display: none;
+            }
+            .info-box {
+                flex-direction: column;
+                text-align: center;
+                padding: 32px 24px;
+                border-left: none;
+                border-top: 4px solid var(--primary);
+            }
+            .why-now-row {
+                flex-direction: column;
+            }
+            .why-now-card-img {
+                flex: none;
+                height: 220px;
+            }
+            .why-now-card-text {
+                padding: 28px 24px;
+                border-left: none;
+                border-top: 4px solid var(--primary);
+            }
+            .info-box p {
+                font-size: 17px;
+            }
+            .step {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+                padding: 28px 24px;
+            }
+            .cta-banner h2 {
+                font-size: 26px;
+            }
+            .final-box p {
+                font-size: 18px;
+            }
+            .hero-stats {
+                gap: 20px;
+            }
+            .gov-header {
+                flex-direction: column;
+                gap: 6px;
+            }
+            .gov-header-text {
+                font-size: 11px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 22px;
+            }
+            .section {
+                padding: 56px 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- GOV STRIPE -->
+    <div class="gov-stripe"></div>
+
+    <!-- HERO -->
+    <section class="hero">
+        <div class="hero-bg"></div>
+        <div class="hero-content">
+            <h1>Национальный проект РФ<br><span>&laquo;Код будущего:</span><br>основы <span>программирования для подростков 12&ndash;16 лет&raquo;</span></h1>
+            <a href="#signup" class="btn">Записать ребёнка</a>
+        </div>
+    </section>
+
+    <!-- INFO STRIP -->
+    <section class="info-strip">
+        <div class="info-box">
+            <div class="info-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+            </div>
+            <p>В&nbsp;рамках программы цифрового образования Зерокодер проводит бесплатный <strong>индивидуальный онлайн-урок</strong> по&nbsp;программированию для&nbsp;подростков <strong>12&ndash;16&nbsp;лет</strong>.<br class="desktop-br"> Уровень подготовки&nbsp;&mdash; с&nbsp;нуля.</p>
+        </div>
+    </section>
+
+    <!-- WHY NOW -->
+    <section class="info-strip">
+        <h2 class="section-title" style="margin-bottom: 32px;">Почему программирование &mdash; ключевой навык будущего?</h2>
+        <div class="why-now-row">
+            <div class="why-now-card-img">
+                <img src="why-now.png" alt="Подросток за компьютером">
+            </div>
+            <div class="why-now-card-text">
+                <p>По данным Минцифры, к&nbsp;2030 году России потребуется более 1&nbsp;млн айти-специалистов. Программирование становится базовой грамотностью, как когда-то чтение и математика.</p>
+                <p>Подростки, которые начинают программировать в&nbsp;12&ndash;16&nbsp;лет, осваивают логическое мышление и алгоритмы значительно быстрее. К&nbsp;окончанию школы они уже имеют реальные проекты в&nbsp;портфолио.</p>
+                <p>Средняя зарплата начинающего разработчика &mdash; от&nbsp;80&nbsp;000&nbsp;&#8381;, а&nbsp;опытного специалиста &mdash; более 250&nbsp;000&nbsp;&#8381;. Это профессия с&nbsp;гарантированным спросом на&nbsp;десятилетия вперёд.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- WHAT WILL LEARN -->
+    <section class="section">
+        <h2 class="section-title">Что даст урок вашему ребёнку</h2>
+        <div class="cards">
+            <div class="card">
+                <div class="card-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/></svg>
+                </div>
+                <h3>Написание кода</h3>
+                <p>Ребёнок напишет свой первый код, который&nbsp;работает</p>
+            </div>
+            <div class="card">
+                <div class="card-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5.002 5.002 0 017.072 0"/></svg>
+                </div>
+                <h3>Понимание айти-профессий</h3>
+                <p>Узнает, какие профессии существуют в&nbsp;айти, и&nbsp;определит, что ему ближе: веб-разработка, создание игр или&nbsp;мобильных приложений</p>
+            </div>
+            <div class="card">
+                <div class="card-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+                </div>
+                <h3>Логика и мышление</h3>
+                <p>Разовьёт алгоритмическое мышление, навыки решения задач и&nbsp;умение раскладывать сложное на&nbsp;простые шаги</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- STEPS -->
+    <section class="section" style="background: var(--white);">
+        <h2 class="section-title">Как проходит урок</h2>
+        <p class="section-subtitle">Три простых этапа от знакомства до собственного проекта</p>
+        <div class="steps">
+            <div class="step">
+                <div class="step-number">1</div>
+                <div class="step-content">
+                    <h3>Знакомство и диагностика</h3>
+                    <p>Преподаватель определит уровень и&nbsp;интересы ребёнка, расскажет о&nbsp;мире айти-профессий и&nbsp;покажет, что программирование&nbsp;&mdash; это увлекательно и&nbsp;доступно каждому</p>
+                </div>
+            </div>
+            <div class="step">
+                <div class="step-number">2</div>
+                <div class="step-content">
+                    <h3>Практика: пишем код</h3>
+                    <p>Ребёнок напишет свои первые строки кода под&nbsp;руководством преподавателя. Разберётся в&nbsp;логике программирования на&nbsp;реальных примерах</p>
+                </div>
+            </div>
+            <div class="step">
+                <div class="step-number">3</div>
+                <div class="step-content">
+                    <h3>Свой первый проект</h3>
+                    <p>Результат урока&nbsp;&mdash; работающий проект, который ребёнок создаст сам. В&nbsp;качестве бонуса&nbsp;&ndash; персональная карта развития с&nbsp;рекомендациями для&nbsp;дальнейшего обучения</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA BANNER -->
+    <section class="cta-banner">
+        <h2>Запись открыта &mdash; количество мест ограничено!</h2>
+        <p>Индивидуальный онлайн-урок, 60 минут, полностью бесплатно</p>
+        <a href="#signup" class="btn">Записать ребёнка</a>
+    </section>
+
+    <!-- ADVANTAGES -->
+    <section class="section advantages">
+        <h2 class="section-title">Преимущества программы</h2>
+        <div class="cards">
+            <div class="advantage-card">
+                <div class="advantage-check">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                </div>
+                <h3>Индивидуальный формат</h3>
+                <p>Занятие проходит один на&nbsp;один с&nbsp;преподавателем&nbsp;&mdash; всё внимание только вашему ребёнку, темп подбирается индивидуально</p>
+            </div>
+            <div class="advantage-card">
+                <div class="advantage-check">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                </div>
+                <h3>Практика</h3>
+                <p>Никакой скучной теории&nbsp;&mdash; ребёнок сразу пишет код, видит результат и&nbsp;создаёт свой первый рабочий проект</p>
+            </div>
+            <div class="advantage-card">
+                <div class="advantage-check">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                </div>
+                <h3>Опытные преподаватели</h3>
+                <p>Занятия ведут практикующие разработчики, которые умеют объяснять сложное простым языком и&nbsp;увлечь подростка</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- FINAL CTA LABEL -->
+    <section class="info-strip final-label" style="padding-bottom: 0;">
+        <div class="info-box" style="justify-content: center; text-align: center;">
+            <p style="font-size: 22px; font-weight: 700; color: var(--accent); text-transform: uppercase;">Для&nbsp;участия в&nbsp;программе родителю необходимо заполнить форму&nbsp;записи</p>
+        </div>
+    </section>
+
+    <!-- FINAL CTA -->
+    <section class="final-cta" id="signup">
+        <div class="final-box">
+            <script id="a9868c9936c0b309e32f1c38ac0bd8873e360fc5" src="https://university.zerocoder.ru/pl/lite/widget/script?id=1589677"></script>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <p>&copy; 2026 Зерокодер &mdash; школа программирования для детей и подростков. <a href="https://zerocoder.ru" target="_blank" rel="noopener">zerocoder.ru</a></p>
+    </footer>
+
+    <!-- GOV STRIPE BOTTOM -->
+    <div class="gov-stripe"></div>
+
+</body>
+</html>
