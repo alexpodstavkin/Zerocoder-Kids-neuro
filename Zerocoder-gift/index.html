@@ -220,9 +220,16 @@ section{padding:90px 0;position:relative}
 }
 .widget-container *{color:#333!important;overflow:visible!important}
 .widget-container iframe{
-  min-height:520px!important;
+  min-height:750px!important;
   height:auto!important;
   overflow:visible!important;
+  max-height:none!important;
+}
+.widget-container div,
+.widget-container form{
+  overflow:visible!important;
+  max-height:none!important;
+  height:auto!important;
 }
 .widget-container a{color:var(--brand-violet)!important;text-decoration:underline}
 .widget-container input[type="checkbox"]{accent-color:var(--brand-violet)}
