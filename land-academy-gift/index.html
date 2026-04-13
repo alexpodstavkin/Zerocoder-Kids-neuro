@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Зерокодер — Пробный урок программирования в подарок</title>
+<meta name="description" content="Подарите ребёнку 12-16 лет пробный индивидуальный урок программирования от Зерокодер. 60 минут, онлайн, без обязательств.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* ===== DESIGN SYSTEM — Matrix Green ===== */
+:root {
+  --bg-deep: #040a04;
+  --bg-surface: #081208;
+  --bg-card: rgba(0,255,65,0.03);
+  --bg-card-hover: rgba(0,255,65,0.06);
+  --border: rgba(0,255,65,0.1);
+  --border-hover: rgba(0,255,65,0.25);
+  --text-primary: #e8f5e8;
+  --text-secondary: #7da87d;
+  --text-dim: #4a6b4a;
+  --accent: #00ff41;
+  --accent-mid: #10b981;
+  --accent-dim: #059669;
+  --grad-brand: linear-gradient(135deg, #00ff41 0%, #10b981 50%, #059669 100%);
+  --grad-subtle: linear-gradient(135deg, rgba(0,255,65,0.08), rgba(16,185,129,0.05));
+  --grad-glow: radial-gradient(600px circle at var(--mx,50%) var(--my,50%), rgba(0,255,65,0.04), transparent 40%);
+  --font-display: 'Space Grotesk', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+  --section-gap: clamp(4rem, 10vw, 7rem);
+  --container: min(1200px, 100% - 2rem);
+}
+@media(min-width:768px){ :root{--container:min(1200px,100% - 4rem)} }
+@media(min-width:1024px){ :root{--container:min(1200px,100% - 8rem)} }
+
+/* ===== RESET ===== */
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased}
+body{font-family:var(--font-display);background:var(--bg-deep);color:var(--text-primary);line-height:1.65;overflow-x:hidden}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+button{font-family:inherit;cursor:pointer;border:none}
+
+.container{width:var(--container);margin:0 auto}
+
+/* ===== AMBIENT ===== */
+.orb{position:fixed;border-radius:50%;filter:blur(140px);opacity:0.12;pointer-events:none;z-index:0}
+.orb--1{width:700px;height:700px;top:-250px;right:-200px;background:#00ff41;animation:drift 22s ease-in-out infinite}
+.orb--2{width:600px;height:600px;bottom:20%;left:-250px;background:#10b981;animation:drift 28s ease-in-out infinite reverse}
+@keyframes drift{0%,100%{transform:translate(0,0)}40%{transform:translate(25px,-35px)}80%{transform:translate(-20px,25px)}}
+
+/* ===== GRAIN ===== */
+body::after{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");pointer-events:none;z-index:1000;opacity:0.6}
+
+/* ===== HEADER ===== */
+.header{position:fixed;top:0;left:0;right:0;z-index:100;padding:0.875rem 0;backdrop-filter:blur(20px) saturate(1.4);-webkit-backdrop-filter:blur(20px) saturate(1.4);background:rgba(4,10,4,0.75);border-bottom:1px solid var(--border)}
+.header__inner{display:flex;align-items:center;justify-content:space-between}
+.logo{display:flex;align-items:center;gap:0.625rem;font-weight:700;font-size:1.15rem;letter-spacing:-0.02em}
+.logo__icon{width:34px;height:34px;border-radius:9px;background:var(--grad-brand);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:1rem;color:var(--bg-deep)}
+.header__nav{display:none;gap:1.75rem;font-size:0.875rem;color:var(--text-secondary)}
+@media(min-width:768px){.header__nav{display:flex}}
+.header__nav a{transition:color 200ms ease}
+.header__nav a:hover{color:var(--text-primary)}
+
+/* ===== BUTTONS ===== */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:0.5rem;padding:0.875rem 2rem;border-radius:12px;font-weight:600;font-size:1rem;letter-spacing:-0.01em;transition:transform 160ms var(--ease-out),box-shadow 300ms var(--ease-out);min-height:48px}
+.btn:active{transform:scale(0.97)}
+.btn--primary{background:var(--grad-brand);color:var(--bg-deep);box-shadow:0 0 0 0 rgba(0,255,65,0)}
+.btn--primary:hover{box-shadow:0 8px 40px -8px rgba(0,255,65,0.35)}
+.btn--ghost{background:var(--bg-card);color:var(--text-primary);border:1px solid var(--border)}
+.btn--ghost:hover{border-color:var(--border-hover);background:var(--bg-card-hover)}
+.btn--sm{padding:0.625rem 1.25rem;font-size:0.875rem;border-radius:10px}
+@media(max-width:767px){.btn--full-mobile{width:100%;padding:1rem}}
+
+/* ===== HERO ===== */
+.hero{min-height:100dvh;display:grid;align-items:center;padding:6rem 0 4rem;position:relative;z-index:1}
+.hero__content{max-width:720px}
+.hero__badge{display:inline-flex;align-items:center;gap:0.5rem;padding:0.4rem 1rem;border-radius:100px;background:rgba(0,255,65,0.08);border:1px solid rgba(0,255,65,0.2);font-size:0.8125rem;font-family:var(--font-mono);color:var(--accent);margin-bottom:2rem}
+.hero__badge-icon{font-size:1rem}
+.hero__title{font-size:clamp(2.25rem,5.5vw,4rem);font-weight:700;line-height:1.1;letter-spacing:-0.03em;margin-bottom:1.5rem}
+.hero__title-accent{background:var(--grad-brand);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero__sub{font-size:clamp(1rem,1.8vw,1.15rem);color:var(--text-secondary);line-height:1.7;max-width:540px;margin-bottom:2.5rem}
+.hero__actions{display:flex;gap:1rem;flex-wrap:wrap}
+.hero__stats{display:flex;justify-content:space-between;margin-top:3.5rem;padding-top:1.75rem;border-top:1px solid var(--border)}
+.hero__stat-val{font-size:1.5rem;font-weight:700;letter-spacing:-0.02em;font-family:var(--font-mono);color:var(--accent);white-space:nowrap}
+@media(max-width:767px){.hero__stats{gap:1rem}.hero__stat-val{font-size:1.25rem}}
+.hero__stat-lbl{font-size:0.75rem;color:var(--text-dim);margin-top:0.2rem;text-transform:uppercase;letter-spacing:0.08em}
+
+/* ===== SECTIONS ===== */
+.section{padding:var(--section-gap) 0;position:relative;z-index:1}
+.section__label{font-family:var(--font-mono);font-size:0.75rem;text-transform:uppercase;letter-spacing:0.15em;color:var(--accent);margin-bottom:0.75rem}
+.section__title{font-size:clamp(1.6rem,3.5vw,2.5rem);font-weight:700;letter-spacing:-0.025em;line-height:1.15;max-width:600px}
+.section__sub{color:var(--text-secondary);margin-top:0.75rem;max-width:500px;font-size:1rem}
+
+/* ===== BENTO ===== */
+.bento{display:grid;gap:1rem;margin-top:2.5rem}
+@media(min-width:768px){.bento{grid-template-columns:1.2fr 1fr}}
+@media(min-width:1024px){.bento{grid-template-columns:1fr 1fr 1fr}.bento__card:nth-child(1){grid-column:1/2}.bento__card:nth-child(2){grid-column:2/4}.bento__card:nth-child(3){grid-column:1/3}.bento__card:nth-child(4){grid-column:3/4}}
+.bento__card{padding:1.75rem;border-radius:16px;background:var(--bg-card);border:1px solid var(--border);transition:border-color 300ms var(--ease-out),transform 300ms var(--ease-out)}
+@media(hover:hover)and(pointer:fine){.bento__card:hover{border-color:var(--border-hover);transform:translateY(-2px)}}
+.bento__icon{width:44px;height:44px;border-radius:12px;background:var(--grad-subtle);display:flex;align-items:center;justify-content:center;margin-bottom:1rem;border:1px solid var(--border)}
+.bento__card-title{font-size:1.1rem;font-weight:600;letter-spacing:-0.01em;margin-bottom:0.375rem}
+.bento__card-text{color:var(--text-secondary);font-size:0.9rem;line-height:1.6}
+
+/* ===== PROMISE ===== */
+.promise{padding:2.5rem;border-radius:20px;background:var(--grad-subtle);border:1px solid var(--border-hover);margin-top:2.5rem;position:relative;overflow:hidden}
+.promise::before{content:'';position:absolute;inset:0;background:var(--grad-glow);pointer-events:none}
+.promise__text{position:relative;font-size:1.05rem;line-height:1.75;color:var(--text-primary);max-width:640px}
+.promise__text strong{color:var(--accent);font-weight:600}
+
+/* ===== URGENCY ===== */
+.urgency{padding:3rem 2rem;border-radius:20px;background:var(--bg-card);border:1px solid var(--border-hover);text-align:center;position:relative;overflow:hidden}
+.urgency::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 50% 0%,rgba(0,255,65,0.06),transparent 60%);pointer-events:none}
+.urgency__title{font-size:clamp(1.4rem,3vw,2rem);font-weight:700;letter-spacing:-0.02em;margin-bottom:0.625rem;position:relative}
+.urgency__text{color:var(--text-secondary);font-size:1rem;margin-bottom:2rem;position:relative;max-width:480px;margin-left:auto;margin-right:auto}
+
+/* ===== FINAL CTA ===== */
+.cta-final{text-align:center;padding:var(--section-gap) 0;position:relative;z-index:1}
+.cta-final__title{font-size:clamp(1.75rem,4.5vw,3rem);font-weight:700;letter-spacing:-0.03em;line-height:1.1;margin-bottom:1rem}
+.cta-final__sub{color:var(--text-secondary);font-size:1.05rem;margin-bottom:2.5rem;max-width:440px;margin-left:auto;margin-right:auto}
+
+/* ===== FOOTER ===== */
+.footer{border-top:1px solid var(--border);padding:1.75rem 0;position:relative;z-index:1}
+.footer__inner{display:flex;flex-direction:column;gap:0.75rem;align-items:center;text-align:center}
+@media(min-width:768px){.footer__inner{flex-direction:row;justify-content:space-between;text-align:left}}
+.footer__copy{font-size:0.8125rem;color:var(--text-dim)}
+.footer__links{display:flex;gap:1.5rem;font-size:0.8125rem;color:var(--text-secondary)}
+.footer__links a{transition:color 200ms ease}
+.footer__links a:hover{color:var(--text-primary)}
+
+/* ===== SIGNUP FORM ===== */
+.signup-form{max-width:480px;margin:0 auto;text-align:left}
+.signup-form__fields{display:grid;gap:1rem;margin-bottom:1.5rem}
+.signup-form__field{display:flex;flex-direction:column;gap:0.375rem}
+.signup-form__label{font-size:0.8125rem;font-weight:500;color:var(--text-secondary)}
+.signup-form__input{padding:0.875rem 1rem;border-radius:12px;border:1px solid var(--border);background:var(--bg-card);color:var(--text-primary);font-family:var(--font-display);font-size:1rem;outline:none;transition:border-color 200ms ease,box-shadow 200ms ease}
+.signup-form__input::placeholder{color:var(--text-dim)}
+.signup-form__input:focus{border-color:var(--accent);box-shadow:0 0 0 3px rgba(0,255,65,0.1)}
+.signup-form__btn{width:100%;margin-top:0.5rem}
+.signup-form__note{text-align:center;font-size:0.75rem;color:var(--text-dim);margin-top:1rem}
+.signup-form__success{text-align:center;padding:2rem;font-size:1.1rem;color:var(--accent)}
+
+/* ===== SCROLL REVEAL ===== */
+.reveal{opacity:0;transform:translateY(16px);transition:opacity 550ms var(--ease-out),transform 550ms var(--ease-out)}
+.reveal.visible{opacity:1;transform:translateY(0)}
+.reveal-d1{transition-delay:50ms}
+.reveal-d2{transition-delay:100ms}
+.reveal-d2{transition-delay:150ms}
+.reveal-d3{transition-delay:200ms}
+
+@media(prefers-reduced-motion:reduce){
+  .reveal{opacity:1;transform:none;transition:none}
+  .orb{animation:none}
+}
+/* ===== ZEROCODER WIDGET OVERRIDES ===== */
+[class*="widget"] label,
+[class*="widget"] p,
+[class*="widget"] span,
+[class*="widget"] div,
+[class*="widget"] legend,
+[class*="quiz"] label,
+[class*="quiz"] p,
+[class*="quiz"] span,
+[class*="quiz"] div,
+[class*="quiz"] legend,
+[class*="form"] label,
+[class*="form"] p,
+[class*="form"] span,
+[class*="form"] legend {
+  color: #fff !important;
+}
+</style>
+<!-- Yandex.Metrika counter -->
+<script type="text/javascript">
+    (function(m,e,t,r,i,k,a){
+        m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+        m[i].l=1*new Date();
+        for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+        k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
+    })(window, document,'script','https://mc.yandex.ru/metrika/tag.js', 'ym');
+
+    ym(72085663, 'init', {clickmap:true, referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true});
+</script>
+<noscript><div><img src="https://mc.yandex.ru/watch/72085663" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+<!-- /Yandex.Metrika counter -->
+</head>
+<body>
+
+<div class="orb orb--1" aria-hidden="true"></div>
+<div class="orb orb--2" aria-hidden="true"></div>
+
+<!-- ===== HEADER ===== -->
+<header class="header">
+  <div class="container header__inner">
+    <a href="#" class="logo">
+      <span>Зерокодер</span>
+    </a>
+    <a href="#signup" class="btn btn--primary btn--sm">Получить подарок</a>
+  </div>
+</header>
+
+<!-- ===== HERO ===== -->
+<section class="hero container">
+  <div class="hero__content">
+    <div class="hero__badge reveal">
+      <span class="hero__badge-icon">&#127873;</span>
+      Вам доступен подарок
+    </div>
+    <h1 class="hero__title reveal reveal-d1">
+      Пробный урок<br>программирования<br>
+      <span class="hero__title-accent">для вашего ребёнка</span>
+    </h1>
+    <div class="hero__actions reveal reveal-d2">
+      <a href="#signup" class="btn btn--primary btn--full-mobile">Получить подарок</a>
+    </div>
+    <div class="hero__stats reveal reveal-d3">
+      <div>
+        <div class="hero__stat-val">0 &#8381;</div>
+        <div class="hero__stat-lbl">Пробный</div>
+      </div>
+      <div>
+        <div class="hero__stat-val">12-16</div>
+        <div class="hero__stat-lbl">Лет</div>
+      </div>
+      <div>
+        <div class="hero__stat-val">60 мин</div>
+        <div class="hero__stat-lbl">Онлайн</div>
+      </div>
+      <div>
+        <div class="hero__stat-val">1:1</div>
+        <div class="hero__stat-lbl">Формат</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== ЧТО В ПОДАРКЕ ===== -->
+<section class="section container" id="gift">
+  <div class="section__label reveal">Что внутри подарка</div>
+  <h2 class="section__title reveal reveal-d1">Полноценный урок, а не демо-ролик</h2>
+  <p class="section__sub reveal reveal-d2">Вот, что ребёнок получит</p>
+
+  <div class="bento">
+    <div class="bento__card reveal">
+      <div class="bento__icon">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+      </div>
+      <div class="bento__card-title">Первый работающий код</div>
+      <div class="bento__card-text">Не теория и не видеоурок. Ребёнок вместе с преподавателем напишет реальный код и увидит результат прямо на экране.</div>
+    </div>
+
+    <div class="bento__card reveal reveal-d1">
+      <div class="bento__icon">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--accent-mid)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+      </div>
+      <div class="bento__card-title">Знакомство с IT-профессиями</div>
+      <div class="bento__card-text">Разработчик, дизайнер, аналитик — за словами стоят конкретные задачи. Ребёнок попробует их и поймёт, что ему интересно.</div>
+    </div>
+
+    <div class="bento__card reveal reveal-d2">
+      <div class="bento__icon">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--accent-dim)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+      </div>
+      <div class="bento__card-title">Развитие логического мышления</div>
+      <div class="bento__card-text">Программирование тренирует умение разбивать сложное на простое. Это работает в математике, физике и любом другом предмете.</div>
+    </div>
+
+    <div class="bento__card reveal reveal-d2">
+      <div class="bento__icon">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+      </div>
+      <div class="bento__card-title">Карта развития</div>
+      <div class="bento__card-text">После урока вы получите обратную связь: к чему есть склонность, какое направление подходит и как двигаться дальше.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== URGENCY ===== -->
+<section class="section container">
+  <div class="urgency reveal">
+    <h2 class="urgency__title">Количество подарков ограничено</h2>
+    <p class="urgency__text">Каждый преподаватель ведёт ученика индивидуально — свободных слотов мало. Записывайтесь, пока есть место.</p>
+    <a href="#signup" class="btn btn--primary btn--full-mobile" style="position:relative">Получить подарок</a>
+  </div>
+</section>
+
+<!-- ===== FINAL CTA + FORM ===== -->
+<section class="cta-final container" id="signup">
+  <h2 class="cta-final__title reveal">
+    Заберите подарок<br><span class="hero__title-accent">для вашего ребёнка</span>
+  </h2>
+  <div class="reveal reveal-d1">
+    <script id="49688722aaffdb5c5b70714677193bc999bb6e34" src="https://university.zerocoder.ru/pl/lite/widget/script?id=1589750"></script>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer class="footer">
+  <div class="container footer__inner">
+    <div class="footer__copy">Зерокодер, 2026</div>
+    <div class="footer__links">
+      <a href="https://zerocoder.ru" target="_blank" rel="noopener">zerocoder.ru</a>
+      <a href="#">Политика конфиденциальности</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+const ro = new IntersectionObserver(es => {
+  es.forEach(e => { if(e.isIntersecting){ e.target.classList.add('visible'); ro.unobserve(e.target) }})
+}, { threshold: 0.08, rootMargin: '-30px' });
+document.querySelectorAll('.reveal').forEach(el => ro.observe(el));
+
+function handleSubmit(e) {
+  e.preventDefault();
+  const form = e.target;
+  const data = { name: form.name.value, phone: form.phone.value, email: form.email.value };
+  console.log('Form submitted:', data);
+  form.innerHTML = '<div class="signup-form__success">Спасибо! Мы свяжемся с вами в ближайшее время.</div>';
+  return false;
+}
+</script>
+<!-- Top.Mail.Ru counter -->
+<script type="text/javascript">
+var _tmr = window._tmr || (window._tmr = []);
+_tmr.push({id: "3739769", type: "pageView", start: (new Date()).getTime()});
+(function (d, w, id) {
+  if (d.getElementById(id)) return;
+  var ts = d.createElement("script"); ts.type = "text/javascript"; ts.async = true; ts.id = id;
+  ts.src = "https://top-fwz1.mail.ru/js/code.js";
+  var f = function () {var s = d.getElementsByTagName("script")[0]; s.parentNode.insertBefore(ts, s);};
+  if (w.opera == "[object Opera]") { d.addEventListener("DOMContentLoaded", f, false); } else { f(); }
+})(document, window, "tmr-code");
+</script>
+<noscript><div><img src="https://top-fwz1.mail.ru/counter?id=3739769;js=na" style="position:absolute;left:-9999px;" alt="Top.Mail.Ru" /></div></noscript>
+<!-- /Top.Mail.Ru counter -->
+</body>
+</html>
