@@ -7,7 +7,7 @@ export default function Hero() {
   return (
     <section id="top" className="section section-dark">
       <div className="container-zc">
-        <div className="grid lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+        <div className="grid lg:grid-cols-12 gap-8 lg:gap-12 items-center lg:items-stretch">
           <div className="lg:col-span-7">
             <div className="flex items-center gap-2 mb-5">
               <EventDatePill />
@@ -36,9 +36,9 @@ export default function Hero() {
             </div>
           </div>
 
-          <div className="lg:col-span-5">
+          <div className="lg:col-span-5 lg:flex">
             <div
-              className="hero-photo aspect-[4/3] sm:aspect-[3/2] lg:aspect-[4/3] rounded-2xl relative overflow-hidden mx-auto lg:ml-auto"
+              className="hero-photo aspect-[4/3] sm:aspect-[3/2] lg:aspect-auto lg:flex-1 lg:h-full lg:min-h-[420px] rounded-2xl relative overflow-hidden mx-auto lg:mx-0 w-full"
               style={{ maxWidth: '34rem' }}
             >
               <img
