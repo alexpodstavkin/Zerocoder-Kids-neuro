@@ -14,8 +14,8 @@ export default function WhySummer() {
       <div className="container-zc">
         <div className="max-w-3xl mb-8 md:mb-10">
           <h2 className="h2">
-            {summerReasons.title.pre.replace(/ /g, ' ')}
             <span className="accent">{summerReasons.title.accent.replace(/ /g, ' ')}</span>
+            {summerReasons.title.rest.replace(/ /g, ' ')}
           </h2>
         </div>
 
