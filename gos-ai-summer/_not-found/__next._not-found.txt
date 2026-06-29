@@ -2,4 +2,4 @@
 2:I[33127,["/gos-ai-summer/_next/static/chunks/03w0ki2iyd614.js","/gos-ai-summer/_next/static/chunks/0zjg2qt3473-6.js"],"default"]
 3:I[90233,["/gos-ai-summer/_next/static/chunks/03w0ki2iyd614.js","/gos-ai-summer/_next/static/chunks/0zjg2qt3473-6.js"],"default"]
 4:[]
-0:{"rsc":["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","template":["$","$L3",null,{}]}]]}],"isPartial":false,"staleTime":300,"varyParams":"$W4","buildId":"gSyuC4ANaBMmYWnW-OgKs"}
+0:{"rsc":["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","template":["$","$L3",null,{}]}]]}],"isPartial":false,"staleTime":300,"varyParams":"$W4","buildId":"fTVMOXuRd7npQOfWoUBeM"}
