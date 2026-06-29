@@ -8,7 +8,7 @@ const questions = [
 ];
 
 export default function Questions() {
-  const basePath = process.env.NODE_ENV === 'production' ? (process.env.BASEPATH ?? '/Zerocoder-Kids-neuro/gos-ai-summer') : '';
+  const basePath = process.env.NODE_ENV === 'production' ? (process.env.BASEPATH ?? '/gos-ai-summer') : '';
   return (
     <section className="sec questions-section">
       <div className="questions-inner">

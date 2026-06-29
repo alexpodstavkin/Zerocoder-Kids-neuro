@@ -10,7 +10,7 @@ import Reveal from './components/Reveal';
 import StickyMobileCta from './components/StickyMobileCta';
 
 export default function Page() {
-  const basePath = process.env.NODE_ENV === 'production' ? (process.env.BASEPATH ?? '/Zerocoder-Kids-neuro/gos-ai-summer') : '';
+  const basePath = process.env.NODE_ENV === 'production' ? (process.env.BASEPATH ?? '/gos-ai-summer') : '';
   return (
     <>
       <div className="top-zone">

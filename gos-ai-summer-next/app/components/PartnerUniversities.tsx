@@ -24,7 +24,7 @@ const partners = [
 ];
 
 export default function PartnerUniversities() {
-  const basePath = process.env.NODE_ENV === 'production' ? (process.env.BASEPATH ?? '/Zerocoder-Kids-neuro/gos-ai-summer') : '';
+  const basePath = process.env.NODE_ENV === 'production' ? (process.env.BASEPATH ?? '/gos-ai-summer') : '';
   return (
     <section className="sec partners-section">
       <div className="partners-inner">

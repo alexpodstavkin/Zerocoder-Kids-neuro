@@ -67,7 +67,7 @@ const socials = [
 ];
 
 export default function Footer() {
-  const basePath = process.env.NODE_ENV === 'production' ? (process.env.BASEPATH ?? '/Zerocoder-Kids-neuro/gos-ai-summer') : '';
+  const basePath = process.env.NODE_ENV === 'production' ? (process.env.BASEPATH ?? '/gos-ai-summer') : '';
   return (
     <footer className="site-footer">
       <div className="footer-inner">

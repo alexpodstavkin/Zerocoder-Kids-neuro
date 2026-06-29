@@ -23,7 +23,7 @@ const modules = [
 ];
 
 export default function Program() {
-  const basePath = process.env.NODE_ENV === 'production' ? (process.env.BASEPATH ?? '/Zerocoder-Kids-neuro/gos-ai-summer') : '';
+  const basePath = process.env.NODE_ENV === 'production' ? (process.env.BASEPATH ?? '/gos-ai-summer') : '';
   return (
     <section id="program" className="sec" style={{ background: '#FFFFFF' }}>
       <div className="program-inner">

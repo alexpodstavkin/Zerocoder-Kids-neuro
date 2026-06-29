@@ -1,6 +1,6 @@
 /** @type {import('next').NextConfig} */
 const isProd = process.env.NODE_ENV === 'production';
-const basePath = isProd ? (process.env.BASEPATH ?? '/Zerocoder-Kids-neuro/gos-ai-summer') : '';
+const basePath = isProd ? (process.env.BASEPATH ?? '/gos-ai-summer') : '';
 
 const nextConfig = {
   output: 'export',
