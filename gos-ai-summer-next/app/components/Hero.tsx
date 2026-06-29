@@ -12,7 +12,7 @@ export default function Hero() {
             <span className="hero-divider-mark" />
             <span className="hero-divider-line" />
           </span>
-          <p className="hero-sub">Программа рассчитана на&nbsp;школьников от&nbsp;10 до&nbsp;14&nbsp;лет</p>
+          <p className="hero-sub">Программа рассчитана на&nbsp;школьников от&nbsp;10 до&nbsp;14&nbsp;лет. Старт: 15&nbsp;июля</p>
         </div>
 
         <div className="hero-cta-row">
