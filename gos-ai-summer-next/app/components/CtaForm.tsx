@@ -13,7 +13,7 @@ export default function CtaForm() {
             <div className="cta-meta">
               <span className="cta-meta-item">
                 <span className="cta-meta-dot" />
-                Старт программы: 15&nbsp;июля
+                Старт программы: 22&nbsp;июля
               </span>
               <span className="cta-meta-item">
                 <span className="cta-meta-dot" />
