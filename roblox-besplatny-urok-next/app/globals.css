@@ -1,0 +1,223 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ============================================================
+   АКЦЕНТ ПРОЕКТА — цвета Roblox (красный + оранж-лава).
+   Тема лендинга — СВЕТЛАЯ (белый фон, тёмный текст) — канон Зерокодера.
+   Нейтрали ниже — светлые. Тёмным остаётся только подвол (канон).
+   ============================================================ */
+:root {
+  /* === АКЦЕНТ (Roblox: фирменный красный → оранж-лава) === */
+  --acc: #e2231a;       /* основной акцент: фирменный красный Roblox */
+  --acc-dark: #b81a12;  /* hover / тёмный вариант */
+  --acc-soft: #ffecea;  /* бледно-красный тёплый тинт для светлой темы */
+  --acc-2: #ff6a1a;     /* оранж-лава: конец градиента (красный→оранж) */
+  --lava: #ff3b00;      /* «лава»: горячий red-orange для игровых блобов/свечений */
+
+  /* === ЗЕЛЁНЫЙ (ядро бренда Зерокодер) — вторичный микро-акцент (verified/точки). === */
+  --acc-green: #00e48d;
+  --acc-green-dark: #00c159;
+  --acc-green-soft: rgba(0, 228, 141, 0.14);
+
+  /* === НЕЙТРАЛИ — СВЕТЛАЯ тема (канон бренда) === */
+  --ink: #141413;        /* тёмный текст */
+  --sub: #6b7280;        /* приглушённый текст */
+  --paper: #f4f5f8;      /* светлый фон секции */
+  --paper-warm: #faf9f6; /* тёплый светлый фон */
+  --dark: #0c0e13;       /* остаётся для редких тёмных вставок (подвал) */
+  --dark-2: #111520;     /* тёмная поверхность для редких тёмных вставок */
+  --bord: #e5e7e0;       /* hairline на светлом */
+  --bord-dark: rgba(255, 255, 255, 0.1); /* hairline на тёмном (подвал) */
+
+  color-scheme: light;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+body {
+  background: #ffffff;
+  color: var(--ink);
+  font-size: 16px;
+  line-height: 1.55; /* универсальный body-lh со всех живых лендов */
+  -webkit-font-smoothing: antialiased;
+}
+
+@layer components {
+  /* ---------- Контейнер ---------- */
+  .container-x {
+    @apply mx-auto w-full max-w-content px-5 md:px-6;
+  }
+
+  /* ---------- Типографика (Manrope, плотный трекинг) ---------- */
+  .h1 {
+    @apply font-extrabold normal-case tracking-tightest leading-[1.0];
+    font-size: clamp(34px, 5.5vw, 60px);
+  }
+  .h2 {
+    @apply font-bold normal-case tracking-tightest leading-[1.04];
+    font-size: clamp(28px, 4vw, 40px);
+  }
+  .h3 {
+    @apply font-bold leading-tight tracking-[-0.01em];
+    font-size: clamp(20px, 2.4vw, 24px);
+  }
+  .lead {
+    @apply font-medium leading-[1.5];
+    font-size: clamp(17px, 2vw, 20px);
+  }
+  .caption {
+    @apply text-[13px] font-medium leading-[1.5] text-sub;
+  }
+  /* Акцентное выделение в заголовке: фирменный красный Roblox (контраст на белом) */
+  .hl {
+    color: var(--acc);
+  }
+  .hl-box {
+    background: var(--acc);
+    color: #fff;
+    padding: 0 0.15em;
+    border-radius: 8px;
+    display: inline-block;
+  }
+  .accent-italic {
+    @apply font-accent italic;
+  }
+
+  /* ---------- Кнопки ---------- */
+  .btn {
+    @apply inline-flex items-center justify-center gap-2.5 whitespace-nowrap font-bold uppercase tracking-[0.01em] transition-all duration-200;
+    font-size: 16px;
+  }
+  .btn-primary {
+    @apply btn rounded-pill bg-acc px-9 py-4 text-white hover:-translate-y-0.5;
+  }
+  .btn-primary:hover {
+    background: var(--acc-dark);
+  }
+  .btn-flat {
+    @apply btn rounded-flat bg-acc px-9 py-4 text-white hover:-translate-y-0.5;
+  }
+  .btn-flat:hover {
+    background: var(--acc-dark);
+  }
+  .btn-ghost {
+    @apply btn rounded-pill border-[1.5px] px-8 py-[14px];
+    color: var(--acc);
+    border-color: var(--acc);
+    background: transparent;
+  }
+  .btn-ghost:hover {
+    background: var(--acc-soft);
+  }
+  .btn-dark {
+    @apply btn rounded-flat bg-ink px-9 py-4 text-white hover:opacity-90;
+  }
+  .btn-sm {
+    @apply gap-2 px-5 py-2.5 text-[13px];
+  }
+
+  /* ---------- Бейджи / пилюли ---------- */
+  .pill {
+    @apply inline-flex items-center gap-2 rounded-pill px-4 py-2 text-[13px] font-bold uppercase tracking-[0.02em];
+    background: var(--acc-soft);
+    color: var(--acc);
+  }
+  .pill-dark {
+    @apply inline-flex items-center gap-2 rounded-pill px-4 py-2 text-[13px] font-bold uppercase tracking-[0.02em] text-white;
+    background: rgba(255, 255, 255, 0.08);
+  }
+
+  /* ---------- Карточки / бенто ---------- */
+  .card {
+    @apply rounded-lg border p-7 transition-all duration-200;
+    background: #ffffff;
+    border-color: var(--bord);
+  }
+  .card-float {
+    box-shadow: 0 12px 32px color-mix(in srgb, var(--acc) 18%, transparent),
+      0 2px 4px rgba(0, 0, 0, 0.08);
+  }
+  /* иконка-чип: тинт-красный фон, красная иконка (контраст на белом) */
+  .ico-chip {
+    @apply flex h-[46px] w-[46px] flex-none items-center justify-center rounded-md text-[22px];
+    background: var(--acc-soft);
+    color: var(--acc);
+  }
+  /* сплошной акцентный чип с белой иконкой (для акцентных блоков) */
+  .ico-chip-solid {
+    @apply flex h-[46px] w-[46px] flex-none items-center justify-center rounded-md text-[22px] text-white;
+    background: var(--acc);
+  }
+  /* зелёный чип-галочка — вторичный бренд-штрих (успех/verified) */
+  .ico-chip-green {
+    @apply flex h-[46px] w-[46px] flex-none items-center justify-center rounded-md text-[22px] text-white;
+    background: var(--acc-green);
+  }
+
+  /* ---------- Эффекты ---------- */
+  .glow-acc {
+    box-shadow: 0 0 12px color-mix(in srgb, var(--acc) 50%, transparent);
+  }
+  .glass {
+    backdrop-filter: blur(10px);
+    background: rgba(255, 255, 255, 0.7);
+    border: 1px solid var(--bord);
+  }
+  .glass-dark {
+    backdrop-filter: blur(10px);
+    background: rgba(12, 14, 19, 0.6);
+    border: 1px solid var(--bord-dark);
+  }
+  /* градиент hero/финала: красный → оранж-лава Roblox */
+  .grad-acc {
+    background: linear-gradient(135deg, var(--acc), var(--acc-2));
+  }
+  .grad-dark {
+    background: linear-gradient(135deg, var(--dark-2), var(--dark));
+  }
+  /* мягкий размытый блоб-фон (декор) */
+  .blob {
+    filter: blur(60px);
+    border-radius: 50%;
+    pointer-events: none;
+  }
+}
+
+/* ---------- FAQ (details/summary) — светлая тема ---------- */
+details.faq-item {
+  background: #ffffff;
+  border: 1px solid var(--bord);
+  border-radius: 12px;
+  padding: 0 24px;
+  overflow: hidden;
+}
+details.faq-item summary {
+  list-style: none;
+  cursor: pointer;
+  font-weight: 700;
+  padding: 22px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  color: var(--ink);
+}
+details.faq-item summary::-webkit-details-marker {
+  display: none;
+}
+details.faq-item summary::after {
+  content: '+';
+  color: var(--acc);
+  font-size: 26px;
+  font-weight: 600;
+  line-height: 1;
+}
+details.faq-item[open] summary::after {
+  content: '–';
+}
+details.faq-item p {
+  padding: 0 0 22px;
+  color: var(--sub);
+}
