@@ -56,7 +56,7 @@ export function Hero() {
         </h1>
 
         <p className="lead mx-auto max-w-[640px] text-sub">
-          За одно бесплатное занятие ребёнок соберёт <span className="hl">свою игру в&nbsp;Roblox Studio</span> — <span className="hl">платформер с&nbsp;лавой</span> и напишет первые строки настоящего кода
+          За 60 минут ребёнок соберёт <span className="hl">свою игру в&nbsp;Roblox Studio</span> — <span className="hl">платформер с&nbsp;лавой</span> и напишет первые строки настоящего кода
         </p>
 
         {/* Блок срочности с живым счётчиком мест */}
