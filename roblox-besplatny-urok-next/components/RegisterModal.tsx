@@ -68,6 +68,7 @@ export function RegisterModal() {
           className="max-h-[85vh] overflow-y-auto rounded-xl border bg-white p-6 shadow-soft md:p-7"
           style={{ borderColor: 'var(--bord)' }}
         >
+          <h3 className="h3 mb-4 text-ink">Запишите ребёнка на бесплатный урок</h3>
           <GetCourseWidget />
         </div>
       </div>
