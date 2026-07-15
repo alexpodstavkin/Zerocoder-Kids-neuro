@@ -1,12 +1,13 @@
 /** @type {import('next').NextConfig} */
 
-// Ленд живёт в подпапке репозитория Zerocoder-Kids-neuro, который отдаётся
-// GitHub Pages по адресу alexpodstavkin.github.io/Zerocoder-Kids-neuro/.
-const repo = 'Zerocoder-Kids-neuro'
+// Репозиторий Zerocoder-Kids-neuro отдаётся GitHub Pages на своём домене
+// kids.zerocoder.ru — с КОРНЯ. Поэтому префикс ленда — только имя папки,
+// без имени репозитория (так же у всех соседних лендов: /gos-ai-summer и т.д.).
+// Продакшн-адрес: https://kids.zerocoder.ru/roblox-besplatny-urok/
 const folder = 'roblox-besplatny-urok'
-// basePath/assetPrefix нужны только для продакшн-сборки под подпапку Pages.
+// basePath/assetPrefix нужны только для продакшн-сборки под подпапку домена.
 // В dev остаются пустыми — локально ленд открывается на http://localhost:5251/.
-const basePath = process.env.NODE_ENV === 'production' ? `/${repo}/${folder}` : ''
+const basePath = process.env.NODE_ENV === 'production' ? `/${folder}` : ''
 
 const nextConfig = {
   reactStrictMode: true,
