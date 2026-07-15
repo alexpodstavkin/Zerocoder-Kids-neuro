@@ -1,6 +1,6 @@
 'use client'
 import { useEffect, useState } from 'react'
-import { RegisterForm } from './RegisterForm'
+import { GetCourseWidget } from './GetCourseWidget'
 
 // Всплывающая форма записи. Открывается по клику на любую кнопку-триггер
 // (ссылка с href="#register") — Hero, «Как проходит урок», sticky-CTA.
@@ -63,7 +63,13 @@ export function RegisterModal() {
           <i className="fi fi-rr-cross-small text-[18px]" aria-hidden />
         </button>
 
-        <RegisterForm />
+        {/* Форма записи GetCourse — заявки падают в CRM университета */}
+        <div
+          className="max-h-[85vh] overflow-y-auto rounded-xl border bg-white p-6 shadow-soft md:p-7"
+          style={{ borderColor: 'var(--bord)' }}
+        >
+          <GetCourseWidget />
+        </div>
       </div>
     </div>
   )
