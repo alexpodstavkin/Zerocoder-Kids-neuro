@@ -60,7 +60,7 @@ export function LessonSteps() {
         {/* CTA после блока «Как проходит» */}
         <div className="mt-8 flex justify-center">
           <Button href="#register" variant="flat" arrow>
-            Записаться на бесплатный урок
+            Записаться на бесплатное занятие
           </Button>
         </div>
       </div>

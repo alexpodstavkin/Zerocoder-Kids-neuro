@@ -59,7 +59,7 @@ export function MainResult() {
 
         <div className="mt-8 flex justify-center">
           <Button href="#cta" variant="flat" arrow>
-            Записаться на бесплатный урок
+            Записаться на бесплатное занятие
           </Button>
         </div>
       </div>

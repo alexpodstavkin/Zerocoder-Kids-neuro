@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react'
 
 // Липкая кнопка внизу экрана на мобильных. Появляется после первого экрана.
 // Ведёт к форме записи (#cta). На desktop скрыта (md:hidden). Светлая тема.
-export function StickyCTA({ href = '#register', label = 'Записаться на бесплатный урок' }: { href?: string; label?: string }) {
+export function StickyCTA({ href = '#register', label = 'Записаться на бесплатное занятие' }: { href?: string; label?: string }) {
   const [show, setShow] = useState(false)
 
   useEffect(() => {

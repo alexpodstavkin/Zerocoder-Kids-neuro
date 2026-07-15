@@ -69,7 +69,7 @@ export function Hero() {
             arrow
             className="w-full whitespace-normal px-6 text-center sm:w-auto sm:px-9"
           >
-            Записаться на бесплатный урок
+            Записаться на бесплатное занятие
           </Button>
         </div>
         </div>
