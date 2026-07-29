@@ -1,0 +1,1127 @@
+1:"$Sreact.fragment"
+a:I[74587,["/professii-budushego/_next/static/chunks/0tusrmw64g4kc.js","/professii-budushego/_next/static/chunks/0lm_6nkqbsbqq.js","/professii-budushego/_next/static/chunks/164dq7rg9jvl..js"],"default"]
+15:I[73552,["/professii-budushego/_next/static/chunks/0tusrmw64g4kc.js","/professii-budushego/_next/static/chunks/0lm_6nkqbsbqq.js"],"OutletBoundary"]
+16:"$Sreact.suspense"
+1c:I[43811,["/professii-budushego/_next/static/chunks/0tusrmw64g4kc.js","/professii-budushego/_next/static/chunks/0lm_6nkqbsbqq.js","/professii-budushego/_next/static/chunks/164dq7rg9jvl..js"],"default"]
+:HL["/professii-budushego/partners/zerocoder.png","image"]
+2:Tda8,
+        .topbar-wrap {
+          position: fixed;
+          top: 0;
+          left: 0;
+          right: 0;
+          z-index: 50;
+          background: transparent;
+          padding: 18px 16px 18px;
+          width: 100%;
+          display: block;
+        }
+        @media (max-width: 767px) {
+          .topbar-wrap { display: none; }
+        }
+        .topbar-pill {
+          max-width: 1180px;
+          margin: 0 auto;
+          background: #FFFFFF;
+          border: 1px solid #E2E6EE;
+          border-radius: 999px;
+          padding: 14px 18px 14px 22px;
+          display: flex;
+          align-items: center;
+          gap: 20px;
+          box-shadow: 0 8px 28px rgba(28, 63, 148, 0.08);
+        }
+        .topbar-left {
+          display: flex;
+          align-items: center;
+          gap: 18px;
+          flex: 1;
+          min-width: 0;
+        }
+        .topbar-emblem { display: inline-flex; flex-shrink: 0; }
+        .topbar-title {
+          font-size: 16px;
+          font-weight: 600;
+          color: #1B1F2A;
+          line-height: 1.3;
+          letter-spacing: 0;
+        }
+        .topbar-nav {
+          display: none;
+          align-items: center;
+          gap: 28px;
+        }
+        .topbar-nav a {
+          font-size: 13px;
+          font-weight: 600;
+          letter-spacing: 0.08em;
+          color: #1B1F2A;
+          text-transform: uppercase;
+          transition: opacity 0.2s ease-in-out;
+        }
+        .topbar-nav a:hover { opacity: 0.65; }
+        .topbar-status {
+          display: none;
+          align-items: center;
+          gap: 8px;
+          padding: 6px 12px 6px 10px;
+          background: rgba(214, 46, 46, 0.08);
+          border: 1px solid rgba(214, 46, 46, 0.22);
+          border-radius: 999px;
+          font-size: 11px;
+          font-weight: 700;
+          letter-spacing: 0.1em;
+          color: #B82424;
+          white-space: nowrap;
+        }
+        .topbar-status-dot {
+          width: 7px;
+          height: 7px;
+          border-radius: 50%;
+          background: #D62E2E;
+          box-shadow: 0 0 0 0 rgba(214, 46, 46, 0.6);
+          animation: gov-pulse 2.4s cubic-bezier(0.32, 0.72, 0, 1) infinite;
+        }
+        @keyframes gov-pulse {
+          0% { box-shadow: 0 0 0 0 rgba(214, 46, 46, 0.6); }
+          70% { box-shadow: 0 0 0 8px rgba(214, 46, 46, 0); }
+          100% { box-shadow: 0 0 0 0 rgba(214, 46, 46, 0); }
+        }
+        @media (min-width: 1100px) {
+          .topbar-status { display: inline-flex; }
+        }
+
+        .topbar-cta {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          padding: 14px 28px;
+          background: #D62E2E;
+          color: #FFFFFF;
+          font-weight: 600;
+          font-size: 15px;
+          border-radius: 999px;
+          flex-shrink: 0;
+          transition: background 400ms cubic-bezier(0.32, 0.72, 0, 1), transform 200ms cubic-bezier(0.32, 0.72, 0, 1);
+        }
+        .topbar-cta:hover { background: #B82424; }
+        .topbar-cta:active { transform: scale(0.98); }
+
+        @media (min-width: 1000px) {
+          .topbar-nav { display: inline-flex; }
+        }
+        @media (max-width: 640px) {
+          .topbar-pill { padding: 10px 10px 10px 16px; border-radius: 28px; gap: 12px; }
+          .topbar-title { font-size: 13px; line-height: 1.25; }
+          .topbar-emblem svg { width: 40px; height: 40px; }
+          .topbar-cta { padding: 11px 18px; font-size: 13px; }
+        }
+      0:{"rsc":["$","$1","c",{"children":[[["$","div",null,{"className":"top-zone","children":[["$","div",null,{"className":"top-zone-bg","aria-hidden":true,"style":{"backgroundImage":"url(/professii-budushego/hero-classroom.png)"}}],["$","div",null,{"className":"top-zone-overlay","aria-hidden":true}],["$","div",null,{"className":"topbar-wrap","children":[["$","header",null,{"className":"topbar-pill","children":[["$","div",null,{"className":"topbar-left","children":[["$","span",null,{"className":"topbar-emblem","aria-label":"Флаг Российской Федерации","children":["$","svg",null,{"width":"56","height":"56","viewBox":"0 0 56 56","fill":"none","xmlns":"http://www.w3.org/2000/svg","children":[["$","defs",null,{"children":["$","clipPath",null,{"id":"flagClip","children":["$","circle",null,{"cx":"28","cy":"28","r":"24"}]}]}],["$","circle",null,{"cx":"28","cy":"28","r":"26.5","fill":"#FFFFFF","stroke":"#1C3F94","strokeWidth":"2"}],["$","g",null,{"clipPath":"url(#flagClip)","children":[["$","rect",null,{"x":"4","y":"4","width":"48","height":"16","fill":"#FFFFFF"}],["$","rect",null,{"x":"4","y":"20","width":"48","height":"16","fill":"#0039A6"}],["$","rect",null,{"x":"4","y":"36","width":"48","height":"16","fill":"#D52B1E"}]]}],["$","circle",null,{"cx":"28","cy":"28","r":"24","fill":"none","stroke":"rgba(28,63,148,0.25)","strokeWidth":"1"}]]}]}],["$","span",null,{"className":"topbar-title","children":"Всероссийская программа подготовки детей «Профессии будущего: Погружение в искусственный интеллект»"}]]}],["$","nav",null,{"className":"topbar-nav","aria-label":"Разделы","children":[["$","a",null,{"href":"#program","children":"ПРОГРАММА"}],["$","a",null,{"href":"#gifts","children":"ПОДАРКИ"}]]}],["$","span",null,{"className":"topbar-status","aria-label":"Статус регистрации","children":[["$","span",null,{"className":"topbar-status-dot","aria-hidden":true}],"ИДЁТ РЕГИСТРАЦИЯ"]}],["$","a",null,{"href":"#cta","className":"topbar-cta","children":"Записаться"}]]}],["$","style",null,{"children":"$2"}]]}],"$L3"]}],"$L4","$L5","$L6"],["$L7"],"$L8"]}],"isPartial":false,"staleTime":300,"varyParams":null,"buildId":"QlSPDO6T1pHbqKMAMZ_xC"}
+9:T5b8,
+        .hero-section {
+          position: relative;
+          background: transparent;
+        }
+        .hero-inner {
+          position: relative;
+          max-width: 1180px;
+          margin: 0 auto;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          text-align: center;
+          gap: 40px;
+        }
+        .hero-cluster {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: 20px;
+        }
+        .hero-h1 { max-width: 22ch; }
+        .hero-h1-accent { color: #D62E2E; }
+        @media (max-width: 640px) {
+          .hero-h1 { max-width: 100%; }
+        }
+        .hero-divider {
+          display: inline-flex;
+          align-items: center;
+          gap: 10px;
+        }
+        .hero-divider-line {
+          display: inline-block;
+          width: 40px;
+          height: 1px;
+          background: #D62E2E;
+        }
+        .hero-divider-mark {
+          display: inline-block;
+          width: 7px;
+          height: 7px;
+          border-radius: 50%;
+          background: #D62E2E;
+          box-shadow: 0 0 0 4px rgba(214, 46, 46, 0.12);
+        }
+        .hero-sub {
+          font-size: 1.0625rem;
+          font-weight: 500;
+          color: #1C3F94;
+          max-width: 46ch;
+        }
+        .hero-cta-row {
+          display: flex;
+          gap: 12px;
+          flex-wrap: wrap;
+          justify-content: center;
+        }
+      3:["$","section",null,{"className":"sec hero-section","children":[["$","div",null,{"className":"hero-inner","children":[["$","div",null,{"className":"hero-cluster","children":[["$","h1",null,{"className":"h1 hero-h1","children":[["$","span",null,{"className":"hero-h1-accent","children":"Всероссийская программа подготовки детей"}]," ","«Профессии будущего: Погружение в искусственный интеллект»"]}],["$","span",null,{"className":"hero-divider","aria-hidden":true,"children":[["$","span",null,{"className":"hero-divider-line"}],["$","span",null,{"className":"hero-divider-mark"}],["$","span",null,{"className":"hero-divider-line"}]]}]]}],["$","div",null,{"className":"hero-cta-row","children":["$","a",null,{"href":"#cta","className":"btn-primary","children":["Подать заявку",["$","span",null,{"aria-hidden":true,"style":{"fontWeight":700},"children":"→"}]]}]}]]}],["$","style",null,{"children":"$9"}]]}]
+4:["$","main",null,{"children":[["$","$La",null,{"children":["$","section",null,{"id":"program","className":"sec","style":{"background":"#FFFFFF"},"children":[["$","div",null,{"className":"program-inner","children":[["$","div",null,{"className":"mission-block","children":[["$","h2",null,{"className":"h2 mission-heading","children":"Всероссийская программа подходит детям 2–8 классов и призвана обеспечить ребёнку востребованные навыки и перспективное будущее"}],["$","div",null,{"className":"mission-grid","children":[["$","div",null,{"className":"mission-stat","children":[["$","span",null,{"className":"mission-stat-num","children":"85%"}],["$","p",null,{"className":"mission-stat-text","children":[["$","b",null,{"children":"профессий будущего"}]," к 2030 году будут связаны с технологиями, которых пока нет в школьной программе. Ребёнок осваивает их уже сейчас."]}]]}],["$","div",null,{"className":"mission-stat","children":[["$","span",null,{"className":"mission-stat-num","children":"×4"}],["$","p",null,{"className":"mission-stat-text","children":["во столько вырастет российский рынок искусственного интеллекта. Специалисты с ИИ-навыками уже зарабатывают на ",["$","b",null,{"children":"40% больше"}],"."]}]]}],["$","div",null,{"className":"mission-stat","children":[["$","span",null,{"className":"mission-stat-num","children":"№1"}],["$","p",null,{"className":"mission-stat-text","children":["нейросети — навык будущего по версии ВЭФ. Нейросети тренируют его: ребёнок ставит задачу, проверяет ответ ИИ и рассуждает структурно — это ",["$","b",null,{"children":"повышает успеваемость"}]," в школе."]}]]}]]}]]}],["$","div",null,{"className":"program-section","children":[["$","div",null,{"className":"entry-plate","children":[["$","p",null,{"className":"entry-text","children":"Чтобы стать участником, необходимо записаться на бесплатный вводный урок."}],["$","p",null,{"className":"entry-sub","children":"Он проходит онлайн, индивидуально с педагогом. По итогам урока подбирается программа обучения, которая лучше всего подойдёт вашему ребёнку."}]]}],["$","div",null,{"className":"program-stack","children":[["$","h2",null,{"className":"h2 program-h2","children":"Программа бесплатного урока"}],["$","div",null,{"className":"program-grid","children":[["$","article","01",{"className":"lesson-card","children":[["$","div",null,{"className":"lesson-card-head","children":[["$","span",null,{"className":"lesson-icon","aria-hidden":true,"children":["$","i",null,{"className":"fi fi-rr-brain-circuit"}]}],["$","div",null,{"className":"lesson-tags","children":[["$","span",null,{"className":"lesson-step","children":["Шаг ","01"]}],["$","span",null,{"className":"lesson-verb","children":"УЗНАЕТ"}]]}]]}],["$","h3",null,{"className":"lesson-title","children":"Что такое нейросети и как они устроены"}],["$","p",null,{"className":"lesson-text","children":"Принципы работы нейросетей на знакомых ребёнку примерах. Навык написания промптов и проверки ответов искусственного интеллекта."}]]}],["$","article","02",{"className":"lesson-card","children":[["$","div",null,{"className":"lesson-card-head","children":[["$","span",null,{"className":"lesson-icon","aria-hidden":true,"children":["$","i",null,{"className":"fi fi-rr-tools"}]}],["$","div",null,{"className":"lesson-tags","children":[["$","span",null,{"className":"lesson-step","children":["Шаг ","02"]}],["$","span",null,{"className":"lesson-verb","children":"СДЕЛАЕТ"}]]}]]}],["$","h3",null,{"className":"lesson-title","children":"Свой личный ИИ-проект"}],["$","p",null,{"className":"lesson-text","children":"Под руководством опытного наставника соберёт работающий проект. Научится самостоятельно находить неточности в работе нейросетей и исправлять их."}]]}],["$","article","03",{"className":"lesson-card","children":[["$","div",null,{"className":"lesson-card-head","children":[["$","span",null,{"className":"lesson-icon","aria-hidden":true,"children":["$","i",null,{"className":"fi fi-rr-bulb"}]}],["$","div",null,{"className":"lesson-tags","children":[["$","span",null,{"className":"lesson-step","children":["Шаг ","03"]}],["$","span",null,{"className":"lesson-verb","children":"ПОЙМЁТ"}]]}]]}],["$","h3",null,{"className":"lesson-title","children":"Как применять ИИ в школе и в жизни"}],["$","p",null,{"className":"lesson-text","children":"От школьной домашки до собственных проектов: ребёнок видит, где нейросеть становится реальным помощником, а где даёт поверхностный совет."}]]}]]}],"$Lb"]}]]}]]}],"$Lc"]}]}],"$Ld","$Le","$Lf","$L10"]}]
+5:["$","footer",null,{"className":"site-footer","children":[["$","div",null,{"className":"footer-inner","children":[["$","div",null,{"className":"footer-grid","children":[["$","div",null,{"className":"footer-brand","children":[["$","a",null,{"href":"#top","className":"footer-brand-link","aria-label":"Зерокодер — на главную","children":[["$","img",null,{"src":"/professii-budushego/partners/zerocoder.png","alt":"Зерокодер","width":44,"height":44,"className":"footer-brand-logo"}],["$","span",null,{"className":"footer-brand-text","children":[["$","span",null,{"className":"footer-brand-name","children":"Зерокодер"}],["$","span",null,{"className":"footer-brand-sub","children":"Детское направление"}]]}]]}],["$","p",null,{"className":"footer-address","children":["г. Москва, ул. Большая Новодмитровская 23,",["$","br",null,{}],"этаж 2, каб. 46"]}]]}],["$","nav",null,{"aria-label":"Основная навигация","className":"footer-nav","children":["$","ul",null,{"children":[["$","li","https://zerocoder.ru/teachers",{"children":["$","a",null,{"href":"https://zerocoder.ru/teachers","target":"_blank","rel":"noopener noreferrer","children":"Преподаватели"}]}],["$","li","https://zerocoder.ru/news",{"children":["$","a",null,{"href":"https://zerocoder.ru/news","target":"_blank","rel":"noopener noreferrer","children":"Новости и события"}]}],["$","li","https://zerocoder.ru/corporate",{"children":["$","a",null,{"href":"https://zerocoder.ru/corporate","target":"_blank","rel":"noopener noreferrer","children":"Корпоративное обучение"}]}],["$","li","https://zerocoder.ru/partnership",{"children":["$","a",null,{"href":"https://zerocoder.ru/partnership","target":"_blank","rel":"noopener noreferrer","children":"Партнёрство"}]}]]}]}],["$","nav",null,{"aria-label":"Юридические документы","className":"footer-nav","children":["$","ul",null,{"children":[["$","li","https://zerocoder.ru/privacy",{"children":["$","a",null,{"href":"https://zerocoder.ru/privacy","target":"_blank","rel":"noopener noreferrer","children":"Политика конфиденциальности"}]}],["$","li","https://zerocoder.ru/safety",{"children":["$","a",null,{"href":"https://zerocoder.ru/safety","target":"_blank","rel":"noopener noreferrer","children":"Политика безопасности платежей"}]}],["$","li","https://zerocoder.ru/terms",{"children":["$","a",null,{"href":"https://zerocoder.ru/terms","target":"_blank","rel":"noopener noreferrer","children":"Оферта"}]}],["$","li","https://islod.obrnadzor.gov.ru/rlic/details/0c9b345a-fc50-43c8-7248-1dc5987f2d33/",{"children":["$","a",null,{"href":"https://islod.obrnadzor.gov.ru/rlic/details/0c9b345a-fc50-43c8-7248-1dc5987f2d33/","target":"_blank","rel":"noopener noreferrer","children":"Лицензия на образовательную деятельность"}]}]]}]}],["$","div",null,{"className":"footer-contacts","children":[["$","div",null,{"className":"footer-contacts-primary","children":[["$","a",null,{"href":"mailto:care@zerocoder.ru","children":"care@zerocoder.ru"}],["$","a",null,{"href":"tel:+79393283812","children":"+7 (939) 328-38-12"}]]}],["$","ul",null,{"className":"footer-socials","aria-label":"Социальные сети","children":[["$","li","https://t.me/zerocoder",{"children":["$","a",null,{"href":"https://t.me/zerocoder","target":"_blank","rel":"noopener noreferrer","aria-label":"Telegram","children":["$","svg",null,{"width":"20","height":"20","viewBox":"0 0 24 24","fill":"none","aria-hidden":true,"children":["$","path",null,{"d":"M21.5 4.5 2.7 11.6c-1.3.5-1.3 1.2-.2 1.6l4.8 1.5 1.9 5.7c.2.6.5.7 1 .7.4 0 .6-.2.9-.5l2.7-2.6 5.6 4.1c1 .6 1.7.3 2-1l3.7-17.4c.3-1.6-.7-2.3-2-1.7l-.6.5Z","fill":"currentColor"}]}]}]}],["$","li","https://wa.me/79393283812",{"children":["$","a",null,{"href":"https://wa.me/79393283812","target":"_blank","rel":"noopener noreferrer","aria-label":"WhatsApp","children":["$","svg",null,{"width":"20","height":"20","viewBox":"0 0 24 24","fill":"none","aria-hidden":true,"children":["$","path",null,{"d":"M12 2C6.5 2 2 6.5 2 12c0 1.8.5 3.6 1.4 5.1L2 22l5-1.3A10 10 0 0 0 22 12c0-5.5-4.5-10-10-10Zm5.6 14.2c-.2.6-1.2 1.2-1.7 1.3-.5.1-1 .1-1.6-.1-.4-.1-.9-.3-1.5-.5-2.7-1.2-4.5-3.9-4.6-4.1-.1-.2-1.1-1.4-1.1-2.7 0-1.3.7-1.9 1-2.2.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.9 2c.1.2.1.4 0 .6-.1.2-.2.3-.3.5l-.5.5c-.2.2-.3.3-.1.6.2.3.8 1.4 1.7 2.3 1.2 1.1 2.2 1.4 2.5 1.5.3.1.5.1.7-.1.2-.2.8-.9 1-1.2.2-.3.4-.3.6-.2.3.1 1.8.8 2.1.9.3.1.5.2.6.3.1.2.1.7-.1 1.4Z","fill":"currentColor"}]}]}]}],"$L11","$L12"]}]]}]]}],"$L13"]}],"$L14"]}]
+6:["$","a",null,{"href":"#cta","className":"sticky-mobile-cta","aria-label":"Подать заявку на бесплатный урок","children":["Подать заявку",["$","span",null,{"aria-hidden":true,"style":{"fontWeight":700},"children":"→"}],["$","style",null,{"children":"\n        .sticky-mobile-cta {\n          display: none;\n          position: fixed;\n          left: 12px;\n          right: 12px;\n          bottom: 12px;\n          z-index: 60;\n          background: #D62E2E;\n          color: #FFFFFF;\n          padding: 14px 18px;\n          border-radius: 6px;\n          font-weight: 600;\n          font-size: 0.9375rem;\n          align-items: center;\n          justify-content: center;\n          gap: 8px;\n          box-shadow: 0 6px 24px rgba(214, 46, 46, 0.32);\n          transition: background 0.2s ease-in-out;\n        }\n        .sticky-mobile-cta:hover { background: #B82424; }\n        @media (max-width: 767px) {\n          .sticky-mobile-cta { display: inline-flex; }\n        }\n      "}]]}]
+7:["$","script","script-0",{"src":"/professii-budushego/_next/static/chunks/164dq7rg9jvl..js","async":true}]
+8:["$","$L15",null,{"children":["$","$16",null,{"name":"Next.MetadataOutlet","children":"$@17"}]}]
+b:["$","div",null,{"className":"program-cta-row","children":["$","a",null,{"href":"#cta","className":"program-cta-btn","children":["Записаться на урок",["$","span",null,{"aria-hidden":true,"style":{"fontWeight":700},"children":"→"}]]}]}]
+18:T3750,
+        .program-inner {
+          max-width: 1180px;
+          margin: 0 auto;
+          display: flex;
+          flex-direction: column;
+          gap: 64px;
+        }
+
+        /* Cohesive group: red plate + program cards stick together */
+        .program-section {
+          display: flex;
+          flex-direction: column;
+          gap: 0;
+        }
+
+        /* Mission statement — heading + stat points */
+        .mission-block {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: 36px;
+        }
+        .mission-heading {
+          text-align: center;
+          max-width: 34ch;
+          color: #1B1F2A;
+        }
+        .mission-grid {
+          display: grid;
+          grid-template-columns: 1fr;
+          gap: 16px;
+          width: 100%;
+        }
+        @media (min-width: 768px) {
+          .mission-grid { grid-template-columns: repeat(3, 1fr); gap: 20px; }
+        }
+        .mission-stat {
+          display: flex;
+          flex-direction: column;
+          gap: 12px;
+          background: #F4F6FA;
+          border: 1px solid #E2E6EE;
+          border-top: 3px solid #D62E2E;
+          border-radius: 6px;
+          padding: 28px 24px;
+          text-align: left;
+        }
+        .mission-stat-num {
+          font-size: clamp(2.25rem, 5vw, 3rem);
+          font-weight: 800;
+          color: #D62E2E;
+          line-height: 1;
+          letter-spacing: -0.02em;
+        }
+        .mission-stat-text {
+          font-size: 0.9375rem;
+          color: #4A5468;
+          line-height: 1.5;
+        }
+        .mission-stat-text b { color: #1B1F2A; font-weight: 700; }
+
+        /* Lesson cards — sticker design */
+        .lesson-card {
+          position: relative;
+          background: #FFFFFF;
+          border: 1px solid #E2E6EE;
+          border-radius: 12px;
+          padding: 26px 22px 24px;
+          display: flex;
+          flex-direction: column;
+          gap: 10px;
+          text-align: left;
+          height: 100%;
+          transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+        }
+        .lesson-card:hover {
+          transform: translateY(-4px);
+          box-shadow: 0 14px 30px rgba(28, 63, 148, 0.12);
+          border-color: #C6D2E6;
+        }
+        .lesson-card-head {
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 14px;
+        }
+        .lesson-icon {
+          width: 46px;
+          height: 46px;
+          border-radius: 12px;
+          background: #EAF0FA;
+          color: #1C3F94;
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          font-size: 22px;
+        }
+        .lesson-icon i { line-height: 1; }
+        .lesson-tags {
+          display: flex;
+          align-items: center;
+          gap: 8px;
+          flex-wrap: wrap;
+        }
+        .lesson-step {
+          font-size: 0.6875rem;
+          font-weight: 700;
+          letter-spacing: 0.04em;
+          color: #1C3F94;
+          background: #EAF0FA;
+          padding: 5px 11px;
+          border-radius: 999px;
+        }
+        .lesson-verb {
+          font-size: 0.6875rem;
+          font-weight: 700;
+          letter-spacing: 0.1em;
+          color: #D62E2E;
+          background: #FDF2F2;
+          border: 1px solid #F1C6C6;
+          padding: 5px 11px;
+          border-radius: 999px;
+        }
+        .lesson-title {
+          margin-top: 4px;
+          font-size: 1.0625rem;
+          font-weight: 700;
+          color: #1B1F2A;
+          line-height: 1.3;
+        }
+        .lesson-text {
+          font-size: 0.9375rem;
+          color: #4A5468;
+          line-height: 1.5;
+        }
+
+        /* News card */
+        .news-card {
+          display: grid;
+          grid-template-columns: 1fr;
+          gap: 0;
+          border: 1px solid #E2E6EE;
+          border-radius: 6px;
+          overflow: hidden;
+        }
+        @media (min-width: 768px) {
+          .news-card { grid-template-columns: 5fr 7fr; }
+        }
+        /* On mobile, news-text appears first, then photo + partner */
+        .news-text { order: 1; }
+        .news-left-col { order: 2; }
+        @media (min-width: 768px) {
+          .news-text { order: initial; }
+          .news-left-col { order: initial; }
+        }
+        .news-left-col {
+          display: flex;
+          flex-direction: column;
+          background: #EAF0FA;
+        }
+        .news-photo {
+          background: #EAF0FA;
+          min-height: 220px;
+          flex: 1;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          overflow: hidden;
+        }
+        .news-photo svg {
+          width: 100%;
+          height: 100%;
+          display: block;
+        }
+        .news-photo-img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          display: block;
+        }
+        .news-text {
+          background: #F4F6FA;
+          padding: 28px 28px;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          gap: 14px;
+          border-left: 4px solid #1C3F94;
+        }
+        @media (min-width: 768px) {
+          .news-text { padding: 36px 40px; }
+        }
+        .news-eyebrow {
+          display: inline-flex;
+          align-items: center;
+          gap: 8px;
+          padding: 5px 12px 5px 10px;
+          background: #FFFFFF;
+          border: 1px solid #D62E2E;
+          color: #D62E2E;
+          font-size: 0.6875rem;
+          font-weight: 700;
+          letter-spacing: 0.16em;
+          text-transform: uppercase;
+          border-radius: 999px;
+          align-self: flex-start;
+        }
+        .news-eyebrow-dot {
+          width: 6px;
+          height: 6px;
+          border-radius: 50%;
+          background: #D62E2E;
+        }
+        .news-fact {
+          font-size: 1.0625rem;
+          font-weight: 600;
+          color: #1B1F2A;
+          line-height: 1.45;
+        }
+        .news-source {
+          font-size: 0.75rem;
+          font-weight: 500;
+          letter-spacing: 0.04em;
+          text-transform: uppercase;
+          color: #7A8395;
+          margin-top: -4px;
+        }
+        /* Accordion: «Подробнее об инициативе» */
+        .news-extra { margin: 0; }
+        .news-extra-summary {
+          list-style: none;
+          cursor: pointer;
+          display: inline-flex;
+          align-items: center;
+          gap: 8px;
+          padding: 8px 14px;
+          background: #FFFFFF;
+          border: 1px solid #1C3F94;
+          border-radius: 6px;
+          color: #1C3F94;
+          font-size: 0.875rem;
+          font-weight: 600;
+          letter-spacing: 0.01em;
+          user-select: none;
+          transition: background 220ms cubic-bezier(0.32, 0.72, 0, 1);
+        }
+        .news-extra-summary::-webkit-details-marker { display: none; }
+        .news-extra-summary::marker { display: none; }
+        .news-extra-summary:hover { background: #F4F6FA; }
+        .news-extra-chevron {
+          display: inline-block;
+          transition: transform 240ms cubic-bezier(0.32, 0.72, 0, 1);
+        }
+        .news-extra[open] .news-extra-chevron {
+          transform: rotate(180deg);
+        }
+        .news-extra-body {
+          margin: 14px 0 0;
+          padding: 16px 18px;
+          background: #FFFFFF;
+          border: 1px solid #E2E6EE;
+          border-left: 4px solid #1C3F94;
+          border-radius: 0 6px 6px 0;
+        }
+        .news-extra-body p {
+          font-size: 0.9375rem;
+          color: #1B1F2A;
+          line-height: 1.55;
+          font-style: italic;
+          font-family: Georgia, 'Times New Roman', serif;
+        }
+        .news-extra-body p + p { margin-top: 10px; }
+        .news-conclusion {
+          font-size: 0.9375rem;
+          color: #4A5468;
+          line-height: 1.55;
+        }
+
+        /* Partnership (nested under photo) — text + logo side by side */
+        .partner-card {
+          display: flex;
+          align-items: center;
+          gap: 16px;
+          background: #FFFFFF;
+          border-top: 1px solid #C6D2E6;
+          padding: 18px 20px;
+          text-align: left;
+        }
+        .partner-line {
+          font-size: 0.9375rem;
+          font-weight: 500;
+          color: #1B1F2A;
+          line-height: 1.5;
+          margin: 0;
+          flex: 1;
+          min-width: 0;
+        }
+        .partner-logo {
+          flex-shrink: 0;
+          display: flex;
+          align-items: center;
+        }
+        .partner-logo-image {
+          width: 64px;
+          height: 64px;
+          display: block;
+          object-fit: contain;
+        }
+
+        /* Entry plate — red heading-style, attaches to program below */
+        .entry-plate {
+          background: #D62E2E;
+          border: 1px solid #B82424;
+          border-radius: 6px 6px 0 0;
+          padding: 36px 40px;
+          display: flex;
+          flex-direction: column;
+          gap: 14px;
+          text-align: center;
+          align-items: center;
+        }
+        @media (min-width: 768px) {
+          .entry-plate { padding: 48px 56px 40px; }
+        }
+        .entry-mark {
+          display: inline-flex;
+          align-items: center;
+          padding: 5px 14px;
+          background: rgba(255, 255, 255, 0.14);
+          border: 1px solid rgba(255, 255, 255, 0.35);
+          color: #FFFFFF;
+          font-size: 0.6875rem;
+          font-weight: 700;
+          letter-spacing: 0.16em;
+          text-transform: uppercase;
+          border-radius: 999px;
+        }
+        .entry-text {
+          font-size: clamp(1.2rem, 2.4vw, 1.75rem);
+          font-weight: 700;
+          color: #FFFFFF;
+          line-height: 1.3;
+          max-width: 64ch;
+          letter-spacing: -0.005em;
+        }
+        .entry-sub {
+          font-size: clamp(0.9375rem, 1.3vw, 1.0625rem);
+          font-weight: 500;
+          color: rgba(255, 255, 255, 0.92);
+          line-height: 1.5;
+          max-width: 68ch;
+        }
+
+        /* Program — closing of unified block with equidistant rhythm */
+        .program-stack {
+          display: flex;
+          flex-direction: column;
+          gap: 32px;
+          align-items: center;
+          background: #FFFFFF;
+          border: 1px solid #E2E6EE;
+          border-top: none;
+          border-radius: 0 0 6px 6px;
+          padding: 32px 24px;
+        }
+        @media (min-width: 768px) {
+          .program-stack {
+            gap: 36px;
+            padding: 36px 32px;
+          }
+        }
+        .program-cta-row {
+          width: 100%;
+          display: grid;
+          grid-template-columns: 1fr;
+          gap: 16px;
+        }
+        @media (min-width: 768px) {
+          .program-cta-row {
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+          }
+        }
+        .program-cta-btn {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          gap: 10px;
+          padding: 18px 24px;
+          background: #D62E2E;
+          color: #FFFFFF;
+          font-weight: 700;
+          font-size: 0.9375rem;
+          border-radius: 6px;
+          transition: background 400ms cubic-bezier(0.32, 0.72, 0, 1),
+                      transform 220ms cubic-bezier(0.32, 0.72, 0, 1);
+        }
+        @media (min-width: 768px) {
+          .program-cta-btn { grid-column: 2; }
+        }
+        .program-cta-btn:hover { background: #B82424; }
+        .program-cta-btn:active { transform: scale(0.98); }
+
+        /* Invitation plate — bottom of unified block, button only */
+        .invitation-plate {
+          background: #FFFFFF;
+          border: 1px solid #E2E6EE;
+          border-top: none;
+          border-radius: 0 0 6px 6px;
+          padding: 28px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+        @media (min-width: 768px) {
+          .invitation-plate { padding: 32px; }
+        }
+        .invitation-cta {
+          display: inline-flex;
+          align-items: center;
+          gap: 10px;
+          padding: 14px 28px;
+          background: #D62E2E;
+          color: #FFFFFF;
+          font-weight: 700;
+          font-size: 0.9375rem;
+          border-radius: 6px;
+          transition: background 400ms cubic-bezier(0.32, 0.72, 0, 1),
+                      transform 220ms cubic-bezier(0.32, 0.72, 0, 1);
+        }
+        .invitation-cta:hover { background: #B82424; }
+        .invitation-cta:active { transform: scale(0.98); }
+        .program-h2 { text-align: center; }
+
+        .program-grid {
+          display: grid;
+          grid-template-columns: 1fr;
+          gap: 16px;
+          width: 100%;
+        }
+        @media (min-width: 768px) {
+          .program-grid { grid-template-columns: repeat(3, 1fr); gap: 20px; }
+        }
+        .program-card {
+          display: flex;
+          flex-direction: column;
+          height: 100%;
+          text-align: left;
+          transition: border-color 0.2s ease-in-out;
+        }
+        .program-card:hover { border-color: #1C3F94; }
+        .program-card-head {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          gap: 8px;
+        }
+        .program-num {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          width: 36px;
+          height: 36px;
+          border-radius: 6px;
+          background: #1C3F94;
+          color: #FFFFFF;
+          font-weight: 700;
+          font-size: 0.875rem;
+          letter-spacing: 0.02em;
+        }
+        .program-verb {
+          font-size: 0.75rem;
+          font-weight: 700;
+          color: #D62E2E;
+          letter-spacing: 0.12em;
+          padding: 6px 12px;
+          background: #FFFFFF;
+          border: 1px solid #D62E2E;
+          border-radius: 999px;
+        }
+        .program-card-title {
+          margin-top: 14px;
+          font-size: 1.0625rem;
+          line-height: 1.3;
+        }
+        .program-card-text { margin-top: 10px; font-size: 0.9375rem; color: #4A5468; }
+
+      c:["$","style",null,{"children":"$18"}]
+19:T9dc,
+        .questions-section {
+          background: #FFFFFF;
+        }
+        .questions-inner {
+          max-width: 1180px;
+          margin: 0 auto;
+          display: flex;
+          flex-direction: column;
+          gap: 32px;
+        }
+        .questions-head {
+          display: flex;
+          flex-direction: column;
+          gap: 16px;
+          align-items: center;
+          text-align: center;
+        }
+        .questions-heading {
+          color: #1B1F2A;
+          max-width: 40ch;
+        }
+
+        .questions-grid {
+          display: grid;
+          grid-template-columns: 1fr;
+          gap: 20px;
+          align-items: stretch;
+        }
+        @media (min-width: 900px) {
+          .questions-grid { grid-template-columns: 6fr 5fr; gap: 24px; }
+        }
+
+        .questions-list {
+          list-style: none;
+          display: flex;
+          flex-direction: column;
+          gap: 12px;
+          background: #F4F6FA;
+          border: 1px solid #E2E6EE;
+          border-radius: 6px;
+          padding: 20px;
+        }
+        @media (min-width: 768px) {
+          .questions-list { padding: 28px; gap: 14px; }
+        }
+        .question-item {
+          display: flex;
+          align-items: flex-start;
+          gap: 14px;
+          padding: 14px 16px;
+          background: #FFFFFF;
+          border: 1px solid #E2E6EE;
+          border-radius: 6px;
+          transition: border-color 0.2s ease-in-out;
+        }
+        .question-item:hover { border-color: #1C3F94; }
+        .question-num {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          width: 30px;
+          height: 30px;
+          border-radius: 6px;
+          background: #1C3F94;
+          color: #FFFFFF;
+          font-weight: 700;
+          font-size: 0.8125rem;
+          flex-shrink: 0;
+          letter-spacing: 0.02em;
+        }
+        .question-text {
+          font-size: 0.9375rem;
+          color: #1B1F2A;
+          font-weight: 500;
+          line-height: 1.45;
+        }
+
+        .questions-photo {
+          background: #EAF0FA;
+          border: 1px solid #E2E6EE;
+          border-radius: 6px;
+          overflow: hidden;
+          min-height: 320px;
+          display: flex;
+        }
+        .questions-photo svg {
+          width: 100%;
+          height: 100%;
+          display: block;
+        }
+        .questions-photo-img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          display: block;
+        }
+      d:["$","$La",null,{"children":["$","section",null,{"className":"sec questions-section","children":[["$","div",null,{"className":"questions-inner","children":[["$","header",null,{"className":"questions-head","children":["$","h2",null,{"className":"h2 questions-heading","children":"После урока у ребёнка и родителя будут ответы на главные вопросы"}]}],["$","div",null,{"className":"questions-grid","children":[["$","ul",null,{"className":"questions-list","children":[["$","li","0",{"className":"question-item","children":[["$","span",null,{"className":"question-num","children":"01"}],["$","span",null,{"className":"question-text","children":"Какие профессии будущего появятся благодаря искусственному интеллекту и как к ним подготовиться?"}]]}],["$","li","1",{"className":"question-item","children":[["$","span",null,{"className":"question-num","children":"02"}],["$","span",null,{"className":"question-text","children":"Не заменит ли искусственный интеллект необходимость учиться и думать самому?"}]]}],["$","li","2",{"className":"question-item","children":[["$","span",null,{"className":"question-num","children":"03"}],["$","span",null,{"className":"question-text","children":"Безопасно ли школьнику работать с нейросетями и как выстроить с ними правильные отношения?"}]]}],["$","li","3",{"className":"question-item","children":[["$","span",null,{"className":"question-num","children":"04"}],["$","span",null,{"className":"question-text","children":"Какие навыки будут востребованы через 5–10 лет и как урок помогает их заложить уже сейчас?"}]]}],["$","li","4",{"className":"question-item","children":[["$","span",null,{"className":"question-num","children":"05"}],["$","span",null,{"className":"question-text","children":"В каком возрасте лучше всего начинать погружение в искусственный интеллект?"}]]}],["$","li","5",{"className":"question-item","children":[["$","span",null,{"className":"question-num","children":"06"}],["$","span",null,{"className":"question-text","children":"Как родителю отслеживать прогресс ребёнка и развивать навык после урока?"}]]}]]}],["$","div",null,{"className":"questions-photo","children":["$","img",null,{"src":"/professii-budushego/photos/questions-parents-kids.png","alt":"Родители вместе с детьми изучают профессии будущего и искусственный интеллект","className":"questions-photo-img","loading":"lazy"}]}]]}]]}],["$","style",null,{"children":"$19"}]]}]}]
+1a:T690,
+        .partners-section { background: #FFFFFF; }
+        .partners-inner {
+          max-width: 1180px;
+          margin: 0 auto;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: 36px;
+          text-align: center;
+        }
+        .partners-h2 {
+          max-width: 32ch;
+        }
+        .partners-grid {
+          display: grid;
+          grid-template-columns: repeat(2, 1fr);
+          gap: 16px;
+          width: 100%;
+        }
+        @media (min-width: 768px) {
+          .partners-grid { grid-template-columns: repeat(4, 1fr); gap: 20px; }
+        }
+        .partner-cell {
+          background: #FFFFFF;
+          border: 1px solid #E2E6EE;
+          border-radius: 6px;
+          padding: 24px;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: space-between;
+          gap: 16px;
+          min-height: 200px;
+          transition: border-color 220ms cubic-bezier(0.32, 0.72, 0, 1);
+        }
+        .partner-cell:hover { border-color: #1C3F94; }
+        .partner-logo-wrap {
+          flex: 1;
+          width: 100%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          padding: 8px;
+        }
+        .partner-logo-img {
+          max-width: 100%;
+          max-height: 88px;
+          width: auto;
+          height: auto;
+          object-fit: contain;
+        }
+        .partner-cell-label {
+          font-size: 0.8125rem;
+          font-weight: 600;
+          color: #1B1F2A;
+          letter-spacing: 0.01em;
+          line-height: 1.3;
+          text-align: center;
+        }
+      e:["$","$La",null,{"children":["$","section",null,{"className":"sec partners-section","children":[["$","div",null,{"className":"partners-inner","children":[["$","h2",null,{"className":"h2 partners-h2","children":"Всероссийская программа подготовки детей реализуется совместно с ведущими университетами РФ"}],["$","div",null,{"className":"partners-grid","children":[["$","div","НИУ ВШЭ",{"className":"partner-cell","title":"Национальный исследовательский университет «Высшая школа экономики»","children":[["$","div",null,{"className":"partner-logo-wrap","children":["$","img",null,{"src":"/professii-budushego/partners/hse.png","alt":"Национальный исследовательский университет «Высшая школа экономики»","className":"partner-logo-img","loading":"lazy"}]}],["$","span",null,{"className":"partner-cell-label","children":"НИУ ВШЭ"}]]}],["$","div","МФТИ",{"className":"partner-cell","title":"Московский физико-технический институт","children":[["$","div",null,{"className":"partner-logo-wrap","children":["$","img",null,{"src":"/professii-budushego/partners/mipt.png","alt":"Московский физико-технический институт","className":"partner-logo-img","loading":"lazy"}]}],["$","span",null,{"className":"partner-cell-label","children":"МФТИ"}]]}],["$","div","РАНХиГС",{"className":"partner-cell","title":"Российская академия народного хозяйства и государственной службы при Президенте РФ","children":[["$","div",null,{"className":"partner-logo-wrap","children":["$","img",null,{"src":"/professii-budushego/partners/ranepa.png","alt":"Российская академия народного хозяйства и государственной службы при Президенте РФ","className":"partner-logo-img","loading":"lazy","style":{"maxHeight":130}}]}],["$","span",null,{"className":"partner-cell-label","children":"РАНХиГС"}]]}],["$","div","Университет Иннополис",{"className":"partner-cell","title":"Университет Иннополис","children":[["$","div",null,{"className":"partner-logo-wrap","children":["$","img",null,{"src":"/professii-budushego/partners/innopolis.jpeg","alt":"Университет Иннополис","className":"partner-logo-img","loading":"lazy"}]}],["$","span",null,{"className":"partner-cell-label","children":"Университет Иннополис"}]]}]]}]]}],["$","style",null,{"children":"$1a"}]]}]}]
+1b:Ta08,
+        .gifts-inner {
+          max-width: 1180px;
+          margin: 0 auto;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: 40px;
+          text-align: center;
+        }
+        .gifts-head { display: flex; flex-direction: column; gap: 10px; align-items: stretch; width: 100%; }
+        .gifts-head-plate {
+          background: #1C3F94;
+          border: 1px solid #15306F;
+          border-radius: 6px;
+          padding: 36px 40px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          text-align: center;
+        }
+        @media (min-width: 768px) {
+          .gifts-head-plate { padding: 48px 56px; }
+        }
+        .gifts-h2 {
+          color: #FFFFFF;
+          max-width: 38ch;
+        }
+
+        .gifts-grid {
+          display: grid;
+          grid-template-columns: 1fr;
+          gap: 16px;
+          width: 100%;
+        }
+        @media (min-width: 768px) {
+          .gifts-grid { grid-template-columns: repeat(3, 1fr); gap: 20px; }
+        }
+
+        /* Gift cards — sticker design (matches lesson cards) */
+        .gift-card {
+          position: relative;
+          background: #FFFFFF;
+          border: 1px solid #E2E6EE;
+          border-radius: 12px;
+          padding: 26px 22px 24px;
+          text-align: left;
+          display: flex;
+          flex-direction: column;
+          gap: 10px;
+          height: 100%;
+          transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+        }
+        .gift-card:hover {
+          transform: translateY(-4px);
+          box-shadow: 0 14px 30px rgba(28, 63, 148, 0.12);
+          border-color: #C6D2E6;
+        }
+        .gift-icon {
+          width: 46px;
+          height: 46px;
+          border-radius: 12px;
+          background: #EAF0FA;
+          color: #1C3F94;
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          font-size: 22px;
+        }
+        .gift-icon i { line-height: 1; }
+        .gift-eyebrow {
+          font-size: 0.6875rem;
+          font-weight: 700;
+          letter-spacing: 0.08em;
+          text-transform: uppercase;
+          color: #7A8395;
+          line-height: 1.3;
+        }
+        .gift-title {
+          margin-top: 4px;
+          font-size: 1.0625rem;
+          font-weight: 700;
+          color: #1B1F2A;
+          line-height: 1.3;
+        }
+        .gift-desc {
+          font-size: 0.9375rem;
+          color: #4A5468;
+          line-height: 1.5;
+        }
+      f:["$","$La",null,{"children":["$","section",null,{"id":"gifts","className":"sec","style":{"background":"#FFFFFF"},"children":[["$","div",null,{"className":"gifts-inner","children":[["$","div",null,{"className":"gifts-head","children":["$","div",null,{"className":"gifts-head-plate","children":["$","h2",null,{"className":"h2 gifts-h2","children":"Каждый зарегистрированный участник получает три информационных материала от партнёра программы"}]}]}],["$","div",null,{"className":"gifts-grid","children":[["$","article","0",{"className":"gift-card","children":[["$","span",null,{"className":"gift-icon","aria-hidden":true,"children":["$","i",null,{"className":"fi fi-rr-chart-line-up"}]}],["$","span",null,{"className":"gift-eyebrow","children":"Авторский материал «Зерокодер»"}],["$","h3",null,{"className":"gift-title","children":"Как изменится обучение детей в ближайшие 5 лет"}],["$","p",null,{"className":"gift-desc","children":"Аналитика на основе свежего всероссийского опроса ВЦИОМ: как родители смотрят на трансформацию школьного образования и профиль «Искусственный интеллект»."}]]}],["$","article","1",{"className":"gift-card","children":[["$","span",null,{"className":"gift-icon","aria-hidden":true,"children":["$","i",null,{"className":"fi fi-rr-briefcase"}]}],["$","span",null,{"className":"gift-eyebrow","children":"Авторский материал «Зерокодер»"}],["$","h3",null,{"className":"gift-title","children":"Нейросети и профессии будущего"}],["$","p",null,{"className":"gift-desc","children":"Обзор перспективных профессиональных направлений и востребованных навыков эпохи искусственного интеллекта, адаптированный для школьников и их родителей."}]]}],["$","article","2",{"className":"gift-card","children":[["$","span",null,{"className":"gift-icon","aria-hidden":true,"children":["$","i",null,{"className":"fi fi-rr-clipboard-list-check"}]}],["$","span",null,{"className":"gift-eyebrow","children":"Методические материалы"}],["$","h3",null,{"className":"gift-title","children":"Диагностика профессиональных склонностей по методике МГУ"}],["$","p",null,{"className":"gift-desc","children":"Структурированный материал для самостоятельной оценки родителем и ребёнком предрасположенности к профессиям, которые будут востребованы через 5–7 лет."}]]}]]}]]}],["$","style",null,{"children":"$1b"}]]}]}]
+1d:T653,
+        .cta-grid {
+          display: grid;
+          grid-template-columns: 1fr;
+          gap: 4px;
+          border-radius: 6px;
+          overflow: hidden;
+          border: 1px solid #E2E6EE;
+        }
+        @media (min-width: 900px) {
+          .cta-grid { grid-template-columns: 7fr 5fr; gap: 0; }
+        }
+        .cta-left {
+          background: #1C3F94;
+          padding: 36px 28px;
+          color: #FFFFFF;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+        }
+        @media (min-width: 900px) {
+          .cta-left { padding: 48px 44px; }
+        }
+        .cta-right {
+          background: #FFFFFF;
+          padding: 24px 20px;
+          min-height: 320px;
+          display: flex;
+          flex-direction: column;
+        }
+        @media (min-width: 900px) {
+          .cta-right { padding: 32px 28px; }
+        }
+        .cta-right .getcourse-widget {
+          width: 100%;
+          flex: 1;
+        }
+
+        /* Meta info inside navy panel */
+        .cta-meta {
+          margin-top: 24px;
+          display: flex;
+          flex-direction: column;
+          gap: 10px;
+        }
+        .cta-meta-item {
+          display: inline-flex;
+          align-items: center;
+          gap: 10px;
+          font-size: 0.9375rem;
+          font-weight: 500;
+          color: rgba(255, 255, 255, 0.92);
+          line-height: 1.4;
+        }
+        .cta-meta-dot {
+          display: inline-block;
+          width: 6px;
+          height: 6px;
+          border-radius: 50%;
+          background: #D62E2E;
+          flex-shrink: 0;
+        }
+      10:["$","$La",null,{"children":["$","section",null,{"id":"cta","className":"sec","style":{"background":"#F4F6FA"},"children":[["$","div",null,{"style":{"maxWidth":"1180px","margin":"0 auto"},"children":["$","div",null,{"className":"cta-grid","children":[["$","div",null,{"className":"cta-left","children":[["$","h2",null,{"className":"h2","style":{"color":"#FFFFFF","lineHeight":1.2},"children":"Всероссийская программа подготовки детей «Профессии будущего: Погружение в искусственный интеллект»"}],["$","div",null,{"className":"cta-meta","children":["$","span",null,{"className":"cta-meta-item","children":[["$","span",null,{"className":"cta-meta-dot"}],"Количество мест ограничено"]}]}]]}],["$","div",null,{"className":"cta-right","children":["$","$L1c",null,{}]}]]}]}],["$","style",null,{"children":"$1d"}]]}]}]
+11:["$","li","https://youtube.com/@zerocoder",{"children":["$","a",null,{"href":"https://youtube.com/@zerocoder","target":"_blank","rel":"noopener noreferrer","aria-label":"YouTube","children":["$","svg",null,{"width":"20","height":"20","viewBox":"0 0 24 24","fill":"none","aria-hidden":true,"children":["$","path",null,{"d":"M23.5 6.5a3 3 0 0 0-2.1-2.1C19.5 4 12 4 12 4s-7.5 0-9.4.4A3 3 0 0 0 .5 6.5C.1 8.4.1 12 .1 12s0 3.6.4 5.5A3 3 0 0 0 2.6 19.6C4.5 20 12 20 12 20s7.5 0 9.4-.4a3 3 0 0 0 2.1-2.1c.4-1.9.4-5.5.4-5.5s0-3.6-.4-5.5ZM9.6 15.6V8.4l6.2 3.6-6.2 3.6Z","fill":"currentColor"}]}]}]}]
+12:["$","li","https://dzen.ru/zerocoder",{"children":["$","a",null,{"href":"https://dzen.ru/zerocoder","target":"_blank","rel":"noopener noreferrer","aria-label":"Дзен","children":["$","svg",null,{"width":"20","height":"20","viewBox":"0 0 24 24","fill":"none","aria-hidden":true,"children":["$","path",null,{"d":"M12 2c0 5.5-4.5 10-10 10 5.5 0 10 4.5 10 10 0-5.5 4.5-10 10-10-5.5 0-10-4.5-10-10Z","fill":"currentColor"}]}]}]}]
+13:["$","div",null,{"className":"footer-bottom","children":[["$","span",null,{"children":"© 2026 ООО «Зерокодер». Все права защищены."}],["$","span",null,{"className":"footer-bottom-legal","children":[["$","span",null,{"children":"ИНН 9715401631"}],["$","span",null,{"children":"ОГРН 1217700246026"}],["$","span",null,{"children":"Лицензия № Л035-01298-77/00625369"}]]}]]}]
+1e:Teb4,
+        .site-footer {
+          background: #F4F6FA;
+          border-top: 1px solid #E2E6EE;
+          padding: 56px 16px 40px;
+        }
+        @media (min-width: 768px) {
+          .site-footer { padding: 72px 24px 48px; }
+        }
+        .footer-inner {
+          max-width: 1180px;
+          margin: 0 auto;
+        }
+        .footer-grid {
+          display: grid;
+          grid-template-columns: 1fr;
+          gap: 32px;
+        }
+        @media (min-width: 900px) {
+          .footer-grid { grid-template-columns: 1.1fr 1fr 1.2fr 1fr; gap: 36px; }
+        }
+
+        /* Col 1: Brand */
+        .footer-brand-link {
+          display: inline-flex;
+          align-items: center;
+          gap: 12px;
+          color: inherit;
+          text-decoration: none;
+        }
+        .footer-brand-logo {
+          border-radius: 12px;
+          display: block;
+        }
+        .footer-brand-text { display: flex; flex-direction: column; line-height: 1.15; }
+        .footer-brand-name {
+          font-weight: 800;
+          font-size: 1.125rem;
+          color: #1B1F2A;
+        }
+        .footer-brand-sub {
+          font-size: 0.6875rem;
+          color: #7A8395;
+          margin-top: 2px;
+        }
+        .footer-address {
+          margin-top: 20px;
+          font-size: 0.875rem;
+          color: #4A5468;
+          line-height: 1.55;
+        }
+
+        /* Col 2, 3: Nav lists */
+        .footer-nav ul {
+          list-style: none;
+          margin: 0;
+          padding: 0;
+          display: flex;
+          flex-direction: column;
+          gap: 10px;
+        }
+        .footer-nav a {
+          font-size: 0.875rem;
+          color: #1B1F2A;
+          text-decoration: none;
+          transition: color 240ms cubic-bezier(0.32, 0.72, 0, 1);
+        }
+        .footer-nav a:hover { color: #1C3F94; }
+
+        /* Col 4: Contacts */
+        .footer-contacts {
+          display: flex;
+          flex-direction: column;
+          gap: 20px;
+        }
+        .footer-contacts-primary {
+          display: flex;
+          flex-direction: column;
+          gap: 6px;
+        }
+        .footer-contacts-primary a {
+          font-size: 1rem;
+          font-weight: 800;
+          color: #1B1F2A;
+          text-decoration: none;
+          letter-spacing: -0.005em;
+          transition: color 240ms cubic-bezier(0.32, 0.72, 0, 1);
+        }
+        .footer-contacts-primary a:hover { color: #1C3F94; }
+
+        .footer-socials {
+          list-style: none;
+          margin: 0;
+          padding: 0;
+          display: flex;
+          align-items: center;
+          gap: 10px;
+        }
+        .footer-socials a {
+          width: 40px;
+          height: 40px;
+          border-radius: 6px;
+          background: #FFFFFF;
+          border: 1px solid #E2E6EE;
+          color: #4A5468;
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          transition: color 240ms cubic-bezier(0.32, 0.72, 0, 1),
+                      border-color 240ms cubic-bezier(0.32, 0.72, 0, 1);
+        }
+        .footer-socials a:hover { color: #1C3F94; border-color: #1C3F94; }
+
+        /* Bottom strip */
+        .footer-bottom {
+          margin-top: 40px;
+          padding-top: 24px;
+          border-top: 1px solid #E2E6EE;
+          display: flex;
+          flex-direction: column;
+          gap: 8px;
+          font-size: 0.75rem;
+          color: #7A8395;
+        }
+        @media (min-width: 768px) {
+          .footer-bottom {
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+          }
+        }
+        .footer-bottom-legal {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 4px 20px;
+        }
+      14:["$","style",null,{"children":"$1e"}]
+17:null
