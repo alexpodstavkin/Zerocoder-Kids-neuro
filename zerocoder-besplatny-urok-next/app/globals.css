@@ -315,8 +315,13 @@ header{ position:sticky; top:0; z-index:100; background:rgba(255,255,255,.9);
 .form-fields .field input::placeholder{ color:var(--dim-onDark); }
 .form-fields .field select option{ color:#1d2633; }
 .form-check{ display:flex; gap:12px; font-size:13px; color:var(--dim-onDark); align-items:flex-start; margin:4px 0; }
-/* Виджет записи GetCourse: белая карточка на тёмной панели формы. */
-.getcourse-widget{ background:#fff; border-radius:16px; padding:8px 16px; }
+/* Виджет записи GetCourse: белая карточка на тёмной панели формы.
+   Форма — iframe с чужого домена, изнутри не стилизуется. Уменьшаем её через
+   zoom НА КОНТЕЙНЕРЕ (не на iframe: тогда контейнер не пересчитывает высоту
+   и под формой остаётся белая пустота). Отступы и радиус заданы «до zoom» —
+   при .6 они дают привычные ~16px. На мобильных zoom не нужен: там страница
+   уже не масштабируется AutoScale, форма и так по ширине экрана. */
+.getcourse-widget{ zoom:.6; background:#fff; border-radius:26px; padding:14px 26px; }
 .getcourse-widget iframe{ display:block; width:100%; border:none; }
 .form-fields .btn-green{ justify-content:center; }
 .form-or{ text-align:center; color:var(--dim-onDark); font-size:14px; }
@@ -356,6 +361,7 @@ footer{ background:var(--navy); color:#fff; border-radius:var(--r-lg) var(--r-lg
 
 /* ---------- Адаптив ---------- */
 @media(max-width:1000px){
+  .getcourse-widget{ zoom:1; border-radius:16px; padding:8px 16px; }
   h1,.hero h1{ font-size:44px !important; }
   h2{ font-size:32px !important; }
   .program h2,.steps-head h2{ font-size:32px !important; }
