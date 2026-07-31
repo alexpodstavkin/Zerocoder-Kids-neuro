@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="ru" style="scroll-behavior: smooth;">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<title>Национальный проект «Программирование с нейросетями» — бесплатный урок по вайбкодингу</title>
+<meta name="description" content="Национальный проект РФ «Программирование с нейросетями». Бесплатный вводный онлайн-урок по вайбкодингу для детей 8–14 лет от школы Зерокодер. За 60 минут ребёнок создаёт свой сайт и мини-игру с помощью ИИ.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+  :root {
+    --primary:#e94546; --primary-hover:#d13a3b;
+    --dark-bg:#1a1f35; --light-bg:#f4f7fb; --white:#ffffff; --black:#1a1a1a;
+    --text-secondary:#555;
+    --shadow-card:0 4px 24px rgba(0,0,0,0.07);
+    --shadow-btn:0 3px 12px rgba(233,69,70,0.35);
+    --radius:20px; --radius-btn:8px;
+  }
+  body { font-family:'Roboto',Arial,sans-serif; color:var(--black); line-height:1.6; overflow-x:hidden; background:var(--white); }
+  .container { max-width:1140px; margin:0 auto; padding:0 20px; }
+
+  /* ===== HERO ===== */
+  .hero { min-height:600px; display:flex; align-items:center; justify-content:center; text-align:center; position:relative; overflow:hidden; padding:80px 20px; }
+  .hero-bg { position:absolute; inset:0; background:url('hero-bg.png') center/cover no-repeat; filter:blur(6px); transform:scale(1.05); }
+  .hero::before { content:''; position:absolute; inset:0; background:rgba(10,14,39,0.72); z-index:1; pointer-events:none; }
+  .hero-content { position:relative; z-index:2; max-width:900px; }
+  .hero h1 { font-size:48px; font-weight:900; color:var(--white); text-transform:uppercase; line-height:1.15; margin-bottom:44px; letter-spacing:-0.5px; }
+  .hero h1 span { color:var(--primary); }
+  .hero-sub { font-size:19px; color:rgba(255,255,255,0.88); font-weight:400; max-width:640px; margin:0 auto 40px; line-height:1.6; text-transform:none; }
+
+  /* ===== BUTTONS ===== */
+  .btn { display:inline-block; background:var(--primary); color:var(--white); font-family:'Roboto',Arial,sans-serif; font-size:20px; font-weight:700; padding:18px 48px; border-radius:var(--radius-btn); border:none; cursor:pointer; text-decoration:none; box-shadow:var(--shadow-btn); transition:background .25s,transform .2s,box-shadow .25s; text-transform:uppercase; letter-spacing:0.5px; }
+  .btn:hover { background:var(--primary-hover); transform:translateY(-2px); box-shadow:0 6px 20px rgba(233,69,70,0.45); }
+  .btn:active { transform:translateY(0); }
+
+  /* ===== INFO STRIP ===== */
+  .info-strip { padding:40px 20px; background:var(--white); }
+  .info-box { background:var(--light-bg); border-radius:var(--radius); padding:48px 56px; display:flex; align-items:center; gap:36px; max-width:1100px; margin:0 auto; }
+  .info-icon { flex-shrink:0; width:80px; height:80px; background:var(--white); border-radius:50%; display:flex; align-items:center; justify-content:center; box-shadow:0 2px 12px rgba(0,0,0,0.06); }
+  .info-icon svg { width:40px; height:40px; color:var(--primary); }
+  .info-box p { font-size:20px; line-height:1.6; color:var(--black); }
+  .info-box strong { color:var(--primary); }
+  .info-box p.info-note { margin-top:12px; padding-top:12px; border-top:1px solid #e3e8f0; font-size:12px; line-height:1.45; color:#8a93a6; }
+  .info-box p.info-note strong { color:var(--primary); font-weight:700; }
+  .fn-ref { color:var(--primary); font-weight:700; font-size:0.68em; vertical-align:super; }
+  .fn-star { color:var(--primary); font-weight:700; }
+  .desktop-br { display:block; }
+
+  /* ===== SECTION COMMON ===== */
+  .section { padding:80px 20px; }
+  .section-title { font-size:36px; font-weight:900; text-align:center; margin-bottom:16px; text-transform:uppercase; line-height:1.2; }
+  .section-subtitle { font-size:18px; color:var(--text-secondary); text-align:center; margin-bottom:56px; max-width:650px; margin-left:auto; margin-right:auto; }
+
+  /* ===== CARDS GRID ===== */
+  .cards { display:grid; grid-template-columns:repeat(3,1fr); gap:28px; max-width:1100px; margin:0 auto; }
+  .card { background:var(--light-bg); border-radius:var(--radius); padding:40px 32px; text-align:center; transition:transform .25s,box-shadow .25s; }
+  .card:hover { transform:translateY(-6px); box-shadow:var(--shadow-card); }
+  .card-icon { width:72px; height:72px; margin:0 auto 24px; background:var(--white); border-radius:50%; display:flex; align-items:center; justify-content:center; box-shadow:0 2px 10px rgba(0,0,0,0.06); }
+  .card-icon svg { width:34px; height:34px; color:var(--primary); }
+  .card h3 { font-size:20px; font-weight:700; margin-bottom:12px; }
+  .card p { font-size:16px; color:var(--text-secondary); line-height:1.6; }
+  .card .card-eyebrow { display:block; font-size:12px; font-weight:700; letter-spacing:0.06em; text-transform:uppercase; color:#9aa3b5; margin-bottom:8px; }
+
+  /* ===== STEPS ===== */
+  .steps { max-width:1100px; margin:0 auto; display:flex; flex-direction:column; gap:28px; }
+  .step { display:flex; align-items:flex-start; gap:28px; background:var(--light-bg); border-radius:var(--radius); padding:36px 40px; transition:transform .25s,box-shadow .25s; }
+  .step:hover { transform:translateY(-4px); box-shadow:var(--shadow-card); }
+  .step-number { flex-shrink:0; width:56px; height:56px; background:var(--primary); color:var(--white); font-size:24px; font-weight:900; border-radius:50%; display:flex; align-items:center; justify-content:center; }
+  .step-content h3 { font-size:22px; font-weight:700; margin-bottom:8px; }
+  .step-content p { font-size:17px; color:var(--text-secondary); line-height:1.6; }
+
+  /* ===== CTA BANNER ===== */
+  .cta-banner {
+    background:
+      radial-gradient(ellipse 800px 500px at 15% 80%, rgba(1,39,125,0.45), transparent),
+      radial-gradient(ellipse 700px 500px at 85% 20%, rgba(60,20,160,0.4), transparent),
+      linear-gradient(160deg, rgba(10,14,39,0.72) 0%, rgba(20,26,58,0.60) 45%, rgba(26,16,69,0.72) 100%),
+      url('cta-bg.png') center/cover no-repeat;
+    padding:80px 20px; text-align:center; position:relative;
+  }
+  .cta-banner h2 { font-size:36px; font-weight:900; color:var(--white); text-transform:uppercase; margin-bottom:12px; }
+  .cta-banner p { font-size:20px; color:rgba(255,255,255,0.8); margin-bottom:36px; }
+
+  /* ===== ADVANTAGES ===== */
+  .advantages .cards { grid-template-columns:repeat(3,1fr); }
+  .advantage-card { background:var(--light-bg); border-radius:var(--radius); padding:40px 32px; text-align:left; transition:transform .25s,box-shadow .25s; }
+  .advantage-card:hover { transform:translateY(-6px); box-shadow:var(--shadow-card); }
+  .advantage-check { width:48px; height:48px; background:var(--primary); border-radius:50%; display:flex; align-items:center; justify-content:center; margin-bottom:20px; }
+  .advantage-check svg { width:24px; height:24px; color:var(--white); }
+  .advantage-card h3 { font-size:20px; font-weight:700; margin-bottom:10px; }
+  .advantage-card p { font-size:16px; color:var(--text-secondary); line-height:1.6; }
+
+  /* ===== MATERIALS (gifts) ===== */
+  .materials-note { text-align:center; color:var(--text-secondary); font-size:16px; margin-top:32px; }
+
+  /* ===== PARTNERS ===== */
+  .partners-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:24px; max-width:1000px; margin:0 auto; }
+  .partner-cell { background:var(--light-bg); border-radius:var(--radius); padding:28px 20px; display:flex; flex-direction:column; align-items:center; gap:18px; min-height:170px; justify-content:center; transition:transform .25s,box-shadow .25s; }
+  .partner-cell:hover { transform:translateY(-6px); box-shadow:var(--shadow-card); }
+  .partner-logo { height:66px; display:flex; align-items:center; justify-content:center; }
+  .partner-logo img { max-height:66px; max-width:100%; width:auto; object-fit:contain; }
+  .partner-name { font-size:15px; font-weight:700; text-align:center; }
+  @media(max-width:960px){ .partners-grid{ grid-template-columns:repeat(2,1fr); } }
+  @media(max-width:480px){ .partners-grid{ grid-template-columns:1fr; } }
+
+  /* ===== FINAL CTA + FORM ===== */
+  .final-cta { padding:80px 20px; background:var(--light-bg); }
+  .signup-heading { font-size:22px; font-weight:700; color:var(--primary); text-transform:uppercase; text-align:center; margin-bottom:40px; line-height:1.4; }
+  .final-box { max-width:700px; margin:0 auto; text-align:center; }
+
+  /* ===== WHY NOW ===== */
+  .why-now-row { display:flex; gap:28px; max-width:1100px; margin:0 auto; }
+  .why-now-card-img { flex:0 0 380px; background:var(--light-bg); border-radius:var(--radius); overflow:hidden; }
+  .why-now-card-img img { width:100%; height:100%; object-fit:cover; display:block; }
+  .why-now-card-text { flex:1; background:var(--light-bg); border-radius:var(--radius); padding:40px 48px; display:flex; flex-direction:column; gap:16px; justify-content:center; }
+  .why-now-card-text p { font-size:17px; line-height:1.7; }
+
+  /* ===== FOOTER ===== */
+  .site-footer { background:#F4F6FA; border-top:1px solid #E2E6EE; padding:56px 16px 40px; }
+  .footer-inner { max-width:1180px; margin:0 auto; }
+  .footer-grid { display:grid; grid-template-columns:1fr; gap:32px; }
+  .footer-brand-link { display:inline-flex; align-items:center; gap:12px; color:inherit; text-decoration:none; }
+  .footer-brand-logo { width:44px; height:44px; border-radius:12px; display:block; }
+  .footer-brand-text { display:flex; flex-direction:column; line-height:1.15; }
+  .footer-brand-name { font-weight:800; font-size:18px; color:#1B1F2A; }
+  .footer-brand-sub { font-size:11px; color:#7A8395; margin-top:2px; }
+  .footer-address { margin-top:20px; font-size:14px; color:#4A5468; line-height:1.55; }
+  .footer-nav ul { list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:10px; }
+  .footer-nav a { font-size:14px; color:#1B1F2A; text-decoration:none; transition:color .24s ease; }
+  .footer-nav a:hover { color:var(--primary); }
+  .footer-contacts { display:flex; flex-direction:column; gap:20px; }
+  .footer-contacts-primary { display:flex; flex-direction:column; gap:6px; }
+  .footer-contacts-primary a { font-size:16px; font-weight:800; color:#1B1F2A; text-decoration:none; letter-spacing:-0.005em; transition:color .24s ease; }
+  .footer-contacts-primary a:hover { color:var(--primary); }
+  .footer-socials { list-style:none; margin:0; padding:0; display:flex; align-items:center; gap:10px; }
+  .footer-socials a { width:40px; height:40px; border-radius:6px; background:#FFFFFF; border:1px solid #E2E6EE; color:#4A5468; display:inline-flex; align-items:center; justify-content:center; transition:color .24s ease,border-color .24s ease; }
+  .footer-socials a:hover { color:var(--primary); border-color:var(--primary); }
+  .footer-bottom { margin-top:40px; padding-top:24px; border-top:1px solid #E2E6EE; display:flex; flex-direction:column; gap:8px; font-size:12px; color:#7A8395; }
+  .footer-bottom-legal { display:flex; flex-wrap:wrap; gap:4px 20px; }
+  @media (min-width:768px){ .site-footer{padding:72px 24px 48px;} .footer-bottom{flex-direction:row;align-items:center;justify-content:space-between;gap:16px;} }
+  @media (min-width:900px){ .footer-grid{grid-template-columns:1.1fr 1fr 1.2fr 1fr;gap:36px;} }
+
+  /* ===== THIN FOOTER ===== */
+  .thin-footer { background:var(--dark-bg); color:rgba(255,255,255,0.72); padding:18px 20px; font-size:13px; }
+  .thin-footer-in { max-width:1140px; margin:0 auto; display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:10px 28px; }
+  .thin-footer-links { display:flex; flex-wrap:wrap; gap:8px 22px; }
+  .thin-footer a { color:rgba(255,255,255,0.82); text-decoration:none; transition:color .2s; }
+  .thin-footer a:hover { color:#fff; }
+  .thin-footer-legal { display:flex; flex-wrap:wrap; gap:6px 18px; color:rgba(255,255,255,0.52); }
+  @media (max-width:640px){ .thin-footer-in{ flex-direction:column; align-items:flex-start; } }
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width:960px){
+    .hero h1{font-size:36px;}
+    .cards{grid-template-columns:repeat(2,1fr);}
+    .advantages .cards{grid-template-columns:repeat(2,1fr);}
+    .info-box{padding:36px 32px;}
+  }
+  @media (max-width:640px){
+    .hero{min-height:480px;padding:60px 16px;}
+    .hero h1{font-size:28px;}
+    .hero-sub{font-size:16px;}
+    .btn{font-size:17px;padding:16px 36px;}
+    .section-title{font-size:26px;}
+    .cards{grid-template-columns:1fr;}
+    .advantages .cards{grid-template-columns:1fr;}
+    .desktop-br{display:none;}
+    .info-box{flex-direction:column;text-align:center;padding:32px 24px;}
+    .why-now-row{flex-direction:column;}
+    .why-now-card-img{flex:none;height:220px;}
+    .why-now-card-text{padding:28px 24px;}
+    .info-box p{font-size:17px;}
+    .step{flex-direction:column;align-items:center;text-align:center;padding:28px 24px;}
+    .cta-banner h2{font-size:26px;}
+  }
+  @media (max-width:480px){
+    .hero h1{font-size:24px;}
+    .section{padding:56px 16px;}
+  }
+</style>
+<!-- Yandex.Metrika counter -->
+<script type="text/javascript">
+    (function(m,e,t,r,i,k,a){
+        m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+        m[i].l=1*new Date();
+        for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+        k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
+    })(window, document,'script','https://mc.yandex.ru/metrika/tag.js', 'ym');
+
+    ym(72085663, 'init', {clickmap:true, referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true});
+</script>
+<noscript><div><img src="https://mc.yandex.ru/watch/72085663" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+<!-- /Yandex.Metrika counter -->
+
+<!-- Top.Mail.Ru counter -->
+<script type="text/javascript">
+var _tmr = window._tmr || (window._tmr = []);
+_tmr.push({id: "3739769", type: "pageView", start: (new Date()).getTime()});
+(function (d, w, id) {
+  if (d.getElementById(id)) return;
+  var ts = d.createElement("script"); ts.type = "text/javascript"; ts.async = true; ts.id = id;
+  ts.src = "https://top-fwz1.mail.ru/js/code.js";
+  var f = function () {var s = d.getElementsByTagName("script")[0]; s.parentNode.insertBefore(ts, s);};
+  if (w.opera == "[object Opera]") { d.addEventListener("DOMContentLoaded", f, false); } else { f(); }
+})(document, window, "tmr-code");
+</script>
+<noscript><div><img src="https://top-fwz1.mail.ru/counter?id=3739769;js=na" style="position:absolute;left:-9999px;" alt="Top.Mail.Ru" /></div></noscript>
+<!-- /Top.Mail.Ru counter -->
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero" id="top">
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+    <h1>Национальный проект РФ<br><span>«Программирование<br>с нейросетями»</span></h1>
+    <a href="#signup" class="btn">Записать ребёнка</a>
+  </div>
+</section>
+
+<!-- INFO STRIP + DEFINITION FOOTNOTE -->
+<section class="info-strip">
+  <div class="info-box">
+    <div class="info-icon">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+    </div>
+    <div>
+      <p>В связи с активным развитием технологий искусственного интеллекта университет Зерокодер проводит бесплатный <strong>цифровой онлайн-урок по вайбкодингу</strong><sup class="fn-ref">*</sup> для детей <strong>8–14 лет</strong>. Уровень подготовки — с нуля.</p>
+      <p class="info-note"><span class="fn-star">*</span> <strong>Программирование с нейросетями, или вайбкодинг,</strong> — это современный способ создавать сайты, игры и приложения вместе с искусственным интеллектом. Ребёнок придумывает идею, ставит задачу нейросети, проверяет результат — и превращает замысел в готовый цифровой продукт.</p>
+    </div>
+  </div>
+</section>
+
+<!-- WHY NOW -->
+<section class="info-strip">
+  <h2 class="section-title" style="margin-bottom:32px;">Что значит освоить вайбкодинг сегодня?</h2>
+  <div class="why-now-row">
+    <div class="why-now-card-img">
+      <img src="why-now.png" alt="Ученица за компьютером">
+    </div>
+    <div class="why-now-card-text">
+      <p>По данным Всемирного экономического форума, к&nbsp;2030 году более 85% востребованных профессий будут напрямую связаны с технологиями, которые сегодня ещё не преподают в&nbsp;школах.</p>
+      <p>Российский рынок искусственного интеллекта за это время вырастет в&nbsp;4&nbsp;раза, а специалисты, владеющие ИИ-инструментами, уже сейчас зарабатывают на&nbsp;40% больше.</p>
+      <p>Дети 8–14&nbsp;лет осваивают логику нейросетей значительно быстрее взрослых. Те, кто начинает вайбкодинг сегодня, к&nbsp;окончанию школы будут свободно создавать цифровые проекты с&nbsp;ИИ.</p>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT WILL LEARN -->
+<section class="section">
+  <h2 class="section-title">Что даст урок вашему ребёнку</h2>
+  <div class="cards">
+    <div class="card">
+      <div class="card-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5.002 5.002 0 017.072 0"/></svg>
+      </div>
+      <h3>Понимание вайбкодинга</h3>
+      <p>Ребёнок поймёт, как ставить задачу нейросети, писать промпт и проверять результат — а не просто нажимать кнопки</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/></svg>
+      </div>
+      <h3>Свой сайт и мини-игра</h3>
+      <p>Создаст настоящие проекты с помощью ИИ прямо на уроке — сайт по задаче заказчика и мини-игру</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+      </div>
+      <h3>Навыки будущего</h3>
+      <p>Получит навыки работы с ИИ, которые будут востребованы в любой профессии через 5–10 лет</p>
+    </div>
+  </div>
+</section>
+
+<!-- STEPS -->
+<section class="section" style="background:var(--white);">
+  <h2 class="section-title">Как проходит урок</h2>
+  <p class="section-subtitle">Три простых этапа от знакомства до собственного проекта</p>
+  <div class="steps">
+    <div class="step">
+      <div class="step-number">1</div>
+      <div class="step-content">
+        <h3>Знакомство с вайбкодингом</h3>
+        <p>Наставник простым языком объяснит, что такое вайбкодинг и как создавать проекты вместе с ИИ: придумать идею, поставить задачу нейросети, проверить результат</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-number">2</div>
+      <div class="step-content">
+        <h3>Практика: сайт и игра с ИИ</h3>
+        <p>Ребёнок соберёт работающий сайт по задаче заказчика и сгенерирует мини-игру, научится задавать правильные промпты и получать нужный результат</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-number">3</div>
+      <div class="step-content">
+        <h3>Создание своего проекта</h3>
+        <p>Под руководством наставника доведёт проект до готового вида: протестирует, найдёт неточности и улучшит результат</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BANNER -->
+<section class="cta-banner">
+  <h2>Запись открыта — количество мест ограничено!</h2>
+  <p>Онлайн-формат, 60 минут, индивидуально, полностью бесплатно</p>
+  <a href="#signup" class="btn">Записать ребёнка</a>
+</section>
+
+<!-- ADVANTAGES -->
+<section class="section advantages">
+  <h2 class="section-title">Преимущества программы</h2>
+  <div class="cards">
+    <div class="advantage-card">
+      <div class="advantage-check"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg></div>
+      <h3>Опытные наставники</h3>
+      <p>Занятия ведут практикующие специалисты, которые умеют объяснять сложное простым языком</p>
+    </div>
+    <div class="advantage-card">
+      <div class="advantage-check"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg></div>
+      <h3>Практика с первого дня</h3>
+      <p>Никакой скучной теории — ребёнок сразу работает с реальными нейросетями и создаёт свой проект</p>
+    </div>
+    <div class="advantage-card">
+      <div class="advantage-check"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg></div>
+      <h3>От пользователя к создателю</h3>
+      <p>Ребёнок не просто пользуется нейросетями, а учится создавать с их помощью собственные цифровые продукты</p>
+    </div>
+  </div>
+</section>
+
+<!-- MATERIALS (gifts) -->
+<section class="section" style="background:var(--white);">
+  <h2 class="section-title">Полезные материалы для вас и вашего ребёнка</h2>
+  <p class="section-subtitle">Каждый записавшийся участник получает три материала от партнёра программы</p>
+  <div class="cards">
+    <div class="card">
+      <div class="card-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg></div>
+      <span class="card-eyebrow">Авторский материал «Зерокодер»</span>
+      <h3>Как ИИ меняет профессии</h3>
+      <p>Аналитика для родителей: какие направления открывает искусственный интеллект и как помочь ребёнку войти в них раньше сверстников</p>
+    </div>
+    <div class="card">
+      <div class="card-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 5h16v11H4zM2 20h20M9 9l-2 2 2 2M15 9l2 2-2 2"/></svg></div>
+      <span class="card-eyebrow">Авторский материал «Зерокодер»</span>
+      <h3>Гид по нейросетям для создания проектов</h3>
+      <p>Понятный обзор инструментов, с которыми ребёнок создаёт сайты, игры и ботов — с примерами промптов и разбором, как проверять результат</p>
+    </div>
+    <div class="card">
+      <div class="card-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 11l3 3 8-8M20 12v6a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h9"/></svg></div>
+      <span class="card-eyebrow">Методические материалы</span>
+      <h3>Диагностика склонностей к IT-профессиям</h3>
+      <p>Материал для самостоятельной оценки родителем и ребёнком предрасположенности к профессиям будущего</p>
+    </div>
+  </div>
+</section>
+
+<!-- PARTNERS -->
+<section class="section">
+  <h2 class="section-title">Партнёры программы</h2>
+  <p class="section-subtitle">Программа реализуется совместно с ведущими университетами и IT-компаниями РФ</p>
+  <div class="partners-grid">
+    <div class="partner-cell"><span class="partner-logo"><img src="partners/hse.png" alt="НИУ ВШЭ" loading="lazy"></span><span class="partner-name">НИУ ВШЭ</span></div>
+    <div class="partner-cell"><span class="partner-logo"><img src="partners/mipt.png" alt="МФТИ" loading="lazy"></span><span class="partner-name">МФТИ</span></div>
+    <div class="partner-cell"><span class="partner-logo"><img src="partners/ranepa.png" alt="РАНХиГС" loading="lazy"></span><span class="partner-name">РАНХиГС</span></div>
+    <div class="partner-cell"><span class="partner-logo"><img src="partners/innopolis.jpeg" alt="Университет Иннополис" loading="lazy"></span><span class="partner-name">Университет Иннополис</span></div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="final-cta" id="signup">
+  <div class="container">
+    <p class="signup-heading">Для участия в проекте родителю необходимо заполнить форму записи</p>
+    <div class="final-box">
+      <script id="b8c7ddb68a0e89cd8b5fcae6c5481f920c067ccb" src="https://university.zerocoder.ru/pl/lite/widget/script?id=1637344"></script>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER (thin strip) -->
+<footer class="thin-footer">
+  <div class="thin-footer-in">
+    <div class="thin-footer-links">
+      <a href="https://zerocoder.ru/privacy" target="_blank" rel="noopener noreferrer">Политика конфиденциальности</a>
+      <a href="https://zerocoder.ru/safety" target="_blank" rel="noopener noreferrer">Политика безопасности платежей</a>
+      <a href="https://zerocoder.ru/terms" target="_blank" rel="noopener noreferrer">Оферта</a>
+    </div>
+    <div class="thin-footer-legal">
+      <span>© 2026 ООО&nbsp;«Зерокодер»</span>
+      <span>ИНН&nbsp;9715401631</span>
+      <span>ОГРН&nbsp;1217700246026</span>
+      <span>Лицензия&nbsp;№&nbsp;Л035-01298-77/00625369</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
