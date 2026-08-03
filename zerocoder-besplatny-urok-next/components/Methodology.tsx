@@ -16,7 +16,7 @@ export function Methodology() {
             <div>
               <div className="eyebrow">Методология</div>
               <h2>
-                Развиваем не только цифровые, но и <span className="g">мягкие навыки,</span> которые пригодятся ребёнку в учёбе и жизни
+                <span className="g">Развиваем</span> не только цифровые, но и <span className="g">мягкие навыки,</span> которые пригодятся ребёнку в учёбе и жизни
               </h2>
             </div>
             <a href="#zapis" className="btn btn-green">Записаться на урок</a>

@@ -7,6 +7,7 @@ import { Reviews } from '@/components/Reviews'
 import { Methodology } from '@/components/Methodology'
 import { LessonForm } from '@/components/LessonForm'
 import { Faq } from '@/components/Faq'
+import { Glossary } from '@/components/Glossary'
 import { Footer } from '@/components/Footer'
 
 export default function Page() {
@@ -21,6 +22,7 @@ export default function Page() {
       <Methodology />
       <LessonForm />
       <Faq />
+      <Glossary />
       <Footer />
     </>
   )
