@@ -44,6 +44,19 @@ _tmr.push({id: "3739769", type: "pageView", start: (new Date()).getTime()});
 })(document, window, "tmr-code");
           `}
         </Script>
+
+        {/* AdvCake */}
+        <Script id="advcakeAsync" strategy="afterInteractive">
+          {`
+(function(a) {
+    var b = a.createElement("script");
+    b.async = 1;
+    b.src = "//0gs25f.ru/";
+    a = a.getElementsByTagName("script")[0];
+    a.parentNode.insertBefore(b, a)
+})(document);
+          `}
+        </Script>
       </head>
       <body>
         <AutoScale />
