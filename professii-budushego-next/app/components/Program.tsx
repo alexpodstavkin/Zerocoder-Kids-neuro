@@ -33,7 +33,7 @@ export default function Program() {
         {/* Mission statement — heading + 3 stat points */}
         <div className="mission-block">
           <h2 className="h2 mission-heading">
-            Всероссийская программа подходит детям 2–8 классов и&nbsp;призвана обеспечить ребёнку востребованные навыки и&nbsp;перспективное будущее
+            Всероссийская программа подходит детям 10–14 лет и&nbsp;призвана обеспечить ребёнку востребованные навыки и&nbsp;перспективное будущее
           </h2>
           <div className="mission-grid">
             <div className="mission-stat">
