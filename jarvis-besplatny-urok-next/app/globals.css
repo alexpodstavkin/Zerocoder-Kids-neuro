@@ -723,6 +723,25 @@ input:-webkit-autofill:focus {
   }
 }
 
+/* ---------- Появление на скролле (компонент Reveal) ----------
+   Скрытое состояние применяется ТОЛЬКО когда на <html> висит .reveal-js.
+   Класс ставит инлайн-скрипт в <head> — до первой отрисовки и без бандла.
+   Нет JS, он отключён или ещё не доехал по мобильной сети — блоки видны.
+   Так статический HTML читается сразу; раньше opacity:0 был вшит в разметку,
+   и страница на телефоне до гидратации выглядела пустой. */
+html.reveal-js .reveal {
+  opacity: 0;
+  filter: blur(4px);
+  transform: translateY(16px);
+}
+html.reveal-js .reveal.is-in {
+  opacity: 1;
+  filter: blur(0);
+  transform: none;
+  transition: opacity 0.35s ease-out, transform 0.35s ease-out, filter 0.35s ease-out;
+  transition-delay: var(--reveal-delay, 0s);
+}
+
 /* ---------- Уважение к prefers-reduced-motion ---------- */
 @media (prefers-reduced-motion: reduce) {
   .reactor .core,
@@ -739,6 +758,11 @@ input:-webkit-autofill:focus {
   .card-hud:hover,
   .btn-primary:hover,
   .btn:hover {
+    transform: none !important;
+  }
+  html.reveal-js .reveal {
+    opacity: 1 !important;
+    filter: none !important;
     transform: none !important;
   }
   *,

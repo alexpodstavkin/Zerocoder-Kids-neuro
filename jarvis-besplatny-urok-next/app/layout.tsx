@@ -28,6 +28,30 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <link rel="stylesheet" href={asset('/uicons/regular/rounded.css')} />
         <link rel="stylesheet" href={asset('/uicons/solid/rounded.css')} />
 
+        {/* Появление блоков на скролле (компонент Reveal).
+            Инлайн и в <head> намеренно: класс .reveal-js должен встать ДО первой
+            отрисовки, иначе видимые блоки моргнут. И наоборот — если JS выключен
+            или бандл не доехал, класса нет и вся страница просто видна.
+            Раньше этим занимался framer-motion, и opacity:0 запекался в HTML:
+            на телефоне ниже Hero была чёрная пустота до гидратации. */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(function(){
+var d=document,r=d.documentElement;
+try{if(window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches)return}catch(e){return}
+if(!('IntersectionObserver' in window)||!r.classList)return;
+r.classList.add('reveal-js');
+var guard=setTimeout(function(){r.classList.remove('reveal-js')},4000);
+function start(){
+clearTimeout(guard);
+var io=new IntersectionObserver(function(es){for(var i=0;i<es.length;i++){if(es[i].isIntersecting){es[i].target.classList.add('is-in');io.unobserve(es[i].target)}}},{rootMargin:'-80px'});
+var n=d.querySelectorAll('.reveal');
+if(!n.length){r.classList.remove('reveal-js');return}
+for(var i=0;i<n.length;i++)io.observe(n[i])}
+if(d.readyState==='loading')d.addEventListener('DOMContentLoaded',start);else start()})();`,
+          }}
+        />
+
         {/* Yandex.Metrika counter */}
         <Script id="yandex-metrika" strategy="afterInteractive">
           {`

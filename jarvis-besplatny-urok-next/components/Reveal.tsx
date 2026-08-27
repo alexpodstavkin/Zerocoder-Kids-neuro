@@ -1,9 +1,15 @@
-'use client'
-import { motion, useReducedMotion } from 'framer-motion'
-import type { ReactNode } from 'react'
+import type { CSSProperties, ReactNode } from 'react'
 
 // Мягкое появление на скролле: blur fade-in. Дозированно — на заголовках секций и карточках.
-// При prefers-reduced-motion блок появляется сразу, без движения и блюра.
+//
+// ⚠️ Главное правило блока: БЕЗ JS содержимое обязано остаться ВИДИМЫМ.
+// Раньше здесь был framer-motion с initial={{opacity:0}}, и это состояние
+// запекалось прямо в статический HTML — на телефоне вся страница ниже Hero
+// стояла чёрной пустотой, пока не доедет бандл (а по слабой сети он мог и не доехать).
+// Теперь скрытое состояние включает не React, а инлайн-скрипт в <head>
+// (см. app/layout.tsx): он вешает на <html> класс .reveal-js ДО первой отрисовки
+// и сам ведёт IntersectionObserver. Ни один байт бандла для этого не нужен.
+// При prefers-reduced-motion скрипт класс не вешает — блоки просто видны.
 export function Reveal({
   children,
   delay = 0,
@@ -13,19 +19,12 @@ export function Reveal({
   delay?: number
   className?: string
 }) {
-  const reduced = useReducedMotion()
-
-  if (reduced) return <div className={className}>{children}</div>
-
   return (
-    <motion.div
-      className={className}
-      initial={{ opacity: 0, y: 16, filter: 'blur(4px)' }}
-      whileInView={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
-      viewport={{ once: true, margin: '-80px' }}
-      transition={{ duration: 0.35, delay, ease: 'easeOut' }}
+    <div
+      className={className ? `reveal ${className}` : 'reveal'}
+      style={delay ? ({ '--reveal-delay': `${delay}s` } as CSSProperties) : undefined}
     >
       {children}
-    </motion.div>
+    </div>
   )
 }
