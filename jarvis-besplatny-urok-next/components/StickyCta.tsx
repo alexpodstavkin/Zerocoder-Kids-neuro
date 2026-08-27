@@ -43,7 +43,7 @@ export function StickyCta() {
   return (
     <div className="sticky-cta" data-visible={visible ? 'true' : 'false'} aria-hidden={!visible}>
       <a href="#zapis" className="btn-primary btn-block !h-[52px]" tabIndex={visible ? 0 : -1}>
-        Записаться на бесплатный урок
+        Записаться на мастер-класс
       </a>
     </div>
   )

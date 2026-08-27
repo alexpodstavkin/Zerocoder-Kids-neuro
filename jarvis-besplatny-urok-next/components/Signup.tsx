@@ -36,7 +36,8 @@ export function Signup() {
           <div className="relative grid grid-cols-1 items-start gap-8 d:grid-cols-[1fr_460px] d:gap-12">
             <Reveal className="d:pt-2">
               <h2 className="h2">
-                Запишите ребёнка на <span style={{ color: 'var(--acc-hot)' }}>бесплатный</span> урок
+                Запишите ребёнка на <span style={{ color: 'var(--acc-hot)' }}>бесплатный</span>{' '}
+                <span className="whitespace-nowrap">мастер-класс</span>
               </h2>
               <p className="mt-4 max-w-[460px] text-[17px] font-medium leading-[1.5] text-[color:var(--fg-2)] d:text-[18px]">
                 Один час, чтобы он увидел: нейросеть — не ГДЗ, а инструмент, которым можно управлять.

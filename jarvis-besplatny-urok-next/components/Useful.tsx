@@ -4,7 +4,7 @@ import { Reveal } from './Reveal'
 // Блок 3 — заголовок и четыре ячейки в ряд, без раскрытий.
 // Скобок здесь нет: лимит §3.7 (4 объекта) уже выбран тремя ячейками блока 2
 // и панелью формы. Чип холодный, cyan — блок сознательно без красных пятен,
-// иначе он читался бы близнецом блока «За 1 урок».
+// иначе он читался бы близнецом блока «За 1 мастер-класс».
 type Item = { icon: string; verb: string; rest: string }
 
 const ITEMS: Item[] = [
@@ -36,7 +36,7 @@ export function Useful() {
       <div className="container-x">
         <Reveal>
           <h2 className="h2 max-w-[900px]">
-            Бесплатный урок будет <span style={{ color: 'var(--acc-hot)' }}>полезен</span> вашему
+            Бесплатный <span className="whitespace-nowrap">мастер-класс</span> будет <span style={{ color: 'var(--acc-hot)' }}>полезен</span> вашему
             ребёнку, если вы хотите, чтобы он:
           </h2>
         </Reveal>

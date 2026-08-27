@@ -114,7 +114,7 @@ export function SignupForm() {
       </div>
 
       <button type="submit" className="btn-primary btn-block mt-6 !h-14">
-        Записаться на бесплатный урок
+        Записаться на мастер-класс
       </button>
 
       <p className="mt-4 text-[12px] font-normal leading-[1.45] text-[color:var(--fg-3)]">
