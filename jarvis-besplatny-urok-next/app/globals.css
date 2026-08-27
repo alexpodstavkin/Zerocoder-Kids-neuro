@@ -109,6 +109,18 @@ input:-webkit-autofill:focus {
     color: var(--white);
     text-wrap: balance;
   }
+  /* Надзаголовок H1: имя продукта над самим обещанием. Красный — тот же
+     «цвет действия», но без плашки: чип уже занят полосой формата/возраста,
+     второй чип подряд читался бы шумом. */
+  .h1-kicker {
+    display: block;
+    margin-bottom: 12px;
+    font-size: 15px;
+    font-weight: 800;
+    line-height: 1.1;
+    letter-spacing: 0.06em;
+    color: var(--acc-hot);
+  }
   .h1-main {
     display: block;
   }
@@ -513,6 +525,10 @@ input:-webkit-autofill:focus {
 @media (min-width: 861px) {
   .h1 {
     font-size: 46px;
+  }
+  .h1-kicker {
+    margin-bottom: 14px;
+    font-size: 18px;
   }
   .h1-tail {
     margin-top: 20px;

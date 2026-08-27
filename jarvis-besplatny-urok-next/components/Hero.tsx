@@ -20,6 +20,9 @@ export function Hero() {
           </p>
 
           <h1 className="h1 mt-5">
+            {/* Надзаголовок: называет продукт и держит «бесплатно». Отдельная ступень
+                кегля — на 46px строка в 23 знака не влезает в левую колонку (~20). */}
+            <span className="h1-kicker">Бесплатный мастер-класс</span>
             {/* Переносы только от 861px. Бюджет строки в левой колонке ~20 знаков
                 при 46px/800 — отсюда разбивка 11 / 19 / 16 / 19. */}
             <span className="h1-main">
@@ -28,10 +31,7 @@ export function Hero() {
               <br className="hidden d:inline" /> своего помощника
               <br className="hidden d:inline" /> по учёбе — <span className="hl">Джарвиса</span>
             </span>
-            <span className="h1-tail">
-              на базе искусственного интеллекта.{' '}
-              <strong className="font-bold text-[color:var(--fg)]">Бесплатно</strong>
-            </span>
+            <span className="h1-tail">на базе искусственного интеллекта</span>
           </h1>
 
           <p className="lead mt-[22px] max-w-[520px]">
