@@ -75,8 +75,8 @@ export function Sixty() {
         {/* Вывод блока: цифра + источник. Отдельной полосы фактов на странице больше нет. */}
         <Reveal delay={0.1}>
           <p className="mx-auto mt-10 max-w-[760px] text-center text-[20px] font-semibold leading-[1.45] text-[color:var(--fg)] d:mt-12 d:text-[22px]">
-            71% детей уже пользуются нейросетями. Вопрос один — как именно и кто покажет им другой
-            способ.
+            71% детей уже пользуются нейросетями. Вопрос один — как именно и кто покажет им
+            правильный способ.
           </p>
           <p className="mx-auto mt-3 max-w-[760px] text-center text-[13px] font-medium leading-[1.5] text-[color:var(--fg-3)]">
             По данным исследования «Лаборатории Касперского», май 2026
