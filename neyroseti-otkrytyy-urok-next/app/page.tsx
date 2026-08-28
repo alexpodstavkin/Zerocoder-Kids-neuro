@@ -70,7 +70,7 @@ export default function Page() {
         }
         title={
           <>
-            Бесплатный <span className="hl-lines">открытый урок по нейросетям</span> для школьников
+            Бесплатный <span className="hl-lines">открытый урок по нейросетям</span> для школьников{' '}
             <br className="md:hidden" />
             10–14 лет
           </>
