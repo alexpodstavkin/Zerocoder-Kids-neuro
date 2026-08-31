@@ -1,0 +1,357 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ============================================================
+   Каркас — канон Зерокодера (перенесён из neyroseti-otkrytyy-urok-next).
+   Акцент проекта — триколор РФ: синий доминирует, красный = «действие».
+   ============================================================ */
+:root {
+  /* === АКЦЕНТ ПРОЕКТА: ТРИКОЛОР РФ ===
+     Доминирующий — государственный синий. Вторичный (только действие) — государственный красный.
+     Белый — нейтраль (фон/карточки/текст), НЕ третий акцент. */
+  --acc: #0039a6; /* синий флага РФ (Pantone 286C) — основной акцент */
+  --acc-dark: #002e85; /* hover / тёмный вариант синего */
+  --acc-soft: #e8eefa; /* пастельный синий тинт (заливки, чипы, пилюли) */
+  --acc-2: #4b7be8; /* светлый синий: конец градиента + акцент НА ТЁМНОМ фоне */
+
+  /* Вторичный акцент — только действие */
+  --acc-red: #d52b1e; /* красный флага РФ (Pantone 485C) — CTA */
+  --acc-red-dark: #b3241a; /* hover CTA */
+  --acc-red-soft: #fdedeb; /* тинт красного: ТОЛЬКО статус-пилюля «идёт регистрация» */
+
+  /* === НЕЙТРАЛИ (канон, слегка охлаждены под синий акцент) === */
+  --ink: #141413;
+  --sub: #6b7280;
+  --paper: #f2f4fa; /* канонный #F4F5F8, подмешан синий */
+  --paper-warm: #faf9f6;
+  --dark: #0c0e13;
+  --dark-2: #101a33; /* приподнятая поверхность на тёмном, подмешан синий */
+  --bord: #e3e7f0; /* hairline на светлом */
+  --bord-dark: rgba(255, 255, 255, 0.1);
+
+  color-scheme: light;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+body {
+  background: #ffffff;
+  font-size: 16px;
+  line-height: 1.55; /* универсальный body-lh со всех живых лендов */
+  -webkit-font-smoothing: antialiased;
+}
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+@layer components {
+  /* ---------- Контейнер ---------- */
+  .container-x {
+    @apply mx-auto w-full max-w-content px-5 md:px-6;
+  }
+
+  /* ---------- Типографика (Manrope, плотный трекинг) ---------- */
+  .h1 {
+    @apply font-bold uppercase tracking-tightest leading-[1.0];
+    font-size: clamp(34px, 5.5vw, 60px);
+    hyphens: none;
+    overflow-wrap: break-word;
+  }
+  .h2 {
+    @apply font-bold uppercase tracking-tightest;
+    /* заголовки этого лендинга длиннее канонных — шкала чуть мягче */
+    font-size: clamp(24px, 3.2vw, 34px);
+    line-height: 1.08;
+    overflow-wrap: break-word;
+  }
+  .h3 {
+    @apply font-bold leading-tight tracking-[-0.01em];
+    font-size: clamp(19px, 2.2vw, 22px);
+  }
+  .lead {
+    @apply font-medium leading-[1.5];
+    font-size: clamp(17px, 2vw, 20px);
+  }
+  .caption {
+    @apply text-[13px] font-medium leading-[1.5] text-sub;
+  }
+  /* Акцентное выделение в заголовке: цветной текст или заливка-хайлайт */
+  .hl {
+    color: var(--acc);
+  }
+  .hl-box {
+    background: var(--acc);
+    color: #fff;
+    padding: 0 0.15em;
+    border-radius: 8px;
+    display: inline-block;
+  }
+  /* Многострочное выделение: каждая строка получает свою скруглённую заливку */
+  .hl-lines {
+    background: var(--acc);
+    color: #fff;
+    padding: 0.03em 0.16em;
+    border-radius: 8px;
+    display: inline;
+    -webkit-box-decoration-break: clone;
+    box-decoration-break: clone;
+  }
+  .h1:has(.hl-lines) {
+    line-height: 1.46;
+    font-size: clamp(28px, 3.9vw, 44px);
+  }
+  /* Пульсирующая точка статуса «запись открыта» */
+  .pulse-dot {
+    display: inline-block;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--acc);
+    box-shadow: 0 0 0 0 color-mix(in srgb, var(--acc) 60%, transparent);
+    animation: pulse-dot 2.4s cubic-bezier(0.32, 0.72, 0, 1) infinite;
+  }
+  @keyframes pulse-dot {
+    0% {
+      box-shadow: 0 0 0 0 color-mix(in srgb, var(--acc) 60%, transparent);
+    }
+    70% {
+      box-shadow: 0 0 0 8px color-mix(in srgb, var(--acc) 0%, transparent);
+    }
+    100% {
+      box-shadow: 0 0 0 0 color-mix(in srgb, var(--acc) 0%, transparent);
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .pulse-dot {
+      animation: none;
+    }
+  }
+
+  /* ---------- Кнопки ---------- */
+  .btn {
+    @apply inline-flex items-center justify-center gap-2.5 font-bold uppercase tracking-[0.01em] transition-all duration-200;
+    font-size: 16px;
+  }
+  .btn-primary {
+    @apply btn rounded-pill bg-acc px-9 py-4 text-white hover:-translate-y-0.5;
+  }
+  .btn-primary:hover {
+    background: var(--acc-dark);
+  }
+  .btn-flat {
+    @apply btn rounded-flat bg-acc px-9 py-4 text-white hover:-translate-y-0.5;
+  }
+  .btn-flat:hover {
+    background: var(--acc-dark);
+  }
+  .btn-ghost {
+    @apply btn rounded-pill border-[1.5px] bg-white px-8 py-[14px];
+    color: var(--acc);
+    border-color: var(--acc);
+  }
+  .btn-ghost:hover {
+    background: var(--acc-soft);
+  }
+  .btn-dark {
+    @apply btn rounded-flat bg-ink px-9 py-4 text-white hover:opacity-90;
+  }
+  .btn-sm {
+    @apply gap-2 px-5 py-2.5 text-[13px];
+  }
+
+  /* ---------- Бейджи / пилюли ---------- */
+  .pill {
+    @apply inline-flex items-center gap-2 rounded-pill px-4 py-2 text-[13px] font-bold uppercase tracking-[0.02em];
+    background: var(--acc-soft);
+    color: var(--acc-dark);
+  }
+  .pill-dark {
+    @apply inline-flex items-center gap-2 rounded-pill px-4 py-2 text-[13px] font-bold uppercase tracking-[0.02em] text-white;
+    background: rgba(255, 255, 255, 0.14);
+  }
+
+  /* ---------- Карточки / бенто ---------- */
+  .card {
+    @apply rounded-lg border bg-white p-7 transition-all duration-200;
+    border-color: var(--bord);
+  }
+  /* иконка-чип в ячейке: контейнер 46px, фон acc-soft, иконка акцентом */
+  .ico-chip {
+    @apply flex h-[46px] w-[46px] flex-none items-center justify-center rounded-md text-[22px];
+    background: var(--acc-soft);
+    color: var(--acc);
+  }
+  /* сплошной акцентный чип с белой иконкой (для блока подарков) */
+  .ico-chip-solid {
+    @apply flex h-[46px] w-[46px] flex-none items-center justify-center rounded-md text-[22px] text-white;
+    background: var(--acc);
+  }
+
+  /* ---------- Эффекты ---------- */
+  .grad-acc {
+    background: linear-gradient(135deg, var(--acc), var(--acc-2));
+  }
+  .grad-dark {
+    background: linear-gradient(135deg, var(--dark-2), var(--dark));
+  }
+  .blob {
+    filter: blur(60px);
+    border-radius: 50%;
+    pointer-events: none;
+  }
+
+  /* ============================================================
+     ЛОКАЛЬНЫЕ ПЕРЕОПРЕДЕЛЕНИЯ ПРОЕКТА (после донорских классов)
+     ============================================================ */
+
+  /* CTA всегда красные — это единственный «красный» слой лендинга */
+  .btn-primary,
+  .btn-flat {
+    background: var(--acc-red);
+  }
+  .btn-primary:hover,
+  .btn-flat:hover {
+    background: var(--acc-red-dark);
+  }
+
+  /* Ghost-кнопка остаётся синей (вторичное действие / навигация) */
+  .btn-ghost {
+    color: var(--acc);
+    border-color: var(--acc);
+  }
+  .btn-ghost:hover {
+    background: var(--acc-soft);
+  }
+
+  /* Красная статус-пилюля — только «идёт регистрация» */
+  .pill-live {
+    background: var(--acc-red-soft);
+    color: var(--acc-red-dark);
+  }
+  .pill-live .pulse-dot {
+    background: var(--acc-red);
+    animation: pulse-dot-red 2.4s cubic-bezier(0.32, 0.72, 0, 1) infinite;
+  }
+  @keyframes pulse-dot-red {
+    0% {
+      box-shadow: 0 0 0 0 rgba(213, 43, 30, 0.6);
+    }
+    70% {
+      box-shadow: 0 0 0 8px rgba(213, 43, 30, 0);
+    }
+    100% {
+      box-shadow: 0 0 0 0 rgba(213, 43, 30, 0);
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .pill-live .pulse-dot {
+      animation: none;
+    }
+  }
+
+  /* Триколорная лента — государственная деталь. Ровно 2 раза на страницу:
+     нижняя кромка шапки и верхняя кромка подвала. */
+  .tricolor-rule {
+    height: 4px;
+    background: linear-gradient(
+      90deg,
+      #ffffff 0 33.34%,
+      #0039a6 33.34% 66.67%,
+      #d52b1e 66.67% 100%
+    );
+    box-shadow: inset 0 1px 0 rgba(0, 0, 0, 0.06);
+  }
+
+  /* Акцент на тёмной секции: синий заменяется на светлый синий */
+  .on-dark .hl,
+  .on-dark .num-acc {
+    color: var(--acc-2);
+  }
+
+  /* Тёмная секция с синим подмесом */
+  .grad-dark-blue {
+    background: linear-gradient(135deg, var(--dark-2), var(--dark));
+  }
+}
+
+/* ---------- Аккордеон (details/summary) — канон .faq-item ---------- */
+details.faq-item {
+  background: #fff;
+  border: 1px solid var(--bord);
+  border-radius: 12px;
+  padding: 0 20px;
+  overflow: hidden;
+}
+details.faq-item summary {
+  list-style: none;
+  cursor: pointer;
+  font-weight: 700;
+  padding: 18px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  min-height: 44px;
+}
+details.faq-item summary::-webkit-details-marker {
+  display: none;
+}
+details.faq-item summary::after {
+  content: '+';
+  color: var(--acc);
+  font-size: 26px;
+  font-weight: 600;
+  line-height: 1;
+}
+details.faq-item[open] summary::after {
+  content: '–';
+}
+
+/* Виджет GetCourse отдаётся в <iframe> — его стили нам недоступны, не трогаем. */
+
+/* ---------- Мобильное ---------- */
+@media (max-width: 860px) {
+  body {
+    overflow-x: hidden;
+  }
+}
+@media (max-width: 767px) {
+  /* sticky-CTA не должен перекрывать финальную форму */
+  #cta {
+    padding-bottom: 96px;
+  }
+}
+
+/* ---------- Появление на скролле (Reveal) ----------
+   Скрытое состояние применяется ТОЛЬКО при работающем JS (html[data-js]).
+   Без JS / в статическом HTML контент виден сразу. */
+.rvl {
+  transition:
+    opacity 0.5s cubic-bezier(0.21, 0.6, 0.35, 1),
+    transform 0.5s cubic-bezier(0.21, 0.6, 0.35, 1),
+    filter 0.5s cubic-bezier(0.21, 0.6, 0.35, 1);
+}
+html[data-js] .rvl:not(.rvl-in) {
+  opacity: 0;
+  transform: translateY(24px);
+  filter: blur(8px);
+}
+@media (prefers-reduced-motion: reduce) {
+  .rvl {
+    transition: none;
+  }
+  html[data-js] .rvl:not(.rvl-in) {
+    opacity: 1;
+    transform: none;
+    filter: none;
+  }
+}
+
+/* ---------- Мобильный sticky-CTA ---------- */
+.sticky-cta:hover,
+.sticky-cta:active {
+  background: var(--acc-red-dark) !important;
+}
