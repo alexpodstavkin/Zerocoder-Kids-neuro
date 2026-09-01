@@ -1,5 +1,5 @@
 const questions = [
-  'Какая цель нового профиля по искусственному интеллекту в школьной программе с 1 сентября?',
+  'Какая цель нового профиля по искусственному интеллекту в школьной программе с 2026 года?',
   'Не заменит ли искусственный интеллект необходимость учиться?',
   'Безопасно ли школьнику работать с нейросетями?',
   'Какие профессии будут востребованы через 5–10 лет и как искусственный интеллект к ним готовит?',
@@ -14,7 +14,7 @@ export default function Questions() {
       <div className="questions-inner">
         <header className="questions-head">
           <p className="questions-title">
-            <span className="questions-title-pre">Всероссийская летняя программа призвана</span>
+            <span className="questions-title-pre">Всероссийская программа призвана</span>
             <span className="questions-title-emph">обеспечить ребёнку востребованные навыки и&nbsp;перспективное будущее</span>
           </p>
           <p className="questions-sub">

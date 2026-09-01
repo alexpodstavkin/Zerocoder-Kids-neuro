@@ -4,7 +4,7 @@ export default function Hero() {
       <div className="hero-inner">
         <div className="hero-cluster">
           <h1 className="h1 hero-h1">
-            <span className="hero-h1-accent">Всероссийская летняя программа подготовки детей</span>
+            <span className="hero-h1-accent">Всероссийская программа подготовки детей</span>
             {' '}к&nbsp;школьному курсу «Искусственный интеллект»
           </h1>
           <span className="hero-divider" aria-hidden>
@@ -12,7 +12,7 @@ export default function Hero() {
             <span className="hero-divider-mark" />
             <span className="hero-divider-line" />
           </span>
-          <p className="hero-sub">Программа рассчитана на&nbsp;школьников от&nbsp;10 до&nbsp;14&nbsp;лет. Старт: 22&nbsp;июля</p>
+          <p className="hero-sub">Программа рассчитана на&nbsp;школьников от&nbsp;10 до&nbsp;14&nbsp;лет. Старт: 1&nbsp;октября</p>
         </div>
 
         <div className="hero-cta-row">
