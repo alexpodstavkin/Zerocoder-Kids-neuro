@@ -3,7 +3,6 @@ import Hero from './components/Hero';
 import Program from './components/Program';
 import PartnerUniversities from './components/PartnerUniversities';
 import Questions from './components/Questions';
-import Gifts from './components/Gifts';
 import CtaForm from './components/CtaForm';
 import Footer from './components/Footer';
 import StickyMobileCta from './components/StickyMobileCta';
@@ -18,9 +17,6 @@ export default function Page() {
         <Program />
         <Reveal>
           <Questions />
-        </Reveal>
-        <Reveal>
-          <Gifts />
         </Reveal>
         <Reveal>
           <PartnerUniversities />

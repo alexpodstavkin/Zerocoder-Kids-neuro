@@ -17,7 +17,7 @@ export default function CtaForm() {
             <div>
               <h2 className="h2">
                 Всероссийская программа подготовки школьников к&nbsp;профессиям будущего.{' '}
-                <span className="hl">Блок искусственный интеллект</span>
+                <span className="hl">Блок: искусственный интеллект</span>
               </h2>
               <div className="mt-6 flex flex-col gap-3">
                 {meta.map((m) => (

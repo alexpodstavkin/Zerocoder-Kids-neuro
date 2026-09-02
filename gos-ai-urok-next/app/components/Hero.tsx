@@ -17,7 +17,7 @@ export default function Hero() {
           <h1 className="h1 h1-hero my-5 max-w-none md:max-w-[21ch]">
             Всероссийская программа подготовки школьников к&nbsp;профессиям будущего.
             <span className="h1-hero-sub">
-              <span className="hl-box">Блок искусственный интеллект</span>
+              <span className="hl-box">Блок: искусственный интеллект</span>
             </span>
           </h1>
 
