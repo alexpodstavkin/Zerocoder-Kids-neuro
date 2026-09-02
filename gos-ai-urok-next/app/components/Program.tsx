@@ -102,7 +102,7 @@ export default function Program() {
       </Section>
       </Reveal>
 
-      {/* --- 2. Регламент участия + программа урока (фон white) --- */}
+      {/* --- 2. Программа урока (фон white) --- */}
       <Reveal>
       <Section id="program" bg="white">
         <SectionHead
