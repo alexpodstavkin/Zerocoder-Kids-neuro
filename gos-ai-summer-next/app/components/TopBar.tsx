@@ -22,12 +22,11 @@ export default function TopBar() {
           <span className="topbar-title">
             Всероссийская программа подготовки школьников к&nbsp;профессиям будущего.
             <br />
-            Блок искусственный интеллект — 2026
+            Блок: искусственный интеллект — 2026
           </span>
         </div>
         <nav className="topbar-nav" aria-label="Разделы">
           <a href="#program">ПРОГРАММА</a>
-          <a href="#gifts">ПОДАРКИ</a>
         </nav>
         <span className="topbar-status" aria-label="Статус регистрации">
           <span className="topbar-status-dot" aria-hidden />

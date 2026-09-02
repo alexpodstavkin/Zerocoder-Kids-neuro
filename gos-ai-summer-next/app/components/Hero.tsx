@@ -6,7 +6,7 @@ export default function Hero() {
           <h1 className="h1 hero-h1">
             <span className="hero-h1-accent">Всероссийская программа подготовки школьников</span>
             {' '}к&nbsp;профессиям будущего.
-            <span className="hero-h1-block">Блок искусственный интеллект</span>
+            <span className="hero-h1-block">Блок: искусственный интеллект</span>
           </h1>
           <span className="hero-divider" aria-hidden>
             <span className="hero-divider-line" />
@@ -54,7 +54,6 @@ export default function Hero() {
           margin-top: 0.5em;
           font-size: 0.6em;
           line-height: 1.3;
-          color: #1C3F94;
         }
         @media (max-width: 640px) {
           .hero-h1 { max-width: 100%; }
