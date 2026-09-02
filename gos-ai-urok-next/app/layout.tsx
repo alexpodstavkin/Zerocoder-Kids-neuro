@@ -3,6 +3,7 @@ import Script from 'next/script';
 import { Manrope } from 'next/font/google';
 import { BP } from '@/lib/basePath';
 import { AutoScale } from '@/components/AutoScale';
+import FreshCheck from './components/FreshCheck';
 import './globals.css';
 
 // Manrope — основной шрифт всех лендингов Зерокодера (вес 300–800).
@@ -29,6 +30,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="ru" className={manrope.variable} suppressHydrationWarning>
       <head>
+        <FreshCheck />
+
         {/* Помечаем документ как «JS работает»: только тогда включается скрытое
             стартовое состояние Reveal. Без JS страница видна целиком. */}
         <script

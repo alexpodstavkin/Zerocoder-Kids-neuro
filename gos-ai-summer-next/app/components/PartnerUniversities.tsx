@@ -29,7 +29,7 @@ export default function PartnerUniversities() {
     <section className="sec partners-section">
       <div className="partners-inner">
         <h2 className="h2 partners-h2">
-          Всероссийская программа подготовки детей реализуется совместно с&nbsp;ведущими университетами
+          Всероссийская программа подготовки школьников реализуется совместно с&nbsp;ведущими университетами
         </h2>
 
         <div className="partners-grid">

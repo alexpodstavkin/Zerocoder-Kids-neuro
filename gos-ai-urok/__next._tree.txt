@@ -4,4 +4,4 @@
 :HL["/gos-ai-urok/uicons/regular/rounded.css","style"]
 :HL["/gos-ai-urok/uicons/solid/rounded.css","style"]
 :HL["/gos-ai-urok/uicons/brands/all.css","style"]
-0:{"tree":{"name":"","param":null,"prefetchHints":16,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":0,"slots":null}}},"staleTime":300,"buildId":"S24goCuv_3q1McuF37Hyj"}
+0:{"tree":{"name":"","param":null,"prefetchHints":16,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":0,"slots":null}}},"staleTime":300,"buildId":"ED58Ol7MNZdrFx6BpM6aJ"}

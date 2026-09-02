@@ -33,7 +33,7 @@ export default function PartnerUniversities() {
       <SectionHead
         title={
           <>
-            Всероссийская программа подготовки детей реализуется совместно с&nbsp;
+            Всероссийская программа подготовки школьников реализуется совместно с&nbsp;
             <span className="hl">ведущими университетами</span>
           </>
         }
