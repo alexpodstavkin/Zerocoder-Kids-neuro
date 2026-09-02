@@ -27,7 +27,7 @@ export default function TopBar() {
             </svg>
           </span>
           <span className="hidden max-w-[420px] text-[13px] font-bold leading-[1.25] text-ink min-[1200px]:block">
-            Всероссийская программа подготовки детей к&nbsp;школьному курсу «Искусственный интеллект» — 2026
+            Всероссийская программа подготовки школьников к&nbsp;профессиям будущего — 2026
           </span>
         </div>
 

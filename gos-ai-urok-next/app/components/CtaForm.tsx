@@ -16,8 +16,7 @@ export default function CtaForm() {
           <div className="relative z-10 grid items-center gap-10 md:grid-cols-[1.05fr_0.95fr]">
             <div>
               <h2 className="h2">
-                Всероссийская программа подготовки детей к&nbsp;школьному курсу{' '}
-                <span className="hl">«Искусственный интеллект»</span>
+                Всероссийская программа подготовки школьников к&nbsp;<span className="hl">профессиям будущего</span>
               </h2>
               <div className="mt-6 flex flex-col gap-3">
                 {meta.map((m) => (

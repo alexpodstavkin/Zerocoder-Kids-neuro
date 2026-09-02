@@ -4,8 +4,8 @@ export default function Hero() {
       <div className="hero-inner">
         <div className="hero-cluster">
           <h1 className="h1 hero-h1">
-            <span className="hero-h1-accent">Всероссийская программа подготовки детей</span>
-            {' '}к&nbsp;школьному курсу «Искусственный интеллект»
+            <span className="hero-h1-accent">Всероссийская программа подготовки школьников</span>
+            {' '}к&nbsp;профессиям будущего
           </h1>
           <span className="hero-divider" aria-hidden>
             <span className="hero-divider-line" />

@@ -15,8 +15,7 @@ export default function Hero() {
           </span>
 
           <h1 className="h1 my-5 max-w-[20ch] md:max-w-[20ch]">
-            Всероссийская программа подготовки детей к&nbsp;школьному курсу{' '}
-            <span className="hl-lines">«Искусственный интеллект»</span>
+            Всероссийская программа подготовки школьников к&nbsp;<span className="hl-lines">профессиям будущего</span>
           </h1>
 
           <div
