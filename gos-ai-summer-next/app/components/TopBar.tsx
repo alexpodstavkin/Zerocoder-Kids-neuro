@@ -20,7 +20,9 @@ export default function TopBar() {
             </svg>
           </span>
           <span className="topbar-title">
-            Всероссийская программа подготовки школьников к&nbsp;профессиям будущего — 2026
+            Всероссийская программа подготовки школьников к&nbsp;профессиям будущего.
+            <br />
+            Блок искусственный интеллект — 2026
           </span>
         </div>
         <nav className="topbar-nav" aria-label="Разделы">

@@ -8,7 +8,7 @@ export default function CtaForm() {
           {/* Left: dark navy panel */}
           <div className="cta-left">
             <h2 className="h2" style={{ color: '#FFFFFF', lineHeight: 1.2 }}>
-              Всероссийская программа подготовки школьников к&nbsp;профессиям будущего
+              Всероссийская программа подготовки школьников к&nbsp;профессиям будущего. Блок искусственный интеллект
             </h2>
             <div className="cta-meta">
               <span className="cta-meta-item">

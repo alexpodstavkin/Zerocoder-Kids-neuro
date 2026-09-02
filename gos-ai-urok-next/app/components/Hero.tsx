@@ -14,8 +14,11 @@ export default function Hero() {
             Идёт регистрация
           </span>
 
-          <h1 className="h1 my-5 max-w-[20ch] md:max-w-[20ch]">
-            Всероссийская программа подготовки школьников к&nbsp;<span className="hl-lines">профессиям будущего</span>
+          <h1 className="h1 h1-hero my-5 max-w-none md:max-w-[21ch]">
+            Всероссийская программа подготовки школьников к&nbsp;профессиям будущего.
+            <span className="h1-hero-sub">
+              <span className="hl-box">Блок искусственный интеллект</span>
+            </span>
           </h1>
 
           <div

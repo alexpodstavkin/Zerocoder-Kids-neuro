@@ -26,8 +26,10 @@ export default function TopBar() {
               <circle cx="28" cy="28" r="24" fill="none" stroke="rgba(0,57,166,0.25)" strokeWidth="1" />
             </svg>
           </span>
-          <span className="hidden max-w-[420px] text-[13px] font-bold leading-[1.25] text-ink min-[1200px]:block">
-            Всероссийская программа подготовки школьников к&nbsp;профессиям будущего — 2026
+          <span className="hidden max-w-[430px] text-[12px] font-bold leading-[1.2] text-ink min-[1200px]:block">
+            Всероссийская программа подготовки школьников к&nbsp;профессиям будущего.
+            <br />
+            Блок искусственный интеллект — 2026
           </span>
         </div>
 

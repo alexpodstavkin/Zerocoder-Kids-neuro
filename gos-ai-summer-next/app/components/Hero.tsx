@@ -5,7 +5,8 @@ export default function Hero() {
         <div className="hero-cluster">
           <h1 className="h1 hero-h1">
             <span className="hero-h1-accent">Всероссийская программа подготовки школьников</span>
-            {' '}к&nbsp;профессиям будущего
+            {' '}к&nbsp;профессиям будущего.
+            <span className="hero-h1-block">Блок искусственный интеллект</span>
           </h1>
           <span className="hero-divider" aria-hidden>
             <span className="hero-divider-line" />
@@ -44,8 +45,17 @@ export default function Hero() {
           align-items: center;
           gap: 20px;
         }
-        .hero-h1 { max-width: 22ch; }
+        .hero-h1 { max-width: 22ch; text-wrap: balance; }
         .hero-h1-accent { color: #D62E2E; }
+        /* Название блока — второй смысловой строкой, кеглем помельче,
+           чтобы длинный заголовок не занимал пол-экрана. */
+        .hero-h1-block {
+          display: block;
+          margin-top: 0.5em;
+          font-size: 0.6em;
+          line-height: 1.3;
+          color: #1C3F94;
+        }
         @media (max-width: 640px) {
           .hero-h1 { max-width: 100%; }
         }
