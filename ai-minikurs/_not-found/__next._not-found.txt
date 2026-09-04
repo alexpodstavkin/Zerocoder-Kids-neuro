@@ -1,0 +1,5 @@
+1:"$Sreact.fragment"
+2:I[49802,["/ai-minikurs/_next/static/chunks/10kmkxc6ucvss.js","/ai-minikurs/_next/static/chunks/0desf.0p~y6et.js"],"default"]
+3:I[94375,["/ai-minikurs/_next/static/chunks/10kmkxc6ucvss.js","/ai-minikurs/_next/static/chunks/0desf.0p~y6et.js"],"default"]
+4:[]
+0:{"rsc":["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","template":["$","$L3",null,{}]}]]}],"isPartial":false,"staleTime":300,"varyParams":"$W4","buildId":"fUotfip4TNEQbLiQgBX8Y"}
