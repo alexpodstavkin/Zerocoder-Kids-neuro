@@ -1,3 +1,5 @@
+import { asset } from '../lib/asset';
+
 const navLinks = [
   { label: 'Преподаватели', href: 'https://zerocoder.ru/teachers' },
   { label: 'Новости и события', href: 'https://zerocoder.ru/news' },
@@ -67,7 +69,6 @@ const socials = [
 ];
 
 export default function Footer() {
-  const basePath = process.env.NODE_ENV === 'production' ? (process.env.BASEPATH ?? '/gos-ai-summer') : '';
   return (
     <footer className="site-footer">
       <div className="footer-inner">
@@ -77,7 +78,7 @@ export default function Footer() {
             <a href="#top" className="footer-brand-link" aria-label="Зерокодер — на главную">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
-                src={`${basePath}/partners/zerocoder.png`}
+                src={asset('/partners/zerocoder.png')}
                 alt="Зерокодер"
                 width={44}
                 height={44}

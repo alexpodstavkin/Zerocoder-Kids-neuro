@@ -1,3 +1,5 @@
+import { asset } from '../lib/asset';
+
 const modules = [
   {
     n: '01',
@@ -23,7 +25,6 @@ const modules = [
 ];
 
 export default function Program() {
-  const basePath = process.env.NODE_ENV === 'production' ? (process.env.BASEPATH ?? '/gos-ai-summer') : '';
   return (
     <section id="program" className="sec" style={{ background: '#FFFFFF' }}>
       <div className="program-inner">
@@ -33,7 +34,7 @@ export default function Program() {
             <div className="news-photo">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
-                src={`${basePath}/photos/initiative-it-class.png`}
+                src={asset('/photos/initiative-it-class.png')}
                 alt="Школьники изучают информатику и нейросети в IT-классе"
                 className="news-photo-img"
                 loading="lazy"
@@ -48,7 +49,7 @@ export default function Program() {
               <div className="partner-logo">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
-                  src={`${basePath}/partners/zerocoder.png`}
+                  src={asset('/partners/zerocoder.png')}
                   alt="Логотип Университета Зерокодер"
                   className="partner-logo-image"
                   width={64}

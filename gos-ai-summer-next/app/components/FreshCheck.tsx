@@ -1,18 +1,4 @@
-import { readFileSync } from 'node:fs';
-import { join } from 'node:path';
-
-// Штамп текущей сборки — читается на этапе статического экспорта
-// и запекается в HTML. Пара к public/version.json (см. scripts/stamp.mjs).
-function buildStamp() {
-  try {
-    return JSON.parse(readFileSync(join(process.cwd(), 'public', 'version.json'), 'utf8')).v as string;
-  } catch {
-    return 'dev';
-  }
-}
-
-const basePath =
-  process.env.NODE_ENV === 'production' ? process.env.BASEPATH ?? '/gos-ai-summer' : '';
+import { basePath, buildStamp } from '../lib/asset';
 
 // Защита от устаревшей страницы из браузерного кэша.
 //
@@ -41,7 +27,7 @@ const basePath =
 // проверка идёт, страницу не прячем — белый экран там был бы неоправдан.
 export default function FreshCheck() {
   const code = `(function(){
-  var V=${JSON.stringify(buildStamp())},U=${JSON.stringify(basePath + '/version.json')},K='zc-fresh-reload',T=2500;
+  var V=${JSON.stringify(buildStamp)},U=${JSON.stringify(basePath + '/version.json')},K='zc-fresh-reload',T=2500;
   if(!window.fetch||location.protocol.indexOf('http')!==0)return;
   var cached=false;
   try{var n=performance.getEntriesByType('navigation')[0];if(n){if(n.transferSize>0)return;cached=true;}}catch(e){}

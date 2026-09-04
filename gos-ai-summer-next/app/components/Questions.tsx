@@ -1,3 +1,5 @@
+import { asset } from '../lib/asset';
+
 const questions = [
   'Какая цель нового профиля по искусственному интеллекту в школьной программе с 2026 года?',
   'Не заменит ли искусственный интеллект необходимость учиться?',
@@ -8,7 +10,6 @@ const questions = [
 ];
 
 export default function Questions() {
-  const basePath = process.env.NODE_ENV === 'production' ? (process.env.BASEPATH ?? '/gos-ai-summer') : '';
   return (
     <section className="sec questions-section">
       <div className="questions-inner">
@@ -35,7 +36,7 @@ export default function Questions() {
           <div className="questions-photo">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
-              src={`${basePath}/photos/questions-parents-kids.png`}
+              src={asset('/photos/questions-parents-kids.png')}
               alt="Родители вместе с детьми готовятся к школьной программе по искусственному интеллекту"
               className="questions-photo-img"
               loading="lazy"

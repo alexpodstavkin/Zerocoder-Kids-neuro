@@ -7,16 +7,16 @@ import CtaForm from './components/CtaForm';
 import Footer from './components/Footer';
 import Reveal from './components/Reveal';
 import StickyMobileCta from './components/StickyMobileCta';
+import { asset } from './lib/asset';
 
 export default function Page() {
-  const basePath = process.env.NODE_ENV === 'production' ? (process.env.BASEPATH ?? '/gos-ai-summer') : '';
   return (
     <>
       <div className="top-zone">
         <div
           className="top-zone-bg"
           aria-hidden
-          style={{ backgroundImage: `url(${basePath}/hero-classroom.png)` }}
+          style={{ backgroundImage: `url(${asset('/hero-classroom.png')})` }}
         />
         <div className="top-zone-overlay" aria-hidden />
         <TopBar />

@@ -1,3 +1,5 @@
+import { asset } from '../lib/asset';
+
 const partners = [
   {
     name: 'НИУ ВШЭ',
@@ -24,7 +26,6 @@ const partners = [
 ];
 
 export default function PartnerUniversities() {
-  const basePath = process.env.NODE_ENV === 'production' ? (process.env.BASEPATH ?? '/gos-ai-summer') : '';
   return (
     <section className="sec partners-section">
       <div className="partners-inner">
@@ -38,7 +39,7 @@ export default function PartnerUniversities() {
               <div className="partner-logo-wrap">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
-                  src={`${basePath}${p.logo}`}
+                  src={asset(p.logo)}
                   alt={p.full}
                   className="partner-logo-img"
                   loading="lazy"
