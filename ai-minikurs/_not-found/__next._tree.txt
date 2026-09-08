@@ -2,4 +2,4 @@
 :HL["/ai-minikurs/uicons/regular/rounded.css","style"]
 :HL["/ai-minikurs/uicons/solid/rounded.css","style"]
 :HL["/ai-minikurs/uicons/brands/all.css","style"]
-0:{"tree":{"name":"","param":null,"prefetchHints":16,"slots":{"children":{"name":"/_not-found","param":null,"prefetchHints":0,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":0,"slots":null}}}}},"staleTime":300,"buildId":"fUotfip4TNEQbLiQgBX8Y"}
+0:{"tree":{"name":"","param":null,"prefetchHints":16,"slots":{"children":{"name":"/_not-found","param":null,"prefetchHints":0,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":0,"slots":null}}}}},"staleTime":300,"buildId":"pU_DxmlMwPT8H-GE6X_aP"}
