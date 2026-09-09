@@ -2,4 +2,4 @@
 :HL["/ai-kruzhok/uicons/regular/rounded.css","style"]
 :HL["/ai-kruzhok/uicons/solid/rounded.css","style"]
 :HL["/ai-kruzhok/uicons/brands/all.css","style"]
-0:{"tree":{"name":"","param":null,"prefetchHints":16,"slots":{"children":{"name":"/_not-found","param":null,"prefetchHints":0,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":0,"slots":null}}}}},"staleTime":300,"buildId":"Xg_j2aJbH1jzjfsyW7cU_"}
+0:{"tree":{"name":"","param":null,"prefetchHints":16,"slots":{"children":{"name":"/_not-found","param":null,"prefetchHints":0,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":0,"slots":null}}}}},"staleTime":300,"buildId":"Gid74XWMWPP6U6ZAXrKgR"}
