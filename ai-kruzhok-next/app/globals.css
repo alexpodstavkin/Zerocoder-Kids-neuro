@@ -1,0 +1,658 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ============================================================
+   ai-kruzhok. Структура и сетка скопированы с референса kvantastica.ru/it_prof,
+   ЦВЕТ И ШРИФТ — канон дизайн-системы Зерокодера (правка владельца 08.09.2026).
+   Акцент выбран из проверенной палитры ДС: purple base #B15EFF / alt #5D67DB / soft #F2EEFB.
+   Нейтрали и Manrope — канонные, не менять.
+   ============================================================ */
+:root {
+  /* === АКЦЕНТ: канонный зелёный Зерокодера (цвет логотипа, ядро бренда) === */
+  --acc: #00e48d;
+  --acc-dark: #00c159;
+  --acc-2: #00c159;
+  --acc-mid: #7beec0;
+  --acc-soft: #eaf7ee;
+  /* Зелёный светлый: текст НА акцентной заливке только тёмный, белый на нём нечитаем */
+  --on-acc: #0a3b26;
+  /* Зелёный для ТЕКСТА и тонких штрихов НА СВЕТЛОМ. Сам --acc (#00E48D) на белом
+     даёт контраст 1.6:1 и нечитаем — им можно только заливать, но не писать. */
+  --acc-ink: #056b44;
+  /* Заливка большой карточки блока «Что разберёт». Это НЕ произвольный оттенок:
+     цвет усреднён по левой кромке фотографии teen-portrait.jpg (326 замеров).
+     Точного совпадения одним цветом не добиться: фон снимка неоднородный из-за
+     студийной подсветки, по вертикали он гуляет от #1DC98D до #29D395. Поэтому
+     цвет закрывает основную разницу, а остаток стыка растворяет маска на самом
+     снимке (см. Inside.tsx). Менять — только вместе с фотографией. */
+  --acc-card: #25cf93;
+
+  /* === НЕЙТРАЛИ — канон ДС === */
+  --ink: #141413;
+  --sub: #6b7280;
+  --paper: #f4f5f8;
+  --paper-2: #eceef4;
+  --dark: #0c0e13;
+  --dark-2: #111520;
+  --bord: #e5e7e0;
+  --bord-dark: rgba(255, 255, 255, 0.1);
+
+  --r-card: 24px;
+  --r-inner: 16px;
+
+  color-scheme: light;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+body {
+  background: var(--paper);
+  font-size: 16px;
+  line-height: 1.55; /* универсальный body-lh со всех живых лендов */
+  -webkit-font-smoothing: antialiased;
+}
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+@layer components {
+  /* ---------- Контейнер ---------- */
+  .container-x {
+    @apply mx-auto w-full max-w-content px-5 md:px-6;
+  }
+
+  /* ---------- Типографика (Manrope, плотный трекинг) ---------- */
+  .h1 {
+    @apply font-semibold leading-[1.05];
+    letter-spacing: -0.02em;
+    font-size: clamp(34px, 5vw, 56px);
+    hyphens: none;
+    overflow-wrap: break-word;
+  }
+  .h2 {
+    @apply font-semibold;
+    letter-spacing: -0.02em;
+    font-size: clamp(26px, 3.6vw, 48px);
+    line-height: 1.08;
+    overflow-wrap: break-word;
+  }
+  /* Заголовочный кегль без капса — для блока-фразы про консультацию.
+     Живёт в одной шкале с .h2, включая мобильное уменьшение ниже. */
+  .h2-plain {
+    @apply font-bold tracking-tightest;
+    font-size: clamp(24px, 3.2vw, 34px);
+    line-height: 1.15;
+    overflow-wrap: break-word;
+  }
+  .h3 {
+    @apply font-bold leading-tight tracking-[-0.01em];
+    font-size: clamp(19px, 2.2vw, 22px);
+  }
+  /* Мобильный кегль заголовков блоков. Правка владельца 09.09.2026:
+     «крупнее в 2 раза», затем «адаптировать вёрстку» — на реальном
+     телефоне 360px удвоенный кегль рвал слова по слогам: «Индивидуальн/ая
+     профориентац/ия».
+     Причина была в жёстком нижнем пороге clamp: на 360px 12.4vw = 44.6px
+     не дотягивал до min 46px, и заголовок вставал шире колонки.
+     Теперь кегль тянется ЧИСТО от ширины экрана. 9.9vw — измеренный потолок:
+     самое длинное слово ленда («Индивидуальная» / «профориентация», 14 знаков)
+     занимает 8.46em, колонка .wrap равна ширине экрана минус 32px, отсюда
+     предельный множитель (1 − 32/W)/8.46; на узком краю (320px) он равен
+     0.106, взято 0.099 с запасом ~6%.
+     ⛔ Не поднимать множитель и не возвращать высокий min: на 320–360px
+     вернутся переносы слов по слогам. */
+  @media (max-width: 640px) {
+    .h2,
+    .h2-plain {
+      font-size: clamp(28px, 9.9vw, 52px);
+      line-height: 1.06;
+      text-wrap: balance;
+    }
+  }
+  .lead {
+    @apply font-medium leading-[1.5];
+    font-size: clamp(17px, 2vw, 20px);
+  }
+  .caption {
+    @apply text-[13px] font-medium leading-[1.5] text-sub;
+  }
+  /* Акцентное выделение в заголовке: цветной текст или заливка-хайлайт */
+  .hl {
+    color: var(--acc-ink);
+  }
+  .hl-red {
+    color: var(--acc-red);
+  }
+  .hl-box {
+    background: var(--acc);
+    color: #fff;
+    padding: 0 0.15em;
+    border-radius: 8px;
+    display: inline-block;
+  }
+  /* Многострочное выделение: каждая строка получает свою скруглённую заливку */
+  .hl-lines {
+    background: var(--acc);
+    color: #fff;
+    padding: 0.03em 0.16em;
+    border-radius: 8px;
+    display: inline;
+    -webkit-box-decoration-break: clone;
+    box-decoration-break: clone;
+  }
+  .h1:has(.hl-lines):not(.h1-hero) {
+    line-height: 1.46;
+    font-size: clamp(28px, 3.9vw, 44px);
+  }
+  /* Пульсирующая точка статуса «запись открыта» */
+  .pulse-dot {
+    display: inline-block;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--acc);
+    box-shadow: 0 0 0 0 color-mix(in srgb, var(--acc) 60%, transparent);
+    animation: pulse-dot 2.4s cubic-bezier(0.32, 0.72, 0, 1) infinite;
+  }
+  @keyframes pulse-dot {
+    0% {
+      box-shadow: 0 0 0 0 color-mix(in srgb, var(--acc) 60%, transparent);
+    }
+    70% {
+      box-shadow: 0 0 0 8px color-mix(in srgb, var(--acc) 0%, transparent);
+    }
+    100% {
+      box-shadow: 0 0 0 0 color-mix(in srgb, var(--acc) 0%, transparent);
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .pulse-dot {
+      animation: none;
+    }
+  }
+
+  /* ---------- Кнопки ---------- */
+  .btn {
+    @apply inline-flex items-center justify-center gap-2.5 font-bold uppercase tracking-[0.01em] transition-all duration-200;
+    font-size: 16px;
+  }
+  .btn-primary {
+    @apply btn rounded-pill bg-acc px-9 py-4 text-white hover:-translate-y-0.5;
+  }
+  .btn-primary:hover {
+    background: var(--acc-dark);
+  }
+  .btn-flat {
+    @apply btn rounded-flat bg-acc px-9 py-4 text-white hover:-translate-y-0.5;
+  }
+  .btn-flat:hover {
+    background: var(--acc-dark);
+  }
+  .btn-ghost {
+    @apply btn rounded-pill border-[1.5px] bg-white px-8 py-[14px];
+    color: var(--acc-ink);
+    border-color: var(--acc-ink);
+  }
+  .btn-ghost:hover {
+    background: var(--acc-soft);
+  }
+  .btn-dark {
+    @apply btn rounded-flat bg-ink px-9 py-4 text-white hover:opacity-90;
+  }
+  .btn-sm {
+    @apply gap-2 px-5 py-2.5 text-[13px];
+  }
+
+  /* ---------- Бейджи / пилюли ---------- */
+  .pill {
+    @apply inline-flex items-center gap-2 rounded-pill px-4 py-2 text-[13px] font-bold uppercase tracking-[0.02em];
+    background: var(--acc-soft);
+    color: var(--acc-dark);
+  }
+  .pill-dark {
+    @apply inline-flex items-center gap-2 rounded-pill px-4 py-2 text-[13px] font-bold uppercase tracking-[0.02em] text-white;
+    background: rgba(255, 255, 255, 0.14);
+  }
+
+  /* ---------- Карточки / бенто ---------- */
+  .card {
+    @apply rounded-lg border bg-white p-7 transition-all duration-200;
+    border-color: var(--bord);
+  }
+  /* иконка-чип в ячейке: контейнер 46px, фон acc-soft, иконка акцентом */
+  .ico-chip {
+    @apply flex h-[46px] w-[46px] flex-none items-center justify-center rounded-md text-[22px];
+    background: var(--acc-soft);
+    color: var(--acc-ink);
+  }
+  /* сплошной акцентный чип с белой иконкой (для блока подарков) */
+  .ico-chip-solid {
+    @apply flex h-[46px] w-[46px] flex-none items-center justify-center rounded-md text-[22px] text-white;
+    background: var(--acc);
+  }
+
+  /* ---------- Эффекты ---------- */
+  .grad-acc {
+    background: linear-gradient(135deg, var(--acc), var(--acc-2));
+  }
+  .grad-dark {
+    background: linear-gradient(135deg, var(--dark-2), var(--dark));
+  }
+  .blob {
+    filter: blur(60px);
+    border-radius: 50%;
+    pointer-events: none;
+  }
+
+  /* ============================================================
+     ЛОКАЛЬНЫЕ ПЕРЕОПРЕДЕЛЕНИЯ ПРОЕКТА
+     Донорские «красные CTA» и триколорная лента удалены: этот лендинг —
+     копия визуала референса, палитра одна (фиолетовая), государственных
+     лент на референсе нет (см. supervisor/truth.md).
+     ============================================================ */
+}
+
+/* ---------- Аккордеон (details/summary) — канон .faq-item ---------- */
+details.faq-item {
+  background: #fff;
+  border: 1px solid var(--bord);
+  border-radius: 12px;
+  padding: 0 20px;
+  overflow: hidden;
+}
+details.faq-item summary {
+  list-style: none;
+  cursor: pointer;
+  font-weight: 700;
+  padding: 18px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  min-height: 44px;
+}
+details.faq-item summary::-webkit-details-marker {
+  display: none;
+}
+details.faq-item summary::after {
+  content: '+';
+  color: var(--acc-ink);
+  font-size: 26px;
+  font-weight: 600;
+  line-height: 1;
+}
+details.faq-item[open] summary::after {
+  content: '–';
+}
+
+/* Виджет GetCourse отдаётся в <iframe> — его стили нам недоступны, не трогаем. */
+
+/* ---------- Мобильное ---------- */
+@media (max-width: 860px) {
+  body {
+    overflow-x: hidden;
+  }
+}
+@media (max-width: 860px) {
+  /* sticky-CTA не должен перекрывать финальную форму */
+  #cta {
+    padding-bottom: 96px;
+  }
+}
+
+/* ---------- Появление на скролле (Reveal) ----------
+   Скрытое состояние применяется ТОЛЬКО при работающем JS (html[data-js]).
+   Без JS / в статическом HTML контент виден сразу. */
+.rvl {
+  transition:
+    opacity 0.5s cubic-bezier(0.21, 0.6, 0.35, 1),
+    transform 0.5s cubic-bezier(0.21, 0.6, 0.35, 1),
+    filter 0.5s cubic-bezier(0.21, 0.6, 0.35, 1);
+}
+html[data-js] .rvl:not(.rvl-in) {
+  opacity: 0;
+  transform: translateY(24px);
+  filter: blur(8px);
+}
+@media (prefers-reduced-motion: reduce) {
+  .rvl {
+    transition: none;
+  }
+  html[data-js] .rvl:not(.rvl-in) {
+    opacity: 1;
+    transform: none;
+    filter: none;
+  }
+}
+
+/* ---------- Мобильный sticky-CTA ---------- */
+.sticky-cta:hover,
+.sticky-cta:active {
+  background: var(--acc-dark) !important;
+}
+
+/* ============================================================
+   СЛОЙ РЕФЕРЕНСА kvantastica.ru/it_prof
+   Обычный CSS (не @layer): классы должны переопределять донорские
+   .btn-* / .pill-*, которые сделаны капсом и не подходят этому лендингу.
+   ============================================================ */
+
+/* ---------- Сетка: контент живёт в белых карточках на сером поле ---------- */
+.wrap {
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding-left: 16px;
+  padding-right: 16px;
+}
+.card-w {
+  background: #fff;
+  border-radius: var(--r-card);
+  position: relative;
+}
+/* Карточка формы — светло-сиреневый градиент референса */
+.card-form {
+  border-radius: var(--r-card);
+  background: linear-gradient(150deg, #fdfffd 0%, #eefaf3 55%, #e2f6ea 100%);
+  position: relative;
+}
+/* Фиолетовая карточка блока «Что разберём» */
+.card-acc {
+  border-radius: var(--r-card);
+  /* Плоская заливка, не градиент: градиент давал шов на стыке с фото. */
+  background: var(--acc-card);
+  color: var(--on-acc);
+  position: relative;
+  overflow: hidden;
+}
+/* Тёмно-фиолетовая карточка блока «Олимпиады» */
+.card-deep {
+  border-radius: var(--r-card);
+  background: linear-gradient(135deg, var(--dark) 0%, var(--dark-2) 100%);
+  color: #fff;
+  position: relative;
+  overflow: hidden;
+}
+/* Мягкое свечение внутри тёмной карточки — вместо 3D-объектов референса */
+.card-deep::before {
+  content: '';
+  position: absolute;
+  inset: -30% -10% auto auto;
+  width: 620px;
+  height: 620px;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.22), rgba(255, 255, 255, 0) 62%);
+  pointer-events: none;
+}
+.card-deep::after {
+  content: '';
+  position: absolute;
+  inset: auto auto -40% -12%;
+  width: 520px;
+  height: 520px;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.16), rgba(255, 255, 255, 0) 62%);
+  pointer-events: none;
+}
+
+/* ---------- Кнопки референса: pill, без капса, вес 600 ---------- */
+.btn-r {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  border-radius: 100px;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: 0;
+  text-transform: none;
+  padding: 17px 32px;
+  min-height: 54px;
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease,
+    transform 0.2s ease;
+}
+.btn-r-solid {
+  background: var(--acc);
+  color: var(--on-acc);
+}
+.btn-r-solid:hover {
+  background: var(--acc-dark);
+  transform: translateY(-1px);
+}
+/* Обводка — живёт на фиолетовой и тёмной карточках */
+.btn-r-outline {
+  background: transparent;
+  color: #fff;
+  border: 1.5px solid rgba(255, 255, 255, 0.75);
+}
+.btn-r-outline:hover {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: #fff;
+  transform: translateY(-1px);
+}
+/* Белая заливка — сильный CTA на акцентной карточке.
+   Обводка на зелёном читалась слабо, владелец просил выделить. */
+.btn-r-white {
+  background: #fff;
+  color: var(--acc-ink);
+  box-shadow: 0 8px 22px rgba(10, 59, 38, 0.18);
+}
+.btn-r-white:hover {
+  background: #f2fff8;
+  transform: translateY(-1px);
+  box-shadow: 0 10px 26px rgba(10, 59, 38, 0.24);
+}
+
+.btn-r-block {
+  width: 100%;
+}
+
+/* ---------- Пастельные пилюли ---------- */
+.pill-r {
+  display: inline-flex;
+  align-items: center;
+  border-radius: 100px;
+  background: var(--acc-soft);
+  color: var(--acc-ink);
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.35;
+  letter-spacing: 0;
+  text-transform: none;
+  padding: 7px 16px;
+}
+/* Пилюля-перечисление: текст темнее, читается как список */
+.pill-r-ink {
+  color: #0a5c3c;
+}
+.pill-r-white {
+  background: rgba(255, 255, 255, 0.18);
+  color: #fff;
+}
+
+/* ---------- Иконки ---------- */
+/* Квадратная рамка с фиолетовым контуром (блоки этапов и направлений) */
+.ico-box {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 52px;
+  height: 52px;
+  flex: none;
+  border-radius: 14px;
+  border: 1.5px solid var(--acc-ink);
+  color: var(--acc-ink);
+  background: #fff;
+  font-size: 24px;
+}
+/* Круглый пастельный чип (три преимущества под Hero) */
+.ico-round {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  flex: none;
+  border-radius: 50%;
+  background: var(--acc-soft);
+  color: var(--acc-ink);
+  font-size: 24px;
+}
+
+/* ---------- Гигантские номера 01–04 за карточками ---------- */
+.step-num {
+  position: absolute;
+  top: -10px;
+  right: 6px;
+  font-size: 92px;
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: -0.03em;
+  color: var(--acc-soft);
+  pointer-events: none;
+  user-select: none;
+  z-index: 0;
+}
+.step-num-sm {
+  font-size: 76px;
+}
+@media (max-width: 640px) {
+  .step-num,
+  .step-num-sm {
+    font-size: 64px;
+  }
+}
+/* На пастельной карточке 04 номер должен остаться читаемым, но тише фона */
+.step-num-on-soft {
+  color: #fff;
+}
+
+/* ---------- Списки-рубрики внутри фиолетовой карточки ---------- */
+.card-acc .btn-r-outline {
+  color: var(--on-acc);
+  border-color: rgba(10, 59, 38, 0.35);
+}
+.card-acc .btn-r-outline:hover {
+  background: rgba(10, 59, 38, 0.08);
+  border-color: var(--on-acc);
+}
+.card-acc .pill-r-white {
+  background: rgba(10, 59, 38, 0.1);
+  color: var(--on-acc);
+}
+.card-acc .rubric-item {
+  border-bottom-color: rgba(10, 59, 38, 0.24);
+  color: var(--on-acc);
+}
+
+.rubric-item {
+  padding: 11px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+  font-size: 14px;
+  line-height: 1.4;
+  color: rgba(255, 255, 255, 0.92);
+}
+.rubric-item:last-child {
+  border-bottom: 0;
+}
+
+/* ---------- Фото-заглушки (владелец подставит реальные файлы) ---------- */
+.photo-stub {
+  position: relative;
+  overflow: hidden;
+  background-color: var(--acc-mid);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.photo-stub__label {
+  position: absolute;
+  left: 12px;
+  bottom: 12px;
+  right: 12px;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1.35;
+  color: #fff;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.35);
+}
+.photo-stub__path {
+  display: block;
+  font-size: 11px;
+  opacity: 0.75;
+}
+
+/* ---------- Рисованные каракули ---------- */
+.doodle {
+  position: absolute;
+  pointer-events: none;
+  color: var(--ink);
+  z-index: 1;
+}
+
+/* ---------- Форма GetCourse ---------- */
+/* Виджет отдаётся в <iframe>, его внутренние стили нам недоступны.
+   Контейнеру задаём только скругление и обрезку — высоту ставит сам виджет. */
+.gc-host {
+  border-radius: var(--r-inner);
+  overflow: hidden;
+}
+
+/* ---------- Мобильный sticky-CTA ---------- */
+.sticky-cta {
+  transition:
+    background-color 0.2s ease,
+    opacity 0.25s ease,
+    transform 0.25s ease;
+}
+
+/* ---------- Мобильная читаемость подзаголовков ----------
+   Правка владельца: на телефоне подписи были слишком тонкие и бледные.
+   Приглушённый серый затемняем, абзацы-подзаголовки уплотняем до 500.
+   Целимся в p.text-sub, чтобы не задеть вторую строку H1 (она span). */
+@media (max-width: 767px) {
+  :root {
+    --sub: #4b5563;
+  }
+  p.text-sub,
+  .caption,
+  .card-acc .rubric-item {
+    font-weight: 500;
+  }
+}
+
+/* ---------- Мобильное центрирование заголовков блоков ----------
+   Правка владельца 09.09.2026: на телефоне заголовок блока и его подзаголовок
+   стоят по центру. Большинство блоков уже центрованы своим text-center —
+   правило добивает те, что свёрстаны по левому краю (блок «Путь ребёнка»).
+   Целимся в .h2 и в идущий сразу за ним абзац: это ровно пара
+   «заголовок + подзаголовок», внутренние тексты карточек не задеваются.
+   margin-inline: auto — потому что у таких заголовков стоит max-width,
+   без него центруется текст, но не сама колонка.
+   Порог 640px, а НЕ 767: он должен совпадать с порогом укрупнения кегля выше.
+   Иначе на 641–767px заголовки центрованы, но уже в десктопном кегле —
+   вид ломается на одном пикселе. */
+@media (max-width: 640px) {
+  .h2,
+  .h2-plain,
+  .h2 + p,
+  .h2-plain + p {
+    text-align: center;
+    margin-inline: auto;
+  }
+}
+
+/* Заголовок в прежнем кегле — точечное исключение из мобильного укрупнения.
+   Правка владельца 09.09.2026: блок олимпиад самый длинный на ленде,
+   на укрупнённой шкале его заголовок занимал весь экран телефона целиком.
+   Правило живёт ВНЕ @layer — так оно бьёт слойное .h2 без гонки специфичности. */
+@media (max-width: 640px) {
+  .h2.h2-compact {
+    font-size: clamp(23px, 6.2vw, 30px);
+    line-height: 1.12;
+  }
+}
