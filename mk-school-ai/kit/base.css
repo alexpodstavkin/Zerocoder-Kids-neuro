@@ -1,0 +1,308 @@
+/* =============================================================
+   ZEROCODER KIT — base.css (v1, 2026-09-03)
+   Foundation shared by all Zerocoder landings. Restyle a site by
+   overriding the --kit-* tokens in :root of the site's styles.css —
+   never by editing this file inside a project.
+
+   Sections:
+     1. tokens            5. buttons
+     2. reset + page      6. reveal
+     3. layout            7. modal (.reg-modal) + lightbox
+     4. typography        8. carousel / tabs / timer / misc
+                          9. breakpoints (1199 / 959 / 639 / 374 + heights)
+   Breakpoints are the Tilda canon used on every Zerocoder landing.
+   Sources: vibe-lab, vibe-coding-practicum, freelance-clients-efir,
+   big-summer-sale-2026, vibe-market (July–Sept 2026).
+   ============================================================= */
+
+/* ===================== 1. TOKENS ===================== */
+:root {
+  /* palette — placeholders, the site overrides them */
+  --kit-bg: #f7f8fb;
+  --kit-bg-2: #eef1f7;
+  --kit-card: #ffffff;
+  --kit-ink: #14171c;
+  --kit-dim: rgba(20, 23, 28, .66);
+  --kit-dim-2: rgba(20, 23, 28, .45);
+  --kit-line: rgba(20, 23, 28, .10);
+  --kit-acc: #2f7bff;          /* accent fill (one accent per site) */
+  --kit-acc-ink: #ffffff;      /* text on accent: check AA (>= 4.5) */
+  --kit-acc-hover: #1d62e0;
+  --kit-acc-soft: rgba(47, 123, 255, .12);
+  --kit-shadow-hue: 47, 123, 255;  /* tinted shadows, never plain black */
+
+  /* radii scale — 8 / 16 / 24 / pill; a site may flatten it to 0 */
+  --kit-r1: 8px;
+  --kit-r2: 16px;
+  --kit-r3: 24px;
+  --kit-r-pill: 999px;
+
+  /* fonts */
+  --kit-font: 'Manrope', system-ui, -apple-system, 'Segoe UI', Arial, sans-serif;
+  --kit-mono: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+
+  /* motion */
+  --kit-ease: cubic-bezier(.22, 1, .36, 1);
+
+  /* depth */
+  --kit-shadow-card: inset 0 1px 0 rgba(255, 255, 255, .8), 0 18px 40px -22px rgba(var(--kit-shadow-hue), .28);
+  --kit-shadow-lg: inset 0 1px 0 rgba(255, 255, 255, .8), 0 34px 72px -34px rgba(var(--kit-shadow-hue), .36);
+
+  /* frame */
+  --kit-container: 1560px;
+  --kit-narrow: 960px;
+  --kit-edge: clamp(16px, 2.2vw, 24px);
+  --kit-edge-l: max(var(--kit-edge), env(safe-area-inset-left));
+  --kit-edge-r: max(var(--kit-edge), env(safe-area-inset-right));
+  --kit-sec-y: clamp(52px, 6.4vw, 120px);
+  --kit-gap: clamp(12px, 1.4vw, 24px);
+
+  /* viewport units as tokens: inside zoom (>1920) JS rewrites them in px */
+  --vh: 1vh;
+  --vw: 1vw;
+}
+
+/* ===================== 2. RESET + PAGE ===================== */
+*, *::before, *::after { box-sizing: border-box; }
+html {
+  -webkit-text-size-adjust: 100%;
+  scroll-behavior: smooth;
+  /* hidden fallback for Safari < 16, clip for everyone else:
+     hidden would turn html into a scroll container and break sticky + anchors */
+  overflow-x: hidden;
+  overflow-x: clip;
+}
+body {
+  margin: 0;
+  background: var(--kit-bg);
+  color: var(--kit-ink);
+  font-family: var(--kit-font);
+  font-weight: 500;
+  font-size: 17px;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+  overflow-x: clip;
+}
+h1, h2, h3, h4, p, ul, ol, dl, dd, figure, figcaption, blockquote { margin: 0; padding: 0; }
+ul, ol { list-style: none; }
+a { color: inherit; text-decoration: none; }
+img, svg, video { max-width: 100%; display: block; }
+img { height: auto; }
+button { font: inherit; color: inherit; background: none; border: 0; padding: 0; cursor: pointer; }
+:focus-visible { outline: 2px solid var(--kit-acc); outline-offset: 3px; }
+html.is-locked { overflow: hidden; }
+[hidden] { display: none !important; }
+
+/* ===================== 3. LAYOUT ===================== */
+.container {
+  width: 100%;
+  max-width: var(--kit-container);
+  margin: 0 auto;
+  padding-left: var(--kit-edge-l);
+  padding-right: var(--kit-edge-r);
+}
+.container--narrow { max-width: var(--kit-narrow); }
+.sec {
+  position: relative;
+  padding: var(--kit-sec-y) 0;
+  /* clip only horizontally: glows may bleed vertically across seams */
+  overflow-x: clip;
+  overflow-y: visible;
+}
+.sec--tight { padding: calc(var(--kit-sec-y) * .6) 0; }
+.grid { display: grid; gap: var(--kit-gap); }
+.grid--2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.grid--3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.grid--4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.card {
+  background: var(--kit-card);
+  border: 1px solid var(--kit-line);
+  border-radius: var(--kit-r2);
+  box-shadow: var(--kit-shadow-card);
+  padding: clamp(20px, 2.4vw, 32px);
+}
+.card--dark { background: var(--kit-ink); color: var(--kit-bg); border-color: transparent; }
+.card--acc { background: var(--kit-acc); color: var(--kit-acc-ink); border-color: transparent; }
+
+/* ===================== 4. TYPOGRAPHY ===================== */
+.h1 { font-weight: 800; font-size: clamp(34px, 4.6vw, 64px); line-height: 1.04; letter-spacing: -.02em; text-wrap: balance; }
+.h2 { font-weight: 700; font-size: clamp(28px, 3.2vw, 48px); line-height: 1.08; letter-spacing: -.02em; text-wrap: balance; }
+.h3 { font-weight: 700; font-size: clamp(18px, 1.6vw, 24px); line-height: 1.22; letter-spacing: -.01em; }
+.lead { font-weight: 700; font-size: clamp(17px, 1.5vw, 22px); line-height: 1.35; }
+.body { font-size: clamp(16px, 1.12vw, 19px); line-height: 1.55; color: var(--kit-dim); }
+.body b, .body strong { color: var(--kit-ink); font-weight: 700; }
+.body + .body { margin-top: .7em; }
+.micro { font-size: clamp(13px, .9vw, 14px); line-height: 1.45; color: var(--kit-dim-2); }
+.kicker {
+  display: inline-block;
+  font-family: var(--kit-mono);
+  font-size: clamp(11px, .8vw, 12px);
+  font-weight: 500;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--kit-dim);
+  padding: 6px 12px;
+  border: 1px solid var(--kit-line);
+  border-radius: var(--kit-r-pill);
+}
+.mono { font-family: var(--kit-mono); }
+.num { font-variant-numeric: lining-nums tabular-nums; letter-spacing: -.03em; font-weight: 800; }
+/* phrases that must not break ("ИИ-агентов", "10 000 ₽"); freed on 320px */
+.nw { white-space: nowrap; }
+.sec-head { margin-bottom: clamp(20px, 2.6vw, 40px); display: flex; flex-direction: column; gap: 12px; align-items: flex-start; }
+.sec-head--center { align-items: center; text-align: center; }
+
+/* ===================== 5. BUTTONS ===================== */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+  min-height: 52px; padding: 0 26px;
+  border: 1.5px solid var(--kit-ink);
+  border-radius: var(--kit-r-pill);
+  background: var(--kit-ink); color: var(--kit-bg);
+  font-weight: 700; font-size: clamp(15px, 1.05vw, 16px); letter-spacing: -.005em;
+  text-align: center; white-space: nowrap; cursor: pointer;
+  transition: transform .18s var(--kit-ease), box-shadow .18s var(--kit-ease),
+              background-color .18s var(--kit-ease), color .18s var(--kit-ease), border-color .18s var(--kit-ease);
+}
+.btn--primary { background: var(--kit-acc); border-color: var(--kit-acc); color: var(--kit-acc-ink); box-shadow: 0 12px 30px -14px rgba(var(--kit-shadow-hue), .7); }
+.btn--ghost { background: transparent; color: var(--kit-ink); }
+.btn--lg { min-height: 60px; padding: 0 34px; }
+.btn--w { width: 100%; }
+@media (hover: hover) {
+  .btn:hover { transform: translateY(-1px); box-shadow: 0 10px 26px -10px rgba(var(--kit-shadow-hue), .45); }
+  .btn--primary:hover { background: var(--kit-acc-hover); border-color: var(--kit-acc-hover); }
+  .btn--ghost:hover { background: var(--kit-ink); color: var(--kit-bg); }
+}
+.btn:active { transform: translateY(0); }
+.cta-row { display: flex; flex-wrap: wrap; gap: 12px; }
+
+/* ===================== 6. REVEAL ===================== */
+.js .rv { opacity: 0; transform: translateY(16px); }
+.js .rv.is-in {
+  opacity: 1; transform: none;
+  transition: opacity .6s var(--kit-ease) var(--rvd, 0s), transform .6s var(--kit-ease) var(--rvd, 0s);
+}
+.js .rv.is-now { opacity: 1; transform: none; transition: none; }
+
+/* ===================== 7. MODAL + LIGHTBOX ===================== */
+/* hidden via visibility/opacity, NOT display:none — the GetCourse widget
+   measures width on mount and collapses inside display:none */
+.reg-modal {
+  position: fixed; inset: 0; z-index: 1200;
+  display: flex; align-items: center; justify-content: center;
+  padding: max(16px, env(safe-area-inset-top)) max(16px, env(safe-area-inset-right)) max(16px, env(safe-area-inset-bottom)) max(16px, env(safe-area-inset-left));
+  background: rgba(20, 23, 28, .62);
+  backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
+  visibility: hidden; opacity: 0; pointer-events: none;
+  transition: opacity .25s var(--kit-ease), visibility 0s linear .25s;
+}
+.reg-modal.is-open { visibility: visible; opacity: 1; pointer-events: auto; transition: opacity .25s var(--kit-ease), visibility 0s; }
+.reg-modal__panel {
+  position: relative;
+  width: min(620px, 100%);
+  max-height: calc(var(--vh) * 92);
+  background: var(--kit-card); color: var(--kit-ink);
+  border-radius: var(--kit-r2);
+  overflow-y: auto; overscroll-behavior: contain; -webkit-overflow-scrolling: touch;
+  padding: clamp(20px, 2.4vw, 32px);
+}
+.reg-modal__title { font-weight: 700; font-size: clamp(18px, 1.6vw, 24px); line-height: 1.2; margin: 0 40px 12px 0; }
+.reg-modal__body { min-height: 160px; min-width: 0; }
+.reg-modal__body iframe { display: block; width: 100%; border: 0; }
+.reg-modal__error { padding: 28px 0; text-align: center; font-weight: 600; }
+.reg-modal__close {
+  position: absolute; top: 12px; right: 12px; z-index: 2;
+  width: 44px; height: 44px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  background: var(--kit-bg-2); color: var(--kit-ink);
+  font-size: 22px; line-height: 1;
+}
+@media (hover: hover) { .reg-modal__close:hover { background: var(--kit-line); } }
+
+.lightbox {
+  position: fixed; inset: 0; z-index: 1300;
+  display: flex; align-items: center; justify-content: center; padding: 20px;
+  background: rgba(20, 23, 28, .86); cursor: zoom-out;
+  visibility: hidden; opacity: 0; transition: opacity .25s var(--kit-ease), visibility 0s linear .25s;
+}
+.lightbox.is-open { visibility: visible; opacity: 1; transition: opacity .25s var(--kit-ease), visibility 0s; }
+.lightbox img { max-width: 100%; max-height: calc(var(--vh) * 92); width: auto; height: auto; border-radius: var(--kit-r1); }
+
+/* ===================== 8. CAROUSEL / TABS / TIMER / MISC ===================== */
+[data-carousel] { position: relative; }
+[data-carousel] .car-slide { display: none; }
+[data-carousel] .car-slide.is-on { display: block; }
+.car-nav { display: flex; align-items: center; gap: 10px; margin-top: 14px; }
+.car-prev, .car-next {
+  width: 44px; height: 44px; border-radius: 50%;
+  border: 1px solid var(--kit-line); background: var(--kit-card); color: var(--kit-ink);
+  display: flex; align-items: center; justify-content: center; font-size: 18px;
+}
+.car-dots { display: flex; gap: 8px; }
+.car-dot { width: 10px; height: 10px; min-width: 10px; border-radius: 50%; background: var(--kit-line); padding: 0; }
+.car-dot.is-on { background: var(--kit-acc); }
+
+[data-tabs] [data-pane] { cursor: pointer; }
+[data-tabs] [data-pane-id]:not(.is-on) { display: none; }
+
+.timer { display: inline-flex; align-items: baseline; gap: 4px; font-family: var(--kit-mono); font-variant-numeric: tabular-nums; }
+.timer.is-done { opacity: .5; }
+.js-places-n { display: inline-block; min-width: 2ch; text-align: center; transition: transform .11s var(--kit-ease); }
+.js-places-n.is-bump { transform: scale(1.18); }
+[data-copy] { position: relative; }
+[data-copy].is-copied::after { content: 'Скопировано'; position: absolute; left: 50%; bottom: calc(100% + 6px); transform: translateX(-50%); font-size: 12px; padding: 4px 8px; border-radius: 6px; background: var(--kit-ink); color: var(--kit-bg); white-space: nowrap; }
+
+.marq { overflow: hidden; }
+.marq__track { display: flex; gap: 32px; width: max-content; animation: kit-marq 30s linear infinite; }
+@keyframes kit-marq { to { transform: translateX(-50%); } }
+
+/* glass fallback: without backdrop-filter, translucent panels get a solid bg */
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .glass { background: var(--kit-card) !important; }
+  .reg-modal { background: rgba(20, 23, 28, .78); }
+}
+
+/* ===================== 9. BREAKPOINTS ===================== */
+/* horizontal tablet */
+@media (max-width: 1199px) {
+  .grid--4 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+/* vertical tablet */
+@media (max-width: 959px) {
+  .grid--3 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  :root { --kit-sec-y: clamp(48px, 7vw, 64px); }
+}
+/* mobile */
+@media (max-width: 639px) {
+  body { font-size: 16px; }
+  .grid--2, .grid--3, .grid--4 { grid-template-columns: minmax(0, 1fr); }
+  .btn { width: 100%; }
+  .reg-modal { padding: 0; align-items: flex-end; }
+  .reg-modal__panel { width: 100%; max-height: calc(var(--vh) * 94); border-radius: var(--kit-r2) var(--kit-r2) 0 0; padding-bottom: max(20px, env(safe-area-inset-bottom)); }
+}
+/* narrow phones: iPhone SE 1st gen, Fold, 320px androids */
+@media (max-width: 374px) {
+  .nw { white-space: normal; }
+  .btn { padding: 0 14px; font-size: 14px; }
+  /* full-width CTA may wrap to two lines here: 28-char labels cannot fit 320px in one line */
+  .btn--w { white-space: normal; line-height: 1.2; padding: 12px 14px; }
+  .card { padding: 18px; }
+  :root { --kit-edge: 14px; }
+}
+/* short laptop windows (1366×768, 1536×864): hero must not be cut */
+@media (min-width: 960px) and (max-height: 820px) {
+  :root { --kit-sec-y: clamp(44px, 5vw, 80px); }
+}
+@media (min-width: 960px) and (max-height: 700px) {
+  .h1 { font-size: clamp(30px, 3.6vw, 48px); }
+}
+
+/* ===================== MOTION ===================== */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .js .rv, .js .rv.is-in { opacity: 1; transform: none; transition: none; }
+  .marq__track { animation: none; }
+  .reg-modal, .reg-modal.is-open, .lightbox, .lightbox.is-open, .btn { transition: none; }
+}

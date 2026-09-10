@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>Бесплатный мастер-класс по искусственному интеллекту для школьников · Зерокодер</title>
+<meta name="description" content="«Создай своего ИИ-репетитора» — бесплатный мастер-класс по искусственному интеллекту для школьников России от 7 до 16 лет. За 60 минут ребёнок соберёт своего помощника по учёбе и заберёт его с собой." />
+<link rel="icon" href="https://zerocoder.ru/favicon.ico?v=2" />
+
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Бесплатный мастер-класс по искусственному интеллекту для школьников" />
+<meta property="og:description" content="«Создай своего ИИ-репетитора» — за 60 минут ребёнок соберёт своего помощника по учёбе на базе ИИ и заберёт его с собой." />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<!-- GetCourse forms: open the connection and fetch the widget script before site.js asks for it.
+     No crossorigin here: the widget script and iframe are plain no-cors requests, a crossorigin
+     preconnect would open a separate socket they never use. -->
+<link rel="preconnect" href="https://university.zerocoder.ru" />
+<link rel="dns-prefetch" href="https://university.zerocoder.ru" />
+<link rel="preload" as="script" href="https://university.zerocoder.ru/pl/lite/widget/script?id=1654375" />
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@600;700;800&family=Inter:ital,wght@0,400;0,500;0,600;0,700;1,300&display=swap&subset=cyrillic,latin" rel="stylesheet" />
+
+<link rel="stylesheet" href="kit/base.css?v=20260910-3" />
+<link rel="stylesheet" href="styles.css?v=20260910-3" />
+
+<!-- ---------------------------------------------------------------
+     ROLLING DEADLINE (Lida, 2026-09-09), computed before first paint.
+     Application deadline walks the 15th -> 30th of every month
+     (February: the last day). The whole deadline day still shows that
+     day; from the next MSK midnight the next slot is shown.
+     Static markup equals the current slot, so without JS it stays sane.
+     Test any day: index.html?now=2026-09-16T00:01
+     --------------------------------------------------------------- -->
+<script>
+(function () {
+  var MSK = 3 * 3600 * 1000;
+  var M = ['января','февраля','марта','апреля','мая','июня','июля','августа','сентября','октября','ноября','декабря'];
+
+  var shift = 0;
+  var q = location.search.match(/[?&]now=([^&]+)/);
+  if (q) { var p = Date.parse(decodeURIComponent(q[1]).replace(' ', 'T')); if (!isNaN(p)) shift = p - Date.now(); }
+
+  /* last day of a month, capped at 30 — the deadline ladder has no 31st */
+  var lateDay = function (y, m) {
+    var last = new Date(Date.UTC(y, m + 1, 0)).getUTCDate();
+    return Math.min(30, last);
+  };
+
+  var compute = function () {
+    var t = new Date(Date.now() + shift + MSK);
+    var y = t.getUTCFullYear(), m = t.getUTCMonth(), d = t.getUTCDate();
+    if (d <= 15) return '15 ' + M[m];
+    var late = lateDay(y, m);
+    if (d <= late) return late + ' ' + M[m];
+    m += 1; if (m > 11) { m = 0; y += 1; }
+    return '15 ' + M[m];
+  };
+
+  var paint = function () {
+    var text = compute();
+    window.MK_DEADLINE = text;
+    var els = document.querySelectorAll('.js-deadline');
+    for (var i = 0; i < els.length; i++) els[i].textContent = text;
+  };
+
+  var schedule = function () {
+    var t = new Date(Date.now() + shift + MSK);
+    var nextMidnight = Date.UTC(t.getUTCFullYear(), t.getUTCMonth(), t.getUTCDate() + 1) - MSK;
+    var wait = Math.min(nextMidnight - (Date.now() + shift) + 1000, 2147483647);
+    setTimeout(function () { paint(); schedule(); }, wait);
+  };
+
+  window.MK_DEADLINE = compute();
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', paint);
+  else paint();
+  schedule();
+})();
+</script>
+
+<!-- Yandex Metrika: one counter for all Zerocoder landings -->
+<script type="text/javascript">
+(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+ym(72085663, "init", { clickmap:true, trackLinks:true, accurateTrackBounce:true, webvisor:true });
+</script>
+<noscript><div><img src="https://mc.yandex.ru/watch/72085663" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+
+<!-- Top.Mail.Ru (VK pixel): one counter for all kids.zerocoder.ru landings -->
+<script type="text/javascript">
+var _tmr = window._tmr || (window._tmr = []);
+_tmr.push({id: "3739769", type: "pageView", start: (new Date()).getTime()});
+(function (d, w, id) {
+  if (d.getElementById(id)) return;
+  var ts = d.createElement("script"); ts.type = "text/javascript"; ts.async = true; ts.id = id;
+  ts.src = "https://top-fwz1.mail.ru/js/code.js";
+  var f = function () {var s = d.getElementsByTagName("script")[0]; s.parentNode.insertBefore(ts, s);};
+  if (w.opera == "[object Opera]") { d.addEventListener("DOMContentLoaded", f, false); } else { f(); }
+})(document, window, "tmr-code");
+</script>
+<noscript><div><img src="https://top-fwz1.mail.ru/counter?id=3739769;js=na" style="position:absolute; left:-9999px;" alt="Top.Mail.Ru" /></div></noscript>
+</head>
+<body>
+
+<!-- ============ 01 · HERO ============ -->
+<section class="hero" id="hero">
+  <div class="hero__deco" aria-hidden="true">
+    <img class="hero__ring" src="assets/hero-ellipse.svg" alt="" />
+    <img class="hero__dots hero__dots--left" src="assets/dots-lilac.svg" alt="" />
+    <img class="hero__dots hero__dots--right" src="assets/dots-violet.svg" alt="" />
+  </div>
+
+  <header class="hdr">
+    <div class="hdr__brand">
+      <a class="logo" href="https://zerocoder.ru" target="_blank" rel="noopener">
+        <img class="logo__mark" src="assets/logo-zerocoder-mark.svg" alt="" />
+        <span class="logo__word">Зерокодер</span>
+      </a>
+    </div>
+    <div class="hdr__mid">
+      <img class="hdr__logo hdr__logo--pk" src="assets/logo-pedklass.webp" alt="Педагогические классы России" />
+      <img class="hdr__logo hdr__logo--ec" src="assets/logo-ecdpo.webp" alt="Единый центр дополнительного профессионального образования" />
+    </div>
+    <div class="hdr__partners">
+      <img class="hdr__logo hdr__logo--fc" src="assets/logo-fcpro.png" alt="Федеральная целевая программа развития образования" />
+      <img class="hdr__logo hdr__logo--npr" src="assets/logo-npr-edu.webp" alt="Национальный проект «Образование»" />
+      <img class="hdr__logo hdr__logo--sk" src="assets/logo-skolkovo.png" alt="Участник «Сколково»" />
+    </div>
+  </header>
+
+  <div class="wrap hero__wrap">
+    <div class="hero__col">
+      <div class="hero__badges">
+        <p class="hero__badge">В&nbsp;рамках всероссийской программы<br /><b>«Введение в&nbsp;искусственный интеллект»</b></p>
+        <p class="hero__badge hero__badge--date"><b>Приём заявок:</b><br />до&nbsp;<span class="js-deadline">15 сентября</span></p>
+      </div>
+
+      <h1 class="hero__title">Бесплатный мастер-класс <br class="br-d" />по&nbsp;искусственному интеллекту <br class="br-d" />для всех школьников России от&nbsp;7 до&nbsp;16 лет</h1>
+
+      <p class="hero__theme">«Создай своего ИИ-репетитора»</p>
+
+      <p class="hero__lead">Ваш ребёнок за&nbsp;60&nbsp;минут создаст своего первого помощника по&nbsp;учёбе на&nbsp;базе искусственного интеллекта <b>и&nbsp;заберёт его с&nbsp;собой</b></p>
+
+      <img class="hero__robot" src="assets/robot.webp" alt="" />
+    </div>
+
+    <div class="hero__form">
+      <p class="hero__form-title">Заполните форму для записи и&nbsp;получения доступов. Количество мест ограничено</p>
+      <div class="gcw" data-gc-inline data-gc-uid="2aa7fd2f999cf641ba1dffd2b2af092fb02fda03" data-gc-src="https://university.zerocoder.ru/pl/lite/widget/script?id=1654375">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 02 · ЧТО ПОЛУЧИТ РЕБЁНОК ============ -->
+<section class="sec sec--steps" id="steps">
+  <img class="steps__ring" src="assets/ellipse-213.svg" alt="" aria-hidden="true" />
+  <img class="steps__dots" src="assets/dots-lilac-2.svg" alt="" aria-hidden="true" />
+  <div class="wrap">
+    <p class="kick kick--lime rv">Что получит ребёнок</p>
+    <h2 class="h2 h2--light rv">Бесплатный мастер-класс для вашего ребёнка</h2>
+
+    <ul class="steps">
+      <li class="step rv">
+        <img class="step__img" src="assets/step-01.jpg" alt="" loading="lazy" decoding="async" />
+        <span class="step__num">01</span>
+        <p class="step__text">Сделает первые шаги в&nbsp;работе с&nbsp;нейросетями</p>
+      </li>
+      <li class="step step--deep rv" style="--rvd:.08s">
+        <img class="step__img" src="assets/step-02.jpg" alt="" loading="lazy" decoding="async" />
+        <span class="step__num">02</span>
+        <p class="step__text">Соберёт своего онлайн-помощника по&nbsp;учёбе на&nbsp;базе искусственного интеллекта и&nbsp;заберёт его с&nbsp;собой</p>
+      </li>
+      <li class="step rv" style="--rvd:.16s">
+        <img class="step__img" src="assets/step-03.jpg" alt="" loading="lazy" decoding="async" />
+        <span class="step__num">03</span>
+        <p class="step__text">Получит ценную информацию по&nbsp;развитию своих талантов</p>
+      </li>
+    </ul>
+
+    <div class="steps__cta">
+      <a class="btn-lime" href="#signup">Записаться</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 03 · СТАТИСТИКА ============ -->
+<section class="sec sec--stat" id="stat">
+  <img class="stat__bg" src="assets/stat-bg.webp" alt="" aria-hidden="true" loading="lazy" decoding="async" />
+  <div class="wrap">
+    <div class="stat__glass rv">
+      <p class="stat__num">71%</p>
+      <p class="stat__text">детей уже пользуются нейросетями. Вопрос один: кто&nbsp;покажет им&nbsp;правильный способ применения?</p>
+      <p class="stat__src">По&nbsp;данным исследования «Лаборатории Касперского», май&nbsp;2026</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 04 · ПОЛЬЗА ============ -->
+<section class="sec sec--benefits" id="benefits">
+  <div class="wrap">
+    <p class="kick kick--violet rv">Зачем идти</p>
+    <h2 class="h2 rv">Мастер-класс будет полезен вашему ребёнку, если&nbsp;вы&nbsp;хотите, чтобы он:</h2>
+    <p class="benefits__lead rv">За&nbsp;один час под руководством преподавателя ваш ребёнок пройдёт путь от&nbsp;первого знакомства с&nbsp;нейросетью до&nbsp;готового результата</p>
+
+    <ul class="benefits">
+      <li class="benefit rv">
+        <span class="benefit__ico"><img src="assets/icon-shield.svg" alt="" /></span>
+        <p class="benefit__text">Понял, что современные технологии&nbsp;— не&nbsp;«магия», а&nbsp;понятный инструмент</p>
+      </li>
+      <li class="benefit rv" style="--rvd:.06s">
+        <span class="benefit__ico"><img src="assets/icon-chart.svg" alt="" /></span>
+        <p class="benefit__text">Научился использовать нейросети не&nbsp;вместо готовых ответов, а&nbsp;как помощника в&nbsp;учёбе</p>
+      </li>
+      <li class="benefit rv" style="--rvd:.12s">
+        <span class="benefit__ico"><img src="assets/icon-clock.svg" alt="" /></span>
+        <p class="benefit__text">Шёл в&nbsp;ногу со&nbsp;временем и&nbsp;получал навыки, полезные для будущей карьеры уже сейчас</p>
+      </li>
+      <li class="benefit rv" style="--rvd:.18s">
+        <span class="benefit__ico"><img src="assets/icon-users.svg" alt="" /></span>
+        <p class="benefit__text">Получил навыки коммуникации, критического мышления и&nbsp;сотрудничества</p>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============ 05 · ОТЗЫВЫ ============ -->
+<section class="sec sec--reviews" id="reviews">
+  <div class="wrap">
+    <p class="kick kick--lime rv">Отзывы</p>
+    <h2 class="h2 h2--light rv">Что говорят родители наших учеников</h2>
+
+    <ul class="reviews">
+      <li class="review rv">
+        <p class="review__stars" aria-label="Оценка 5 из 5">★★★★★</p>
+        <p class="review__title">Заставила сына заниматься, а&nbsp;он&nbsp;вошёл во&nbsp;вкус</p>
+        <p class="review__text">Ребёнок был готов бросить занятия, но&nbsp;увлечённый преподаватель нашёл подход и&nbsp;объяснял сложные темы простыми словами&nbsp;— сын втянулся и&nbsp;теперь ждёт каждое занятие.</p>
+        <div class="review__author"><span class="review__ava">М</span><span class="review__who"><b>Мария</b><i>мама ученика</i></span></div>
+      </li>
+      <li class="review rv" style="--rvd:.06s">
+        <p class="review__stars" aria-label="Оценка 5 из 5">★★★★★</p>
+        <p class="review__title">Курс очень понравился</p>
+        <p class="review__text">Занятия проходили в&nbsp;приятной атмосфере и&nbsp;удобном графике, ребёнок легко погружался в&nbsp;процесс. Все вопросы быстро решались в&nbsp;поддержке.</p>
+        <div class="review__author"><span class="review__ava">К</span><span class="review__who"><b>Ксения</b><i>мама ученика</i></span></div>
+      </li>
+      <li class="review rv" style="--rvd:.12s">
+        <p class="review__stars" aria-label="Оценка 5 из 5">★★★★★</p>
+        <p class="review__title">Отличное обучение, ребёнок получил знания</p>
+        <p class="review__text">Удобный формат и&nbsp;гибкое расписание, много полезной и&nbsp;интересной информации. Возникающие вопросы решались быстро и&nbsp;понятно.</p>
+        <div class="review__author"><span class="review__ava">Е</span><span class="review__who"><b>Евгения</b><i>мама ученика</i></span></div>
+      </li>
+      <li class="review rv" style="--rvd:.18s">
+        <p class="review__stars" aria-label="Оценка 5 из 5">★★★★★</p>
+        <p class="review__title">Всё проходит хорошо</p>
+        <p class="review__text">Начинали с&nbsp;простого программирования в&nbsp;игровой форме, постепенно перешли к&nbsp;более серьёзным курсам&nbsp;— куратор всегда был на&nbsp;связи и&nbsp;помогал с&nbsp;выбором.</p>
+        <div class="review__author"><span class="review__ava">О</span><span class="review__who"><b>Ольга</b><i>мама ученика</i></span></div>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============ 06 · О ШКОЛЕ ============ -->
+<section class="sec sec--trust" id="trust">
+  <div class="wrap">
+    <ul class="metrics">
+      <li class="metric rv">
+        <p class="metric__num">4,7</p>
+        <p class="metric__text">средняя оценка на&nbsp;независимых площадках · 403&nbsp;отзыва</p>
+      </li>
+      <li class="metric rv" style="--rvd:.06s">
+        <p class="metric__num">10&nbsp;000+</p>
+        <p class="metric__text">выпускников программ Зерокодера</p>
+      </li>
+      <li class="metric rv" style="--rvd:.12s">
+        <img class="metric__ico" src="assets/icon-license.svg" alt="" />
+        <p class="metric__text">официальная образовательная лицензия</p>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============ 07 · ЗАПИСЬ ============ -->
+<section class="sec sec--signup" id="signup">
+  <div class="wrap signup">
+    <div class="signup__col">
+      <h2 class="h2 h2--light rv">Запишите ребёнка на&nbsp;бесплатный мастер-класс</h2>
+      <p class="signup__lead rv">Один час, чтобы он&nbsp;увидел: нейросеть&nbsp;— не&nbsp;ГДЗ, а&nbsp;инструмент, которым можно управлять</p>
+      <div class="signup__art" aria-hidden="true">
+        <img class="signup__dots" src="assets/dots-lilac-2.svg" alt="" />
+        <img class="signup__pin" src="assets/ai-pin.webp" alt="" loading="lazy" decoding="async" />
+      </div>
+    </div>
+
+    <div class="signup__form rv">
+      <p class="signup__form-title">Заполните форму для записи</p>
+      <div class="gcw gcw--light" data-gc-inline data-gc-uid="2aa7fd2f999cf641ba1dffd2b2af092fb02fda03" data-gc-src="https://university.zerocoder.ru/pl/lite/widget/script?id=1654375">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 08 · ПОДВАЛ ============ -->
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer__grid">
+      <div class="footer__col">
+        <a class="logo logo--footer" href="https://zerocoder.ru" target="_blank" rel="noopener">
+          <img class="logo__mark" src="assets/logo-zerocoder-mark.svg" alt="" />
+          <span class="logo__word">Зерокодер</span>
+        </a>
+        <a class="footer__link" href="tel:+79393283812">+7 939 328-38-12</a>
+        <a class="footer__link" href="mailto:care@zerocoder.ru">care@zerocoder.ru</a>
+      </div>
+      <nav class="footer__col footer__col--docs">
+        <a class="footer__link" href="https://zerocoder.ru/privacy" target="_blank" rel="noopener">Политика конфиденциальности</a>
+        <a class="footer__link" href="https://zerocoder.ru/safety" target="_blank" rel="noopener">Политика безопасности платежей</a>
+        <a class="footer__link" href="https://zerocoder.ru/terms" target="_blank" rel="noopener">Оферта</a>
+        <a class="footer__link" href="https://islod.obrnadzor.gov.ru/rlic/details/0c9b345a-fc50-43c8-7248-1dc5987f2d33/" target="_blank" rel="noopener">Лицензия на&nbsp;образовательную деятельность</a>
+      </nav>
+      <div class="footer__col footer__col--legal">
+        <p class="footer__link">ООО «ЗЕРОКОДЕР»</p>
+        <p class="footer__link">ИНН 9715401631 · ОГРН 1217700246026</p>
+        <p class="footer__link">Образовательная лицензия · Резидент Сколково</p>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <p class="footer__link">© 2026 ООО «ЗЕРОКОДЕР». Все права защищены.</p>
+      <p class="footer__link">Иконки&nbsp;— <a href="https://www.flaticon.com/uicons" target="_blank" rel="noopener">Uicons by Flaticon</a></p>
+    </div>
+  </div>
+</footer>
+
+<script src="kit/core.js?v=20260910-3" defer></script>
+<script src="site.js?v=20260910-3" defer></script>
+</body>
+</html>
