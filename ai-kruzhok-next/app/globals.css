@@ -28,6 +28,12 @@
      снимке (см. Inside.tsx). Менять — только вместе с фотографией. */
   --acc-card: #25cf93;
 
+  /* === CTA: красный из палитры ДС (red base #DF3D3D / dark #C42A2A) ===
+     Правка владельца 10.09.2026: все кнопки-призывы красные, подпись «Получить доступ».
+     Зелёный остаётся акцентом страницы, красный — только для действия. */
+  --cta: #df3d3d;
+  --cta-dark: #c42a2a;
+
   /* === НЕЙТРАЛИ — канон ДС === */
   --ink: #141413;
   --sub: #6b7280;
@@ -331,7 +337,7 @@ html[data-js] .rvl:not(.rvl-in) {
 /* ---------- Мобильный sticky-CTA ---------- */
 .sticky-cta:hover,
 .sticky-cta:active {
-  background: var(--acc-dark) !important;
+  background: var(--cta-dark) !important;
 }
 
 /* ============================================================
@@ -445,6 +451,18 @@ html[data-js] .rvl:not(.rvl-in) {
   background: #f2fff8;
   transform: translateY(-1px);
   box-shadow: 0 10px 26px rgba(10, 59, 38, 0.24);
+}
+
+/* Красная CTA — единая для всех призывов (правка владельца 10.09.2026).
+   Одна и та же на белом фоне, зелёной и тёмной карточках. */
+.btn-r-cta {
+  background: var(--cta);
+  color: #fff;
+  box-shadow: 0 8px 22px rgba(196, 42, 42, 0.22);
+}
+.btn-r-cta:hover {
+  background: var(--cta-dark);
+  transform: translateY(-1px);
 }
 
 .btn-r-block {

@@ -91,8 +91,8 @@ export default function Inside() {
             ))}
           </div>
 
-          <a href="#cta" className="btn-r btn-r-white mt-8 md:mt-10">
-            Открыть доступ к занятиям
+          <a href="#cta-form" className="btn-r btn-r-cta mt-8 md:mt-10">
+            Получить доступ
           </a>
         </div>
 

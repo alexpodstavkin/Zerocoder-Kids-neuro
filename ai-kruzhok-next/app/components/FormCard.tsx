@@ -5,17 +5,21 @@ import { FormArrow } from './Doodles';
 // Правая карточка обеих форм (Hero и финальный блок): светло-сиреневый градиент,
 // заголовок, микрокопия, рисованная стрелка к полям и виджет GetCourse.
 // Подписи полей и кнопки живут внутри виджета — переопределить их снаружи нельзя.
+// id — якорь для кнопок «Получить доступ»: ведут прямо к форме, а не к началу секции,
+// иначе на телефоне кнопка приводила бы к карточке оффера с ещё одной такой же кнопкой.
 export default function FormCard({
+  id,
   title,
   note,
   footnote,
 }: {
+  id?: string;
   title: ReactNode;
   note?: ReactNode;
   footnote?: ReactNode;
 }) {
   return (
-    <div className="card-form flex flex-col overflow-hidden p-6 md:p-8">
+    <div id={id} className="card-form flex scroll-mt-4 flex-col overflow-hidden p-6 md:p-8">
       <div className="relative">
         <h2 className="max-w-[320px] text-[21px] font-semibold leading-[1.22] md:text-[25px]">
           {title}

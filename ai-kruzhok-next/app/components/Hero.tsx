@@ -44,8 +44,14 @@ export default function Hero() {
             и познакомится с перспективными IT-направлениями будущего
           </p>
 
+          {/* Кнопка над фото — только на телефоне (правка владельца 10.09.2026).
+              На вебе форма стоит в соседней колонке, кнопка там лишняя. */}
+          <a href="#hero-form" className="btn-r btn-r-cta btn-r-block mt-6 md:hidden">
+            Получить доступ
+          </a>
+
           {/* Фото с каракулями — прижато к нижнему краю карточки */}
-          <div className="relative -mx-6 mt-8 flex flex-1 flex-col justify-end pt-9 md:-mx-8 md:mt-10 md:pt-12">
+          <div className="relative -mx-6 mt-2 flex flex-1 flex-col justify-end pt-9 md:-mx-8 md:mt-10 md:pt-12">
             <StarOutline className="doodle left-[18%] top-4 z-[2]" width={40} />
             <Sparkle className="doodle left-[32%] top-1 z-[2]" width={15} />
             <Swirl className="doodle bottom-16 left-3 z-[2]" width={92} />
@@ -60,6 +66,7 @@ export default function Hero() {
 
         {/* Правая карточка — форма */}
         <FormCard
+          id="hero-form"
           title={
             <>
               Запишите ребёнка

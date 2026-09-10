@@ -1,4 +1,4 @@
-:HL["/ai-kruzhok/_next/static/chunks/03~u94nxfec1o.css","style"]
+:HL["/ai-kruzhok/_next/static/chunks/0f~pv-er5xcpm.css","style"]
 :HL["/ai-kruzhok/_next/static/media/a343f882a40d2cc9-s.p.0kho-wj7-y-w1.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
 :HL["/ai-kruzhok/_next/static/media/d3fe2f289711ac3f-s.p.0i6ci0u~g4zml.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
 :HL["/ai-kruzhok/uicons/regular/rounded.css","style"]
@@ -6,4 +6,4 @@
 :HL["/ai-kruzhok/uicons/brands/all.css","style"]
 :HL["/ai-kruzhok/photos/teen-portrait.jpg","image"]
 :HL["/ai-kruzhok/logo-zerocoder.png","image"]
-0:{"tree":{"name":"","param":null,"prefetchHints":16,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":0,"slots":null}}},"staleTime":300,"buildId":"Gid74XWMWPP6U6ZAXrKgR"}
+0:{"tree":{"name":"","param":null,"prefetchHints":16,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":0,"slots":null}}},"staleTime":300,"buildId":"fLQNfYpE5rKpKUPkR-eOY"}

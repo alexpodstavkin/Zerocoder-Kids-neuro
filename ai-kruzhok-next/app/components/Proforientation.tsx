@@ -43,8 +43,8 @@ export default function Proforientation() {
             у ребёнка получается и какие направления стоит попробовать дальше.
           </p>
 
-          <a href="#cta" className="btn-r btn-r-solid mt-7">
-            Записаться на занятия
+          <a href="#cta-form" className="btn-r btn-r-cta mt-7">
+            Получить доступ
           </a>
         </div>
 

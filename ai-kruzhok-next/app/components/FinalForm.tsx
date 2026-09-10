@@ -42,11 +42,16 @@ export default function FinalForm() {
             После регистрации пришлём доступ на почту и в удобный мессенджер
           </p>
 
+          {/* Кнопка над фото — только на телефоне (правка владельца 10.09.2026). */}
+          <a href="#cta-form" className="btn-r btn-r-cta btn-r-block mt-6 md:hidden">
+            Получить доступ
+          </a>
+
           {/* Фото забирает весь остаток карточки, а не сидит в фиксированных 200px:
               раньше при ширине 514 и высоте 200 пропорция была 2.57:1 против 1.78:1
               у оригинала, и кадр резало сверху — головам срезало макушки, а над
               фото пустовало белое поле. */}
-          <div className="relative -mx-6 mt-8 flex flex-1 flex-col justify-end pt-8 md:-mx-8 md:mt-10 md:pt-10">
+          <div className="relative -mx-6 mt-2 flex flex-1 flex-col justify-end pt-8 md:-mx-8 md:mt-10 md:pt-10">
             <Sparkle className="doodle left-[30%] top-2 z-[2]" width={15} />
             <Swirl className="doodle bottom-16 left-3 z-[2]" width={88} />
             <CursorArrow className="doodle bottom-14 right-6 z-[2]" width={42} />
@@ -62,6 +67,7 @@ export default function FinalForm() {
 
         {/* Правая карточка — форма */}
         <FormCard
+          id="cta-form"
           title={
             <>
               Заполните форму,

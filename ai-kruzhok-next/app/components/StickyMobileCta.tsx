@@ -11,6 +11,9 @@ import { useEffect, useState } from 'react';
 // Замерено на 320/360/412px: накрытие 70px на всех.
 // Теперь под наблюдением обе формы (.gc-host) плюс финальная секция,
 // и кнопка прячется, если видно хотя бы одну.
+//
+// 10.09.2026 кнопки в блоках стали такими же красными «Получить доступ» —
+// под наблюдение добавлены и они, иначе на экране висели две одинаковые кнопки.
 export default function StickyMobileCta() {
   const [visible, setVisible] = useState(false);
 
@@ -30,6 +33,7 @@ export default function StickyMobileCta() {
 
     const targets: Element[] = [
       ...Array.from(document.querySelectorAll('.gc-host')),
+      ...Array.from(document.querySelectorAll('.btn-r-cta:not(.sticky-cta)')),
       ...(document.getElementById('cta') ? [document.getElementById('cta') as Element] : []),
     ];
 
@@ -58,11 +62,11 @@ export default function StickyMobileCta() {
       } transition-all duration-300`}
     >
       <a
-        href="#cta"
-        className="btn-r btn-r-solid btn-r-block sticky-cta"
-        style={{ boxShadow: '0 10px 30px rgba(128,95,248,.35)' }}
+        href="#cta-form"
+        className="btn-r btn-r-cta btn-r-block sticky-cta"
+        style={{ boxShadow: '0 10px 30px rgba(196,42,42,.35)' }}
       >
-        Открыть доступ
+        Получить доступ
       </a>
     </div>
   );

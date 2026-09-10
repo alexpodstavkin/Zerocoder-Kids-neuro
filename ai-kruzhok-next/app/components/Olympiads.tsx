@@ -51,8 +51,8 @@ export default function Olympiads() {
             профильному предмету &mdash; не ниже 75 баллов.
           </p>
 
-          <a href="#cta" className="btn-r btn-r-outline mt-8">
-            Открыть доступ к занятиям
+          <a href="#cta-form" className="btn-r btn-r-cta mt-8">
+            Получить доступ
           </a>
         </div>
       </div>

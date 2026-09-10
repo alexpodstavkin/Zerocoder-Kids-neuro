@@ -78,6 +78,13 @@ export default function Path() {
           </li>
         ))}
       </ol>
+
+      {/* Кнопка после пути — правка владельца 10.09.2026 */}
+      <div className="mt-8 flex justify-center md:mt-10">
+        <a href="#cta-form" className="btn-r btn-r-cta">
+          Получить доступ
+        </a>
+      </div>
     </section>
   );
 }

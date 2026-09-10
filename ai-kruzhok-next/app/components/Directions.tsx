@@ -65,8 +65,8 @@ export default function Directions() {
       </ol>
 
       <div className="mt-8 flex flex-col items-center md:mt-10">
-        <a href="#cta" className="btn-r btn-r-solid">
-          Открыть бесплатные занятия
+        <a href="#cta-form" className="btn-r btn-r-cta">
+          Получить доступ
         </a>
         <p className="mt-3 text-[13px] text-sub">Доступ открывается сразу после регистрации</p>
       </div>
