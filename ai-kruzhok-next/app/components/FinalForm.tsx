@@ -55,8 +55,10 @@ export default function FinalForm() {
           {/* Фото забирает весь остаток карточки, а не сидит в фиксированных 200px:
               раньше при ширине 514 и высоте 200 пропорция была 2.57:1 против 1.78:1
               у оригинала, и кадр резало сверху — головам срезало макушки, а над
-              фото пустовало белое поле. */}
-          <div className="relative -mx-6 mt-2 flex flex-1 flex-col justify-end pt-8 md:-mx-8 md:mt-6 md:pt-8">
+              фото пустовало белое поле.
+              На вебе отступ над фото md:mt-2 + md:pt-4 — правка владельца 11.09.2026:
+              фото ближе к тексту и выше, высота ряда та же (её задаёт форма). */}
+          <div className="relative -mx-6 mt-2 flex flex-1 flex-col justify-end pt-8 md:-mx-8 md:mt-2 md:pt-4">
             <Sparkle className="doodle left-[30%] top-2 z-[2]" width={15} />
             <Swirl className="doodle bottom-16 left-3 z-[2]" width={88} />
             <CursorArrow className="doodle bottom-14 right-6 z-[2]" width={42} />

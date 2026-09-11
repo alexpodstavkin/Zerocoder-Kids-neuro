@@ -50,9 +50,12 @@ export default function Hero() {
             Получить доступ
           </a>
 
-          {/* Фото с каракулями — прижато к нижнему краю карточки */}
-          <div className="relative -mx-6 mt-2 flex flex-1 flex-col justify-end pt-9 md:-mx-8 md:mt-10 md:pt-12">
-            <StarOutline className="doodle left-[18%] top-4 z-[2]" width={40} />
+          {/* Фото с каракулями — прижато к нижнему краю карточки.
+              На вебе отступ над фото md:mt-4 + md:pt-5 (было mt-10 + pt-12) — правка владельца
+              11.09.2026: фото ближе к тексту и выше, высота ряда та же (её задаёт форма).
+              Звезда на вебе садится на верхний край фото наполовину. */}
+          <div className="relative -mx-6 mt-2 flex flex-1 flex-col justify-end pt-9 md:-mx-8 md:mt-4 md:pt-5">
+            <StarOutline className="doodle left-[18%] top-4 z-[2] md:top-0" width={40} />
             <Sparkle className="doodle left-[32%] top-1 z-[2]" width={15} />
             <Swirl className="doodle bottom-16 left-3 z-[2]" width={92} />
             <CursorArrow className="doodle bottom-14 right-6 z-[2]" width={42} />
