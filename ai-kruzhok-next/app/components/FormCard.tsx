@@ -28,8 +28,10 @@ export default function FormCard({
         <FormArrow className="doodle -top-1 right-0 hidden md:block" width={104} />
       </div>
 
-      <div className="gc-host mt-6">
-        <GetCourseWidget />
+      <div className="mt-6">
+        <div className="gc-host">
+          <GetCourseWidget />
+        </div>
       </div>
 
       {footnote && (
