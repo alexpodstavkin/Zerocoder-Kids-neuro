@@ -7,6 +7,9 @@ import { FormArrow } from './Doodles';
 // Подписи полей и кнопки живут внутри виджета — переопределить их снаружи нельзя.
 // id — якорь для кнопок «Получить доступ»: ведут прямо к форме, а не к началу секции,
 // иначе на телефоне кнопка приводила бы к карточке оффера с ещё одной такой же кнопкой.
+// md:justify-center — с 11.09.2026 форма не масштабируется и на широком мониторе
+// ниже соседней карточки: без центрирования под ней оставалась пустая треть карточки
+// (финальный блок на 1920px). На телефоне карточка по высоте содержимого — не влияет.
 export default function FormCard({
   id,
   title,
@@ -19,7 +22,7 @@ export default function FormCard({
   footnote?: ReactNode;
 }) {
   return (
-    <div id={id} className="card-form flex scroll-mt-4 flex-col overflow-hidden p-6 md:p-8">
+    <div id={id} className="card-form flex scroll-mt-4 flex-col overflow-hidden p-6 md:justify-center md:p-8">
       <div className="relative">
         <h2 className="max-w-[320px] text-[21px] font-semibold leading-[1.22] md:text-[25px]">
           {title}
