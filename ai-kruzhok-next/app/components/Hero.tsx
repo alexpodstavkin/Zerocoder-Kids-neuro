@@ -59,7 +59,7 @@ export default function Hero() {
             <PhotoStub
               path="/photos/hero-kids-laptop.jpg"
               label="Фото: дети за ноутбуком"
-              className="h-full min-h-[190px] w-full md:min-h-[220px]"
+              className="h-full min-h-[190px] w-full md:min-h-[140px]"
             />
           </div>
         </div>

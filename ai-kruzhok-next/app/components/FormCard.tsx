@@ -15,11 +15,13 @@ export default function FormCard({
   title,
   note,
   footnote,
+  footnoteClassName = '',
 }: {
   id?: string;
   title: ReactNode;
   note?: ReactNode;
   footnote?: ReactNode;
+  footnoteClassName?: string;
 }) {
   return (
     <div id={id} className="card-form flex scroll-mt-4 flex-col overflow-hidden p-6 md:justify-center md:p-8">
@@ -38,7 +40,7 @@ export default function FormCard({
       </div>
 
       {footnote && (
-        <p className="mt-5 text-[13px] leading-[1.45] text-sub">{footnote}</p>
+        <p className={`mt-5 text-[15px] leading-[1.45] text-ink ${footnoteClassName}`}>{footnote}</p>
       )}
     </div>
   );

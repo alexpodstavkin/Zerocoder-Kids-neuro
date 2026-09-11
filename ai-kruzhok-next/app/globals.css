@@ -624,6 +624,19 @@ html[data-js] .rvl:not(.rvl-in) {
   border-radius: calc(var(--r-inner) * var(--page-zoom, 1));
   overflow: hidden;
 }
+/* Высоту формы задаёт GetCourseWidget через --gc-h — только из сообщений СВОЕГО iframe.
+   !important перебивает inline height, который виджет пишет обеим формам вперемешку
+   (у двух iframe одинаковый id — отсюда качание края карточки). 470px — запас
+   до первого сообщения, чтобы страница не прыгала при загрузке: реальная высота 448–533. */
+.getcourse-widget {
+  height: var(--gc-h, 470px) !important;
+  min-height: 0 !important;
+}
+.getcourse-widget iframe {
+  display: block;
+  height: 100% !important;
+  min-height: 0 !important;
+}
 
 /* ---------- Мобильный sticky-CTA ---------- */
 .sticky-cta {

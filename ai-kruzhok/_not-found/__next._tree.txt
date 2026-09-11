@@ -1,5 +1,5 @@
-:HL["/ai-kruzhok/_next/static/chunks/05jg513r1.j.k.css","style"]
+:HL["/ai-kruzhok/_next/static/chunks/02gxlp~9es8ga.css","style"]
 :HL["/ai-kruzhok/uicons/regular/rounded.css","style"]
 :HL["/ai-kruzhok/uicons/solid/rounded.css","style"]
 :HL["/ai-kruzhok/uicons/brands/all.css","style"]
-0:{"tree":{"name":"","param":null,"prefetchHints":16,"slots":{"children":{"name":"/_not-found","param":null,"prefetchHints":0,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":0,"slots":null}}}}},"staleTime":300,"buildId":"0Y1j2b67p1ckBN-lpX455"}
+0:{"tree":{"name":"","param":null,"prefetchHints":16,"slots":{"children":{"name":"/_not-found","param":null,"prefetchHints":0,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":0,"slots":null}}}}},"staleTime":300,"buildId":"YgaxGcigqEe7IE8Lg8gY6"}
