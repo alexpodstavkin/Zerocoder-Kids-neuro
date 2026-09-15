@@ -19,7 +19,7 @@ export default function Hero() {
               whitespace-nowrap снят со всей второй строки (выдавливал вёрстку за карточку) —
               неразрывным остался только возраст.
               {' '} перед вложенным span обязателен: без него сборщик съедает пробел
-              и получается «учеников10–14». */}
+              и получается «учеников8–14». */}
           {/* max-[360px]:text-[21px] — на узких телефонах в колонку карточки
               (ширина экрана минус 32px поля .wrap минус 48px padding карточки)
               не влезает «профориентационный»: на 320px слово занимает 265px
@@ -35,7 +35,7 @@ export default function Hero() {
             <br className="hidden sm:inline" />
             <span className="text-sub">
               и 1 профориентационный урок для учеников{' '}
-              <span className="whitespace-nowrap">10&ndash;14&nbsp;лет</span>
+              <span className="whitespace-nowrap">8&ndash;14&nbsp;лет</span>
             </span>
           </h1>
 
