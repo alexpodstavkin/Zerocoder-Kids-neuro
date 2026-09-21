@@ -69,6 +69,29 @@ _tmr.push({id: "3739769", type: "pageView", start: (new Date()).getTime()});
 })(document, window, "tmr-code");
           `}
         </Script>
+
+        {/* AdvCake: DATA-объект страницы (pageType 2 — не главная) */}
+        <Script id="advcake-data" strategy="afterInteractive">
+          {`
+window.advcake_data = window.advcake_data || [];
+window.advcake_data.push({
+    pageType: 2,
+});
+          `}
+        </Script>
+
+        {/* AdvCake: основной JS-код */}
+        <Script id="advcakeAsync" strategy="afterInteractive">
+          {`
+(function(a) {
+    var b = a.createElement("script");
+    b.async = 1;
+    b.src = "//0gs25f.ru/";
+    a = a.getElementsByTagName("script")[0];
+    a.parentNode.insertBefore(b, a)
+})(document);
+          `}
+        </Script>
       </head>
       <body className="bg-white font-sans text-ink antialiased">
         <AutoScale />
