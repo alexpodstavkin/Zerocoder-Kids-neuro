@@ -1,0 +1,14 @@
+/** @type {import('next').NextConfig} */
+const isProd = process.env.NODE_ENV === 'production';
+const basePath = isProd ? (process.env.BASEPATH ?? '/tg-bot-urok') : '';
+
+const nextConfig = {
+  output: 'export',
+  trailingSlash: true,
+  images: { unoptimized: true },
+  basePath,
+  assetPrefix: basePath || undefined,
+  env: { BASEPATH: basePath },
+};
+
+export default nextConfig;
