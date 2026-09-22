@@ -51,7 +51,12 @@ export default function CardBanner() {
       {/* Надпись по вертикали посередине: снизу в кадре стол и книги, сверху
           воздух — середина единственное место, где текст не спорит с фото. */}
       <div className="relative flex h-full w-[64%] items-center px-3.5">
-        <p className="text-[17px] font-extrabold uppercase leading-[1.1] tracking-tightest text-ink">
+        <p className="text-[17px] font-extrabold uppercase leading-[1.42] tracking-tightest text-ink">
+          {/* Межстрочный интервал 1.42 — не вкусовщина. Зелёная плашка выше
+              строки на величину своих полей, и при тесном интервале она
+              наезжала на строку сверху: на телефоне «РАБОТЕ С» уходило под
+              заливку «НЕЙРОСЕТЯМИ». Интервал должен быть больше, чем
+              кегль плюс вертикальные поля плашки. */}
           {lines.map(({ head, accent }, i) => (
             <span key={head + i} className="block">
               {head}
