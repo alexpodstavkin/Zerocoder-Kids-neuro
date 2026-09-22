@@ -1,6 +1,6 @@
 /** @type {import('next').NextConfig} */
 const isProd = process.env.NODE_ENV === 'production';
-const basePath = isProd ? (process.env.BASEPATH ?? '/tg-bot-urok') : '';
+const basePath = isProd ? (process.env.BASEPATH ?? '/lf-free-less') : '';
 
 const nextConfig = {
   output: 'export',
