@@ -1,0 +1,545 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ============================================================
+   АКЦЕНТ ПРОЕКТА — меняй ТОЛЬКО эти 4 переменные под лендинг.
+   Нейтрали ниже не трогай (они постоянны для всего бренда).
+   Готовые пресеты — в конце файла, просто скопируй нужный блок.
+   ============================================================ */
+:root {
+  /* === АКЦЕНТ (дефолт — зелёный, цвет логотипа = ядро бренда Зерокодер) === */
+  --acc: #4d55f5;       /* основной акцент: кнопки, иконки, выделения */
+  --acc-dark: #3a41d9;  /* hover / тёмный вариант (≈ −15% L) */
+  --acc-soft: #eceefe;  /* пастельная заливка/тинт: бейджи, soft-фоны, иконки-чипы */
+  --acc-2: #fe6a08;     /* конец градиента (соседний оттенок) */
+
+  /* === НЕЙТРАЛИ — ПОСТОЯННЫ, НЕ МЕНЯТЬ === */
+  --ink: #141413;       /* основной текст (тёплый near-black) */
+  --sub: #6b7280;       /* приглушённый текст, подписи */
+  --paper: #f4f5f8;     /* светлый фон секции (можно слегка тонировать под акцент) */
+  --paper-warm: #faf9f6;/* тёплый светлый фон */
+  --dark: #0c0e13;      /* фон тёмной секции */
+  --dark-2: #111520;    /* приподнятая поверхность на тёмном */
+  --bord: #e5e7e0;      /* hairline-обводка на светлом */
+  --bord-dark: rgba(255, 255, 255, 0.1); /* hairline на тёмном */
+
+  color-scheme: light;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+body {
+  background: #fff;
+  font-size: 16px;
+  line-height: 1.55; /* универсальный body-lh со всех живых лендов */
+  -webkit-font-smoothing: antialiased;
+}
+/* Как в образце: на телефоне (<480) вся страница бежевая, шире — белая с бежевой колонкой. */
+@media (max-width: 479px) {
+  body {
+    background: #f6f5f1;
+  }
+}
+
+@layer components {
+  /* ---------- Контейнер ---------- */
+  .container-x {
+    @apply mx-auto w-full max-w-content px-5 md:px-6;
+  }
+
+  /* ---------- Типографика (Manrope, плотный трекинг) ---------- */
+  /* H1/H2 — uppercase по канону Зерокодера. Для «детских» лендов добавь класс normal-case. */
+  .h1 {
+    @apply font-bold uppercase tracking-tightest leading-[1.0];
+    font-size: clamp(34px, 5.5vw, 60px);
+  }
+  .h2 {
+    @apply font-bold uppercase tracking-tightest leading-[1.04];
+    font-size: clamp(28px, 4vw, 40px);
+  }
+  .h3 {
+    @apply font-bold leading-tight tracking-[-0.01em];
+    font-size: clamp(20px, 2.4vw, 24px);
+  }
+  .lead {
+    @apply font-medium leading-[1.5];
+    font-size: clamp(17px, 2vw, 20px);
+  }
+  .caption {
+    @apply text-[13px] font-medium leading-[1.5] text-sub;
+  }
+  /* Акцентное выделение в заголовке: цветной текст или заливка-хайлайт */
+  .hl {
+    color: var(--acc);
+  }
+  .hl-box {
+    background: var(--acc);
+    color: #fff;
+    padding: 0 0.15em;
+    border-radius: 8px;
+    display: inline-block;
+  }
+  /* Акцентный курсив Fira Sans (как на живых лендах в выделенных словах) */
+  .accent-italic {
+    @apply font-accent italic;
+  }
+
+  /* ---------- Кнопки ----------
+     Два канона: pill (radius 100px) и flat (radius 10px). Оба встречаются 50/50. */
+  .btn {
+    @apply inline-flex items-center justify-center gap-2.5 font-bold uppercase tracking-[0.01em] transition-all duration-200;
+    font-size: 16px;
+  }
+  .btn-primary {
+    @apply btn rounded-pill bg-acc px-9 py-4 text-white hover:-translate-y-0.5;
+  }
+  .btn-primary:hover {
+    background: var(--acc-dark);
+  }
+  .btn-flat {
+    @apply btn rounded-flat bg-acc px-9 py-4 text-white hover:-translate-y-0.5;
+  }
+  .btn-flat:hover {
+    background: var(--acc-dark);
+  }
+  .btn-ghost {
+    @apply btn rounded-pill border-[1.5px] bg-white px-8 py-[14px];
+    color: var(--acc);
+    border-color: var(--acc);
+  }
+  .btn-ghost:hover {
+    background: var(--acc-soft);
+  }
+  .btn-dark {
+    @apply btn rounded-flat bg-ink px-9 py-4 text-white hover:opacity-90;
+  }
+  .btn-sm {
+    @apply gap-2 px-5 py-2.5 text-[13px];
+  }
+
+  /* ---------- Бейджи / пилюли ---------- */
+  .pill {
+    @apply inline-flex items-center gap-2 rounded-pill px-4 py-2 text-[13px] font-bold uppercase tracking-[0.02em];
+    background: var(--acc-soft);
+    color: var(--acc-dark);
+  }
+  .pill-dark {
+    @apply inline-flex items-center gap-2 rounded-pill px-4 py-2 text-[13px] font-bold uppercase tracking-[0.02em] text-white;
+    background: rgba(255, 255, 255, 0.08);
+  }
+
+  /* ---------- Карточки / бенто ---------- */
+  .card {
+    @apply rounded-lg border bg-white p-7 transition-all duration-200;
+    border-color: var(--bord);
+  }
+  .card-float {
+    /* «парящая» белая карточка с мягкой тенью с оттенком акцента (как на гранте) */
+    box-shadow: 0 12px 32px color-mix(in srgb, var(--acc) 16%, transparent),
+      0 2px 4px rgba(0, 0, 0, 0.04);
+  }
+  /* иконка-чип в ячейке: контейнер 46px, фон acc-soft, иконка акцентом */
+  .ico-chip {
+    @apply flex h-[46px] w-[46px] flex-none items-center justify-center rounded-md text-[22px];
+    background: var(--acc-soft);
+    color: var(--acc);
+  }
+  /* сплошной акцентный чип с белой иконкой (для блока подарков) */
+  .ico-chip-solid {
+    @apply flex h-[46px] w-[46px] flex-none items-center justify-center rounded-md text-[22px] text-white;
+    background: var(--acc);
+  }
+
+  /* ---------- Эффекты ---------- */
+  .glow-acc {
+    box-shadow: 0 0 12px color-mix(in srgb, var(--acc) 50%, transparent);
+  }
+  /* стекло (glassmorphism) — фишка живых лендов (особенно «грант») */
+  .glass {
+    backdrop-filter: blur(10px);
+    background: rgba(255, 255, 255, 0.7);
+    border: 1px solid var(--bord);
+  }
+  .glass-dark {
+    backdrop-filter: blur(10px);
+    background: rgba(12, 14, 19, 0.6);
+    border: 1px solid var(--bord-dark);
+  }
+  /* градиенты hero/финала из соседних оттенков акцента */
+  .grad-acc {
+    background: linear-gradient(135deg, var(--acc), var(--acc-2));
+  }
+  .grad-dark {
+    background: linear-gradient(135deg, var(--dark-2), var(--dark));
+  }
+  /* мягкий размытый блоб-фон (декор) */
+  .blob {
+    filter: blur(60px);
+    border-radius: 50%;
+    pointer-events: none;
+  }
+}
+
+/* ---------- FAQ (details/summary) ---------- */
+details.faq-item {
+  background: #fff;
+  border: 1px solid var(--bord);
+  border-radius: 12px;
+  padding: 0 24px;
+  overflow: hidden;
+}
+details.faq-item summary {
+  list-style: none;
+  cursor: pointer;
+  font-weight: 700;
+  padding: 22px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+}
+details.faq-item summary::-webkit-details-marker {
+  display: none;
+}
+details.faq-item summary::after {
+  content: '+';
+  color: var(--acc);
+  font-size: 26px;
+  font-weight: 600;
+  line-height: 1;
+}
+details.faq-item[open] summary::after {
+  content: '–';
+}
+details.faq-item p {
+  padding: 0 0 22px;
+  color: var(--sub);
+}
+
+/* ============================================================
+   ПРЕСЕТЫ АКЦЕНТА — скопируй нужный блок в :root (--acc … --acc-2).
+   Все цвета взяты с живых лендингов Зерокодера.
+
+   ЗЕЛЁНЫЙ (бренд-ядро, дефолт):
+     --acc:#00e48d; --acc-dark:#00c159; --acc-soft:#eaf7ee; --acc-2:#00b36f;
+   ЗЕЛЁНЫЙ ТРАВЯНОЙ (грант):
+     --acc:#22b24c; --acc-dark:#1b8f3c; --acc-soft:#f1f8f3; --acc-2:#0c2e18;
+   ФИОЛЕТОВЫЙ (concept.html / детский):
+     --acc:#b15eff; --acc-dark:#8f3fef; --acc-soft:#f2eefb; --acc-2:#6c52d0;
+   ОРАНЖЕВЫЙ (подработка):
+     --acc:#fe6a08; --acc-dark:#da5500; --acc-soft:#fff1e6; --acc-2:#ff812e;
+   КРАСНЫЙ ОГОНЬ (антикризис):
+     --acc:#ee3107; --acc-dark:#c71001; --acc-soft:#ffeae6; --acc-2:#fd3e09;
+   ЛАЙМ (вайб-кодер, текст на лайме — тёмный #141413!):
+     --acc:#b9ff00; --acc-dark:#9ad600; --acc-soft:#f3ffd6; --acc-2:#8ff7a4;
+   КОРАЛЛ / ANTHROPIC (Claude Code):
+     --acc:#da7857; --acc-dark:#c2664a; --acc-soft:#f7efe9; --acc-2:#6b9ccd;
+   ИНДИГО (DeepSeek):
+     --acc:#5d67db; --acc-dark:#5862d0; --acc-soft:#eff0fb; --acc-2:#ee7a5a;
+   ============================================================ */
+
+/* ============================================================
+   МИНИЛЕНД 1-в-1 С ZERO-БЛОКОМ ОБРАЗЦА
+   (zerocoder.ru/free-lesson-on-neural-networks-for-children)
+   Размеры сняты с data-field-* образца. Брейкпоинты Tilda:
+   ≥960 (1200 и 960 совпадают) · 640–959 · 480–639 · <480 (сетка 320).
+   Никакого масштабирования: всё в фиксированных px, как в Tilda.
+   ============================================================ */
+.zb-col {
+  width: 840px;
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 20px 0 4px;
+  background: #f6f5f1;
+}
+.zb-logo {
+  display: block;
+  width: auto;
+  height: 60px;
+  margin: 0 auto;
+}
+.zb-content {
+  width: 760px;
+  max-width: calc(100% - 32px);
+  margin: 10px auto 0; /* фото на top 90 = лого 20 + 60 + 10 */
+}
+.zb-photo {
+  position: relative;
+  height: 430px;
+  overflow: hidden;
+  border-radius: 20px;
+}
+
+/* Карточка таймера наезжает на фото; пилюля справа */
+.zb-hero-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-top: -76px; /* карточка top 444, низ фото 520 */
+  position: relative;
+  z-index: 1;
+}
+.zb-card {
+  width: 280px;
+  height: 150px;
+  margin-left: 20px;
+  padding-top: 20px;
+  border-radius: 20px;
+  background: #fff;
+  text-align: center;
+}
+.zb-card-title {
+  font-size: 28px;
+  line-height: 27px;
+  font-weight: 700;
+  color: #0e0e0e;
+  white-space: nowrap;
+}
+.zb-timer {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  margin-top: 20px; /* таймер top 511 = карточка 444 + 67 */
+}
+.zb-sep {
+  width: 29px;
+}
+.zb-unit {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.zb-digits {
+  display: flex;
+  gap: 1px;
+}
+.zb-tile {
+  position: relative;
+  width: 30px;
+  height: 44px;
+  border-radius: 6px;
+  background: #fe6a08;
+  color: #fff;
+  font-family: Arial, sans-serif;
+  font-size: 32px;
+  line-height: 44px;
+  text-align: center;
+}
+.zb-tile-split {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 21.5px;
+  height: 1px;
+  background: rgba(0, 0, 0, 0.12);
+}
+.zb-unit-label {
+  margin-top: 3px;
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+  line-height: 14px;
+  color: #000;
+}
+.zb-pill {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 320px;
+  height: 60px;
+  margin-top: 84px; /* пилюля top 528 */
+  border-radius: 30px;
+  background: #fe6a08;
+  color: #fff;
+  font-size: 16px;
+  line-height: 24.8px;
+  font-weight: 700;
+  transition: opacity 0.2s ease-in-out;
+}
+.zb-pill:hover {
+  opacity: 0.9;
+}
+
+/* H1: плашка как фигуры Tilda — полоса высотой lh+3 от верха строки */
+.zb-h1 {
+  --lh: 42px;
+  margin-top: 56px; /* H1 top 650, низ карточки 594 */
+  font-size: 44px;
+  line-height: var(--lh);
+  font-weight: 700;
+  letter-spacing: -1.5px;
+  color: #0d0d0d;
+}
+.zb-hl {
+  color: #fff;
+  padding-right: 10px;
+  background-image: linear-gradient(var(--acc), var(--acc));
+  background-repeat: no-repeat;
+  background-size: 100% calc(var(--lh) + 3px);
+  background-position: 0 calc((1.366em - var(--lh)) / 2);
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+}
+
+.zb-blue {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+  margin-top: 35px;
+  padding: 20px;
+  border-radius: 20px;
+  background: var(--acc);
+  color: #fff;
+  font-size: 18px;
+  line-height: 25px;
+  font-weight: 600;
+}
+.zb-rocket {
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+}
+
+.zb-letter {
+  margin-top: 20px;
+  font-size: 16px;
+  line-height: 22px;
+  color: #000;
+}
+.zb-letter p + p {
+  margin-top: 22px; /* пустая строка <br><br>, как в образце */
+}
+
+.zb-form {
+  margin-top: -20px; /* виджет в образце стоит на 20px выше конца текста — у iframe свой верхний отступ */
+  scroll-margin-top: 16px;
+}
+
+/* ---------- 960–1199: карточка на 10px правее и выше, пилюля на месте ---------- */
+@media (min-width: 960px) and (max-width: 1199px) {
+  .zb-hero-row { margin-top: -82px; }
+  .zb-card { margin-left: 30px; }
+  .zb-pill { margin-top: 90px; }
+  .zb-h1 { margin-top: 62px; }
+}
+
+/* ---------- 640–959 ---------- */
+@media (max-width: 959px) {
+  .zb-col { width: 621px; }
+  .zb-content { width: 560px; }
+  .zb-photo { height: 321px; }
+  .zb-hero-row { flex-direction: column; align-items: center; margin-top: -38px; }
+  .zb-card { margin-left: 0; }
+  .zb-card-title { font-size: 20px; line-height: 19px; }
+  .zb-timer { margin-top: 28px; }
+  .zb-pill { margin-top: 68px; }
+  .zb-h1 { --lh: 34px; margin-top: 60px; font-size: 36px; }
+  .zb-blue { margin-top: 33px; }
+}
+
+/* ---------- 480–639 ---------- */
+@media (max-width: 639px) {
+  .zb-col { width: 460px; }
+  .zb-content { width: 400px; }
+  .zb-photo { height: 240px; }
+  .zb-hero-row { margin-top: -37px; }
+  .zb-card-title { font-size: 22px; line-height: 21px; }
+  .zb-timer { margin-top: 22px; }
+  .zb-pill { margin-top: 64px; }
+  .zb-h1 { margin-top: 40px; width: 420px; max-width: calc(100vw - 32px); }
+  .zb-blue { margin-top: 30px; font-size: 16px; line-height: 22px; }
+  .zb-form { width: 420px; max-width: calc(100vw - 32px); }
+}
+
+/* ---------- <480: сетка 320 по центру, фото и форма — 95% окна ---------- */
+@media (max-width: 479px) {
+  .zb-col { width: 100%; padding-top: 18px; }
+  .zb-logo { height: 47px; }
+  .zb-content { width: 320px; max-width: 100%; margin-top: 20px; }
+  .zb-photo,
+  .zb-form {
+    width: 95vw;
+    margin-left: calc(50% - 47.5vw);
+  }
+  .zb-photo { height: 165px; border-radius: 10px; }
+  .zb-hero-row { margin-top: -25px; }
+  .zb-card { width: 260px; height: 140px; border-radius: 10px; }
+  .zb-card-title { font-size: 20px; line-height: 19px; }
+  .zb-timer { margin-top: 16px; }
+  .zb-pill { width: 260px; height: 45px; margin-top: 9px; font-size: 14px; line-height: 21.7px; }
+  /* 29px, а не 30 как в образце: иначе «урок 1 на 1 с педагогом» не встаёт в одну строку сетки 320 */
+  .zb-h1 { --lh: 30px; margin-top: 30px; width: auto; max-width: none; font-size: 29px; letter-spacing: -1px; }
+  /* мобилка: «урок 1 на 1 с педагогом» и «для детей 8–14 лет» — каждая фраза одной строкой */
+  .zb-mnw { white-space: nowrap; }
+  .zb-hl { padding-right: 8px; }
+  .zb-blue {
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 25px;
+    padding: 15px;
+    border-radius: 10px;
+  }
+  .zb-rocket { width: 50px; height: 50px; }
+  .zb-letter { margin-top: 10px; padding: 0 10px; font-size: 14px; line-height: 20px; }
+  .zb-letter p + p { margin-top: 20px; }
+  .zb-form { margin-top: -20px; max-width: none; }
+}
+
+/* 320–339: «профориентационный» при 30px + отступ плашки шире сетки 320 */
+@media (max-width: 339px) {
+  .zb-h1 { font-size: 28px; }
+  .zb-hl { padding-right: 4px; }
+}
+
+/* Galaxy Fold 280: сетка 320 шире экрана — ужимаем, чтобы не было горизонтального скролла */
+@media (max-width: 319px) {
+  .zb-h1 { font-size: 24px; --lh: 26px; }
+  .zb-card, .zb-pill { width: 250px; }
+}
+
+/* ---------- Узкий подвал: ширина колонки, одна-две строки ---------- */
+.zb-footer {
+  width: 840px;
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 16px 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px 24px;
+  flex-wrap: wrap;
+  background: var(--dark);
+  font-size: 12px;
+  line-height: 1.4;
+  color: rgba(255, 255, 255, 0.55);
+}
+.zb-footer-brand {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  color: #fff;
+}
+.zb-footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 16px;
+}
+.zb-footer-links a {
+  transition: color 0.2s ease-in-out;
+}
+.zb-footer-links a:hover {
+  color: #fff;
+}
+@media (max-width: 959px) {
+  .zb-footer { width: 621px; padding: 16px 30px; }
+}
+@media (max-width: 639px) {
+  .zb-footer { width: 460px; padding: 16px 30px; }
+}
+@media (max-width: 479px) {
+  .zb-footer { width: 100%; flex-direction: column; align-items: flex-start; padding: 16px; }
+  .zb-footer-links { flex-direction: column; }
+  .zb-footer-links a { padding: 3px 0; }
+}
