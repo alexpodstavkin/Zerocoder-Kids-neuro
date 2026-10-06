@@ -4,8 +4,8 @@ import { useEffect, useRef } from 'react'
 // Виджет формы записи GetCourse (университет Зерокодера).
 // SCRIPT_ID — id из выданного кода виджета, от него же зависит имя
 // глобальной функции инициализации.
-const SCRIPT_ID = '1e6c2ad0a98e2284a0057f46aa3d3931d5b3c5b2'
-const SCRIPT_SRC = 'https://university.zerocoder.ru/pl/lite/widget/script?id=1571648'
+const SCRIPT_ID = 'a94e4797f7ca22c69cb9243054b13dd796b52cc3'
+const SCRIPT_SRC = 'https://university.zerocoder.ru/pl/lite/widget/script?id=1623916'
 const START_FN = 'startWidget' + SCRIPT_ID
 
 // Как устроен скрипт виджета:
