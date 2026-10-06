@@ -470,7 +470,7 @@ details.faq-item p {
   .zb-pill { width: 260px; height: 45px; margin-top: 9px; font-size: 14px; line-height: 21.7px; }
   /* 29px, а не 30 как в образце: иначе «урок 1 на 1 с педагогом» не встаёт в одну строку сетки 320 */
   .zb-h1 { --lh: 30px; margin-top: 30px; width: auto; max-width: none; font-size: 29px; letter-spacing: -1px; }
-  /* мобилка: «урок 1 на 1 с педагогом» и «для детей 8–14 лет» — каждая фраза одной строкой */
+  /* мобилка: «урок 1 на 1 с педагогом» и «для детей 10–16 лет» — каждая фраза одной строкой */
   .zb-mnw { white-space: nowrap; }
   .zb-hl { padding-right: 8px; }
   .zb-blue {
