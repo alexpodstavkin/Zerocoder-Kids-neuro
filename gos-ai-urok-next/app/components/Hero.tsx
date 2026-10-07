@@ -27,7 +27,7 @@ export default function Hero() {
           >
             <p className="lead">
               Программа рассчитана на&nbsp;школьников от&nbsp;10 до&nbsp;14&nbsp;лет.{' '}
-              <span className="whitespace-nowrap">Старт: 1&nbsp;октября</span>
+              <span className="whitespace-nowrap">Старт: 1&nbsp;ноября</span>
             </p>
           </div>
 

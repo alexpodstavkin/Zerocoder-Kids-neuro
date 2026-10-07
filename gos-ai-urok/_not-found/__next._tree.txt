@@ -1,5 +1,5 @@
-:HL["/gos-ai-urok/_next/static/chunks/10p3xsadddaru.css","style"]
+:HL["/gos-ai-urok/_next/static/chunks/0y9-~1u~hbydf.css","style"]
 :HL["/gos-ai-urok/uicons/regular/rounded.css","style"]
 :HL["/gos-ai-urok/uicons/solid/rounded.css","style"]
 :HL["/gos-ai-urok/uicons/brands/all.css","style"]
-0:{"tree":{"name":"","param":null,"prefetchHints":16,"slots":{"children":{"name":"/_not-found","param":null,"prefetchHints":0,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":0,"slots":null}}}}},"staleTime":300,"buildId":"XoJ86f0jrsRU7dk9gOIuv"}
+0:{"tree":{"name":"","param":null,"prefetchHints":16,"slots":{"children":{"name":"/_not-found","param":null,"prefetchHints":0,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":0,"slots":null}}}}},"staleTime":300,"buildId":"Bp2HiRIR4iw5yeDhFuW7t"}
