@@ -52,10 +52,10 @@ export default function Page() {
           <div className="zb-blue">
             <Image src={asset('/rocket.svg')} alt="" width={50} height={50} className="zb-rocket" />
             <p>
-              {t('Бесплатный урок 1 на 1')}{' '}
+              {t('Бесплатный онлайн-урок 1 на 1')}{' '}
               <span className="whitespace-nowrap">с&nbsp;педагогом</span>{' '}
               <span className="whitespace-nowrap">для&nbsp;детей 10–15&nbsp;лет.</span>{' '}
-              {t('За один час онлайн ребёнок сам создаёт своего ИИ-помощника под руководством опытного преподавателя.')}
+              {t('За один час ребёнок сам создаёт своего ИИ-помощника под руководством опытного преподавателя.')}
             </p>
           </div>
 
