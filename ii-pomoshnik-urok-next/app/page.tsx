@@ -46,7 +46,7 @@ export default function Page() {
             <span className="zb-hl">
               Создаем бесплатного <span className="whitespace-nowrap">ИИ-помощника</span> по&nbsp;учебе
             </span>
-            {t(', который заменит ребёнку репетитора')}
+            {t(', который не даст списать')}
           </h1>
 
           <div className="zb-blue">
